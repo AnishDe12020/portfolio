@@ -1,0 +1,6 @@
+.svelte-kit
+node_modules
+yarn.lock
+package-lock.json
+static
+.github

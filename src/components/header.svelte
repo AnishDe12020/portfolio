@@ -27,7 +27,7 @@
       <div class="flex">
         <a
           href="#"
-          class="inline-block items-center my-4 mx-4 rounded-full border-accent border-2 p-1 focus:ring hover:opacity-70"
+          class="inline-block items-center my-4 mx-4 rounded-full border-accent border-2 p-1 focus:ring hover:opacity-70 transition duration-200 ease-in-out"
         >
           <img
             src="images/avatar.svg"

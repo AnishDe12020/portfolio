@@ -7,9 +7,9 @@ const config = {
   theme: {
     extend: {
       colors: {
-        primary: "#003881",
-        secondary: "#0D0C4E",
-        accent: "#00E3BC",
+        primary: "#0C1226",
+        secondary: "#141C38",
+        accent: "#7AC9F9",
       },
       fontFamily: {
         serif: ["Ubuntu", ...defaultTheme.fontFamily.sans],

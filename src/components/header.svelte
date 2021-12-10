@@ -1,11 +1,72 @@
 <script>
   import HeaderLink from "./header-link.svelte";
+
+  let mobileMenu;
+
+  const handleHamburgerClick = () => {
+    mobileMenu.classList.toggle("hidden");
+  };
 </script>
 
-<div class="bg-secondary w-screen py-8 flex flex-row justify-end pr-32">
+<!-- <div
+  class="bg-secondary w-screen py-8 flex flex-row justify-between mr-32 align-middle"
+>
+  <div class="">
+    <Image src="images/avatar.png" class="rounded-full" />
+  </div>
   <ul class="flex flex-row">
     <HeaderLink linkHref="#" linkContent="Projects" />
     <HeaderLink linkHref="#" linkContent="Contact" />
     <HeaderLink linkHref="#" linkContent="About" />
   </ul>
-</div>
+</div> -->
+
+<nav class="bg-secondary shadow-lg">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex justify-between">
+      <div class="flex">
+        <a href="#" class="flex items-center py-4 px-2">
+          <img
+            src="images/avatar.png"
+            alt="Logo"
+            class="inline-block rounded-full h-auto w-12 mr-2"
+          />
+        </a>
+      </div>
+      <div class="hidden md:flex items-center">
+        <HeaderLink linkHref="#" linkContent="Projects" />
+        <HeaderLink linkHref="#" linkContent="Contact" />
+        <HeaderLink linkHref="#" linkContent="About" />
+      </div>
+
+      <div class="md:hidden flex items-center">
+        <button
+          class="focus:outline-none rounded-md focus:ring hover:opacity-70"
+          on:click={handleHamburgerClick}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-10 h-10 text-accent rounded-md"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            x-show="!showMenu"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width={2}
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- mobile menu -->
+  <div class="hidden flex flex-col space-y-4" bind:this={mobileMenu}>
+    <HeaderLink linkHref="#" linkContent="Projects" />
+    <HeaderLink linkHref="#" linkContent="Contact" />
+    <HeaderLink linkHref="#" linkContent="About" />
+  </div>
+</nav>

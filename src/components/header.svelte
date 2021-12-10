@@ -2,9 +2,11 @@
   import HeaderLink from "./header-link.svelte";
 
   let mobileMenu;
+  let mobileMenuOpen = false;
 
   const handleHamburgerClick = () => {
     mobileMenu.classList.toggle("hidden");
+    mobileMenuOpen = !mobileMenuOpen;
   };
 </script>
 
@@ -47,21 +49,39 @@
           class="focus:outline-none rounded-md focus:ring hover:opacity-70"
           on:click={handleHamburgerClick}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-10 h-10 text-accent rounded-md"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            x-show="!showMenu"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width={2}
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
+          {#if mobileMenuOpen}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-10 h-10 text-accent rounded-md"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              x-show="!showMenu"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          {:else}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-10 h-10 text-accent rounded-md"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              x-show="!showMenu"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          {/if}
         </button>
       </div>
     </div>

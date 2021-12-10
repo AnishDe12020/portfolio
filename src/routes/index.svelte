@@ -1,3 +1,7 @@
+<svelte:head>
+  <title>Anish De | Portfolio</title>
+</svelte:head>
+
 <div
   class="flex flex-col items-center justify-center mt-32 md:flex-row md:ml-16 md:justify-start md:items-start"
 >

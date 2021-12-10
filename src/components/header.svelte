@@ -27,8 +27,8 @@
       <div class="flex">
         <a href="#" class="flex items-center py-4 px-2">
           <img
-            src="images/avatar.png"
-            alt="Logo"
+            src="images/avatar.svg"
+            alt="Avatar"
             class="inline-block rounded-full h-auto w-12 mr-2"
           />
         </a>

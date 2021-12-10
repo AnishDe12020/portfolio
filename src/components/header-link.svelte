@@ -4,7 +4,7 @@
 </script>
 
 <a
-  class="bg-accent text-secondary rounded-lg px-4 py-3 font-semibold font-serif hover:opacity-70 size text-xl focus:outline-none focus:ring mx-4"
+  class="text-accent hover:bg-accent hover:text-secondary rounded-lg px-4 py-3 font-semibold font-serif size text-xl focus:outline-none focus:ring mx-4"
   href={linkHref}
 >
   {linkContent}

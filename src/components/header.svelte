@@ -25,11 +25,14 @@
   <div class="max-w-6xl mx-auto px-4">
     <div class="flex justify-between">
       <div class="flex">
-        <a href="#" class="flex items-center py-4 px-2">
+        <a
+          href="#"
+          class="inline-block items-center my-4 mx-4 rounded-full border-accent border-2 p-1"
+        >
           <img
             src="images/avatar.svg"
             alt="Avatar"
-            class="inline-block rounded-full h-auto w-12 mr-2"
+            class="inline-block rounded-full h-auto w-12"
           />
         </a>
       </div>

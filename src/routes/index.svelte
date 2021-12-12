@@ -3,7 +3,7 @@
 </svelte:head>
 
 <div
-  class="flex flex-col items-center justify-center mt-32 md:flex-row md:ml-16 md:justify-start md:items-start"
+  class="flex flex-col items-center justify-center mt-32 md:flex-row md:ml-48 md:justify-start md:items-start"
 >
   <div class="flex flex-col items-center md:items-start">
     <p class="text-gray-300 text-4xl font-semibold">Hello World</p>

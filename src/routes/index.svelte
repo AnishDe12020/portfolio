@@ -5,8 +5,19 @@
 <div
   class="flex flex-col items-center justify-center mt-32 md:flex-row md:ml-16 md:justify-start md:items-start"
 >
-  <h1 class="text-white text-4xl">Hey everyone</h1>
-  <div class="realtive mx-auto ">
+  <div class="flex flex-col items-center md:items-start">
+    <p class="text-gray-300 text-4xl font-semibold">Hello World</p>
+    <h1 class="text-white text-6xl text-center md:text-left font-bold mt-2">
+      I am a web developer
+    </h1>
+    <p class="text-gray-200 mt-4 text-2xl text-center md:text-left md:w-1/2">
+      I like to build websites, experiment with new programming languages,
+      frameworks and libraries and also write blogs so that I can share my
+      knowledge with a wider audience.
+    </p>
+  </div>
+
+  <div class="realtive mx-auto mt-12 md:mt-4 md:mr-64">
     <img
       src="images/avatar.svg"
       alt="Avatar"

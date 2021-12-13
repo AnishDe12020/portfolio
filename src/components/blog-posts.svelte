@@ -1,4 +1,5 @@
 <script>
+  import { format, parseISO } from "date-fns";
   export let blogPosts;
 </script>
 
@@ -10,6 +11,9 @@
         <h2 class=" mt-4 text-2xl font-bold text-white text-wra">
           {post.title}
         </h2>
+        <span class="text-accent text-lg"
+          >{format(parseISO(post.dateAdded), "PPP")}</span
+        >
         <p class="mt-2 text-accent">{post.brief}</p>
       </div>
     </div>

@@ -3,18 +3,20 @@
   export let blogPosts;
 </script>
 
-<div class="flex flex-row items-center justify-center mx-12 mt-8">
+<div
+  class="flex flex-col md:flex-row items-center justify-center mx-4 md:ms-16 mt-8"
+>
   {#each blogPosts as post}
-    <div class="w-1/2 p-4">
+    <div class="p-4">
       <div class="bg-secondary rounded-xl shadow-lg p-4">
         <img src={post.coverImage} alt={post.title} />
-        <h2 class=" mt-4 text-2xl font-bold text-white text-wra">
+        <h2 class="mt-4 text-2xl font-bold text-white text-wra">
           {post.title}
         </h2>
         <span class="text-gray-300 text-lg"
           >{format(parseISO(post.dateAdded), "PPP")}</span
         >
-        <p class="mt-2 text-accent">{post.brief}</p>
+        <p class="mt-2 text-accent break-words">{post.brief}</p>
       </div>
     </div>
   {/each}

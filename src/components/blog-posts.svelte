@@ -1,9 +1,9 @@
 <script>
-  import data from "../data.json";
+  export let blogPosts;
 </script>
 
 <div class="flex flex-row items-center justify-center mx-12 mt-8">
-  {#each data.blogPosts as post}
+  {#each blogPosts as post}
     <div class="w-1/2 p-4">
       <div class="bg-secondary rounded-xl shadow-lg p-4">
         <img src={post.coverImage} alt={post.title} />

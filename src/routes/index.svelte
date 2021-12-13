@@ -1,6 +1,7 @@
 <script>
   import BlogPosts from "../components/blog-posts.svelte";
   import Hero from "../components/hero.svelte";
+  import data from "../data.json";
 </script>
 
 <svelte:head>
@@ -8,4 +9,4 @@
 </svelte:head>
 
 <Hero />
-<BlogPosts />
+<BlogPosts blogPosts={data.blogPosts} />

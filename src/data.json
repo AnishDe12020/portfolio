@@ -1,0 +1,32 @@
+{
+  "blogPostsBaseUrl": "https://blog.anishde.dev/",
+  "blogPosts": [
+    {
+      "slug": "adding-an-in-browser-code-preview-to-your-react-application-with-sandpack",
+      "title": "Adding an in-browser code preview to your React Application with Sandpack",
+      "cuid": "ckx1ug1h0097yzvs18ahq8950",
+      "brief": "Sandpack is a live coding environment that runs on the browser. It is made by the team behind CodeSandbox. The main objective here is to provide interactive examples to play around with, to users. I see it being widely used in things like blog posts ...",
+      "coverImage": "https://cdn.hashnode.com/res/hashnode/image/upload/v1639228519537/gLvn_u4gu.png",
+      "dateUpdated": "2021-12-11T13:29:28.224Z",
+      "dateAdded": "2021-12-11T13:18:21.826Z"
+    },
+    {
+      "slug": "make-a-toast-with-html-css-and-js",
+      "title": "Make a toast with HTML, CSS, and JS",
+      "cuid": "ckwt2jg2e07wlt2s13z7cfy8q",
+      "brief": "Introduction\nToasts are very useful for showing users some information. It has a wide variety of uses from displaying success messages for successful actions, showing error messages in case something goes wrong, and much more. Today we are going to b...",
+      "coverImage": "https://cdn.hashnode.com/res/hashnode/image/upload/v1638697970037/zAYKG5UvP.png",
+      "dateUpdated": null,
+      "dateAdded": "2021-12-05T09:55:02.064Z"
+    },
+    {
+      "slug": "how-to-write-good-commit-messages-with-commitlint",
+      "title": "How to Write Good Commit Messages with Commitlint",
+      "cuid": "ckwafdn4x0nm7e7s189wn26kx",
+      "brief": "This article was first published on Freecodecamp on the 13th of November, 2021 - https://www.freecodecamp.org/news/how-to-use-commitlint-to-write-good-commit-messages/\n\nWe are often in a hurry to commit our changes in Git and so we write something ra...",
+      "coverImage": "https://cdn.hashnode.com/res/hashnode/image/upload/v1637567563481/O4DnwuzYH.png",
+      "dateUpdated": null,
+      "dateAdded": "2021-11-22T08:39:32.000Z"
+    }
+  ]
+}

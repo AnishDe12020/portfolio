@@ -1,4 +1,5 @@
 <script>
+  import BlogPosts from "../components/blog-posts.svelte";
   import Hero from "../components/hero.svelte";
 </script>
 
@@ -7,3 +8,4 @@
 </svelte:head>
 
 <Hero />
+<BlogPosts />

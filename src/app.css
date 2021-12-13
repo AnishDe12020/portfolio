@@ -2,3 +2,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/ubuntu-r-webfont.woff2") format("woff2"),
+    url("/fonts/ubuntu-r-webfont.woff") format("woff"),
+    url("/fonts/ubuntu-r-webfont.ttf") format("truetype");
+}

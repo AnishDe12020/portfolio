@@ -9,11 +9,17 @@
     />
   </div>
   <div class="flex flex-col items-center md:items-start">
-    <p class="text-gray-300 text-4xl font-semibold">Hello World</p>
-    <h1 class="text-white text-6xl text-center md:text-left font-bold mt-2">
+    <p class="text-gray-300 text-2xl md:text-3xl lg:text-4xl font-semibold">
+      Hello World
+    </p>
+    <h1
+      class="text-white text-4xl md:text-5xl lg:text-6xl text-center md:text-left font-bold mt-2"
+    >
       I am a web developer
     </h1>
-    <p class="text-gray-200 mt-4 text-2xl text-center md:text-left md:w-1/2">
+    <p
+      class="text-gray-200 mt-4 text-xl md:text-2xl lg:text-3xl text-center md:text-left md:w-1/2"
+    >
       I like to build websites, experiment with new programming languages,
       frameworks and libraries and also write blogs so that I can share my
       knowledge with a wider audience.

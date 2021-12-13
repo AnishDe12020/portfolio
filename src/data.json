@@ -1,5 +1,5 @@
 {
-  "blogPostsBaseUrl": "https://blog.anishde.dev/",
+  "blogBaseUrl": "https://blog.anishde.dev/",
   "blogPosts": [
     {
       "slug": "adding-an-in-browser-code-preview-to-your-react-application-with-sandpack",

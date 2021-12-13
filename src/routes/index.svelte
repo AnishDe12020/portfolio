@@ -9,4 +9,4 @@
 </svelte:head>
 
 <Hero />
-<BlogPosts blogPosts={data.blogPosts} />
+<BlogPosts blogPosts={data.blogPosts} blogBaseUrl={data.blogBaseUrl} />

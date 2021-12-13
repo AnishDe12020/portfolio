@@ -5,3 +5,4 @@ package-lock.json
 static
 .github
 README.md
+.vercel

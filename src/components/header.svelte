@@ -34,6 +34,8 @@
           <img
             src="images/avatar.svg"
             alt="Avatar"
+            height="3rem"
+            width="3rem"
             class="inline-block rounded-full h-auto w-12"
           />
         </a>

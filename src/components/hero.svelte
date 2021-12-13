@@ -5,6 +5,8 @@
     <img
       src="images/avatar.svg"
       alt="Avatar"
+      height="24rem"
+      width="24rem"
       class="inline-block rounded-full h-auto w-64 md:w-96"
     />
   </div>

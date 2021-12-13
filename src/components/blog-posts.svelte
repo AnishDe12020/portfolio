@@ -10,7 +10,7 @@
   {#each blogPosts as post}
     <a
       href={`${blogBaseUrl}${post.slug}`}
-      class="flex justify-center items-center focus:ring focus:outline-none p-4 md:p-16"
+      class="flex justify-center items-center focus:ring focus:outline-none p-4"
     >
       <div
         class="bg-secondary rounded-xl shadow-md shadow-secondary p-4 hover:shadow-lg hover:shadow-accent transition duration-150 ease-out w-auto h-auto md:w-96 md:h-96"

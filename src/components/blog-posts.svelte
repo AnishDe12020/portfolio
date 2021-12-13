@@ -11,7 +11,7 @@
         <h2 class=" mt-4 text-2xl font-bold text-white text-wra">
           {post.title}
         </h2>
-        <span class="text-accent text-lg"
+        <span class="text-gray-300 text-lg"
           >{format(parseISO(post.dateAdded), "PPP")}</span
         >
         <p class="mt-2 text-accent">{post.brief}</p>

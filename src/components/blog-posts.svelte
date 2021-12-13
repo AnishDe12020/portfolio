@@ -32,6 +32,8 @@
             src={post.coverImage}
             alt={post.title}
             class="rounded-2xl shadow-md"
+            width="400px"
+            height="210px"
           />
         </picture>
         <h2 class="mt-4 text-xl font-bold text-white text-center md:text-left">

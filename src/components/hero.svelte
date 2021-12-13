@@ -1,11 +1,11 @@
 <div
-  class="flex flex-col items-center justify-center mt-8 md:mt-32 mx-6 md:mx-0 md:flex-row-reverse md:ml-48 md:justify-start md:items-start"
+  class="flex flex-col items-center justify-center mt-8 md:mt-32 mx-6 md:mx-0 md:flex-row-reverse md:ml-24 md:mr-24 lg:mr-36 xl:mr-48 md:justify-start md:items-start"
 >
-  <div class="realtive mx-auto mb-12 md:mb-0 md:mt-4 md:mr-64">
+  <div class="mx-auto mb-12 md:mb-0">
     <img
       src="images/avatar.svg"
       alt="Avatar"
-      class="inline-block rounded-full h-auto w-64"
+      class="inline-block rounded-full h-auto w-64 md:w-96"
     />
   </div>
   <div class="flex flex-col items-center md:items-start">
@@ -18,7 +18,7 @@
       I am a web developer
     </h1>
     <p
-      class="text-gray-200 mt-4 text-xl md:text-2xl lg:text-3xl text-center md:text-left md:w-1/2"
+      class="text-gray-200 mt-4 text-md md:text-lg lg:text-xl xl:text-2xl text-center md:text-left md:w-2/3"
     >
       I like to build websites, experiment with new programming languages,
       frameworks and libraries and also write blogs so that I can share my

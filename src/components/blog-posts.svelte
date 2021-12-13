@@ -9,7 +9,7 @@
   {#each blogPosts as post}
     <div class="p-4">
       <div
-        class="bg-secondary rounded-xl shadow-md shadow-secondary p-4 hover:shadow-lg hover:shadow-accent transition duration-150 ease-out"
+        class="bg-secondary rounded-xl shadow-md shadow-secondary p-4 hover:shadow-lg hover:shadow-accent transition duration-150 ease-out w-auto h-auto md:w-96 md:h-96"
       >
         <img src={post.coverImage} alt={post.title} />
         <h2 class="mt-4 text-2xl font-bold text-white text-wra">
@@ -18,7 +18,6 @@
         <span class="text-gray-300 text-lg"
           >{format(parseISO(post.dateAdded), "PPP")}</span
         >
-        <p class="mt-2 text-accent break-words">{post.brief}</p>
       </div>
     </div>
   {/each}

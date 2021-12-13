@@ -4,13 +4,11 @@
   export let blogBaseUrl;
 </script>
 
-<div
-  class="flex flex-col md:flex-row items-center justify-center mx-4 md:ms-16 mt-8"
->
+<div class="flex flex-col md:flex-row items-center justify-center mx-4 mt-8">
   {#each blogPosts as post}
     <a
       href={`${blogBaseUrl}${post.slug}`}
-      class="focus:ring focus:outline-none p-4"
+      class="focus:ring focus:outline-none p-4 md:p-16"
     >
       <div
         class="bg-secondary rounded-xl shadow-md shadow-secondary p-4 hover:shadow-lg hover:shadow-accent transition duration-150 ease-out w-auto h-auto md:w-96 md:h-96"

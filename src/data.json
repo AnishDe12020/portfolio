@@ -28,5 +28,14 @@
       "dateUpdated": null,
       "dateAdded": "2021-11-22T08:39:32.000Z"
     }
+  ],
+  "projects": [
+    {
+      "name": "DevKit",
+      "description": "Tools for developers, by the Developer Community.",
+      "image": "https://i.imgur.com/Opo96rx.png",
+      "url": "https://www.devkit.one",
+      "github": "https://github.com/AnishDe12020/devkit"
+    }
   ]
 }

@@ -10,9 +10,13 @@
   };
 </script>
 
-<div class="md:flex md:justify-center md:items-center md:mt-16 mb-32">
+<div
+  class={`flex justify-center items-center mt-16 ${
+    mobileMenuOpen ? "mt-[9.875rem] mb-40" : "mb-32"
+  }`}
+>
   <nav
-    class="bg-secondary/60 shadow-lg shadow-primary fixed backdrop-filter z-50 backdrop-blur-xl w-full md:w-auto rounded-2xl"
+    class="bg-secondary/60 shadow-lg shadow-primary fixed backdrop-filter z-50 backdrop-blur-xl w-5/6 md:w-auto rounded-2xl"
   >
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex justify-between">

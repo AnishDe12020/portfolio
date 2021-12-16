@@ -12,7 +12,7 @@
 
 <div
   class={`flex justify-center items-center mt-16 ${
-    mobileMenuOpen ? "mt-[9.875rem] mb-40" : "mb-32"
+    mobileMenuOpen ? "mt-[9.875rem] mb-40" : "mb-16 md:mb-32"
   }`}
 >
   <nav

@@ -1,5 +1,5 @@
 <script>
-  import HeaderLink from "./header-link.svelte";
+  import NavLinks from "./nav-links.svelte";
 
   let mobileMenu;
   let mobileMenuOpen = false;
@@ -28,9 +28,7 @@
         </a>
       </div>
       <div class="hidden md:flex items-center">
-        <HeaderLink linkHref="#projects" linkContent="Projects" />
-        <HeaderLink linkHref="#" linkContent="Contact" />
-        <HeaderLink linkHref="#" linkContent="About" />
+        <NavLinks />
       </div>
 
       <div class="md:hidden flex items-center">
@@ -77,8 +75,6 @@
   </div>
   <!-- mobile menu -->
   <div class="hidden flex flex-col space-y-4" bind:this={mobileMenu}>
-    <HeaderLink linkHref="#" linkContent="Projects" />
-    <HeaderLink linkHref="#" linkContent="Contact" />
-    <HeaderLink linkHref="#" linkContent="About" />
+    <NavLinks />
   </div>
 </nav>

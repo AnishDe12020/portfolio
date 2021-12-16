@@ -16,7 +16,7 @@
   }`}
 >
   <nav
-    class="bg-secondary/60 shadow-lg shadow-primary fixed backdrop-filter z-50 backdrop-blur-xl w-5/6 md:w-auto rounded-2xl"
+    class="bg-secondary/60 shadow-lg  fixed backdrop-filter z-50 backdrop-blur-xl w-5/6 md:w-auto rounded-2xl"
   >
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex justify-between">

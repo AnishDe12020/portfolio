@@ -26,7 +26,7 @@
           </p>
         </div>
         <div
-          class="flex flex-col justify-center items-center md:items-start md:justify-start"
+          class="flex flex-col justify-center items-center md:items-start md:justify-start mt-4 md:mt-0"
         >
           <a
             href={project.url}

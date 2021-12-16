@@ -5,12 +5,12 @@
 </script>
 
 <div
-  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-center mx-4 mt-8"
+  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-center mx-4 md:mx-16 lg:mx-24 xl:mx-32 mt-8"
 >
   {#each blogPosts as post}
     <a
       href={`${blogBaseUrl}${post.slug}`}
-      class="flex justify-center items-center focus:ring focus:outline-none p-4"
+      class="flex justify-center items-center focus:ring focus:outline-none p-4 md:py-8 lg:py-16 xl:py-24"
     >
       <div
         class="bg-secondary rounded-xl shadow-md shadow-secondary p-4 hover:shadow-lg hover:shadow-accent transition duration-150 ease-out w-auto h-auto md:w-96 md:h-96"

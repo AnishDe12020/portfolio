@@ -5,7 +5,7 @@
 <div>
   {#each projects as project}
     <div
-      class="flex flex-col justify-center items-center md:justify-start md:items-start md:flex-row mt-8 mx-8 md:mt-16 md:mx-16"
+      class="flex flex-col justify-center items-center md:items-stretch md:flex-row mt-8 mx-8 md:mt-16 md:mx-16"
     >
       <img
         src={project.image}
@@ -25,7 +25,9 @@
             {project.description}
           </p>
         </div>
-        <div class="flex flex-col justify-center items-center">
+        <div
+          class="flex flex-col justify-center items-center md:items-start md:justify-start"
+        >
           <a
             href={project.url}
             class="text-gray-100 hover:text-accent transition dureation-300 text-lg text-center md:text-left mb-4"

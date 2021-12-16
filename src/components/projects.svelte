@@ -3,7 +3,9 @@
 </script>
 
 <div id="projects" class="mt-8 mx-8 md:mt-16 md:mx-16">
-  <h2 class="text-accent text-4xl mb-8 text-center md:text-left">Projects</h2>
+  <h2 class="text-accent text-4xl mb-8 text-center md:ml-8 md:text-left">
+    Projects
+  </h2>
   {#each projects as project}
     <div
       class="flex flex-col justify-center items-center md:items-stretch md:flex-row "

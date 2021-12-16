@@ -28,7 +28,7 @@
         </a>
       </div>
       <div class="hidden md:flex items-center">
-        <HeaderLink linkHref="#" linkContent="Projects" />
+        <HeaderLink linkHref="#projects" linkContent="Projects" />
         <HeaderLink linkHref="#" linkContent="Contact" />
         <HeaderLink linkHref="#" linkContent="About" />
       </div>

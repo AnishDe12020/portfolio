@@ -10,19 +10,6 @@
   };
 </script>
 
-<!-- <div
-  class="bg-secondary w-screen py-8 flex flex-row justify-between mr-32 align-middle"
->
-  <div class="">
-    <Image src="images/avatar.png" class="rounded-full" />
-  </div>
-  <ul class="flex flex-row">
-    <HeaderLink linkHref="#" linkContent="Projects" />
-    <HeaderLink linkHref="#" linkContent="Contact" />
-    <HeaderLink linkHref="#" linkContent="About" />
-  </ul>
-</div> -->
-
 <nav class="bg-secondary shadow-lg">
   <div class="max-w-6xl mx-auto px-4">
     <div class="flex justify-between">

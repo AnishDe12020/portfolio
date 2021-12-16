@@ -5,7 +5,7 @@
 </script>
 
 <div
-  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-center mx-4 md:mx-16 lg:mx-24 xl:mx-32 mt-8"
+  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-center mx-4 md:mx-16 lg:mx-24 xl:mx-32 mt-8 md:mt-16 lg:mt-32"
 >
   {#each blogPosts as post}
     <a

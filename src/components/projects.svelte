@@ -19,7 +19,7 @@
         <div
           class="flex flex-col justify-center items-center md:justify-left md:items-start"
         >
-          <h2 class="text-7xl font-bold text-white">{project.name}</h2>
+          <h3 class="text-7xl font-bold text-white">{project.name}</h3>
           <p
             class="text-gray-300 font-semibold text-3xl mt-8 text-center md:text-left"
           >

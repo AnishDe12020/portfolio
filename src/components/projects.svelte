@@ -5,7 +5,11 @@
 <div>
   {#each projects as project}
     <div class="flex flex-col md:flex-row mt-8 mx-8 md:mt-16 md:mx-16">
-      <img src={project.image} class="w-11/12 md:w-1/2 rounded-xl" />
+      <img
+        src={project.image}
+        class="w-11/12 md:w-1/2 rounded-xl"
+        alt={project.name}
+      />
       <div
         class="flex flex-col justify-center items-center md:justify-between md:items-start mt-8 md:mt-0 md:ml-16"
       >

@@ -2,8 +2,8 @@
   export let projects;
 </script>
 
-<div id="projects" class="mt-8 mx-8 md:mt-16 md:mx-16">
-  <h2 class="text-accent text-4xl mb-8 text-center md:ml-8 md:text-left">
+<div id="projects" class="mt-8 mx-8 md:mt-16 lg:mt-32 md:mx-16 lg:mx-32">
+  <h2 class="text-accent text-6xl font-bold mb-8 text-center md:text-left">
     Projects
   </h2>
   {#each projects as project}

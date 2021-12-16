@@ -2,7 +2,7 @@
   export let projects;
 </script>
 
-<div id="projects" class="mt-8 mx-8 md:mt-16 lg:mt-32 md:mx-16 lg:mx-32">
+<div id="projects" class="mt-8 mx-8 md:mt-16 lg:mt-32 md:mx-24 lg:mx-48">
   <h2 class="text-accent text-6xl font-bold mb-8 text-center md:text-left">
     Projects
   </h2>

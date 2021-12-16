@@ -24,7 +24,10 @@
           </p>
         </div>
         <div class="flex flex-col">
-          <a href={project.url} class="text-gray-100 mb-4">
+          <a
+            href={project.url}
+            class="text-gray-100 hover:text-accent transition dureation-300 mb-4"
+          >
             <div class="flex">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +46,10 @@
             </div>
           </a>
 
-          <a href={project.github} class="text-gray-100">
+          <a
+            href={project.github}
+            class="text-gray-100 hover:text-accent transition dureation-300"
+          >
             <div class="flex">
               <svg
                 aria-hidden="true"

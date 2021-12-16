@@ -23,10 +23,10 @@
             {project.description}
           </p>
         </div>
-        <div class="flex flex-col">
+        <div class="flex flex-col justify-center items-center">
           <a
             href={project.url}
-            class="text-gray-100 hover:text-accent transition dureation-300 mb-4"
+            class="text-gray-100 hover:text-accent transition dureation-300 text-lg text-center md:text-left mb-4"
           >
             <div class="flex">
               <svg
@@ -48,7 +48,7 @@
 
           <a
             href={project.github}
-            class="text-gray-100 hover:text-accent transition dureation-300"
+            class="text-gray-100 hover:text-accent transition dureation-300 text-lg"
           >
             <div class="flex">
               <svg

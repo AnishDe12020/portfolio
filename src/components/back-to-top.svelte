@@ -40,7 +40,7 @@
 
 <button
   on:click={goToTop}
-  class={`fixed right-8 bottom-8 bg-accent rounded-full p-2 hover:opacity-60 transition duration-400 ${
+  class={`fixed right-8 bottom-8 bg-accent text-secondary rounded-full p-2 hover:opacity-60 transition duration-400 ${
     hidden ? "opacity-0" : "opacity-100"
   }`}
   ><svg

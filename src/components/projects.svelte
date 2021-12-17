@@ -2,7 +2,10 @@
   export let projects;
 </script>
 
-<div id="projects" class="mt-8 mx-8 md:mt-16 lg:mt-32 md:mx-24 lg:mx-48">
+<div
+  id="projects"
+  class="mt-8 mx-8 md:mt-16 lg:mt-32 md:mx-24 lg:mx-32 xl:mx-40"
+>
   <h2
     class="text-accent text-5xl md:text-6xl font-bold mb-8 text-center md:text-left"
   >
@@ -27,13 +30,13 @@
             {project.name}
           </h3>
           <p
-            class="text-gray-300 font-semibold text-xl md:text-2xl lg:text-3xl mt-8 text-center md:text-left"
+            class="text-gray-300 font-semibold text-xl md:text-2xl lg:text-3xl mt-2 md:mt-4 xl:mt-8 text-center md:text-left"
           >
             {project.description}
           </p>
         </div>
         <div
-          class="flex flex-col justify-center items-center md:items-start md:justify-start mt-4 md:mt-0"
+          class="flex flex-col justify-center items-center md:items-start md:justify-start mt-8 md:mt-0"
         >
           <a
             href={project.url}

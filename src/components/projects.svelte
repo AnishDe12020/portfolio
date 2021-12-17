@@ -3,7 +3,9 @@
 </script>
 
 <div id="projects" class="mt-8 mx-8 md:mt-16 lg:mt-32 md:mx-24 lg:mx-48">
-  <h2 class="text-accent text-6xl font-bold mb-8 text-center md:text-left">
+  <h2
+    class="text-accent text-5xl md:text-6xl font-bold mb-8 text-center md:text-left"
+  >
     Projects
   </h2>
   {#each projects as project}
@@ -21,9 +23,11 @@
         <div
           class="flex flex-col justify-center items-center md:justify-left md:items-start"
         >
-          <h3 class="text-7xl font-bold text-white">{project.name}</h3>
+          <h3 class="text-5xl md:text-6xl lg:text-7xl	 font-bold text-white">
+            {project.name}
+          </h3>
           <p
-            class="text-gray-300 font-semibold text-3xl mt-8 text-center md:text-left"
+            class="text-gray-300 font-semibold text-xl md:text-2xl lg:text-3xl mt-8 text-center md:text-left"
           >
             {project.description}
           </p>
@@ -33,7 +37,7 @@
         >
           <a
             href={project.url}
-            class="text-gray-100 hover:text-accent transition dureation-300 text-lg text-center md:text-left mb-4"
+            class="text-gray-100 hover:text-accent transition dureation-300 text-md md:text-lg lg:text-xl text-center md:text-left mb-4"
           >
             <div class="flex">
               <svg
@@ -55,7 +59,7 @@
 
           <a
             href={project.github}
-            class="text-gray-100 hover:text-accent transition dureation-300 text-lg"
+            class="text-gray-100 hover:text-accent transition dureation-300 text-md md:text-lg lg:text-xl text-center md:text-left"
           >
             <div class="flex">
               <svg

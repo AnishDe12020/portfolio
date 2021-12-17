@@ -7,13 +7,13 @@
   class="mt-8 mx-8 md:mt-16 lg:mt-32 md:mx-24 lg:mx-32 xl:mx-40"
 >
   <h2
-    class="text-accent text-5xl md:text-6xl font-bold mb-8 text-center md:text-left"
+    class="text-accent text-5xl md:text-6xl font-bold mb-8 text-center lg:text-left"
   >
     Projects
   </h2>
   {#each projects as project}
     <div
-      class="flex flex-col justify-center items-center md:items-stretch md:flex-row "
+      class="flex flex-col justify-center items-center lg:items-stretch lg:flex-row "
     >
       <img
         src={project.image}
@@ -21,26 +21,26 @@
         alt={project.name}
       />
       <div
-        class="flex flex-col justify-center items-center md:justify-between md:items-start mt-8 md:mt-0 md:ml-16"
+        class="flex flex-col justify-center items-center lg:justify-between lg:items-start mt-8 lg:mt-0 lg:ml-16"
       >
         <div
-          class="flex flex-col justify-center items-center md:justify-left md:items-start"
+          class="flex flex-col justify-center items-center lg:justify-left lg:items-start"
         >
           <h3 class="text-5xl md:text-6xl lg:text-7xl	 font-bold text-white">
             {project.name}
           </h3>
           <p
-            class="text-gray-300 font-semibold text-xl md:text-2xl lg:text-3xl mt-2 md:mt-4 xl:mt-8 text-center md:text-left"
+            class="text-gray-300 font-semibold text-xl md:text-2xl lg:text-3xl mt-2 md:mt-4 xl:mt-8 text-center lg:text-left"
           >
             {project.description}
           </p>
         </div>
         <div
-          class="flex flex-col justify-center items-center md:items-start md:justify-start mt-8 md:mt-0"
+          class="flex flex-col justify-center items-center lg:items-start lg:justify-start mt-8 lg:mt-0"
         >
           <a
             href={project.url}
-            class="text-gray-100 hover:text-accent transition dureation-300 text-md md:text-lg lg:text-xl text-center md:text-left mb-4"
+            class="text-gray-100 hover:text-accent transition dureation-300 text-md md:text-lg lg:text-xl text-center lg:text-left mb-4"
           >
             <div class="flex">
               <svg
@@ -62,7 +62,7 @@
 
           <a
             href={project.github}
-            class="text-gray-100 hover:text-accent transition dureation-300 text-md md:text-lg lg:text-xl text-center md:text-left"
+            class="text-gray-100 hover:text-accent transition dureation-300 text-md md:text-lg lg:text-xl text-center lg:text-left"
           >
             <div class="flex">
               <svg

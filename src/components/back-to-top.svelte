@@ -36,7 +36,7 @@
 
 <svelte:window on:scroll={handleOnScroll} />
 
-<div class="w-full h-0.5 fixed top-0 bg-accent" bind:this={pageProgressBar} />
+<div class="h-0.5 fixed top-0 bg-accent" bind:this={pageProgressBar} />
 
 <button
   on:click={goToTop}

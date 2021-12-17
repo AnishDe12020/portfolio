@@ -2,6 +2,8 @@
   export let showOnPx = 100;
   let hidden = true;
 
+  let pageProgressBar;
+
   const goToTop = () => {
     document.body.scrollIntoView({
       behavior: "smooth",
@@ -17,6 +19,13 @@
       return;
     }
 
+    const scrolledPercentage =
+      (scrollContainer().scrollTop /
+        (scrollContainer().scrollHeight - scrollContainer().clientHeight)) *
+      100;
+
+    pageProgressBar.style.width = `${scrolledPercentage}%`;
+
     if (scrollContainer().scrollTop > showOnPx) {
       hidden = false;
     } else {
@@ -26,6 +35,8 @@
 </script>
 
 <svelte:window on:scroll={handleOnScroll} />
+
+<div class="w-full h-0.5 fixed top-0 bg-accent" bind:this={pageProgressBar} />
 
 <button
   on:click={goToTop}

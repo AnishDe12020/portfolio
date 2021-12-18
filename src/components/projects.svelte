@@ -18,18 +18,18 @@
       <picture class="w-11/12 md:w-1/2">
         <source
           media="(min-width: 1024px)"
-          src={`https://ctohm-edge-resizer.anishde12020.workers.dev/vw=0.6_output=auto/${
+          srcset={`https://ctohm-edge-resizer.anishde12020.workers.dev/vw=0.6_output=auto/${
             new URL(project.image).hostname
           }${new URL(project.image).pathname}`}
         />
         <source
           media="(min-width: 768px)"
-          src={`https://ctohm-edge-resizer.anishde12020.workers.dev/vw=0.8_output=auto/${
+          srcset={`https://ctohm-edge-resizer.anishde12020.workers.dev/vw=0.8_output=auto/${
             new URL(project.image).hostname
           }${new URL(project.image).pathname}`}
         />
         <source
-          src={`https://ctohm-edge-resizer.anishde12020.workers.dev/vw=0.8_output=auto/${
+          srcset={`https://ctohm-edge-resizer.anishde12020.workers.dev/vw=0.8_output=auto/${
             new URL(project.image).hostname
           }${new URL(project.image).pathname}`}
         />

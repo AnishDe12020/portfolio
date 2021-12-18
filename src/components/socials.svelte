@@ -13,7 +13,7 @@
       <Icon iconName={social.name.toLowerCase()} />
       {#if showText}
         <p
-          class="-translate-x-32 opacity-0 ml-2 transition duration-400 group-hover:translate-x-0 group-hover:opacity-100"
+          class="-translate-x-32 opacity-0 ml-2 transition duration-400 group-hover:translate-x-0 group-hover:opacity-100 ease-out"
         >
           {social.name}
         </p>

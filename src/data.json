@@ -37,5 +37,15 @@
       "url": "https://devkit.one",
       "github": "https://github.com/AnishDe12020/devkit"
     }
+  ],
+  "socials": [
+    {
+      "name": "github",
+      "url": "https://github.com/AnishDe12020"
+    },
+    {
+      "name": "twitter",
+      "url": "https://twitter.com/AnishDe12020"
+    }
   ]
 }

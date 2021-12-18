@@ -17,5 +17,7 @@
   <Socials
     socialsData={data.socials}
     classNames="fixed bottom-8 left-8 flex-col space-y-6 hidden md:flex"
+    iconClassNames="animate-bounce"
+    showText
   />
 </div>

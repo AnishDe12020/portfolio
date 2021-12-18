@@ -15,11 +15,32 @@
     <div
       class="flex flex-col justify-center items-center lg:items-stretch lg:flex-row "
     >
-      <img
-        src={project.image}
-        class="w-11/12 md:w-1/2 rounded-xl"
-        alt={project.name}
-      />
+      <picture>
+        <source
+          media="(min-width: 1024px)"
+          src={`https://ctohm-edge-resizer.anishde12020.workers.dev/w=640_h=360_output=auto/${
+            new URL(project.image).hostname
+          }${new URL(project.image).pathname}`}
+        />
+        <source
+          media="(min-width: 768px)"
+          src={`https://ctohm-edge-resizer.anishde12020.workers.dev/w=320_h=180_output=auto/${
+            new URL(project.image).hostname
+          }${new URL(project.image).pathname}`}
+        />
+        <source
+          src={`https://ctohm-edge-resizer.anishde12020.workers.dev/w=160_h=90_output=auto/${
+            new URL(project.image).hostname
+          }${new URL(project.image).pathname}`}
+        />
+        <img
+          src={`https://ctohm-edge-resizer.anishde12020.workers.dev/output=auto/${
+            new URL(project.image).hostname
+          }${new URL(project.image).pathname}`}
+          class="w-11/12 md:w-1/2 rounded-xl"
+          alt={project.name}
+        />
+      </picture>
       <div
         class="flex flex-col justify-center items-center lg:justify-between lg:items-start mt-8 lg:mt-0 lg:ml-16"
       >

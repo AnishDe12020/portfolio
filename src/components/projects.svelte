@@ -65,7 +65,7 @@
             class="text-gray-100 hover:text-accent transition dureation-300 text-md md:text-lg lg:text-xl text-center lg:text-left mb-4"
           >
             <div class="flex">
-              <Icon iconName="link" className="w-6 h-6 mr-2" />
+              <Icon iconName="link" className="w-6 h-6 mr-2 lg:mr-4" />
               <span>{project.url}</span>
             </div>
           </a>
@@ -75,7 +75,7 @@
             class="text-gray-100 hover:text-accent transition dureation-300 text-md md:text-lg lg:text-xl text-center lg:text-left"
           >
             <div class="flex">
-              <Icon iconName="github" className="w-6 h-6 mr-2" />
+              <Icon iconName="github" className="w-6 h-6 mr-2 lg:mr-4" />
               <span>{project.github.slice(19)}</span>
             </div>
           </a>

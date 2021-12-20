@@ -4,6 +4,8 @@
 
   let pageProgressBar;
 
+  let circularProgressBar;
+
   const goToTop = () => {
     document.body.scrollIntoView({
       behavior: "smooth",
@@ -26,6 +28,12 @@
 
     pageProgressBar.style.width = `${scrolledPercentage}%`;
 
+    const scrolledDegrees = scrolledPercentage * 3.6;
+
+    console.log(scrolledDegrees);
+
+    circularProgressBar.style.background = `conic-gradient(#7AC9F9 ${scrolledDegrees}deg, #141C38 ${scrolledDegrees}deg)`;
+
     if (scrollContainer().scrollTop > showOnPx) {
       hidden = false;
     } else {
@@ -40,21 +48,30 @@
 
 <button
   on:click={goToTop}
-  class={`fixed right-8 bottom-8 bg-accent text-secondary rounded-full p-2 hover:opacity-60 transition duration-400 ${
+  class={`fixed right-8 bottom-8 bg-accent text-secondary rounded-full hover:opacity-60 transition duration-400 ${
     hidden ? "opacity-0" : "opacity-100"
   }`}
-  ><svg
-    xmlns="http://www.w3.org/2000/svg"
-    class="h-6 w-6"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-  >
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="M7 11l5-5m0 0l5 5m-5-5v12"
-    />
-  </svg></button
 >
+  <div
+    class="rounded-full absolute bg-secondary w-12 h-12 ml-1 mt-1 flex items-center justify-center shadow-2xl"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-8 w-8 text-accent"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M7 11l5-5m0 0l5 5m-5-5v12"
+      />
+    </svg>
+  </div>
+  <div
+    class="bg-secondary rounded-full w-14 h-14"
+    bind:this={circularProgressBar}
+  />
+</button>

@@ -7,7 +7,7 @@
   {#each skillsData as skill}
     <a
       href={skill.url}
-      class="group flex items-center justify-between p-4 md:p-6 bg-secondary rounded-full mx-4 my-4 h-28 w-28 transition-[width] duration-200 ease-in-out hover:w-64 hover:h-32 mb-4 hover:mb-0"
+      class="group flex items-center justify-center hover:justify-between p-4 md:p-6 bg-secondary rounded-full mx-4 my-4 h-28 w-28 transition-[width] duration-200 ease-in-out hover:w-64 hover:h-32 mb-4 hover:mb-0"
     >
       <Icon iconName={skill.name} className="h-16 w-16 text-white" />
       <p

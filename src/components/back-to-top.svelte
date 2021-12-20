@@ -2,8 +2,6 @@
   export let showOnPx = 100;
   let hidden = true;
 
-  let pageProgressBar;
-
   let circularProgressBar;
 
   const goToTop = () => {
@@ -26,8 +24,6 @@
         (scrollContainer().scrollHeight - scrollContainer().clientHeight)) *
       100;
 
-    pageProgressBar.style.width = `${scrolledPercentage}%`;
-
     const scrolledDegrees = scrolledPercentage * 3.6;
 
     console.log(scrolledDegrees);
@@ -43,8 +39,6 @@
 </script>
 
 <svelte:window on:scroll={handleOnScroll} />
-
-<div class="h-0.5 fixed top-0 bg-accent" bind:this={pageProgressBar} />
 
 <button
   on:click={goToTop}

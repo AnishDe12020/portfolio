@@ -6,39 +6,40 @@
   import SvelteIcon from "./svelte.svelte";
   import NextJSIcon from "./nextjs.svelte";
   import ChakraUIIcon from "./chakra-ui.svelte";
-  import TailwindIcon from "./tailwind.svelte";
+  import TailwindIcon from "./tailwind-css.svelte";
   import TypescriptIcon from "./typescript.svelte";
   import FirebaseIcon from "./firebase.svelte";
   import SupabaseIcon from "./supabase.svelte";
   import FigmaIcon from "./figma.svelte";
 
   export let iconName;
+  export let className;
   iconName = iconName.toLowerCase();
   iconName = iconName.replace(/\s/g, "-");
 </script>
 
 {#if iconName === "github"}
-  <GitHubIcon />
+  <GitHubIcon {className} />
 {:else if iconName === "twitter"}
-  <TwitterIcon />
+  <TwitterIcon {className} />
 {:else if iconName === "react"}
-  <ReactIcon />
+  <ReactIcon {className} />
 {:else if iconName === "svelte"}
-  <SvelteIcon />
+  <SvelteIcon {className} />
 {:else if iconName === "nextjs"}
-  <NextJSIcon />
+  <NextJSIcon {className} />
 {:else if iconName === "chakra-ui"}
-  <ChakraUIIcon />
-{:else if iconName === "tailwind"}
-  <TailwindIcon />
+  <ChakraUIIcon {className} />
+{:else if iconName === "tailwind-css"}
+  <TailwindIcon {className} />
 {:else if iconName === "typescript"}
-  <TypescriptIcon />
+  <TypescriptIcon {className} />
 {:else if iconName === "firebase"}
-  <FirebaseIcon />
+  <FirebaseIcon {className} />
 {:else if iconName === "supabase"}
-  <SupabaseIcon />
+  <SupabaseIcon {className} />
 {:else if iconName === "figma"}
-  <FigmaIcon />
+  <FigmaIcon {className} />
 {:else}
-  <XIcon />
+  <XIcon {className} />
 {/if}

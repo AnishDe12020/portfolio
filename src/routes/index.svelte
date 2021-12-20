@@ -3,6 +3,7 @@
   import BlogPosts from "../components/blog-posts.svelte";
   import Hero from "../components/hero.svelte";
   import data from "../data.json";
+  import Skills from "../components/skills.svelte";
 </script>
 
 <svelte:head>
@@ -12,3 +13,4 @@
 <Hero />
 <BlogPosts blogPosts={data.blogPosts} blogBaseUrl={data.blogBaseUrl} />
 <Projects projects={data.projects} />
+<Skills skillsData={data.skills} />

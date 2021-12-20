@@ -1,9 +1,12 @@
+<script>
+  export let className = "";
+</script>
+
 <svg
-  width="288"
-  height="432"
   viewBox="0 0 288 432"
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
+  class={className}
 >
   <rect
     width="95.0226"

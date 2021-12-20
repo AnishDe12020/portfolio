@@ -47,5 +47,47 @@
       "name": "Twitter",
       "url": "https://twitter.com/AnishDe12020"
     }
+  ],
+  "skills": [
+    {
+      "name": "React",
+      "url": "https://reactjs.org/"
+    },
+    {
+      "name": "NextJS",
+      "url": "https://nextjs.org/"
+    },
+    {
+      "name": "Svelte",
+      "url": "https://svelte.dev/"
+    },
+    {
+      "name": "Chakra UI",
+      "url": "https://chakra-ui.com/"
+    },
+    {
+      "name": "Tailwind CSS",
+      "url": "https://tailwindcss.com/"
+    },
+    {
+      "name": "Typescript",
+      "url": "https://www.typescriptlang.org/"
+    },
+    {
+      "name": "Firebase",
+      "url": "https://firebase.google.com/"
+    },
+    {
+      "name": "Supabase",
+      "url": "https://supabase.com/"
+    },
+    {
+      "name": "Figma",
+      "url": "https://www.figma.com/"
+    },
+    {
+      "name": "GitHub",
+      "url": "https://github.com/"
+    }
   ]
 }

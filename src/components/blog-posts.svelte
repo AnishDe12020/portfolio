@@ -16,6 +16,7 @@
     <a
       href={`${blogBaseUrl}${post.slug}`}
       class="flex justify-center items-center focus:ring focus:outline-none p-4 md:py-8 lg:py-16 xl:py-24"
+      target="_blank"
     >
       <div
         class="bg-secondary rounded-xl shadow-md shadow-secondary p-4 hover:shadow-lg hover:shadow-accent transition duration-400 ease-out w-auto h-auto md:h-96 md:w-96"

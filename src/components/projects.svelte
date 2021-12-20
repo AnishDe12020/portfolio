@@ -62,6 +62,7 @@
         >
           <a
             href={project.url}
+            target="_blank"
             class="text-gray-100 hover:text-accent transition dureation-300 text-md md:text-lg lg:text-xl text-center lg:text-left mb-4"
           >
             <div class="flex">
@@ -72,6 +73,7 @@
 
           <a
             href={project.github}
+            target="_blank"
             class="text-gray-100 hover:text-accent transition dureation-300 text-md md:text-lg lg:text-xl text-center lg:text-left"
           >
             <div class="flex">

@@ -11,6 +11,7 @@
   import FirebaseIcon from "./firebase.svelte";
   import SupabaseIcon from "./supabase.svelte";
   import FigmaIcon from "./figma.svelte";
+  import LinkIcon from "./link.svelte";
 
   export let iconName;
   export let className;
@@ -40,6 +41,8 @@
   <SupabaseIcon {className} />
 {:else if iconName === "figma"}
   <FigmaIcon {className} />
+{:else if iconName === "link"}
+  <LinkIcon {className} />
 {:else}
   <XIcon {className} />
 {/if}

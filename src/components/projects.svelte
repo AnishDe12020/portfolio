@@ -1,4 +1,5 @@
 <script>
+  import Icon from "./icons/index.svelte";
   export let projects;
 </script>
 
@@ -64,20 +65,8 @@
             class="text-gray-100 hover:text-accent transition dureation-300 text-md md:text-lg lg:text-xl text-center lg:text-left mb-4"
           >
             <div class="flex">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6 mr-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
-                />
-              </svg> <span>{project.url}</span>
+              <Icon iconName="link" className="w-6 h-6 mr-2" />
+              <span>{project.url}</span>
             </div>
           </a>
 

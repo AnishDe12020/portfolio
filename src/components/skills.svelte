@@ -14,14 +14,9 @@
       <a
         href={skill.url}
         target="_blank"
-        class="group flex items-center justify-center hover:justify-between p-4 md:p-6 bg-secondary rounded-full mx-4 my-4 h-28 w-28 transition-[width] duration-200 ease-in-out hover:w-64 hover:h-32 mb-4 hover:mb-0"
+        class="flex items-center justify-center p-4 md:p-6 bg-secondary rounded-full h-28 w-28 transition-[width,height,margin] duration-200 ease-in-out hover:w-32 hover:h-32 my-6 mx-6 hover:mx-4 hover:my-4"
       >
         <Icon iconName={skill.name} className="h-16 w-16 text-white" />
-        <p
-          class="opacity-0 mr-4 text-xl text-accent hidden group-hover:opacity-100 group-hover:inline-block"
-        >
-          {skill.name}
-        </p>
       </a>
     {/each}
   </div>

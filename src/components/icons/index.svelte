@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import GitHubIcon from "./github.svelte";
   import TwitterIcon from "./twitter.svelte";
   import XIcon from "./x.svelte";
@@ -14,8 +14,8 @@
   import LinkIcon from "./link.svelte";
   import EmailIcon from "./email.svelte";
 
-  export let iconName;
-  export let className;
+  export let iconName: string;
+  export let className: string;
   iconName = iconName.toLowerCase();
   iconName = iconName.replace(/\s/g, "-");
 </script>

@@ -19,7 +19,7 @@
         <p
           class="ml-2 opacity-0 transition duration-200 ease-in-out group-hover:opacity-100"
         >
-          {social.name}
+          {social.content}
         </p>
       {/if}
     </a>

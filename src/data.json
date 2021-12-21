@@ -41,15 +41,18 @@
   "socials": [
     {
       "name": "GitHub",
-      "url": "https://github.com/AnishDe12020"
+      "url": "https://github.com/AnishDe12020",
+      "content": "AnishDe12020"
     },
     {
       "name": "Twitter",
-      "url": "https://twitter.com/AnishDe12020"
+      "url": "https://twitter.com/AnishDe12020",
+      "content": "@AnishDe12020"
     },
     {
       "name": "Email",
-      "url": "mailto:contact@anishde.dev"
+      "url": "mailto:contact@anishde.dev",
+      "content": "contact@anishde.dev"
     }
   ],
   "skills": [

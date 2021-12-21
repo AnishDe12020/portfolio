@@ -8,7 +8,7 @@
   import data from "../data.json";
 </script>
 
-<div>
+<div class="max-w-[1920px] mx-auto">
   <BackToTop />
   <WipBanner />
   <Header />

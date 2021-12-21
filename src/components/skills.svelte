@@ -3,7 +3,7 @@
   export let skillsData;
 </script>
 
-<div class="mx-12 mt-32">
+<div class="mx-2 md:mx-12 mt-32">
   <h2
     class="text-accent text-5xl md:text-6xl font-bold mb-8 text-center lg:text-left mx-24 md:mx-32 lg:mx-48"
   >
@@ -14,7 +14,7 @@
       <a
         href={skill.url}
         target="_blank"
-        class="flex items-center justify-center p-4 md:p-6 bg-secondary rounded-full h-28 w-28 transition-[width,height,margin] duration-200 ease-in-out hover:w-32 hover:h-32 my-6 mx-6 hover:mx-4 hover:my-4"
+        class="flex items-center justify-center bg-secondary rounded-full h-28 w-28 transition-[width,height,margin] duration-200 ease-in-out hover:w-32 hover:h-32 my-6 mx-6 hover:mx-4 hover:my-4"
       >
         <Icon iconName={skill.name} className="h-16 w-16 text-white" />
       </a>

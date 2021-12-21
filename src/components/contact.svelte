@@ -8,5 +8,10 @@
   >
     Contact
   </h2>
-  You can reach out to me on my email address
+  <p class="text-white">
+    You can reach out to me on my email address <a
+      class="text-accent hover:opacity-60"
+      href={`mailto:${emailAddress}`}>{emailAddress}</a
+    >
+  </p>
 </div>

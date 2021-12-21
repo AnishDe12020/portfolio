@@ -15,4 +15,4 @@
 <BlogPosts blogPosts={data.blogPosts} blogBaseUrl={data.blogBaseUrl} />
 <Projects projects={data.projects} />
 <Skills skillsData={data.skills} />
-<Contact />
+<Contact emailAddress={data.emailAddress} />

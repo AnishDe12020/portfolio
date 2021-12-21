@@ -12,6 +12,7 @@
   import SupabaseIcon from "./supabase.svelte";
   import FigmaIcon from "./figma.svelte";
   import LinkIcon from "./link.svelte";
+  import EmailIcon from "./email.svelte";
 
   export let iconName;
   export let className;
@@ -43,6 +44,8 @@
   <FigmaIcon {className} />
 {:else if iconName === "link"}
   <LinkIcon {className} />
+{:else if iconName === "email"}
+  <EmailIcon {className} />
 {:else}
   <XIcon {className} />
 {/if}

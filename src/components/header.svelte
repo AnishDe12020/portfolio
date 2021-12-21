@@ -1,22 +1,17 @@
 <script>
   import NavLinks from "./nav-links.svelte";
+  import { slide } from "svelte/transition";
 
-  let mobileMenu;
   let mobileMenuOpen = false;
 
   const handleHamburgerClick = () => {
-    mobileMenu.classList.toggle("hidden");
     mobileMenuOpen = !mobileMenuOpen;
   };
 </script>
 
-<div
-  class={`flex justify-center items-center mt-16 ${
-    mobileMenuOpen ? "mt-[9.875rem] mb-40" : "mb-16 md:mb-32"
-  }`}
->
+<div class="flex justify-center items-center mt-16 mb-16 md:mb-32">
   <nav
-    class="bg-secondary/60 shadow-md hover:shadow-2xl transition duration-400 border-2 border-secondary fixed backdrop-filter z-50 backdrop-blur-xl w-5/6 md:w-auto rounded-2xl"
+    class="bg-secondary/60 shadow-md hover:shadow-2xl transition duration-400 border-2 border-secondary fixed backdrop-filter z-50 backdrop-blur-xl w-5/6 md:w-auto rounded-2xl top-12"
   >
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex justify-between">
@@ -81,8 +76,10 @@
       </div>
     </div>
     <!-- mobile menu -->
-    <div class="hidden flex flex-col space-y-4" bind:this={mobileMenu}>
-      <NavLinks />
-    </div>
+    {#if mobileMenuOpen}
+      <div class="flex flex-col space-y-4" transition:slide={{ duration: 200 }}>
+        <NavLinks />
+      </div>
+    {/if}
   </nav>
 </div>

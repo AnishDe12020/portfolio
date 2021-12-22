@@ -26,8 +26,6 @@
 
     const scrolledDegrees = scrolledPercentage * 3.6;
 
-    console.log(scrolledDegrees);
-
     circularProgressBar.style.background = `conic-gradient(#7AC9F9 ${scrolledDegrees}deg, #141C38 ${scrolledDegrees}deg)`;
 
     if (scrollContainer().scrollTop > showOnPx) {

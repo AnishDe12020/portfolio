@@ -1,17 +1,11 @@
 <script>
   import Icon from "./icons/index.svelte";
+  import SectionHeading from "./section-heading.svelte";
   export let projects;
 </script>
 
-<div
-  id="projects"
-  class="mt-8 md:mt-16 lg:mt-32 mx-4 md:mx-24 lg:mx-32 xl:mx-40"
->
-  <h2
-    class="text-accent text-5xl md:text-6xl font-bold mb-8 text-center lg:text-left"
-  >
-    Projects
-  </h2>
+<SectionHeading id="blog-posts">Projects</SectionHeading>
+<div id="projects" class="lg:mt-32 mx-4 md:mx-24 lg:mx-32 xl:mx-40">
   {#each projects as project}
     <div
       class="flex flex-col justify-center items-center lg:items-stretch lg:flex-row"

@@ -1,14 +1,11 @@
 <script>
   import { format, parseISO } from "date-fns";
+  import SectionHeading from "./section-heading.svelte";
   export let blogPosts;
   export let blogBaseUrl;
 </script>
 
-<h2
-  class="text-accent text-5xl md:text-6xl font-bold text-center lg:text-left mx-8 md:mx-24 lg:mx-32 xl:mx-40 mt-8 md:mt-16 lg:mt-32"
->
-  Blog Posts
-</h2>
+<SectionHeading id="blog-posts">Blog Posts</SectionHeading>
 <div
   class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-center mx-4 md:mx-24 lg:mx-32 xl:mx-40"
 >

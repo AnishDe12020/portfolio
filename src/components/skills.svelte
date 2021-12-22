@@ -1,14 +1,11 @@
 <script>
   import Icon from "./icons/index.svelte";
+  import SectionHeading from "./section-heading.svelte";
   export let skillsData;
 </script>
 
+<SectionHeading id="skills">Skills</SectionHeading>
 <div class="mx-2 md:mx-12 mt-32">
-  <h2
-    class="text-accent text-5xl md:text-6xl font-bold mb-8 text-center lg:text-left mx-4 md:mx-24 lg:mx-32 xl:mx-40"
-  >
-    Skills
-  </h2>
   <div class="flex flex-wrap justify-center items-center">
     {#each skillsData as skill}
       <a

@@ -12,7 +12,7 @@
   {#each blogPosts as post}
     <a
       href={`${blogBaseUrl}${post.slug}`}
-      class="flex justify-center items-center focus:ring focus:outline-none p-4 md:py-8 lg:py-16 xl:py-24"
+      class="flex justify-center items-center focus:ring focus:outline-none p-4"
       target="_blank"
     >
       <div

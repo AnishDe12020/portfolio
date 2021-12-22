@@ -5,7 +5,7 @@
 </script>
 
 <SectionHeading id="skills">Skills</SectionHeading>
-<div class="mx-2 md:mx-12 mt-32">
+<div class="mx-2 md:mx-12">
   <div class="flex flex-wrap justify-center items-center">
     {#each skillsData as skill}
       <a

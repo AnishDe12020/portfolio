@@ -5,7 +5,7 @@
 </script>
 
 <SectionHeading id="projects">Projects</SectionHeading>
-<div id="projects" class="lg:mt-32 mx-4 md:mx-24 lg:mx-32 xl:mx-40">
+<div id="projects" class="mx-4 md:mx-24 lg:mx-32 xl:mx-40">
   {#each projects as project}
     <div
       class="flex flex-col justify-center items-center lg:items-stretch lg:flex-row"

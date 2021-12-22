@@ -5,7 +5,7 @@
 
 <div class="mx-2 md:mx-12 mt-32">
   <h2
-    class="text-accent text-5xl md:text-6xl font-bold mb-8 text-center lg:text-left mx-16"
+    class="text-accent text-5xl md:text-6xl font-bold mb-8 text-center lg:text-left mx-4 md:mx-24 lg:mx-32 xl:mx-40"
   >
     Skills
   </h2>

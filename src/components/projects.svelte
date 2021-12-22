@@ -5,7 +5,7 @@
 
 <div
   id="projects"
-  class="mt-8 mx-8 md:mt-16 lg:mt-32 md:mx-24 lg:mx-32 xl:mx-40"
+  class="mt-8 md:mt-16 lg:mt-32 mx-4 md:mx-24 lg:mx-32 xl:mx-40"
 >
   <h2
     class="text-accent text-5xl md:text-6xl font-bold mb-8 text-center lg:text-left"
@@ -14,7 +14,7 @@
   </h2>
   {#each projects as project}
     <div
-      class="flex flex-col justify-center items-center lg:items-stretch lg:flex-row "
+      class="flex flex-col justify-center items-center lg:items-stretch lg:flex-row"
     >
       <picture class="w-11/12 md:w-1/2">
         <source

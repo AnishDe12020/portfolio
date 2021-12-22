@@ -1,5 +1,6 @@
 {
   "blogBaseUrl": "https://blog.anishde.dev/",
+  "emailAddress": "contact@anishde.dev",
   "blogPosts": [
     {
       "slug": "adding-an-in-browser-code-preview-to-your-react-application-with-sandpack",
@@ -96,6 +97,5 @@
       "name": "GitHub",
       "url": "https://github.com/"
     }
-  ],
-  "emailAddress": "contact@anishde.dev"
+  ]
 }

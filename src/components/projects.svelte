@@ -4,7 +4,7 @@
   export let projects;
 </script>
 
-<SectionHeading id="blog-posts">Projects</SectionHeading>
+<SectionHeading id="projects">Projects</SectionHeading>
 <div id="projects" class="lg:mt-32 mx-4 md:mx-24 lg:mx-32 xl:mx-40">
   {#each projects as project}
     <div

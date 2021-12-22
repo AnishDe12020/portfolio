@@ -6,7 +6,7 @@
 
 <SectionHeading id="contact">Contact</SectionHeading>
 <div
-  class="mx-4 md:mx-24 lg:mx-32 xl:mx-40 flex flex-col lg:flex-row justify-center lg:justify-between items-center"
+  class="mx-4 md:mx-24 lg:mx-32 xl:mx-40 flex flex-col lg:flex-row justify-center lg:justify-between items-start"
 >
   <p class="text-white text-2xl text-center mx-4 lg:text-left">
     You can reach out to me on my email address <a
@@ -15,7 +15,7 @@
     >
   </p>
   <form
-    class="flex flex-col justify-center lg:justify-between items-center space-y-4"
+    class="flex flex-col justify-center lg:justify-start items-center lg:items-start space-y-4"
   >
     <input type="email" placeholder="john.doe@example.com" id="email" />
     <input type="text" placeholder="Subject" id="subject" />

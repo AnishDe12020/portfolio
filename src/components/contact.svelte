@@ -15,24 +15,31 @@
     >
   </p>
   <form
-    class="flex flex-col justify-center lg:justify-start items-center lg:items-start space-y-4"
+    class="flex flex-col justify-center lg:justify-start items-center lg:items-start"
   >
-    <input
-      type="email"
-      placeholder="john.doe@example.com"
-      id="email"
-      class="rounded-lg bg-secondary text-accent border-accent border-2 px-4 py-2"
-    />
-    <input
-      type="text"
-      placeholder="Subject"
-      id="subject"
-      class="rounded-lg bg-secondary text-accent border-accent border-2 px-4 py-2"
-    />
-    <textarea
-      placeholder="Your Message"
-      id="message"
-      class="rounded-lg bg-secondary text-accent border-accent border-2 px-4 py-2"
-    />
+    <div class="flex flex-col mt-8">
+      <label for="email" class="text-white mb-4">Email</label>
+      <input
+        type="email"
+        placeholder="john.doe@example.com"
+        id="email"
+        class="rounded-lg bg-secondary text-accent border-accent border-2 px-4 py-2"
+      />
+    </div>
+    <div class="flex flex-col mt-8">
+      <label for="subject" class="text-white mb-4">Subject</label>
+      <input
+        type="text"
+        id="subject"
+        class="rounded-lg bg-secondary text-accent border-accent border-2 px-4 py-2"
+      />
+    </div>
+    <div class="flex flex-col mt-8">
+      <label for="msessage" class="text-white mb-4">Message</label>
+      <textarea
+        id="message"
+        class="rounded-lg bg-secondary text-accent border-accent border-2 px-4 py-2"
+      />
+    </div>
   </form>
 </div>

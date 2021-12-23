@@ -3,5 +3,5 @@
 </script>
 
 <HeaderLink linkHref="#projects" linkContent="Projects" />
-<HeaderLink linkHref="#" linkContent="Contact" />
+<HeaderLink linkHref="#contact" linkContent="Contact" />
 <HeaderLink linkHref="#" linkContent="About" />

@@ -79,7 +79,10 @@
         bind:value={message}
       />
     </div>
-    <button type="submit">Submit</button>
+    <button
+      class="bg-accent text-secondary py-2 px-4 rounded-lg hover:opacity-60 transition duration-200"
+      type="submit">Send Message</button
+    >
 
     <p bind:this={contactFormSubmitMessage} class="text-white" />
   </form>

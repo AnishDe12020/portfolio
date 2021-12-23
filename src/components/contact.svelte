@@ -7,8 +7,11 @@
   let subject;
   let message;
 
+  let contactFormSubmitMessage;
+
   const submitForm = async () => {
     try {
+      contactFormSubmitMessage.textContent = "Sending...";
       const submitRes = await fetch("/api/contact", {
         method: "POST",
         body: JSON.stringify({
@@ -19,9 +22,17 @@
       });
 
       const data = await submitRes.json();
-      console.log(data);
+      if (data.error) {
+        contactFormSubmitMessage.textContent = "Something went wrong!";
+        contactFormSubmitMessage.classList.add("text-red-300");
+      } else {
+        contactFormSubmitMessage.textContent = "Message sent!";
+        contactFormSubmitMessage.classList.add("text-green-300");
+      }
     } catch (err) {
-      console.log(err);
+      console.error(err);
+      contactFormSubmitMessage.textContent = "Something went wrong!";
+      contactFormSubmitMessage.classList.add("text-red-300");
     }
   };
 </script>
@@ -69,5 +80,7 @@
       />
     </div>
     <button type="submit">Submit</button>
+
+    <p bind:this={contactFormSubmitMessage} class="text-white" />
   </form>
 </div>

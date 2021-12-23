@@ -9,6 +9,7 @@
 </script>
 
 <div class="max-w-[1920px] mx-auto">
+  <a href="#contact" class="skip-content-link">Skip To Content</a>
   <BackToTop />
   <WipBanner />
   <Header />

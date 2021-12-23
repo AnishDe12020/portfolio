@@ -23,7 +23,7 @@
         type="email"
         placeholder="john.doe@example.com"
         id="email"
-        class="rounded-lg bg-secondary text-accent border-accent border-2 px-4 py-2"
+        class="rounded-lg bg-secondary text-accent border-accent border-2 px-4 py-2 lg:w-96 xl:w-[32rem]"
       />
     </div>
     <div class="flex flex-col">
@@ -31,14 +31,14 @@
       <input
         type="text"
         id="subject"
-        class="rounded-lg bg-secondary text-accent border-accent border-2 px-4 py-2"
+        class="rounded-lg bg-secondary text-accent border-accent border-2 px-4 py-2 lg:w-96 xl:w-[32rem]"
       />
     </div>
     <div class="flex flex-col">
       <label for="msessage" class="text-white mb-4">Message</label>
       <textarea
         id="message"
-        class="rounded-lg bg-secondary text-accent border-accent border-2 px-4 py-2"
+        class="rounded-lg bg-secondary text-accent border-accent border-2 px-4 py-2 lg:w-80 xl:w-96"
         rows="10"
       />
     </div>

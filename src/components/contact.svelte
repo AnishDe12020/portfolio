@@ -48,9 +48,12 @@
     >
   </p>
   <form
-    class="flex flex-col justify-center lg:justify-start items-center lg:items-start space-y-8 mt-8 lg:-mt-8"
+    class="flex flex-col justify-center lg:justify-start items-center lg:items-start space-y-8 mt-8 lg:mt-2"
     on:submit|preventDefault={submitForm}
   >
+    <p class="text-xl mx-4 text-center lg:text-left text-white">
+      Alternatively, you can also fill out the following form:
+    </p>
     <div class="flex flex-col">
       <label for="email" class="text-white mb-4">Email</label>
       <input

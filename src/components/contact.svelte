@@ -17,8 +17,22 @@
   <form
     class="flex flex-col justify-center lg:justify-start items-center lg:items-start space-y-4"
   >
-    <input type="email" placeholder="john.doe@example.com" id="email" />
-    <input type="text" placeholder="Subject" id="subject" />
-    <textarea placeholder="Your Message" id="message" />
+    <input
+      type="email"
+      placeholder="john.doe@example.com"
+      id="email"
+      class="rounded-lg bg-secondary text-accent border-accent border-2 px-4 py-2"
+    />
+    <input
+      type="text"
+      placeholder="Subject"
+      id="subject"
+      class="rounded-lg bg-secondary text-accent border-accent border-2 px-4 py-2"
+    />
+    <textarea
+      placeholder="Your Message"
+      id="message"
+      class="rounded-lg bg-secondary text-accent border-accent border-2 px-4 py-2"
+    />
   </form>
 </div>

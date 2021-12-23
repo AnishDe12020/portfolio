@@ -55,31 +55,40 @@
       Alternatively, you can also fill out the following form:
     </p>
     <div class="flex flex-col">
-      <label for="email" class="text-white mb-4">Email</label>
+      <label for="email" class="text-white mb-4"
+        >Email <span class="text-red-500"> *</span></label
+      >
       <input
         type="email"
         placeholder="john.doe@example.com"
         id="email"
         class="rounded-lg bg-secondary text-accent border-accent border-2 px-4 py-2 lg:w-96 xl:w-[32rem]"
         bind:value={email}
+        required
       />
     </div>
     <div class="flex flex-col">
-      <label for="subject" class="text-white mb-4">Subject</label>
+      <label for="subject" class="text-white mb-4"
+        >Subject <span class="text-red-500"> *</span></label
+      >
       <input
         type="text"
         id="subject"
         class="rounded-lg bg-secondary text-accent border-accent border-2 px-4 py-2 lg:w-96 xl:w-[32rem]"
         bind:value={subject}
+        required
       />
     </div>
     <div class="flex flex-col">
-      <label for="msessage" class="text-white mb-4">Message</label>
+      <label for="msessage" class="text-white mb-4"
+        >Message <span class="text-red-500"> *</span></label
+      >
       <textarea
         id="message"
         class="rounded-lg bg-secondary text-accent border-accent border-2 px-4 py-2 lg:w-80 xl:w-96"
         rows="10"
         bind:value={message}
+        required
       />
     </div>
     <button

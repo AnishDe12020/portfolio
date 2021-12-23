@@ -39,6 +39,7 @@
       <textarea
         id="message"
         class="rounded-lg bg-secondary text-accent border-accent border-2 px-4 py-2"
+        rows="10"
       />
     </div>
   </form>

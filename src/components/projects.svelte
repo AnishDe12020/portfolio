@@ -34,6 +34,7 @@
           }${new URL(project.image).pathname}`}
           class="rounded-xl"
           alt={project.name}
+          loading="lazy"
         />
       </picture>
       <div

@@ -35,6 +35,8 @@
           class="rounded-xl"
           alt={project.name}
           loading="lazy"
+          height="1200"
+          width="627"
         />
       </picture>
       <div

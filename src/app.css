@@ -29,15 +29,3 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #7ac9f9ab;
 }
-
-.skip-content-link {
-  position: absolute;
-  transform: translateY(-100%);
-  background: #1d3dae;
-  padding: 1rem 0.5rem;
-  border-radius: 0rem 0rem 1rem 0rem;
-}
-
-.skip-content-link:focus {
-  transform: translateY(0%);
-}

@@ -8,6 +8,21 @@
 
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   import VanillaTilt from "vanilla-tilt";
+  import { onMount } from "svelte";
+
+  const destroyTilt = () => {
+    const tiltElements = document.querySelectorAll("[data-tilt]");
+    const mq = window.matchMedia("(max-width: 1025px)");
+    if (mq.matches) {
+      for (let i = 0, len = tiltElements.length; i < len; i++) {
+        tiltElements[i].vanillaTilt.destroy();
+      }
+    }
+  };
+
+  onMount(() => {
+    destroyTilt();
+  });
 </script>
 
 <svelte:head>

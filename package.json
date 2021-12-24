@@ -41,6 +41,7 @@
   "dependencies": {
     "@tailwindcss/forms": "^0.4.0",
     "date-fns": "^2.27.0",
-    "deta": "^1.0.1"
+    "deta": "^1.0.1",
+    "vanilla-tilt": "^1.7.2"
   }
 }

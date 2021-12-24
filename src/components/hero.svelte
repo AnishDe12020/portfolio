@@ -1,7 +1,12 @@
+<script>
+  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+  import VanillaTilt from "vanilla-tilt";
+</script>
+
 <div
   class="flex flex-col items-center justify-center mt-8 md:mt-32 mx-6 md:mx-0 md:flex-row-reverse md:ml-24 lg:ml-32 xl:ml-48 md:mr-24 lg:mr-36 xl:mr-48 md:justify-start md:items-start"
 >
-  <div class="mx-auto mb-12 md:mb-0">
+  <div class="mx-auto mb-12 md:mb-0" data-tilt data-tilt-scale="1.1">
     <img
       src="images/avatar.svg"
       alt="Avatar"

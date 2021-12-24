@@ -18,7 +18,7 @@
       <div
         data-tilt
         data-tilt-scale="1.1"
-        class="bg-secondary rounded-xl shadow-md shadow-secondary p-4 hover:shadow-lg hover:shadow-accent transition duration-400 ease-out w-auto h-auto md:h-96 md:w-96"
+        class="bg-secondary rounded-xl shadow-md shadow-secondary p-4 hover:shadow-md hover:shadow-accent transition duration-400 ease-out w-auto h-auto md:h-96 md:w-96"
       >
         <picture>
           <source

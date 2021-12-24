@@ -5,6 +5,9 @@
   import data from "../data.json";
   import Skills from "../components/skills.svelte";
   import Contact from "../components/contact.svelte";
+
+  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+  import VanillaTilt from "vanilla-tilt";
 </script>
 
 <svelte:head>

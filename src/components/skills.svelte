@@ -11,7 +11,9 @@
       <a
         href={skill.url}
         target="_blank"
-        class="flex items-center justify-center bg-secondary rounded-full h-28 w-28 transition-[width,height,margin] duration-200 ease-in-out hover:w-32 hover:h-32 my-6 mx-6 hover:mx-4 hover:my-4"
+        class="flex items-center justify-center bg-secondary rounded-full h-28 w-28 transition-[width,height,margin] duration-200 ease-in-out my-6 mx-6"
+        data-tilt
+        data-tilt-scale="1.5"
       >
         <Icon iconName={skill.name} className="h-16 w-16 text-white" />
       </a>

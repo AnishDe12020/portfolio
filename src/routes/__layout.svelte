@@ -9,6 +9,11 @@
 </script>
 
 <div class="max-w-[1920px] mx-auto">
+  <a
+    href="#content"
+    class="bg-accent text-secondary absolute -translate-y-full focus:translate-y-0 p-4 rounded-br-2xl"
+    rel="external">Skip To Content</a
+  >
   <BackToTop />
   <WipBanner />
   <Header />

@@ -11,8 +11,10 @@
   <title>Anish De | Portfolio</title>
 </svelte:head>
 
-<Hero />
-<BlogPosts blogPosts={data.blogPosts} blogBaseUrl={data.blogBaseUrl} />
-<Projects projects={data.projects} />
-<Skills skillsData={data.skills} />
-<Contact emailAddress={data.emailAddress} />
+<main id="content">
+  <Hero />
+  <BlogPosts blogPosts={data.blogPosts} blogBaseUrl={data.blogBaseUrl} />
+  <Projects projects={data.projects} />
+  <Skills skillsData={data.skills} />
+  <Contact emailAddress={data.emailAddress} />
+</main>

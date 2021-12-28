@@ -15,7 +15,7 @@
     const mq = window.matchMedia("(max-width: 1025px)");
     if (mq.matches) {
       for (let i = 0, len = tiltElements.length; i < len; i++) {
-        tiltElements[i].vanillaTilt.destroy();
+        tiltElements[i].removeAttribute("data-tilt");
       }
     }
   };

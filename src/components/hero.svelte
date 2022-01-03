@@ -3,7 +3,7 @@
 >
   <div class="mx-auto mb-12 md:mb-0" data-tilt data-tilt-scale="1.1">
     <img
-      src="images/avatar.svg"
+      src="images/avatar.jpg"
       alt="Avatar"
       height="24rem"
       width="24rem"

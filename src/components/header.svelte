@@ -21,7 +21,7 @@
             class="inline-block items-center my-4 mx-4 rounded-full border-accent border-2 p-1 focus:ring hover:opacity-70 transition duration-400 ease-in-out"
           >
             <img
-              src="images/avatar.svg"
+              src="images/avatar-face.jpg"
               alt="Avatar"
               height="3rem"
               width="3rem"

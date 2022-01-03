@@ -13,8 +13,6 @@
       href={social.url}
       target="_blank"
       class={`group flex p-2 text-accent hover:bg-accent hover:text-secondary transition-[background] duration-200 ease-in-out rounded-xl ${iconClassNames}`}
-      data-tilt
-      data-tilt-scale="1.1"
     >
       <Icon iconName={social.name.toLowerCase()} className="h-6 w-6" />
       {#if showText}

@@ -1,4 +1,11 @@
+<script>
+  import Socials from "./socials.svelte";
+  import data from "../data.json";
+</script>
+
 <div class="flex flex-col justify-center items-center mt-16 mb-8 text-white">
+  <Socials socialsData={data.socials} classNames="space-x-4 mb-4" />
+
   <p>
     Made by <a
       href="https://twitter.com/AnishDe12020"

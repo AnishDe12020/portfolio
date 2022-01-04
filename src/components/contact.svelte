@@ -40,6 +40,7 @@
 <SectionHeading id="contact">Contact</SectionHeading>
 <div
   class="mx-8 md:mx-24 lg:mx-32 xl:mx-40 flex flex-col lg:flex-row justify-center items-center lg:justify-between lg:items-start"
+  data-aos="fade-down"
 >
   <p class="text-white text-2xl text-center lg:text-left">
     You can reach out to me on my email address <a

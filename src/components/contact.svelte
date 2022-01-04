@@ -63,7 +63,7 @@
           type="email"
           placeholder="john.doe@example.com"
           id="email"
-          class="rounded-lg bg-secondary text-accent border-accent border-2 px-4 py-2 lg:w-96 xl:w-[32rem]"
+          class="rounded-lg bg-secondary text-accent border-accent border-2 px-4 py-2 lg:w-96 xl:w-[32rem] transition duration-200 hover:border-opacity-60"
           bind:value={email}
           required
         />
@@ -75,7 +75,7 @@
         <input
           type="text"
           id="subject"
-          class="rounded-lg bg-secondary text-accent border-accent border-2 px-4 py-2 lg:w-96 xl:w-[32rem]"
+          class="rounded-lg bg-secondary text-accent border-accent border-2 px-4 py-2 lg:w-96 xl:w-[32rem] transition duration-200 hover:border-opacity-60"
           bind:value={subject}
           required
         />
@@ -86,7 +86,7 @@
         >
         <textarea
           id="message"
-          class="rounded-lg bg-secondary text-accent border-accent border-2 px-4 py-2 lg:w-80 xl:w-96"
+          class="rounded-lg bg-secondary text-accent border-accent border-2 px-4 py-2 lg:w-80 xl:w-96 transition duration-200 hover:border-opacity-60"
           rows="10"
           bind:value={message}
           required

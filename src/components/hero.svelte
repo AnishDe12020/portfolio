@@ -11,7 +11,7 @@
       data-aos="fade-left"
     />
   </div>
-  <div class="flex flex-col items-center md:items-start">
+  <div class="flex flex-col items-center md:items-start" data-aos="fade-right">
     <p class="text-gray-300 text-2xl md:text-3xl lg:text-4xl font-semibold">
       Hello World
     </p>

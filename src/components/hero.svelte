@@ -8,7 +8,7 @@
       alt="Avatar"
       height="24rem"
       width="24rem"
-      class="inline-block rounded-full h-auto w-64 md:w-96 lg:w-[32rem] hover:shadow-md hover:shadow-accent transition duration-400"
+      class="inline-block rounded-full h-auto w-64 md:w-96 lg:w-[32rem] hover:shadow-md hover:shadow-accent transition duration-200"
     />
   </div>
   <div class="flex flex-col items-center md:items-start">

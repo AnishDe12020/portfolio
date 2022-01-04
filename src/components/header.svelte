@@ -11,14 +11,14 @@
 
 <div class="flex justify-center items-center mt-16 mb-16 md:mb-32">
   <nav
-    class="bg-secondary/60 shadow-md md:hover:shadow-accent transition duration-400 border-2 border-secondary fixed backdrop-filter z-50 backdrop-blur-xl w-5/6 md:w-auto rounded-2xl top-12"
+    class="bg-secondary/60 shadow-md md:hover:shadow-accent transition duration-200 border-2 border-secondary fixed backdrop-filter z-50 backdrop-blur-xl w-5/6 md:w-auto rounded-2xl top-12"
   >
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex justify-between">
         <div class="flex">
           <a
             href="/"
-            class="inline-block items-center my-4 mx-4 rounded-full border-accent border-2 p-1 focus:ring hover:opacity-70 transition duration-400 ease-in-out"
+            class="inline-block items-center my-4 mx-4 rounded-full border-accent border-2 p-1 focus:ring hover:opacity-70 transition duration-200 ease-in-out"
           >
             <img
               src="https://ctohm-edge-resizer.anishde12020.workers.dev/output=auto/anishde.dev/images/avatar-face.jpg"

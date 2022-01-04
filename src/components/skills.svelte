@@ -12,7 +12,7 @@
       <a
         href={skill.url}
         target="_blank"
-        class="flex items-center justify-center bg-secondary rounded-full h-28 w-28 transition duration-400 ease-in-out my-6 mx-6 hover:shadow-accent hover:shadow-md"
+        class="flex items-center justify-center bg-secondary rounded-full h-28 w-28 transition duration-200 ease-in-out my-6 mx-6 hover:shadow-accent hover:shadow-md"
       >
         <Icon iconName={skill.name} className="h-16 w-16 text-white" />
       </a>

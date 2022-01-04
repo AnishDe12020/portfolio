@@ -8,6 +8,7 @@
 <SectionHeading id="blog-posts">Blog Posts</SectionHeading>
 <div
   class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-center mx-4 md:mx-24 lg:mx-32 xl:mx-40"
+  data-aos="fade-down"
 >
   {#each blogPosts as post}
     <a

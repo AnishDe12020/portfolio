@@ -14,7 +14,7 @@
   onMount(async () => {
     AOS = (await import("aos")).default;
     AOS.init({
-      duration: 200,
+      duration: 500,
       delay: 0,
     });
   });

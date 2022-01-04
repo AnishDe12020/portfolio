@@ -6,7 +6,10 @@
 
 <SectionHeading id="skills">Skills</SectionHeading>
 
-<div class="flex flex-wrap justify-center items-center mx-2 md:mx-12">
+<div
+  class="flex flex-wrap justify-center items-center mx-2 md:mx-12"
+  data-aos="fade-down"
+>
   {#each skillsData as skill}
     <a
       href={skill.url}

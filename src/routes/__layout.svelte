@@ -6,6 +6,15 @@
   import BackToTop from "../components/back-to-top.svelte";
   import Socials from "../components/socials.svelte";
   import data from "../data.json";
+
+  import { onMount } from "svelte";
+  import "aos/dist/aos.css";
+
+  let AOS;
+  onMount(async () => {
+    AOS = (await import("aos")).default;
+    AOS.init();
+  });
 </script>
 
 <div class="max-w-[1920px] mx-auto">

@@ -44,7 +44,7 @@
   >
     <p class="text-white text-2xl text-center lg:text-left">
       You can reach out to me on my email address <a
-        class="text-accent hover:opacity-60"
+        class="text-accent transition duration-200 hover:opacity-60"
         href={`mailto:${emailAddress}`}>{emailAddress}</a
       >
     </p>

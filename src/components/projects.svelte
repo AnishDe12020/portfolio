@@ -8,7 +8,7 @@
 <div id="projects" class="mx-4 md:mx-24 lg:mx-32 xl:mx-40">
   {#each projects as project}
     <div
-      class="flex flex-col justify-center items-center lg:items-stretch lg:flex-row"
+      class="flex flex-col justify-center items-center lg:items-stretch lg:justify-between lg:flex-row"
       data-aos="fade-down"
     >
       <picture class="w-11/12 md:w-1/2">
@@ -46,17 +46,17 @@
         <div
           class="flex flex-col justify-center items-center lg:justify-left lg:items-start"
         >
-          <h3 class="text-5xl md:text-6xl lg:text-7xl	 font-bold text-white">
+          <h3 class="text-4xl lg:text-5xl xl:text-6xl font-bold text-white">
             {project.name}
           </h3>
           <p
-            class="text-gray-300 font-semibold text-xl md:text-2xl lg:text-3xl mt-2 md:mt-4 xl:mt-8 text-center lg:text-left"
+            class="text-gray-300 font-semibold text-lg md:text-xl lg:text-2xl xl:text-3xl mt-2 md:mt-4 xl:mt-8 text-center lg:text-left"
           >
             {project.description}
           </p>
         </div>
         <div
-          class="flex flex-col justify-center items-center lg:items-start lg:justify-start mt-8 lg:mt-0"
+          class="flex flex-col justify-center items-center lg:items-start lg:justify-start mt-8"
         >
           <a
             href={project.url}

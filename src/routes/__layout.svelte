@@ -13,7 +13,10 @@
   let AOS;
   onMount(async () => {
     AOS = (await import("aos")).default;
-    AOS.init();
+    AOS.init({
+      duration: 200,
+      delay: 0,
+    });
   });
 </script>
 

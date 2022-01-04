@@ -9,6 +9,7 @@
   {#each projects as project}
     <div
       class="flex flex-col justify-center items-center lg:items-stretch lg:flex-row"
+      data-aos="fade-down"
     >
       <picture class="w-11/12 md:w-1/2">
         <source

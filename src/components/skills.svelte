@@ -11,6 +11,7 @@
     {#each skillsData as skill}
       <a
         href={skill.url}
+        aria-label={skill.name}
         target="_blank"
         class="flex items-center justify-center bg-secondary rounded-full h-28 w-28 transition duration-200 ease-in-out my-6 mx-6 hover:shadow-accent hover:shadow-md"
       >

@@ -1,6 +1,7 @@
 <script>
   import NavLinks from "./nav-links.svelte";
   import { slide } from "svelte/transition";
+  import HeaderLink from "./header-link.svelte";
 
   let mobileMenuOpen = false;
 
@@ -15,7 +16,7 @@
   >
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex justify-between">
-        <div class="flex">
+        <div class="flex md:hidden">
           <a
             href="/"
             class="inline-block items-center my-4 mx-4 rounded-full border-accent border-2 p-1 focus:ring hover:opacity-60 transition duration-200 ease-in-out"
@@ -29,7 +30,8 @@
             />
           </a>
         </div>
-        <div class="hidden md:flex items-center">
+        <div class="hidden md:flex items-center my-4">
+          <HeaderLink linkHref="/" linkContent="Home" />
           <NavLinks />
         </div>
 

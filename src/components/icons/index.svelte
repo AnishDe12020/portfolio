@@ -13,6 +13,9 @@
   import FigmaIcon from "./figma.svelte";
   import LinkIcon from "./link.svelte";
   import EmailIcon from "./email.svelte";
+  import HashnodeIcon from "./hashnode.svelte";
+  import ShowwCaseIcon from "./showwcase.svelte";
+  import YouTubeIcon from "./youtube.svelte";
 
   export let iconName: string;
   export let className: string;
@@ -46,6 +49,12 @@
   <LinkIcon {className} />
 {:else if iconName === "email"}
   <EmailIcon {className} />
+{:else if iconName === "showwcase"}
+  <ShowwCaseIcon {className} />
+{:else if iconName === "youtube"}
+  <YouTubeIcon {className} />
+{:else if iconName === "hashnode"}
+  <HashnodeIcon {className} />
 {:else}
   <XIcon {className} />
 {/if}

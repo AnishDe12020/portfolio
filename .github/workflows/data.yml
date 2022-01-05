@@ -35,3 +35,4 @@ jobs:
         run: |
           git add -A
           git commit -m "chore(data): $GITHUB_SHA"
+          git push

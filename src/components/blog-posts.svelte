@@ -56,7 +56,7 @@
   </div>
   <div class="flex justify-center items-center mt-8">
     <a
-      class="border-accent border-2 text-accent hover:bg-accent hover:text-secondary transition duration-200 rounded-2xl px-4 py-2 w-fit text-2xl"
+      class="border-accent border-2 text-accent hover:bg-accent hover:text-secondary transition duration-200 rounded-2xl px-4 py-2 w-fit text-lg md:text-xl lg:text-2xl"
       href={blogBaseUrl}
       target="_blank">Read More Posts on my Blog</a
     >

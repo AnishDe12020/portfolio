@@ -80,7 +80,7 @@
         />
       </div>
       <div class="flex flex-col">
-        <label for="msessage" class="text-white mb-4"
+        <label for="message" class="text-white mb-4"
           >Message <span class="text-red-500"> *</span></label
         >
         <textarea

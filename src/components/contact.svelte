@@ -43,7 +43,7 @@
     class="mx-8 md:mx-24 lg:mx-32 xl:mx-40 flex flex-col lg:flex-row justify-center items-center lg:justify-between lg:items-start"
   >
     <a
-      href="mailto:contact@anishde.dev"
+      href={`mailto:${emailAddress}`}
       class="text-accent border-2 border-accent px-4 py-2 rounded-2xl hover:text-secondary hover:bg-accent text-xl md:text-2xl lg:text-3xl mb-8"
       >Reach out to me on email</a
     >

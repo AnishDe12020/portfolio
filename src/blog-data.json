@@ -1,1 +1,28 @@
-{"posts":[{"slug":"how-to-make-a-back-to-top-button-and-page-progress-bar-with-html-css-and-javascript","title":"How to Make a Back to Top Button and Page Progress Bar with HTML, CSS, and JavaScript","cuid":"ckxh35fwy04m079s19apv7ate","brief":"This article was first posted on Freecodecamp on the 21st of December, 2021. Link - https://www.freecodecamp.org/news/back-to-top-button-and-page-progressbar-with-html-css-and-js/\n\nYou've probably seen a \"back-to-top\" button at the bottom-right corne...","coverImage":"https://cdn.hashnode.com/res/hashnode/image/upload/v1640144896880/b4sCz6SdF.png","dateAdded":"2021-12-22T05:18:36.494Z"},{"slug":"how-to-use-the-github-repository","title":"How to Use the .github Repository","cuid":"ckx8ftl5z04bjz7s11vx7a31q","brief":"Note: This article was first published in the Freecodecamp publication on the 15th of December, 2021. The link to the original article - https://www.freecodecamp.org/news/how-to-use-the-dot-github-repository/\n\nGitHub has many special repositories. Fo...","coverImage":"https://cdn.hashnode.com/res/hashnode/image/upload/v1639627184519/Yqo5BERsU.png","dateAdded":"2021-12-16T04:03:22.771Z"},{"slug":"adding-an-in-browser-code-preview-to-your-react-application-with-sandpack","title":"Adding an in-browser code preview to your React Application with Sandpack","cuid":"ckx1ug1h0097yzvs18ahq8950","brief":"Sandpack is a live coding environment that runs on the browser. It is made by the team behind CodeSandbox. The main objective here is to provide interactive examples to play around with, to users. I see it being widely used in things like blog posts ...","coverImage":"https://cdn.hashnode.com/res/hashnode/image/upload/v1639228519537/gLvn_u4gu.png","dateAdded":"2021-12-11T13:18:21.826Z"}]}
+{
+  "posts": [
+    {
+      "slug": "how-to-make-a-back-to-top-button-and-page-progress-bar-with-html-css-and-javascript",
+      "title": "How to Make a Back to Top Button and Page Progress Bar with HTML, CSS, and JavaScript",
+      "cuid": "ckxh35fwy04m079s19apv7ate",
+      "brief": "This article was first posted on Freecodecamp on the 21st of December, 2021. Link - https://www.freecodecamp.org/news/back-to-top-button-and-page-progressbar-with-html-css-and-js/\n\nYou've probably seen a \"back-to-top\" button at the bottom-right corne...",
+      "coverImage": "https://cdn.hashnode.com/res/hashnode/image/upload/v1640144896880/b4sCz6SdF.png",
+      "dateAdded": "2021-12-22T05:18:36.494Z"
+    },
+    {
+      "slug": "how-to-use-the-github-repository",
+      "title": "How to Use the .github Repository",
+      "cuid": "ckx8ftl5z04bjz7s11vx7a31q",
+      "brief": "Note: This article was first published in the Freecodecamp publication on the 15th of December, 2021. The link to the original article - https://www.freecodecamp.org/news/how-to-use-the-dot-github-repository/\n\nGitHub has many special repositories. Fo...",
+      "coverImage": "https://cdn.hashnode.com/res/hashnode/image/upload/v1639627184519/Yqo5BERsU.png",
+      "dateAdded": "2021-12-16T04:03:22.771Z"
+    },
+    {
+      "slug": "adding-an-in-browser-code-preview-to-your-react-application-with-sandpack",
+      "title": "Adding an in-browser code preview to your React Application with Sandpack",
+      "cuid": "ckx1ug1h0097yzvs18ahq8950",
+      "brief": "Sandpack is a live coding environment that runs on the browser. It is made by the team behind CodeSandbox. The main objective here is to provide interactive examples to play around with, to users. I see it being widely used in things like blog posts ...",
+      "coverImage": "https://cdn.hashnode.com/res/hashnode/image/upload/v1639228519537/gLvn_u4gu.png",
+      "dateAdded": "2021-12-11T13:18:21.826Z"
+    }
+  ]
+}

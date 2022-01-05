@@ -9,8 +9,10 @@ jobs:
   daily:
     runs-on: ubuntu-latest
     steps:
-      # Setup node
-      - name:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Setup node
         uses: actions/setup-node@v1
         with:
           node-version: 14.x

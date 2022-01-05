@@ -43,6 +43,7 @@
   class={`fixed right-2 bottom-2 md:right-4 md:bottom-4 lg:right-8 lg:bottom-8 bg-accent text-secondary rounded-full hover:opacity-60 transition duration-200 ${
     hidden ? "opacity-0" : "opacity-100"
   }`}
+  aria-label="Go to top"
 >
   <div
     class="rounded-full absolute bg-secondary w-12 h-12 ml-1 mt-1 flex items-center justify-center shadow-2xl"

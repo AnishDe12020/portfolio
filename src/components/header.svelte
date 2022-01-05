@@ -38,6 +38,7 @@
         <div class="md:hidden flex items-center">
           <button
             class="focus:outline-none rounded-md focus:ring hover:opacity-60"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             on:click={handleHamburgerClick}
           >
             {#if mobileMenuOpen}

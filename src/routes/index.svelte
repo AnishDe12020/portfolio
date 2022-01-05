@@ -14,7 +14,6 @@
   const destroyTilt = () => {
     const tiltElements = document.querySelectorAll("[data-tilt]");
     const mq = window.matchMedia("(max-width: 1025px)");
-    console.log(mq);
     if (mq.matches) {
       for (let i = 0, len = tiltElements.length; i < len; i++) {
         tiltElements[i].removeAttribute("data-tilt");
@@ -26,8 +25,6 @@
   onMount(() => {
     destroyTilt();
   });
-
-  console.log(blogData.posts);
 </script>
 
 <svelte:head>

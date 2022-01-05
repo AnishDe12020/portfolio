@@ -1,0 +1,36 @@
+name: Cron script to generate and commit data
+
+on:
+  workflow_dispatch: # Manual testing
+  schedule:
+    - cron: '0 0 * * *'
+
+
+jobs:
+  daily:
+   runs-on: ubuntu-latest
+   steps:
+    # Setup node
+    - name:
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14.x
+        yarn: true
+        yarn-version: latest
+
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
+
+    - name: Setup Git
+      run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+    - name: Generate Blog data
+      run: |
+          yarn blog-data:gen
+
+    - name: Commit generated data
+      run: |
+          git add -A
+          git commit -m "chore(data): $GITHUB_SHA"

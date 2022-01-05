@@ -80,7 +80,10 @@
     </div>
     <!-- mobile menu -->
     {#if mobileMenuOpen}
-      <div class="flex flex-col space-y-4" transition:slide={{ duration: 200 }}>
+      <div
+        class="flex flex-col space-y-4 my-4"
+        transition:slide={{ duration: 200 }}
+      >
         <NavLinks />
       </div>
     {/if}

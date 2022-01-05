@@ -13,7 +13,7 @@
     {#each blogPosts as post}
       <a
         href={`${blogBaseUrl}${post.slug}`}
-        class="flex justify-center items-center focus:ring focus:outline-none p-4"
+        class="flex justify-center items-center p-4"
         target="_blank"
       >
         <div

@@ -19,7 +19,7 @@
         <div class="flex md:hidden">
           <a
             href="/"
-            class="inline-block items-center my-4 mx-4 rounded-full border-accent border-2 p-1 focus:ring hover:opacity-60 transition duration-200 ease-in-out"
+            class="inline-block items-center my-4 mx-4 rounded-full border-accent border-2 p-1 hover:opacity-60 transition duration-200 ease-in-out"
           >
             <img
               src="https://ctohm-edge-resizer.anishde12020.workers.dev/output=auto/anishde.dev/images/icon.png"
@@ -37,7 +37,7 @@
 
         <div class="md:hidden flex items-center">
           <button
-            class="focus:outline-none rounded-md focus:ring hover:opacity-60"
+            class=" rounded-md hover:opacity-60"
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             on:click={handleHamburgerClick}
           >

@@ -21,7 +21,7 @@
             class="inline-block items-center my-4 mx-4 rounded-full border-accent border-2 p-1 focus:ring hover:opacity-60 transition duration-200 ease-in-out"
           >
             <img
-              src="https://ctohm-edge-resizer.anishde12020.workers.dev/output=auto/anishde.dev/images/avatar-face.jpg"
+              src="https://ctohm-edge-resizer.anishde12020.workers.dev/output=auto/anishde.dev/images/icon.png"
               alt="Avatar"
               height="3rem"
               width="3rem"

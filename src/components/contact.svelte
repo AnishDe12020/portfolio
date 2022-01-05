@@ -42,12 +42,11 @@
   <div
     class="mx-8 md:mx-24 lg:mx-32 xl:mx-40 flex flex-col lg:flex-row justify-center items-center lg:justify-between lg:items-start"
   >
-    <p class="text-white text-2xl text-center lg:text-left">
-      You can reach out to me on my email address <a
-        class="text-accent transition duration-200 hover:opacity-60"
-        href={`mailto:${emailAddress}`}>{emailAddress}</a
-      >
-    </p>
+    <a
+      href="mailto:contact@anishde.dev"
+      class="text-accent border-2 border-accent px-4 py-2 rounded-2xl hover:text-secondary hover:bg-accent text-xl md:text-2xl lg:text-3xl mb-8"
+      >Reach out to me on email</a
+    >
     <form
       class="flex flex-col justify-center lg:justify-start items-center lg:items-start space-y-8 mt-8 lg:mt-2"
       on:submit|preventDefault={submitForm}

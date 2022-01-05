@@ -3,6 +3,7 @@
   import BlogPosts from "../components/blog-posts.svelte";
   import Hero from "../components/hero.svelte";
   import data from "../data.json";
+  import blogData from "../blog-data.json";
   import Skills from "../components/skills.svelte";
   import Contact from "../components/contact.svelte";
 
@@ -25,6 +26,8 @@
   onMount(() => {
     destroyTilt();
   });
+
+  console.log(blogData.posts);
 </script>
 
 <svelte:head>
@@ -33,7 +36,7 @@
 
 <main id="content">
   <Hero />
-  <BlogPosts blogPosts={data.blogPosts} blogBaseUrl={data.blogBaseUrl} />
+  <BlogPosts blogPosts={blogData.posts} blogBaseUrl={data.blogBaseUrl} />
   <Projects projects={data.projects} />
   <Skills skillsData={data.skills} />
   <Contact emailAddress={data.emailAddress} />

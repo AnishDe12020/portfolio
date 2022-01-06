@@ -18,7 +18,7 @@
       <div class="flex justify-between">
         <div class="flex md:hidden">
           <a
-            href="#"
+            href="#/"
             class="inline-block items-center my-4 mx-4 rounded-full border-accent border-2 p-1 hover:opacity-60 transition duration-200 ease-in-out"
           >
             <img
@@ -31,7 +31,7 @@
           </a>
         </div>
         <div class="hidden md:flex items-center my-4">
-          <HeaderLink linkHref="#" linkContent="Home" />
+          <HeaderLink linkHref="#/" linkContent="Home" />
           <NavLinks />
         </div>
 

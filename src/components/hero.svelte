@@ -1,5 +1,5 @@
 <div
-  class="flex flex-col items-center justify-center mt-8 md:mt-32 mx-6 md:mx-0 md:flex-row-reverse md:ml-24 lg:ml-32 xl:ml-48 md:mr-24 lg:mr-36 xl:mr-48 md:justify-start md:items-start md:mb-24 lg:mb-36 xl:mb-48"
+  class="flex flex-col items-center justify-center mt-32 md:mt-48 mx-6 md:mx-0 md:flex-row-reverse md:ml-24 lg:ml-32 xl:ml-48 md:mr-24 lg:mr-36 xl:mr-48 md:justify-start md:items-start md:mb-24 lg:mb-36 xl:mb-48"
   data-aos="fade-down"
 >
   <div class="mx-auto mb-12 md:mb-0" data-tilt data-tilt-scale="1.1">

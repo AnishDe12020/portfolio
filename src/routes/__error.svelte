@@ -5,7 +5,7 @@
   <p class="text-4xl">This page doesn't exist</p>
   <a
     href="/"
-    class="border-accent border-2 text-accent rounded-2xl px-4 py-2 hover:bg-accent hover:text-secondary transition duration-200 text-xl"
+    class="border-accent border-2 text-accent rounded-xl px-4 py-2 hover:bg-accent hover:text-secondary transition duration-200 text-xl"
     >Go back to the homepage</a
   >
 </div>

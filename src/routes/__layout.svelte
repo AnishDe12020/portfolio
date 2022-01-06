@@ -25,15 +25,14 @@
 
 <MetaTags
   title="Anish De"
-  description="14 year old Fullstack Web Developer, Tech Enthusiast, Blogger, Tech YouTuber. Likes to learn new things, build applications, and share their knowledge through blog posts."
+  description="I am a Fullstack Web Developer who likes to build applications, learn new things and share my knowledge through blog posts."
   canonical="https://anishde.dev/"
   openGraph={{
     type: "website",
     url: "https://anishde.dev/",
-    title:
-      "Anish De | 14 • Tech Enthusiast • Fullstack Web Developer • Blogger • Tech YouTuber",
+    title: "Anish De | Fullstack Web Developer",
     description:
-      "14 year old Fullstack Web Developer, Tech Enthusiast, Blogger, Tech YouTuber. Likes to learn new things, build applications, and share their knowledge through blog posts.",
+      "I am a Fullstack Web Developer who likes to build applications, learn new things and share my knowledge through blog posts.",
     images: [
       {
         url: "https://anishde.dev/og.png",

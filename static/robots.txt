@@ -1,2 +1,3 @@
+Sitemap: http://anishde.dev/sitemap.xml
 User-agent: *
 Disallow:

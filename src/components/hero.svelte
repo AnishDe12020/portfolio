@@ -12,20 +12,22 @@
     />
   </div>
   <div class="flex flex-col items-center md:items-start">
-    <p class="text-gray-300 text-2xl md:text-3xl lg:text-4xl font-semibold">
-      Hello World
+    <p class="text-accent/80 text-2xl md:text-3xl lg:text-4xl font-semibold">
+      Hey everyone 👋
     </p>
     <h1
-      class="text-white text-4xl md:text-5xl lg:text-6xl text-center md:text-left font-bold mt-2"
+      class="text-gray-100 text-4xl md:text-5xl lg:text-6xl text-center md:text-left font-bold mt-2"
     >
-      I am a web developer
+      I am a Anish De
     </h1>
     <p
-      class="text-gray-200 mt-4 text-md md:text-lg lg:text-xl xl:text-2xl text-center md:text-left md:w-2/3"
+      class="text-gray-400 mt-4 text-md md:text-lg lg:text-xl xl:text-2xl text-center md:text-left md:w-2/3"
     >
-      I like to build websites, experiment with new programming languages,
-      frameworks and libraries and also write blogs so that I can share my
-      knowledge with a wider audience.
+      I am a <span class="text-accent">Fullstack Web Developer</span> who likes
+      to build web applications to solve problems. I am self-taught and I am
+      always open to <span class="text-accent">learning new things</span>. I
+      also like to share my knowledge by writing
+      <span class="text-accent">blog posts</span>.
     </p>
   </div>
 </div>

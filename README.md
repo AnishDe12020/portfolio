@@ -1,8 +1,10 @@
 # Portfolio Site
 
-This is my portfolio site mainly built using [SvelteKit](https://kit.svelte.dev/) and [TailwindCSS](https://tailwindcss.com/).
+This is the source code for my portfolio site mainly built using [SvelteKit](https://kit.svelte.dev/) and [TailwindCSS](https://tailwindcss.com/).
 
 You can see it live at [https://anishde.dev/](https://anishde.dev/)
+
+![image](https://user-images.githubusercontent.com/63192115/148372497-7a9bde56-0db6-400b-8cad-0a991dc6619a.png)
 
 # Contributing
 

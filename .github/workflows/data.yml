@@ -30,6 +30,7 @@ jobs:
       - name: Generate Blog data
         run: |
           yarn blog-posts:gen
+          yarn format
 
       - name: Commit generated data
         run: |

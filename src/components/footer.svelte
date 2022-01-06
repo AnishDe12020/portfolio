@@ -4,7 +4,10 @@
 </script>
 
 <div class="flex flex-col justify-center items-center mt-16 mb-8 text-white">
-  <Socials socialsData={data.socials} classNames="space-x-4 mb-4" />
+  <Socials
+    socialsData={data.socials}
+    classNames="space-x-4 mb-4 flex-wrap justify-center items-center"
+  />
 
   <p>
     Made by <a

@@ -9,6 +9,9 @@
 
   import { onMount } from "svelte";
 
+  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+  import VanillaTilt from "vanilla-tilt";
+
   const destroyTilt = () => {
     const tiltElements = document.querySelectorAll("[data-tilt]");
     const mq = window.matchMedia("(max-width: 1025px)");

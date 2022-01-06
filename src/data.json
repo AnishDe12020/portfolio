@@ -45,43 +45,53 @@
   "skills": [
     {
       "name": "React",
-      "url": "https://reactjs.org/"
+      "url": "https://reactjs.org/",
+      "description": "A JavaScript library for building user interfaces."
     },
     {
       "name": "NextJS",
-      "url": "https://nextjs.org/"
+      "url": "https://nextjs.org/",
+      "description": "A framework jam-packed with features to make React applications easily and quickly."
     },
     {
       "name": "Svelte",
-      "url": "https://svelte.dev/"
+      "url": "https://svelte.dev/",
+      "description": "A framework for building interactive UIs with a minimal amount of code."
     },
     {
       "name": "Chakra UI",
-      "url": "https://chakra-ui.com/"
+      "url": "https://chakra-ui.com/",
+      "description": "A set of React components for building beautiful and accessible web interfaces."
     },
     {
       "name": "Tailwind CSS",
-      "url": "https://tailwindcss.com/"
+      "url": "https://tailwindcss.com/",
+      "description": "A utility-first CSS framework for rapidly building custom, high performance, and accessible websites."
     },
     {
       "name": "Typescript",
-      "url": "https://www.typescriptlang.org/"
+      "url": "https://www.typescriptlang.org/",
+      "description": "A superset of JavaScript that is statically typed and compiles to plain JavaScript."
     },
     {
       "name": "Firebase",
-      "url": "https://firebase.google.com/"
+      "url": "https://firebase.google.com/",
+      "description": "A cloud platform for hosting and deploying web apps."
     },
     {
       "name": "Supabase",
-      "url": "https://supabase.com/"
+      "url": "https://supabase.com/",
+      "description": "A cloud database for storing and querying data."
     },
     {
       "name": "Figma",
-      "url": "https://www.figma.com/"
+      "url": "https://www.figma.com/",
+      "description": "A design tool for creating and sharing designs."
     },
     {
       "name": "GitHub",
-      "url": "https://github.com/"
+      "url": "https://github.com/",
+      "description": "A web-based hosting service for version control."
     }
   ]
 }

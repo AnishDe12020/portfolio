@@ -23,6 +23,16 @@
   });
 </script>
 
+<svelte:head>
+  {#if import.meta.env.VITE_UMAMI_WEBSITE_ID !== null && import.meta.env.VITE_UMAMI_URL !== null}
+    <script
+      async
+      defer
+      data-website-id={import.meta.env.VITE_UMAMI_WEBSITE_ID}
+      src={import.meta.env.VITE_UMAMI_URL}></script>
+  {/if}
+</svelte:head>
+
 <MetaTags
   title="Anish De"
   description="I am a Fullstack Web Developer who likes to build applications, learn new things and share my knowledge through blog posts."

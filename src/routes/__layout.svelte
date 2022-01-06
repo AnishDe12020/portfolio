@@ -19,6 +19,8 @@
       delay: 0,
       once: true,
     });
+
+    await import("@themesberg/flowbite");
   });
 </script>
 

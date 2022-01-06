@@ -1,38 +1,12 @@
-# create-svelte
+# Portfolio Site
+This is my portfolio site mainly built using [SvelteKit](https://kit.svelte.dev/) and [TailwindCSS](https://tailwindcss.com/).
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
+You can see it live at [https://anishde.dev/](https://anishde.dev/)
 
-## Creating a project
+# Contributing
+Any contribution is welcome, be it a bug fix or an improvement. If you are to make a substantial improvement, please discuss it with me by [opening an issue.](https://github.com/AnishDe12020/portfolio/issues/new/choose)
 
-If you're seeing this, you've probably already done this step. Congrats!
+# Can I use this for my portfolio?
+Yes and no. You are free to take inspiration, check out the code, and even copy down the code for something you like but please do not create a copy of the whole website. 
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
-
-# create a new project in my-app
-npm init svelte@next my-app
-```
-
-> Note: the `@next` is temporary
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs#adapters) for your target environment. Then:
-
-```bash
-npm run build
-```
-
-> You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
+You can reach out to me on [Twitter](https://twitter.com/AnishDe12020) or send me a mail on [contact@anishde.dev](mailto:contact@anishde.dev) if you have any queries.

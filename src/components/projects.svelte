@@ -61,7 +61,7 @@
             <a
               href={project.url}
               target="_blank"
-              class="border-2 rounded-2xl px-4 py-2 border-accent text-accent hover:bg-accent hover:text-secondary transition dureation-300 text-md md:text-lg lg:text-xl text-center lg:text-left mb-4"
+              class="border-2 rounded-xl px-4 py-2 border-accent text-accent hover:bg-accent hover:text-secondary transition dureation-300 text-md md:text-lg lg:text-xl text-center lg:text-left mb-4"
             >
               <div class="flex">
                 <Icon iconName="link" className="w-6 h-6 mr-2 lg:mr-4" />
@@ -72,7 +72,7 @@
             <a
               href={project.github}
               target="_blank"
-              class="border-2 rounded-2xl px-4 py-2 border-accent text-accent hover:bg-accent hover:text-secondary transition dureation-300 text-md md:text-lg lg:text-xl text-center lg:text-left"
+              class="border-2 rounded-xl px-4 py-2 border-accent text-accent hover:bg-accent hover:text-secondary transition dureation-300 text-md md:text-lg lg:text-xl text-center lg:text-left"
             >
               <div class="flex">
                 <Icon iconName="github" className="w-6 h-6 mr-2 lg:mr-4" />

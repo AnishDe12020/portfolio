@@ -1,6 +1,7 @@
 {
   "name": "portfolio-svelte",
   "version": "0.0.1",
+  "license": "GPL-3.0",
   "scripts": {
     "dev": "svelte-kit dev",
     "build": "svelte-kit build",

@@ -78,7 +78,7 @@
     rel="external">Skip To Content</a
   >
   <BackToTop />
-  <WipBanner />
+  // <WipBanner />
   <Header />
   <slot />
   <Footer />

@@ -12,7 +12,7 @@
     />
   </div>
   <div class="flex flex-col items-center md:items-start">
-    <p class="text-accent/80 text-2xl md:text-3xl lg:text-4xl font-semibold">
+    <p class="text-accent text-2xl md:text-3xl lg:text-4xl font-semibold">
       Hey everyone 👋
     </p>
     <h1

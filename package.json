@@ -47,6 +47,7 @@
     "aos": "^3.0.0-beta.6",
     "date-fns": "^2.27.0",
     "deta": "^1.0.1",
+    "logsnag": "^0.0.2",
     "node-fetch": "^3.1.0",
     "svelte-meta-tags": "^2.2.2",
     "vanilla-tilt": "^1.7.2"

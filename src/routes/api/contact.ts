@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import db from "$lib/deta";
+import logsnag from "$lib/logsnag";
 import type { Request } from "@sveltejs/kit";
 
 export const post = async (request: Request) => {
@@ -10,6 +11,14 @@ export const post = async (request: Request) => {
     const message: string = body.message;
 
     const response = await db.put({ email, subject, message });
+    await logsnag.publish({
+      project: import.meta.env.VITE_LOGSNAG_PROJECT_NAME as string,
+      channel: import.meta.env.VITE_LOGSNAG_CHANNEL_NAME as string,
+      event: `New submission from ${email}`,
+      description: `Subject: ${subject}. Message: ${message}`,
+      icon: "📧",
+      notify: true,
+    });
     return { body: { response } };
   } catch (error) {
     console.error(error);

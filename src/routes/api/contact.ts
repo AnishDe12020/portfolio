@@ -9,13 +9,14 @@ export const post = async (request: Request) => {
     const email: string = body.email;
     const subject: string = body.subject;
     const message: string = body.message;
+    const date = new Date().toString();
 
-    const response = await db.put({ email, subject, message });
+    const response = await db.put({ email, subject, message, date });
     await logsnag.publish({
       project: import.meta.env.VITE_LOGSNAG_PROJECT_NAME as string,
       channel: import.meta.env.VITE_LOGSNAG_CHANNEL_NAME as string,
       event: `New submission from ${email}`,
-      description: `Subject: ${subject}. Message: ${message}`,
+      description: `Subject: ${subject}\nDate:${date}\nMessage: ${message}`,
       icon: "📧",
       notify: true,
     });

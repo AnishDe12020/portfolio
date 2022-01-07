@@ -16,7 +16,7 @@ export const post = async (request: Request) => {
       project: import.meta.env.VITE_LOGSNAG_PROJECT_NAME as string,
       channel: import.meta.env.VITE_LOGSNAG_CHANNEL_NAME as string,
       event: `New submission from ${email}`,
-      description: `Subject: ${subject}\nDate:${date}\nMessage: ${message}`,
+      description: `Subject: ${subject}\nDate: ${date}\nMessage: ${message}`,
       icon: "📧",
       notify: true,
     });

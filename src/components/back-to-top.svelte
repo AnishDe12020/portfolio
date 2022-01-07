@@ -40,7 +40,7 @@
 
 <button
   on:click={goToTop}
-  class={`fixed right-2 bottom-2 md:right-4 md:bottom-4 lg:right-8 lg:bottom-8 bg-accent text-secondary rounded-full hover:opacity-60 transition duration-200 ${
+  class={`fixed right-2 bottom-2 z-50 md:right-4 md:bottom-4 lg:right-8 lg:bottom-8 bg-accent text-secondary rounded-full hover:opacity-60 transition duration-200 ${
     hidden ? "opacity-0" : "opacity-100"
   }`}
   aria-label="Go to top"

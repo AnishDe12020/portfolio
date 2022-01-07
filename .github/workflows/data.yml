@@ -35,5 +35,5 @@ jobs:
       - name: Commit generated data
         run: |
           git add -A
-          git commit -m "chore(data): $GITHUB_SHA"
+          git diff --quiet && git diff --staged --quiet || git commit -am "chore(data): $GITHUB_SHA"
           git push

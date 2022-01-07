@@ -14,8 +14,9 @@
 
   const destroyTilt = () => {
     const tiltElements = document.querySelectorAll("[data-tilt]");
-    const mq = window.matchMedia("(max-width: 1025px)");
-    if (mq.matches) {
+    const mobileTestRegex =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+    if (mobileTestRegex.test(navigator.userAgent)) {
       for (let i = 0, len = tiltElements.length; i < len; i++) {
         tiltElements[i].removeAttribute("data-tilt");
         tiltElements[i].removeAttribute("data-tilt-scale");

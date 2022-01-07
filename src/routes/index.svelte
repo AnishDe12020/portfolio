@@ -18,8 +18,7 @@
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
     if (mobileTestRegex.test(navigator.userAgent)) {
       for (let i = 0, len = tiltElements.length; i < len; i++) {
-        tiltElements[i].removeAttribute("data-tilt");
-        tiltElements[i].removeAttribute("data-tilt-scale");
+        tiltElements[i].vanillaTilt.destroy();
       }
     }
   };

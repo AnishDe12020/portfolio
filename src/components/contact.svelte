@@ -45,7 +45,7 @@
   >
     <a
       href={`mailto:${emailAddress}`}
-      class="text-accent border-2 border-accent px-4 py-2 rounded-xl hover:text-secondary hover:bg-accent text-xl md:text-2xl lg:text-3xl mb-8 flex items-center"
+      class="text-accent border-2 border-accent px-4 py-2 rounded-xl hover:text-secondary hover:bg-accent transition duration-200 text-xl md:text-2xl lg:text-3xl mb-8 flex items-center"
       ><Icon iconName="email" className="w-6 h-6 mr-2" />
       <p>Reach out to me on email</p></a
     >

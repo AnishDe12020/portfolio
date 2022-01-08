@@ -4,7 +4,7 @@
 >
   <div class="mx-auto mb-12 md:mb-0" data-tilt data-tilt-scale="1.1">
     <img
-      src="https://ctohm-edge-resizer.anishde12020.workers.dev/output=auto_w=512_h=512/anishde.dev/images/avatar.jpg"
+      src="https://ctohm-edge-resizer.anishde12020.workers.dev/output=auto_w=256_h=256/anishde.dev/images/avatar.jpg"
       alt="Avatar"
       height="24rem"
       width="24rem"

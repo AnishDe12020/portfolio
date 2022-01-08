@@ -26,5 +26,7 @@ module.exports = {
     "object-curly-spacing": [2, "always"],
     quotes: [2, "double", { avoidEscape: true }],
     "max-len": 0,
+    "arrow-parens": 0,
+    "require-jsdoc": 0,
   },
 };

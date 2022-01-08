@@ -1,11 +1,9 @@
 <script>
-  import Projects from "../components/projects.svelte";
-  import BlogPosts from "../components/blog-posts.svelte";
   import Hero from "../components/hero.svelte";
   import data from "../data.json";
   import blogData from "../blog-data.json";
-  import Skills from "../components/skills.svelte";
-  import Contact from "../components/contact.svelte";
+
+  import Lazy from "../components/Lazy.svelte";
 
   import { onMount } from "svelte";
 
@@ -34,8 +32,28 @@
 
 <main id="content">
   <Hero />
-  <BlogPosts blogPosts={blogData.posts} blogBaseUrl={data.blogBaseUrl} />
-  <Projects projects={data.projects} />
-  <Skills skillsData={data.skills} />
-  <Contact emailAddress={data.emailAddress} />
+  <Lazy this={() => import("../components/blog-posts.svelte")}>
+    <div slot="loading">Loading</div>
+    <svelte:fragment slot="component" let:Component>
+      <Component blogPosts={blogData.posts} blogBaseUrl={data.blogBaseUrl} />
+    </svelte:fragment>
+  </Lazy>
+  <Lazy this={() => import("../components/projects.svelte")}>
+    <div slot="loading">Loading</div>
+    <svelte:fragment slot="component" let:Component>
+      <Component projects={data.projects} />
+    </svelte:fragment>
+  </Lazy>
+  <Lazy this={() => import("../components/skills.svelte")}>
+    <div slot="loading">Loading</div>
+    <svelte:fragment slot="component" let:Component>
+      <Component skillsData={data.skills} />
+    </svelte:fragment>
+  </Lazy>
+  <Lazy this={() => import("../components/contact.svelte")}>
+    <div slot="loading">Loading</div>
+    <svelte:fragment slot="component" let:Component>
+      <Component emailAddress={data.emailAddress} />
+    </svelte:fragment>
+  </Lazy>
 </main>

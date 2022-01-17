@@ -9,7 +9,6 @@
 
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   import VanillaTilt from "vanilla-tilt";
-  import BlogPosts from "../components/blog-posts.svelte";
 
   const destroyTilt = () => {
     const tiltElements = document.querySelectorAll("[data-tilt]");
@@ -33,7 +32,12 @@
 
 <main id="content">
   <Hero />
-  <BlogPosts blogPosts={blogData.posts} blogBaseUrl={data.blogBaseUrl} />
+  <Lazy this={() => import("../components/blog-posts.svelte")}>
+    <div slot="loading">Loading</div>
+    <svelte:fragment slot="component" let:Component>
+      <Component blogPosts={blogData.posts} blogBaseUrl={data.blogBaseUrl} />
+    </svelte:fragment>
+  </Lazy>
   <Lazy this={() => import("../components/projects.svelte")}>
     <div slot="loading">Loading</div>
     <svelte:fragment slot="component" let:Component>

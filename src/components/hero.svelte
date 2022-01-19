@@ -1,3 +1,8 @@
+<script>
+  import Socials from "./socials.svelte";
+  import data from "../data.json";
+</script>
+
 <div
   class="flex flex-col items-center justify-center mt-32 md:mt-48 mx-6 md:mx-0 md:flex-row-reverse md:ml-24 lg:ml-32 xl:ml-48 md:mr-24 lg:mr-36 xl:mr-48 md:justify-start md:items-start md:mb-24 lg:mb-36 xl:mb-48"
   data-aos="fade-down"
@@ -29,5 +34,9 @@
       also like to share my knowledge by writing
       <span class="text-accent">blog posts</span>.
     </p>
+    <Socials
+      classNames="mt-8 -ml-2 md:ml-0 space-x-2"
+      socialsData={data.socials}
+    />
   </div>
 </div>

@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "twnft-mint-your-tweets-as-nfts-easily-and-for-free",
+      "title": "TwNFT - Mint your tweets as NFTs easily and for free",
+      "cuid": "ckz2l2xea09uhifs1hk2hfnz6",
+      "brief": "🤔 What is TwNFT?\nTwNFT is a simple web application that allows you to mint your tweets as NFTs for free.\nIt is my submission for the Thirdweb x Hashnode Hackathon.\nLive Demo / GitHub Repository\n🌐 What is Thirdweb?\nGetting started with web3 can be d...",
+      "coverImage": "https://cdn.hashnode.com/res/hashnode/image/upload/v1643626826069/Py_29X16z.png",
+      "dateAdded": "2022-01-31T11:03:24.422Z"
+    },
+    {
       "slug": "how-to-make-a-back-to-top-button-and-page-progress-bar-with-html-css-and-javascript",
       "title": "How to Make a Back to Top Button and Page Progress Bar with HTML, CSS, and JavaScript",
       "cuid": "ckxh35fwy04m079s19apv7ate",
@@ -15,14 +23,6 @@
       "brief": "Note: This article was first published in the Freecodecamp publication on the 15th of December, 2021. The link to the original article - https://www.freecodecamp.org/news/how-to-use-the-dot-github-repository/\n\nGitHub has many special repositories. Fo...",
       "coverImage": "https://cdn.hashnode.com/res/hashnode/image/upload/v1639627184519/Yqo5BERsU.png",
       "dateAdded": "2021-12-16T04:03:22.771Z"
-    },
-    {
-      "slug": "adding-an-in-browser-code-preview-to-your-react-application-with-sandpack",
-      "title": "Adding an in-browser code preview to your React Application with Sandpack",
-      "cuid": "ckx1ug1h0097yzvs18ahq8950",
-      "brief": "Sandpack is a live coding environment that runs on the browser. It is made by the team behind CodeSandbox. The main objective here is to provide interactive examples to play around with, to users. I see it being widely used in things like blog posts ...",
-      "coverImage": "https://cdn.hashnode.com/res/hashnode/image/upload/v1639228519537/gLvn_u4gu.png",
-      "dateAdded": "2021-12-11T13:18:21.826Z"
     }
   ]
 }

@@ -6,7 +6,7 @@
   import Socials from "../components/socials.svelte";
   import data from "../data.json";
 
-  import { MetaTags } from "svelte-meta-tags";
+  import { MetaTags, JsonLd } from "svelte-meta-tags";
 
   import { onMount } from "svelte";
   import "aos/dist/aos.css";
@@ -70,6 +70,25 @@
       content: "width=device-width, initial-scale=1.0",
     },
   ]}
+/>
+
+<JsonLd
+  schema={{
+    "@type": "Person",
+    name: "Anish De",
+    url: "https://anishde.dev/",
+    sameAs: [
+      "https://twitter.com/AnishDe12020",
+      "https://github.com/AnishDe12020",
+      "https://hashnode.com/@AnishDe12020",
+      "https://www.showwcase.com/",
+      "https://www.youtube.com/anishtechtutorials",
+      "https://www.youtube.com/c/AnishTechTutorials/",
+      "https://www.polywork.com/AnishDe12020",
+      "https://anishde12020.medium.com/",
+      "https://www.freecodecamp.org/news/author/anishde12020/",
+    ],
+  }}
 />
 
 <div class="max-w-[1920px] mx-auto">

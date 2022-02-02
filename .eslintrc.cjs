@@ -28,5 +28,6 @@ module.exports = {
     "max-len": 0,
     "arrow-parens": 0,
     "require-jsdoc": 0,
+    "quote-props": 0,
   },
 };

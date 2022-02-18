@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "privacy-friendly-website-analytics-with-umami-and-nextjs",
+      "title": "Privacy friendly website analytics with Umami and NextJS",
+      "cuid": "ckzqtzwo20qv5r4s165utc5ec",
+      "brief": "Website analytics is truly a very important thing. We can understand our audience well and can tailor our content to our audience for higher engagement. Google Analytics had always been the go-to solution as it is popular, easy to set up, and gives a...",
+      "coverImage": "https://cdn.hashnode.com/res/hashnode/image/upload/v1645091755632/-NyymMbeL.png",
+      "dateAdded": "2022-02-17T10:19:28.199Z"
+    },
+    {
       "slug": "twnft-mint-your-tweets-as-nfts-easily-and-for-free",
       "title": "TwNFT - Mint your tweets as NFTs easily and for free",
       "cuid": "ckz2l2xea09uhifs1hk2hfnz6",
@@ -15,14 +23,6 @@
       "brief": "This article was first posted on Freecodecamp on the 21st of December, 2021. Link - https://www.freecodecamp.org/news/back-to-top-button-and-page-progressbar-with-html-css-and-js/\n\nYou've probably seen a \"back-to-top\" button at the bottom-right corne...",
       "coverImage": "https://cdn.hashnode.com/res/hashnode/image/upload/v1640144896880/b4sCz6SdF.png",
       "dateAdded": "2021-12-22T05:18:36.494Z"
-    },
-    {
-      "slug": "how-to-use-the-github-repository",
-      "title": "How to Use the .github Repository",
-      "cuid": "ckx8ftl5z04bjz7s11vx7a31q",
-      "brief": "Note: This article was first published in the Freecodecamp publication on the 15th of December, 2021. The link to the original article - https://www.freecodecamp.org/news/how-to-use-the-dot-github-repository/\n\nGitHub has many special repositories. Fo...",
-      "coverImage": "https://cdn.hashnode.com/res/hashnode/image/upload/v1639627184519/Yqo5BERsU.png",
-      "dateAdded": "2021-12-16T04:03:22.771Z"
     }
   ]
 }

@@ -4,10 +4,17 @@
   "projects": [
     {
       "name": "DevKit",
-      "description": "Tools for developers, by the Developer Community.",
+      "description": "Tools for developers, by the Developer Community",
       "image": "https://devkit.one/og.jpg",
       "url": "https://devkit.one",
       "github": "https://github.com/AnishDe12020/devkit"
+    },
+    {
+      "name": "TwNFT",
+      "description": "A web app to mint tweets as NFTs easily and for free",
+      "image": "https://twnft.vercel.app/og.png",
+      "url": "https://twnft.vercel.app",
+      "github": "https://github.com/AnishDe12020/twnft"
     }
   ],
   "socials": [

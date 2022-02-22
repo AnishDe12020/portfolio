@@ -6,7 +6,7 @@
 
 <div data-aos="fade-down">
   <SectionHeading id="projects">Projects</SectionHeading>
-  <div id="projects" class="mx-4 md:mx-24 lg:mx-32 xl:mx-40">
+  <div id="projects" class="mx-4 md:mx-24 lg:mx-32 xl:mx-40 space-y-16">
     {#each projects as project}
       <div
         class="flex flex-col justify-center items-center lg:items-stretch lg:justify-between lg:flex-row"

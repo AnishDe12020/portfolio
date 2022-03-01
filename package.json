@@ -45,6 +45,7 @@
     "@tailwindcss/forms": "^0.4.0",
     "@themesberg/flowbite": "^1.2.0",
     "aos": "^3.0.0-beta.6",
+    "axios": "^0.26.0",
     "date-fns": "^2.27.0",
     "deta": "^1.0.1",
     "logsnag": "^0.0.2",

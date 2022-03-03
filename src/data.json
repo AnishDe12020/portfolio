@@ -15,6 +15,13 @@
       "image": "https://twnft.vercel.app/og.png",
       "url": "https://twnft.vercel.app",
       "github": "https://github.com/AnishDe12020/twnft"
+    },
+    {
+      "name": "Notiger",
+      "description": "Get realtime notifications on events from your application",
+      "image": "https://notiger.netlify.app/og.png",
+      "url": "https://www.notiger.xyz/",
+      "github": "https://github.com/AnishDe12020/notiger"
     }
   ],
   "socials": [

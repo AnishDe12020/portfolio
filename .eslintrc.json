@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "google",
+    "prettier",
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "object-curly-spacing": [2, "always"],
+    "quotes": [2, "double", { "avoidEscape": true }],
+    "no-undef": "off",
+    "require-jsdoc": "off",
+    "new-cap": "off"
+  }
+}

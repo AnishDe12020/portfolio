@@ -3,17 +3,24 @@
 
 echo "💻 Running pre-commit hook..."
 
-# yarn lint ||
-# (
-#     echo "🚨 Lint failed.";
-#     false;
-# )
+yarn format ||
+(
+    echo "🚨 Fromat failed.";
+    false;
+)
 
-# yarn check ||
-# (
-#     echo "🚨 Svelte check failed.";
-#     false;
-# )
+yarn lint ||
+(
+    echo "🚨 Lint failed.";
+    false;
+)
+
+yarn types:check || 
+(
+  echo "🚨 Type check failed.";
+  false;
+)
+
 
 echo "✅ All check passed
         Committing..."

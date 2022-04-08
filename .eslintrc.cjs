@@ -7,27 +7,13 @@ module.exports = {
     "prettier",
     "google",
   ],
-  plugins: ["svelte3", "@typescript-eslint"],
-  ignorePatterns: ["*.cjs"],
-  overrides: [{ files: ["*.svelte"], processor: "svelte3/svelte3" }],
-  settings: {
-    "svelte3/typescript": () => require("typescript"),
-  },
-  parserOptions: {
-    sourceType: "module",
-    ecmaVersion: 2019,
-  },
-  env: {
-    browser: true,
-    es2017: true,
-    node: true,
-  },
+  plugins: ["@typescript-eslint"],
   rules: {
+    "react/react-in-jsx-scope": "off",
     "object-curly-spacing": [2, "always"],
     quotes: [2, "double", { avoidEscape: true }],
-    "max-len": 0,
-    "arrow-parens": 0,
-    "require-jsdoc": 0,
-    "quote-props": 0,
+    "no-undef": "off",
+    "require-jsdoc": "off",
+    "new-cap": "off",
   },
 };

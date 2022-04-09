@@ -22,6 +22,13 @@
       "image": "https://notiger.netlify.app/og.png",
       "url": "https://www.notiger.xyz/",
       "github": "https://github.com/AnishDe12020/notiger"
+    },
+    {
+      "name": "XdoX",
+      "description": "Start challenges, log your progress and also get a unique profile page!",
+      "image": "https://www.xdox.me/og.png",
+      "url": "https://www.xdox.me/",
+      "github": "https://github.com/AnishDe12020/xdox"
     }
   ],
   "socials": [

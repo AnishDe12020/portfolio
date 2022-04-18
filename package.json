@@ -33,6 +33,7 @@
     "typescript": "^4.5.5"
   },
   "dependencies": {
+    "@fontsource/syncopate": "^4.5.5",
     "next": "^12.1.4",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"

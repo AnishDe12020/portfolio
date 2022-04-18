@@ -10,9 +10,12 @@ const HomePage: NextPage = () => {
           duration: 0.2,
         }}
         animate={{ y: 0, opacity: 1 }}
-        className="text-9xl"
+        className="text-9xl font-bold"
       >
-        Hey, I am Anish De
+        Hey, I am{" "}
+        <span className="text-transparent bg-clip-text bg-gradient-to-br from-blue-600 to-pink-600">
+          Anish De
+        </span>
       </motion.h1>
     </main>
   );

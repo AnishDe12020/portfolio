@@ -1,26 +1,26 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo "💻 Running pre-commit hook..."
+# echo "💻 Running pre-commit hook..."
 
-yarn format ||
-(
-    echo "🚨 Fromat failed.";
-    false;
-)
+# yarn format ||
+# (
+#     echo "🚨 Fromat failed.";
+#     false;
+# )
 
-yarn lint ||
-(
-    echo "🚨 Lint failed.";
-    false;
-)
+# yarn lint ||
+# (
+#     echo "🚨 Lint failed.";
+#     false;
+# )
 
-yarn types:check || 
-(
-  echo "🚨 Type check failed.";
-  false;
-)
+# yarn types:check || 
+# (
+#   echo "🚨 Type check failed.";
+#   false;
+# )
 
 
-echo "✅ All check passed
-        Committing..."
+# echo "✅ All check passed
+#         Committing..."

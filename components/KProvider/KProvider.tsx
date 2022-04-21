@@ -1,10 +1,13 @@
+import socials from "@/data/socials";
 import {
+  Action,
   KBarAnimator,
   KBarPortal,
   KBarPositioner,
   KBarProvider,
   KBarSearch,
 } from "kbar";
+import { useRouter } from "next/router";
 import { ReactNode } from "react";
 import KResults from "./KResults";
 
@@ -13,23 +16,19 @@ interface KProviderProps {
 }
 
 const KProvider = ({ children }: KProviderProps): JSX.Element => {
-  const actions = [
+  const { push } = useRouter();
+
+  const actions: Action[] = [
     {
-      id: "open-github",
-      name: "GitHub",
-      perform: () => console.log("open github"),
-    },
-    {
-      id: "open-twitter",
-      name: "Twitter",
-      perform: () => console.log("open twitter"),
-    },
-    {
-      id: "open-source",
-      name: "Source",
-      perform: () => console.log("open source"),
+      id: "home",
+      name: "Home",
+      shortcut: ["h"],
+      keywords: "home index",
+      perform: () => push("/"),
     },
   ];
+
+  actions.push(...socials);
 
   return (
     <KBarProvider actions={actions}>

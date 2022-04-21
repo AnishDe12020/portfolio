@@ -13,12 +13,12 @@ const KResults = () => {
         ) : (
           <div
             className={cx(
-              "px-3 py-1 transition-colors flex items-center justify-between cursor-pointer",
+              "px-4 py-3 transition-colors flex items-center justify-between cursor-pointer",
               active ? "bg-gray-700" : "bg-transparent"
             )}
           >
             <div className="flex items-center">
-              {item.icon && item.icon}
+              {item.icon && <div className="mr-2">{item.icon}</div>}
               {item.parent && (
                 <>
                   <span>
@@ -31,12 +31,18 @@ const KResults = () => {
                   <span>&gt;</span>
                 </>
               )}
-              <span>{item.name}</span>
+              <span className="text-lg">{item.name}</span>
             </div>
             {item.shortcut?.length && (
               <div className="flex items-center justify-center space-x-2">
                 {item.shortcut.map(shortcut => (
-                  <kbd key={shortcut} className="bg-gray-500">
+                  <kbd
+                    key={shortcut}
+                    className={cx(
+                      "px-2 py-0.5 rounded-md text-sm",
+                      active ? "bg-gray-900" : "bg-gray-700"
+                    )}
+                  >
                     {shortcut}
                   </kbd>
                 ))}

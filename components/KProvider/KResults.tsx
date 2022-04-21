@@ -1,6 +1,6 @@
 import { KBarResults, useMatches } from "kbar";
 import cx from "classnames";
-import Kbd from "../Kbd";
+import Kbd from "@/components/Kbd";
 
 const KResults = () => {
   const { results } = useMatches();

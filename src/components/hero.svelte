@@ -23,7 +23,7 @@
     <h1
       class="text-gray-100 text-4xl md:text-5xl lg:text-6xl text-center md:text-left font-bold mt-2"
     >
-      I am a Anish De
+      I am Anish De
     </h1>
     <p
       class="text-gray-400 mt-4 text-md md:text-lg lg:text-xl xl:text-2xl text-center md:text-left md:w-2/3"

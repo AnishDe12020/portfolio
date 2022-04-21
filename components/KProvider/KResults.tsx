@@ -1,6 +1,7 @@
 import { KBarResults, useMatches } from "kbar";
 import cx from "classnames";
 import Kbd from "@/components/Kbd";
+import { cloneElement, ReactElement } from "react";
 
 const KResults = () => {
   const { results } = useMatches();
@@ -19,7 +20,13 @@ const KResults = () => {
             )}
           >
             <div className="flex items-center">
-              {item.icon && <div className="mr-2">{item.icon}</div>}
+              {item.icon && (
+                <div className="mr-2">
+                  {cloneElement(item.icon as ReactElement<any>, {
+                    className: "h-5 w-5",
+                  })}
+                </div>
+              )}
               {item.parent && (
                 <>
                   <span>

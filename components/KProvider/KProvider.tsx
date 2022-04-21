@@ -10,6 +10,7 @@ import {
 } from "kbar";
 import { useRouter } from "next/router";
 import { ReactNode } from "react";
+import Kbd from "../Kbd";
 import KResults from "./KResults";
 
 interface KProviderProps {
@@ -45,6 +46,7 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
                   <MagnifyingGlassIcon className="h-6 w-6 mr-2 text-gray-100" />
                 </span>
                 <KBarSearch className="w-full border-b border-gray-300 py-2 border-none bg-transparent text-gray-100 rounded-md outline-none" />
+                <Kbd>esc</Kbd>
               </div>
 
               <KResults />

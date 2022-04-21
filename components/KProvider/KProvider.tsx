@@ -38,7 +38,7 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
           {/* @ts-ignore */}
           <KBarPositioner className="z-30 bg-secondary/40 backdrop-filter backdrop-blur-md">
             {/* @ts-ignore */}
-            <KBarAnimator className="rounded-xl mx-auto overflow-hidden w-[32rem] border-gray-500 bg-secondary/80 drop-shadow-lg backdrop-filter backdrop-blur-lg px-4">
+            <KBarAnimator className="rounded-xl mx-auto overflow-hidden w-[32rem] bg-secondary/80 shadow-2xl backdrop-filter backdrop-blur-lg px-4 border-[1px] border-tertiary">
               <KBarSearch className="w-full border-b border-gray-300 py-2 border-none bg-transparent text-gray-100 rounded-md outline-none my-4" />
               <KResults />
               <div className="h-4" />

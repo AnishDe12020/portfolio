@@ -33,10 +33,11 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
   return (
     <KBarProvider actions={actions}>
       <KBarPortal>
-        <KBarPositioner className="z-30 bg-primary/80 backdrop-filter backdrop-blur-md">
-          <KBarAnimator className="rounded-xl bg-primary mx-auto overflow-hidden w-[32rem] border-gray-500 shadow-gray-900 shadow-lg">
-            <KBarSearch className="w-full border-b border-gray-300 py-2 border-none bg-primary text-gray-100 rounded-md outline-none" />
+        <KBarPositioner className="z-30 bg-secondary/40 backdrop-filter backdrop-blur-md">
+          <KBarAnimator className="rounded-xl mx-auto overflow-hidden w-[32rem] border-gray-500 bg-secondary/80 drop-shadow-lg backdrop-filter backdrop-blur-lg px-4">
+            <KBarSearch className="w-full border-b border-gray-300 py-2 border-none bg-transparent text-gray-100 rounded-md outline-none my-4" />
             <KResults />
+            <div className="h-4" />
           </KBarAnimator>
         </KBarPositioner>
       </KBarPortal>

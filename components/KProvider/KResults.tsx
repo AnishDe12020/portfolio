@@ -13,8 +13,8 @@ const KResults = () => {
         ) : (
           <div
             className={cx(
-              "px-4 py-3 transition-colors flex items-center justify-between cursor-pointer",
-              active ? "bg-gray-700" : "bg-transparent"
+              "px-4 py-3 transition-colors flex items-center justify-between cursor-pointer rounded-lg",
+              active ? "bg-tertiary" : "bg-transparent"
             )}
           >
             <div className="flex items-center">
@@ -40,7 +40,7 @@ const KResults = () => {
                     key={shortcut}
                     className={cx(
                       "px-2 py-0.5 rounded-md text-sm",
-                      active ? "bg-gray-900" : "bg-gray-700"
+                      active ? "bg-secondary" : "bg-tertiary"
                     )}
                   >
                     {shortcut}

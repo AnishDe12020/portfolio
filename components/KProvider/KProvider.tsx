@@ -38,7 +38,7 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
       <KBarProvider actions={actions}>
         <KBarPortal>
           {/* @ts-ignore */}
-          <KBarPositioner className="z-30 bg-secondary/40 backdrop-filter backdrop-blur-md">
+          <KBarPositioner className="z-30 bg-secondary/40 backdrop-filter backdrop-blur-xl">
             {/* @ts-ignore */}
             <KBarAnimator className="rounded-xl mx-auto overflow-hidden w-[32rem] bg-secondary/80 shadow-2xl backdrop-filter backdrop-blur-lg px-4 border-[1px] border-tertiary">
               <div className="flex justify-between items-center ml-1 py-4">

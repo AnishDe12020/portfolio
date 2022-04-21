@@ -1,5 +1,6 @@
 import { KBarResults, useMatches } from "kbar";
 import cx from "classnames";
+import Kbd from "../Kbd";
 
 const KResults = () => {
   const { results } = useMatches();
@@ -36,15 +37,7 @@ const KResults = () => {
             {item.shortcut?.length && (
               <div className="flex items-center justify-center space-x-2">
                 {item.shortcut.map(shortcut => (
-                  <kbd
-                    key={shortcut}
-                    className={cx(
-                      "px-2 py-0.5 rounded-md text-sm",
-                      active ? "bg-secondary" : "bg-tertiary"
-                    )}
-                  >
-                    {shortcut}
-                  </kbd>
+                  <Kbd key={shortcut}>{shortcut}</Kbd>
                 ))}
               </div>
             )}

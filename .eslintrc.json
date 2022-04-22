@@ -12,6 +12,7 @@
     "quotes": [2, "double", { "avoidEscape": true }],
     "no-undef": "off",
     "require-jsdoc": "off",
-    "new-cap": "off"
+    "new-cap": "off",
+    "react/prop-types": "off"
   }
 }

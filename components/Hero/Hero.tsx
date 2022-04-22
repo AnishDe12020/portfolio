@@ -1,6 +1,13 @@
 import { motion } from "framer-motion";
+import { Image } from "types/graphcms";
 
-const Hero = (): JSX.Element => {
+interface HeroProps {
+  heroText: string;
+  description: string;
+  image: Image;
+}
+
+const Hero = ({ heroText, description, image }: HeroProps): JSX.Element => {
   return (
     <main className="flex flex-col justify-center items-center mt-32">
       <motion.h1
@@ -8,7 +15,7 @@ const Hero = (): JSX.Element => {
         animate={{ scaleY: [1.2, 1, 0.6, 1], scaleX: [0.6, 1, 1.2, 1] }}
         className="text-5xl"
       >
-        Anish De
+        {heroText}
       </motion.h1>
     </main>
   );

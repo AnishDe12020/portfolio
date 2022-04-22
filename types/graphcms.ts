@@ -4,8 +4,12 @@ export interface Image {
   width: number;
 }
 
+export interface RichText {
+  html: string;
+}
+
 export interface HomeComponent {
   headingText: string;
-  description: string;
+  description: RichText;
   image: Image;
 }

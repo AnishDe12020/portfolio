@@ -27,7 +27,9 @@ export const getStaticProps: GetStaticProps = async () => {
           content {
             ... on Home {
               headingText
-              description
+              description {
+                html
+              }
               image {
                 url
                 height

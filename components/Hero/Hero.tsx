@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import NextImage from "next/image";
-import { Image } from "types/graphcms";
+import { Image, RichText } from "types/graphcms";
 
 interface HeroProps {
   heroText: string;
-  description: string;
+  description: RichText;
   image: Image;
 }
 
@@ -23,11 +23,12 @@ const Hero = ({ heroText, description, image }: HeroProps): JSX.Element => {
           className="text-xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-        >
-          {description}
-        </motion.p>
+          dangerouslySetInnerHTML={{ __html: description.html }}
+        />
       </div>
-      <NextImage src={image.url} height={image.height} width={image.width} />
+      <div className="w-8 h-8 relative">
+        <NextImage src={image.url} className="rounded-full" layout="fill" />
+      </div>
     </main>
   );
 };

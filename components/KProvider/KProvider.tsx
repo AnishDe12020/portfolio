@@ -13,6 +13,8 @@ import { ReactNode } from "react";
 import Kbd from "@/components/Kbd";
 import KResults from "./KResults";
 
+import kproviderData from "@/data/kprovider.json";
+
 interface KProviderProps {
   children: ReactNode;
 }
@@ -20,15 +22,15 @@ interface KProviderProps {
 const KProvider = ({ children }: KProviderProps): JSX.Element => {
   const { push } = useRouter();
 
-  const actions: Action[] = [
-    {
-      id: "home",
-      name: "Home",
-      shortcut: ["h"],
-      keywords: "home index",
-      perform: () => push("/"),
-    },
-  ];
+  const actions: Action[] = [];
+
+  kproviderData.pages.map(page => {
+    actions.push({
+      id: page.id,
+      name: page.name,
+      perform: () => push(page.slug),
+    });
+  });
 
   actions.push(...socials);
 

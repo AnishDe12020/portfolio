@@ -12,6 +12,7 @@ const generateKProviderData = async () => {
   const query = gql`
     query PageHome {
       pages {
+        id
         slug
         name
       }

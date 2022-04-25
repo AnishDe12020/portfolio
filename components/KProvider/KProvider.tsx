@@ -29,10 +29,18 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
       id: page.id,
       name: page.name,
       perform: () => push(page.slug),
+      section: "Pages",
     });
   });
 
-  actions.push(...socials);
+  socials.map(social => {
+    actions.push({
+      id: social.id,
+      name: social.name,
+      perform: () => window.open(social.url),
+      section: "Socials",
+    });
+  });
 
   return (
     <>
@@ -44,7 +52,7 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
                 <span>
                   <MagnifyingGlassIcon className="h-6 w-6 mr-2 text-gray-100" />
                 </span>
-                <KBarSearch className="w-full border-b border-gray-300 py-2 border-none bg-transparent text-gray-100 rounded-md outline-none" />
+                <KBarSearch className="w-full border-b border-gray-300 pt-2 border-none bg-transparent text-gray-100 rounded-md outline-none" />
                 <Kbd>esc</Kbd>
               </div>
 

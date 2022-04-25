@@ -11,7 +11,7 @@ const KResults = () => {
       items={results}
       onRender={({ item, active }) =>
         typeof item === "string" ? (
-          <div>{item}</div>
+          <div className="text-sm px-3 py-2 text-gray-400">{item}</div>
         ) : (
           <div
             className={cx(

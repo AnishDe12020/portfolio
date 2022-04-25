@@ -5,7 +5,7 @@
   "scripts": {
     "prepare": "husky install",
     "dev": "next dev",
-    "build": "next build",
+    "build": "yarn gen:kprovider && next build",
     "start": "next start",
     "lint": "eslint '{components,pages,utils,data,layouts}/**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "eslint --fix '{components,pages,utils,data,layouts}/**/*.{js,jsx,ts,tsx}'",

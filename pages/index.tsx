@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const { data } = await graphcmsClient.query({
     query: gql`
       query PageHome {
-        page(where: { slug: "home" }) {
+        page(where: { slug: "/" }) {
           content {
             ... on Home {
               headingText

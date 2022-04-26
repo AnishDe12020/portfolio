@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
-import { Twitterlogo } from "@/components/Shared/Icons";
-import { GitHub } from "react-feather";
+import { GitHubLogo, Twitterlogo } from "@/components/Shared/Icons";
 
 interface Social {
   id: string;
@@ -20,7 +19,7 @@ const socials: Social[] = [
     id: "github",
     name: "GitHub",
     url: "https://github.com/AnishDe12020",
-    icon: <GitHub />,
+    icon: <GitHubLogo />,
   },
 ];
 

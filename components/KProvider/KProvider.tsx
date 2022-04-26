@@ -41,6 +41,7 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
       name: social.name,
       perform: () => window.open(social.url),
       section: "Socials",
+      icon: social.icon,
     });
   });
 

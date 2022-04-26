@@ -22,7 +22,7 @@ const KResults = () => {
           >
             <div className="flex items-center">
               {item.icon && (
-                <div className="mr-2">
+                <div className="mr-4">
                   {cloneElement(item.icon as ReactElement<any>, {
                     className: "h-5 w-5",
                   })}

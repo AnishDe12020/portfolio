@@ -35,7 +35,13 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
       id: "skills",
       name: "Skills",
       keywords: "skills talents skillset stack",
+    },
+    {
+      id: "skills-page",
+      name: "All Skills",
+      keywords: "skills talents skillset stack",
       shortcut: ["s"],
+      parent: "skills",
     },
   ];
 

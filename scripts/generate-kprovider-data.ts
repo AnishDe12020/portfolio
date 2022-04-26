@@ -12,13 +12,6 @@ const generateKProviderData = async () => {
 
     const query = gql`
       query KProviderData {
-        pages {
-          id
-          slug
-          name
-          keywords
-          shortcuts
-        }
         skills {
           id
           slug

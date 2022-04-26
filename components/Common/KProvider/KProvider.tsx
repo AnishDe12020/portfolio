@@ -23,28 +23,31 @@ interface KProviderProps {
 const KProvider = ({ children }: KProviderProps): JSX.Element => {
   const { push } = useRouter();
 
-  const actions: Action[] = [];
+  const actions: Action[] = [
+    {
+      id: "home",
+      name: "Home",
+      keywords: "index root",
+      shortcut: ["h"],
+      perform: () => push("/"),
+    },
+    {
+      id: "skills",
+      name: "Skills",
+      keywords: "skills talents skillset stack",
+      shortcut: ["s"],
+    },
+  ];
 
-  const { pages, skills } = kproviderData;
-
-  pages.map(page => {
-    actions.push({
-      id: page.id,
-      name: page.name,
-      keywords: page.keywords,
-      shortcut: page.shortcuts,
-      perform: () => push(page.slug),
-      section: "Pages",
-    });
-  });
+  const { skills } = kproviderData;
 
   skills.map(skill => {
     actions.push({
       id: skill.id,
       name: skill.name,
       perform: () => push("/skills" + skill.slug),
-      section: "Skills",
       icon: <IconFactory name={skill.iconName} />,
+      parent: "skills",
     });
   });
 

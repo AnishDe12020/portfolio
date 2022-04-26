@@ -53,7 +53,7 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
             <KBarAnimator className="rounded-xl mx-auto overflow-hidden w-[32rem] bg-secondary/80 shadow-2xl backdrop-filter backdrop-blur-md px-4 border-[1px] border-tertiary">
               <div className="flex justify-between items-end py-4 mx-1">
                 <span>
-                  <Search className="h-5 w-5 mr-2 text-gray-100" />
+                  <Search className="w-5 h-5 mr-2 mb-0.5 text-gray-100" />
                 </span>
                 <KBarSearch className="w-full border-b border-gray-300 pt-2 border-none bg-transparent text-gray-100 rounded-md outline-none" />
                 <Kbd>esc</Kbd>

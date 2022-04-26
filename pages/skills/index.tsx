@@ -13,6 +13,7 @@ interface SkillsPageProps {
 const SkillsPage: NextPage<SkillsPageProps> = ({ skills }) => {
   return (
     <>
+      <h1 className="text-2xl font-bold mb-8">Skills</h1>
       {skills.map(skill => (
         <div
           key={skill.id}

@@ -14,6 +14,7 @@ import KResults from "./KResults";
 
 import kproviderData from "@/data/kprovider.json";
 import { Search } from "react-feather";
+import IconFactory from "@/components/Shared/Icons/IconFactory";
 
 interface KProviderProps {
   children: ReactNode;
@@ -24,7 +25,9 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
 
   const actions: Action[] = [];
 
-  kproviderData.pages.map(page => {
+  const { pages, skills } = kproviderData;
+
+  pages.map(page => {
     actions.push({
       id: page.id,
       name: page.name,
@@ -32,6 +35,16 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
       shortcut: page.shortcuts,
       perform: () => push(page.slug),
       section: "Pages",
+    });
+  });
+
+  skills.map(skill => {
+    actions.push({
+      id: skill.id,
+      name: skill.name,
+      perform: () => push("/skills" + skill.slug),
+      section: "Skills",
+      icon: <IconFactory name={skill.iconName} />,
     });
   });
 

@@ -11,13 +11,19 @@ const generateKProviderData = async () => {
     const graphCMSClient = new GraphQLClient(process.env.GRAPHCMS_ENDPOINT);
 
     const query = gql`
-      query PageHome {
+      query KProviderData {
         pages {
           id
           slug
           name
           keywords
           shortcuts
+        }
+        skills {
+          id
+          slug
+          name
+          iconName
         }
       }
     `;

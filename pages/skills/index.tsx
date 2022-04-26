@@ -12,7 +12,7 @@ interface SkillsPageProps {
 
 const SkillsPage: NextPage<SkillsPageProps> = ({ skills }) => {
   return (
-    <div className="max-w-3xl mx-auto px-8">
+    <>
       {skills.map(skill => (
         <div
           key={skill.id}
@@ -37,7 +37,7 @@ const SkillsPage: NextPage<SkillsPageProps> = ({ skills }) => {
           </a>
         </div>
       ))}
-    </div>
+    </>
   );
 };
 

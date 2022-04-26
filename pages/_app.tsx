@@ -7,7 +7,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <KProvider>
       <Header />
-      <Component {...pageProps} />
+      <div className="max-w-3xl mx-auto px-8">
+        <Component {...pageProps} />
+      </div>
     </KProvider>
   );
 }

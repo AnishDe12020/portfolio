@@ -20,4 +20,5 @@ export interface Skill {
   link: string;
   id: string;
   slug: string;
+  description: string;
 }

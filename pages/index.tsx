@@ -1,5 +1,5 @@
 import type { GetStaticProps, NextPage } from "next";
-import Hero from "@/components/Hero";
+import Hero from "@/components/Home/Hero";
 import graphcmsClient from "lib/graphcmsClient";
 import { gql } from "@apollo/client";
 import { HomeComponent } from "types/graphcms";

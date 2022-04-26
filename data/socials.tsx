@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { TwitterLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
-import { Twitterlogo } from "@/components/Icons";
+import { Twitterlogo } from "@/components/Shared/Icons";
 
 interface Social {
   id: string;

@@ -10,7 +10,7 @@ import {
 } from "kbar";
 import { useRouter } from "next/router";
 import { ReactNode } from "react";
-import Kbd from "@/components/Kbd";
+import Kbd from "@/components/Shared/Kbd";
 import KResults from "./KResults";
 
 import kproviderData from "@/data/kprovider.json";

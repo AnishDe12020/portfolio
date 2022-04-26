@@ -1,6 +1,6 @@
 import { KBarResults, useMatches } from "kbar";
 import cx from "classnames";
-import Kbd from "@/components/Kbd";
+import Kbd from "@/components/Shared/Kbd";
 import { cloneElement, ReactElement } from "react";
 
 const KResults = () => {

@@ -13,3 +13,11 @@ export interface HomeComponent {
   description: RichText;
   image: Image;
 }
+
+export interface Skill {
+  iconName: string;
+  name: string;
+  link: string;
+  id: string;
+  slug: string;
+}

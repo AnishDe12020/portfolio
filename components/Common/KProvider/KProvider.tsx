@@ -1,5 +1,4 @@
 import socials from "@/data/socials";
-import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import {
   Action,
   KBarAnimator,
@@ -14,6 +13,7 @@ import Kbd from "@/components/Shared/Kbd";
 import KResults from "./KResults";
 
 import kproviderData from "@/data/kprovider.json";
+import { Search } from "react-feather";
 
 interface KProviderProps {
   children: ReactNode;
@@ -51,9 +51,9 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
         <KBarPortal>
           <KBarPositioner className="z-30 bg-secondary/40 backdrop-filter backdrop-blur-sm">
             <KBarAnimator className="rounded-xl mx-auto overflow-hidden w-[32rem] bg-secondary/80 shadow-2xl backdrop-filter backdrop-blur-md px-4 border-[1px] border-tertiary">
-              <div className="flex justify-between items-center py-4 mx-1">
+              <div className="flex justify-between items-end py-4 mx-1">
                 <span>
-                  <MagnifyingGlassIcon className="h-6 w-6 mr-2 text-gray-100" />
+                  <Search className="h-5 w-5 mr-2 text-gray-100" />
                 </span>
                 <KBarSearch className="w-full border-b border-gray-300 pt-2 border-none bg-transparent text-gray-100 rounded-md outline-none" />
                 <Kbd>esc</Kbd>

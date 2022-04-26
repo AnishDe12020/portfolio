@@ -4,7 +4,7 @@ import { gql } from "@apollo/client";
 import type { Skill } from "types/graphcms";
 import IconFactory from "@/components/Shared/Icons/IconFactory";
 import Link from "next/link";
-import { ExternalLinkIcon } from "@radix-ui/react-icons";
+import { ExternalLink } from "react-feather";
 
 interface SkillsPageProps {
   skills: Skill[];
@@ -34,7 +34,7 @@ const SkillsPage: NextPage<SkillsPageProps> = ({ skills }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <ExternalLinkIcon />
+            <ExternalLink className="h-4 w-4" />
           </a>
         </div>
       ))}

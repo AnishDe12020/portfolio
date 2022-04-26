@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { TwitterLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
+import { Twitterlogo } from "@/components/Icons";
 
 interface Social {
   id: string;
@@ -13,7 +14,7 @@ const socials: Social[] = [
     id: "twitter",
     name: "Twitter",
     url: "https://twitter.com/AnishDe12020",
-    icon: <TwitterLogoIcon />,
+    icon: <Twitterlogo color="#1DA1F2" />,
   },
   {
     id: "github",

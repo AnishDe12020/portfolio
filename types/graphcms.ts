@@ -22,3 +22,7 @@ export interface Skill {
   slug: string;
   description: string;
 }
+
+export interface SkillWithExperience extends Skill {
+  experience: RichText;
+}

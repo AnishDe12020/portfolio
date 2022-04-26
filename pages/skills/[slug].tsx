@@ -3,10 +3,10 @@ import { gql } from "@apollo/client";
 import graphcmsClient from "lib/graphcmsClient";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { ArrowUpLeft, ArrowUpRight, ExternalLink } from "react-feather";
-import type { Skill } from "types/graphcms";
+import type { Skill, SkillWithExperience } from "types/graphcms";
 
 interface SkillsPageProps {
-  skill: Skill;
+  skill: SkillWithExperience;
 }
 
 const SkillPage: NextPage<SkillsPageProps> = ({ skill }) => {
@@ -22,10 +22,14 @@ const SkillPage: NextPage<SkillsPageProps> = ({ skill }) => {
       </div>
       <a
         href={skill.link}
-        className="mt-8 text-gray-300 flex space-x-1 items-end text-sm hover:text-gray-100 transition duration-200"
+        className="mt-4 text-gray-300 flex space-x-1 items-end text-sm hover:text-gray-100 transition duration-200"
       >
         <span>{skill.link}</span> <ArrowUpRight className="h-4 w-4" />
       </a>
+      <div
+        className="mt-8"
+        dangerouslySetInnerHTML={{ __html: skill.experience.html }}
+      />
     </>
   );
 };
@@ -40,6 +44,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           link
           name
           description
+          experience {
+            html
+          }
         }
       }
     `,

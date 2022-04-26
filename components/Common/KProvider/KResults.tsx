@@ -2,6 +2,7 @@ import { KBarResults, useMatches } from "kbar";
 import cx from "classnames";
 import Kbd from "@/components/Shared/Kbd";
 import { cloneElement, ReactElement } from "react";
+import { ArrowRight } from "react-feather";
 
 const KResults = () => {
   const { results } = useMatches();
@@ -29,14 +30,16 @@ const KResults = () => {
               )}
               {item.parent && (
                 <>
-                  <span>
+                  <span className="opacity-60">
                     {
                       item.ancestors.find(
                         ancestor => ancestor.id === item.parent
                       )?.name
                     }
                   </span>
-                  <span>&gt;</span>
+                  <span className="opacity-60">
+                    <ArrowRight className="h-4 w-4 mx-2" />
+                  </span>
                 </>
               )}
               <span className="text-lg">{item.name}</span>

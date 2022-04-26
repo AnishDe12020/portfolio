@@ -28,6 +28,8 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
     actions.push({
       id: page.id,
       name: page.name,
+      keywords: page.keywords,
+      shortcut: page.shortcuts,
       perform: () => push(page.slug),
       section: "Pages",
     });

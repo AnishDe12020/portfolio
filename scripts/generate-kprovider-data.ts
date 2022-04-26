@@ -16,15 +16,17 @@ const generateKProviderData = async () => {
           id
           slug
           name
+          keywords
+          shortcuts
         }
       }
     `;
 
-    console.log("Querying data...")
+    console.log("Querying data...");
     const data = await graphCMSClient.request(query);
     console.log("Data received");
 
-    console.log("Writing data to file...")
+    console.log("Writing data to file...");
     fs.writeFileSync(KPROVIDER_DATA_FILE, JSON.stringify(data));
     console.log("Data written to file");
   } catch (error) {

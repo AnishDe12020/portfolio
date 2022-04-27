@@ -73,8 +73,8 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
     <>
       <KBarProvider actions={actions}>
         <KBarPortal>
-          <KBarPositioner className="z-30 bg-secondary/40 backdrop-filter backdrop-blur-sm">
-            <KBarAnimator className="rounded-xl mx-auto overflow-hidden w-[32rem] bg-secondary/80 shadow-2xl backdrop-filter backdrop-blur-md px-4 border-[1px] border-tertiary">
+          <KBarPositioner className="z-30 bg-secondary/60 backdrop-filter backdrop-blur-sm">
+            <KBarAnimator className="rounded-xl mx-auto overflow-hidden w-[32rem] bg-secondary/90 shadow-2xl backdrop-filter backdrop-blur-md px-4 border-[1px] border-tertiary">
               <div className="flex justify-between items-end py-4 mx-1">
                 <span>
                   <Search className="w-5 h-5 mr-2 mb-0.5 text-gray-100" />

@@ -16,7 +16,11 @@ const BreadcrumbItem = ({
   isCurrent,
 }: BreadcrumbItemProps): JSX.Element => (
   <Fragment>
-    {!isRoot && <span>/</span>}
+    {!isRoot && (
+      <span aria-hidden="true" className="opacity-50">
+        /
+      </span>
+    )}
     <li>
       <Link href={href} passHref>
         <a

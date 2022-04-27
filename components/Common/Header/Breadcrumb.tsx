@@ -43,16 +43,19 @@ const Breadcrumb = (): JSX.Element => {
       </li>
       {breadcrumbs &&
         breadcrumbs.map(({ href, label, isCurrent }) => (
-          <li key={href}>
-            <Link href={href} passHref>
-              <a
-                className={isCurrent ? "font-semibold" : ""}
-                aria-current={isCurrent ? "page" : "false"}
-              >
-                {label}
-              </a>
-            </Link>
-          </li>
+          <>
+            <span>/</span>
+            <li key={href}>
+              <Link href={href} passHref>
+                <a
+                  className={isCurrent ? "font-semibold" : ""}
+                  aria-current={isCurrent ? "page" : "false"}
+                >
+                  {label}
+                </a>
+              </Link>
+            </li>
+          </>
         ))}
     </ol>
   );

@@ -30,11 +30,13 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
       keywords: "index root",
       shortcut: ["h"],
       perform: () => push("/"),
+      section: "Pages",
     },
     {
       id: "skills",
       name: "Skills",
       keywords: "skills talents skillset stack",
+      section: "Pages",
     },
     {
       id: "skills-page",

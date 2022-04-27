@@ -48,7 +48,11 @@ const Breadcrumb = (): JSX.Element => {
             <li key={href}>
               <Link href={href} passHref>
                 <a
-                  className={isCurrent ? "font-semibold" : ""}
+                  className={
+                    isCurrent
+                      ? "bg-clip-text text-transparent bg-gradient-to-br from-sky-500 to-emerald-500 font-bold"
+                      : ""
+                  }
                   aria-current={isCurrent ? "page" : "false"}
                 >
                   {label}

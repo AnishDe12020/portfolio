@@ -44,6 +44,7 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
       keywords: "skills talents skillset stack",
       shortcut: ["s"],
       parent: "skills",
+      perform: () => push("/skills"),
     },
   ];
 

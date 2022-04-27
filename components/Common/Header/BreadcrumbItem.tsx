@@ -22,7 +22,7 @@ const BreadcrumbItem = ({
         <a
           className={cx(
             isCurrent
-              ? "bg-clip-text text-transparent bg-gradient-to-br from-sky-500 to-emerald-500 font-bold"
+              ? "bg-clip-text text-transparent bg-gradient-to-br from-[#9ebd13] to-[#008552] font-bold"
               : "text-gray-300",
             "hover:opacity-80 transition duration-200"
           )}

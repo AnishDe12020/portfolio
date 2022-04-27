@@ -54,7 +54,7 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
     actions.push({
       id: skill.id,
       name: skill.name,
-      perform: () => push("/skills" + skill.slug),
+      perform: () => push("/skills/" + skill.slug),
       icon: <IconFactory name={skill.iconName} />,
       parent: "skills",
     });

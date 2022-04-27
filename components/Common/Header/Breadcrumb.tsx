@@ -2,8 +2,9 @@ import capitalize from "@/utils/helpers";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import BreadcrumbItem from "./BreadcrumbItem";
 
-interface Breadcrumb {
+interface IBreadcrumb {
   href: string;
   label: string;
   isCurrent: boolean;
@@ -11,7 +12,7 @@ interface Breadcrumb {
 
 const Breadcrumb = (): JSX.Element => {
   const { asPath } = useRouter();
-  const [breadcrumbs, setBreadcrumbs] = useState<Breadcrumb[]>([]);
+  const [breadcrumbs, setBreadcrumbs] = useState<IBreadcrumb[]>([]);
 
   useEffect(() => {
     const pathWithoutQuery = asPath.split("?")[0];
@@ -36,30 +37,14 @@ const Breadcrumb = (): JSX.Element => {
 
   return (
     <ol aria-label="breadcrumb" className="flex space-x-2">
-      <li>
-        <Link href="/" passHref>
-          <a>~</a>
-        </Link>
-      </li>
+      <BreadcrumbItem href="/" skipSeparator>
+        ~
+      </BreadcrumbItem>
       {breadcrumbs &&
         breadcrumbs.map(({ href, label, isCurrent }) => (
-          <>
-            <span>/</span>
-            <li key={href}>
-              <Link href={href} passHref>
-                <a
-                  className={
-                    isCurrent
-                      ? "bg-clip-text text-transparent bg-gradient-to-br from-sky-500 to-emerald-500 font-bold"
-                      : ""
-                  }
-                  aria-current={isCurrent ? "page" : "false"}
-                >
-                  {label}
-                </a>
-              </Link>
-            </li>
-          </>
+          <BreadcrumbItem href={href} isCurrent={isCurrent} key={href}>
+            {label}
+          </BreadcrumbItem>
         ))}
     </ol>
   );

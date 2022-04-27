@@ -2,8 +2,8 @@ import IconFactory from "@/components/Shared/Icons/IconFactory";
 import { gql } from "@apollo/client";
 import graphcmsClient from "lib/graphcmsClient";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { ArrowUpLeft, ArrowUpRight, ExternalLink } from "react-feather";
-import type { Skill, SkillWithExperience } from "types/graphcms";
+import { ArrowUpRight } from "react-feather";
+import type { SkillWithExperience } from "types/graphcms";
 
 interface SkillsPageProps {
   skill: SkillWithExperience;

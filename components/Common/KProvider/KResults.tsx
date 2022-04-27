@@ -12,11 +12,11 @@ const KResults = () => {
       items={results}
       onRender={({ item, active }) =>
         typeof item === "string" ? (
-          <div className="text-sm px-3 py-2 text-gray-400">{item}</div>
+          <div className="text-sm px-3 pt-4 pb-2 text-gray-400">{item}</div>
         ) : (
           <div
             className={cx(
-              "px-4 py-3 transition-colors flex items-center justify-between cursor-pointer rounded-lg",
+              "px-3 py-2 transition-colors flex items-center justify-between cursor-pointer rounded-lg",
               active ? "bg-tertiary" : "bg-transparent"
             )}
           >
@@ -24,7 +24,7 @@ const KResults = () => {
               {item.icon && (
                 <div className="mr-4">
                   {cloneElement(item.icon as ReactElement<any>, {
-                    className: "h-5 w-5",
+                    className: "h-4 w-4",
                   })}
                 </div>
               )}
@@ -42,7 +42,7 @@ const KResults = () => {
                   </span>
                 </>
               )}
-              <span className="text-lg">{item.name}</span>
+              <span className="text-md">{item.name}</span>
             </div>
             {item.shortcut?.length && (
               <div className="flex items-center justify-center space-x-2">

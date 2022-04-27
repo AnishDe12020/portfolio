@@ -1,15 +1,17 @@
-import { AnchorHTMLAttributes } from "react";
+import { AnchorHTMLAttributes, ReactNode } from "react";
 import { ArrowUpRight } from "react-feather";
 import cx from "classnames";
 
 interface ExternalLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
   className?: string;
+  children?: ReactNode;
 }
 
 const ExternalLink = ({
   href,
   className,
+  children,
   ...otherProps
 }: ExternalLinkProps): JSX.Element => (
   <a
@@ -22,7 +24,7 @@ const ExternalLink = ({
     rel="noopener noreferrer"
     {...otherProps}
   >
-    <span>{href}</span> <ArrowUpRight className="h-4 w-4" />
+    <span>{children ?? href}</span> <ArrowUpRight className="h-4 w-4" />
   </a>
 );
 

@@ -1,4 +1,4 @@
-import capitalize from "@/utils/helpers";
+import { capitalize } from "@/utils/helpers";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import BreadcrumbItem from "./BreadcrumbItem";

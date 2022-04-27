@@ -1,4 +1,5 @@
 import ExternalLink from "@/components/Shared/ExternalLink";
+import { cleanLink, getGitHubOwnerAndRepoFromLink } from "@/utils/helpers";
 import NextImage from "next/image";
 import Link from "next/link";
 import type { Image } from "types/graphcms";
@@ -31,11 +32,17 @@ const ProjectCard = ({
       <div className="flex flex-col">
         <h2 className="text-xl font-bold">{name}</h2>
         <p className="text-gray-300 text-sm mt-2">{description}</p>
+        <div className="flex flex-col space-y-2 mt-4">
+          {link && <ExternalLink href={link}>{cleanLink(link)}</ExternalLink>}
+          {githubLink && (
+            <ExternalLink href={githubLink}>
+              {getGitHubOwnerAndRepoFromLink(githubLink)}
+            </ExternalLink>
+          )}
+        </div>
         <Link href={`/projects/${slug}`} passHref>
           <a className="text-gray-300 mt-4">Learn More</a>
         </Link>
-        {link && <ExternalLink href={link} className="mt-2" />}
-        {githubLink && <ExternalLink href={githubLink} className="mt-2" />}
       </div>
     </div>
   );

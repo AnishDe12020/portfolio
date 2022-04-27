@@ -37,7 +37,7 @@ const Breadcrumb = (): JSX.Element => {
 
   return (
     <ol aria-label="breadcrumb" className="flex space-x-2">
-      <BreadcrumbItem href="/" skipSeparator>
+      <BreadcrumbItem href="/" isRoot>
         ~
       </BreadcrumbItem>
       {breadcrumbs &&

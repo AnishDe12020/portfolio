@@ -22,7 +22,7 @@ const ProjectCard = ({
   githubLink,
 }: ProjectProps): JSX.Element => {
   return (
-    <div className="flex space-x-4 bg-secondary p-4 rounded-lg border-tertiary border-[1px] transition duration-200">
+    <div className="flex space-x-8 bg-secondary p-4 rounded-lg border-tertiary border-[1px] transition duration-200">
       <NextImage
         width={image.width / 4}
         height={image.height / 4}

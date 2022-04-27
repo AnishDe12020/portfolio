@@ -46,6 +46,20 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
       parent: "skills",
       perform: () => push("/skills"),
     },
+    {
+      id: "projects",
+      name: "Projects",
+      keywords: "projects creations apps repositories",
+      section: "Pages",
+    },
+    {
+      id: "projects-page",
+      name: "All Projects",
+      keywords: "projects creations apps repositories",
+      shortcut: ["p"],
+      parent: "projects",
+      perform: () => push("/projects"),
+    },
   ];
 
   const { skills } = kproviderData;

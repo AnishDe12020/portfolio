@@ -28,6 +28,7 @@ const ProjectCard = ({
         height={image.height / 4}
         src={image.url}
         alt={name}
+        className="rounded-lg"
       />
       <div className="flex flex-col">
         <h2 className="text-xl font-bold">{name}</h2>

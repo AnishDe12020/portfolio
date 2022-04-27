@@ -23,6 +23,15 @@ export interface Skill {
   description: string;
 }
 
+export interface Project {
+  name: string;
+  description: string;
+  link: string;
+  githubLink: string;
+  slug: string;
+  id: string;
+}
+
 export interface SkillWithExperience extends Skill {
   experience: RichText;
 }

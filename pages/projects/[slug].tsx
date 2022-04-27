@@ -1,6 +1,6 @@
 import ExternalLink from "@/components/Shared/ExternalLink";
-import IconFactory from "@/components/Shared/Icons/IconFactory";
 import { gql } from "@apollo/client";
+import NextImage from "next/image";
 import graphcmsClient from "lib/graphcmsClient";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { Project } from "types/graphcms";
@@ -18,8 +18,13 @@ const SkillPage: NextPage<ProjectPageProps> = ({ project }) => {
           <p className="text-gray-300 text-sm">{project.description}</p>
         </div>
       </div>
-
-      <ExternalLink href={project.link} className="mt-4 md:mt-6" />
+      <ExternalLink href={project.link} className="mt-4 md:mt-6 mb-8" />
+      <NextImage
+        width={project.image.width}
+        height={project.image.height}
+        src={project.image.url}
+        className="rounded-xl drop-shadow-md"
+      />
     </>
   );
 };
@@ -33,6 +38,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           link
           githubLink
           name
+          description
           image {
             url
             width

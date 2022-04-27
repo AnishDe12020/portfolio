@@ -1,8 +1,8 @@
+import ExternalLink from "@/components/Shared/ExternalLink";
 import IconFactory from "@/components/Shared/Icons/IconFactory";
 import { gql } from "@apollo/client";
 import graphcmsClient from "lib/graphcmsClient";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { ArrowUpRight } from "react-feather";
 import type { SkillWithExperience } from "types/graphcms";
 
 interface SkillsPageProps {
@@ -23,12 +23,8 @@ const SkillPage: NextPage<SkillsPageProps> = ({ skill }) => {
           <p className="text-gray-300 text-sm">{skill.description}</p>
         </div>
       </div>
-      <a
-        href={skill.link}
-        className="mt-4 md:mt-6 text-gray-300 flex space-x-1 items-end text-sm hover:text-gray-100 transition duration-200"
-      >
-        <span>{skill.link}</span> <ArrowUpRight className="h-4 w-4" />
-      </a>
+
+      <ExternalLink href={skill.link} className="mt-4 md:mt-6" />
       <div
         className="mt-8"
         dangerouslySetInnerHTML={{ __html: skill.experience.html }}

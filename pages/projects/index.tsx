@@ -20,6 +20,7 @@ const SkillsPage: NextPage<ProjectPageProps> = ({ projects }) => {
           link={project.link}
           githubLink={project.githubLink}
           slug={project.slug}
+          image={project.image}
         />
       ))}
     </>
@@ -37,12 +38,20 @@ export const getStaticProps: GetStaticProps = async () => {
           githubLink
           description
           slug
+          image {
+            height
+            width
+            url
+          }
         }
       }
     `,
   });
 
   const projects = data.projects;
+
+  console.log(projects);
+
   return {
     props: {
       projects,

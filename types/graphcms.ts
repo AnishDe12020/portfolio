@@ -30,6 +30,7 @@ export interface Project {
   githubLink: string;
   slug: string;
   id: string;
+  image: Image;
 }
 
 export interface SkillWithExperience extends Skill {

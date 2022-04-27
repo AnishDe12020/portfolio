@@ -1,6 +1,8 @@
 import { GitHubLogo } from "@/components/Shared/Icons";
+import NextImage from "next/image";
 import Link from "next/link";
 import { ExternalLink } from "react-feather";
+import type { Image } from "types/graphcms";
 
 interface ProjectProps {
   slug: string;
@@ -8,6 +10,7 @@ interface ProjectProps {
   description: string;
   link: string;
   githubLink: string;
+  image: Image;
 }
 
 const ProjectCard = ({
@@ -16,11 +19,18 @@ const ProjectCard = ({
   description,
   link,
   githubLink,
+  image,
 }: ProjectProps): JSX.Element => {
   return (
     <div className="bg-secondary p-4 rounded-lg border-tertiary border-[1px] hover:border-accent transition duration-200 group relative">
       <Link href={`/skills/${slug}`} passHref>
         <a className="flex space-x-4 ">
+          <NextImage
+            width={image.width / 4}
+            height={image.height / 4}
+            src={image.url}
+            alt={name}
+          />
           <div className="flex flex-col space-y-1">
             <h2 className="text-xl font-bold">{name}</h2>
             <p className="text-gray-300 text-sm">{description}</p>

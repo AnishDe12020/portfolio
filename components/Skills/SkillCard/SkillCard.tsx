@@ -29,7 +29,7 @@ const SkillCard = ({
         </a>
       </Link>
       <a
-        className="opacity-0 hidden group-hover:opacity-100 group-hover:flex absolute -top-2 -right-2 rounded-full p-1.5 bg-accent text-tertiary border-[1px] border-accent hover:bg-secondary hover:text-accent transition"
+        className="opacity-0 hidden group-hover:opacity-100 group-hover:block absolute -top-2 -right-2 rounded-full p-1.5 bg-accent text-tertiary border-[1px] border-accent hover:bg-secondary hover:text-accent transition"
         href={link}
         target="_blank"
         rel="noopener noreferrer"

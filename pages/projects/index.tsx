@@ -18,6 +18,7 @@ const SkillsPage: NextPage<ProjectPageProps> = ({ projects }) => {
           name={project.name}
           description={project.description}
           link={project.link}
+          githubLink={project.githubLink}
           slug={project.slug}
         />
       ))}

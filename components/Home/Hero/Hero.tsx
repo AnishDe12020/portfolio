@@ -16,8 +16,8 @@ const Hero = ({ heroText, description, image }: HeroProps): JSX.Element => {
       </div>
       <div className="flex flex-col justify-center space-y-4">
         <motion.h1
-          initial={{ scaleY: 1, scaleX: 1 }}
-          animate={{ scaleY: [1.2, 1, 0.6, 1], scaleX: [0.6, 1, 1.2, 1] }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           className="text-5xl font-bold"
         >
           {heroText}

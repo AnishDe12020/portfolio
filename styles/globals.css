@@ -36,6 +36,25 @@ body {
   animation: circle-3-keyframes 18s ease-in-out infinite alternate;
 }
 
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #4b515b;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5c636e;
+}
+
 @media screen and (min-width: 768px) {
   @keyframes circle-1-keyframes {
     0% {

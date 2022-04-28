@@ -15,6 +15,7 @@ import KResults from "./KResults";
 import kproviderData from "@/data/kprovider.json";
 import { Search } from "react-feather";
 import IconFactory from "@/components/Shared/Icons/IconFactory";
+import useCircles from "store/circles";
 
 interface KProviderProps {
   children: ReactNode;
@@ -22,6 +23,7 @@ interface KProviderProps {
 
 const KProvider = ({ children }: KProviderProps): JSX.Element => {
   const { push } = useRouter();
+  const { toggleCircles } = useCircles();
 
   const actions: Action[] = [
     {
@@ -59,6 +61,16 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
       shortcut: ["p"],
       parent: "projects",
       perform: () => push("/projects"),
+    },
+    {
+      id: "toggle-circles",
+      name: "Toggle Circles",
+      keywords: "toggle circles",
+      shortcut: ["t", "c"],
+      perform: () => {
+        toggleCircles();
+        console.log("toggle circles");
+      },
     },
   ];
 

@@ -45,6 +45,7 @@
     "next": "^12.1.4",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-feather": "^2.0.9"
+    "react-feather": "^2.0.9",
+    "zustand": "^4.0.0-rc.0"
   }
 }

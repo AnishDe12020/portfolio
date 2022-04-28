@@ -23,3 +23,71 @@ a {
 body {
   @apply bg-primary text-accent;
 }
+
+.circle-1 {
+  animation: circle-1-keyframes 13s ease-in-out infinite alternate;
+}
+
+.circle-2 {
+  animation: circle-2-keyframes 8s ease-in-out infinite alternate;
+}
+
+.circle-3 {
+  animation: circle-3-keyframes 18s ease-in-out infinite alternate;
+}
+
+@media screen and (min-width: 768px) {
+  @keyframes circle-1-keyframes {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: rotate(45deg) translateX(250px) translateY(350px);
+    }
+  }
+
+  @keyframes circle-2-keyframes {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: rotate(30deg) translateX(150px) translateY(-70px);
+    }
+  }
+
+  @keyframes circle-3-keyframes {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: rotate(90deg) translateX(200px) translateY(70px);
+    }
+  }
+}
+
+@keyframes circle-1-keyframes {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(45deg) translateX(650px) translateY(400px);
+  }
+}
+
+@keyframes circle-2-keyframes {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(30deg) translateX(300px) translateY(-100px);
+  }
+}
+
+@keyframes circle-3-keyframes {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(90deg) translateX(500px) translateY(100px);
+  }
+}

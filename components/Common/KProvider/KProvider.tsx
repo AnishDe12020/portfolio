@@ -16,6 +16,7 @@ import kproviderData from "@/data/kprovider.json";
 import { Search } from "react-feather";
 import IconFactory from "@/components/Shared/Icons/IconFactory";
 import useCircles from "store/circles";
+import toast from "react-hot-toast";
 
 interface KProviderProps {
   children: ReactNode;
@@ -69,7 +70,7 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
       shortcut: ["t", "c"],
       perform: () => {
         toggleCircles();
-        console.log("toggle circles");
+        toast.success("Circles toggled");
       },
     },
   ];

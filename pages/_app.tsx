@@ -3,6 +3,7 @@ import KProvider from "@/components/Common/KProvider";
 import "../styles/globals.css";
 import Header from "@/components/Common/Header";
 import useCircles from "store/circles";
+import CustomToaster from "@/components/Common/CustomToaster";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const { isEnabled } = useCircles();
@@ -25,6 +26,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           </div>
         )}
         <Component {...pageProps} />
+        <CustomToaster />
       </div>
     </KProvider>
   );

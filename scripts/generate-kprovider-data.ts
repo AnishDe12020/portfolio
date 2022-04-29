@@ -18,6 +18,11 @@ const generateKProviderData = async () => {
           name
           iconName
         }
+        projects {
+          id
+          slug
+          name
+        }
       }
     `;
 

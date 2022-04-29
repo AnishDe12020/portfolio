@@ -75,7 +75,17 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
     },
   ];
 
-  const { skills } = kproviderData;
+  socials.map(social => {
+    actions.push({
+      id: social.id,
+      name: social.name,
+      perform: () => window.open(social.url),
+      section: "Socials",
+      icon: social.icon,
+    });
+  });
+
+  const { skills, projects } = kproviderData;
 
   skills.map(skill => {
     actions.push({
@@ -87,15 +97,15 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
     });
   });
 
-  socials.map(social => {
-    actions.push({
-      id: social.id,
-      name: social.name,
-      perform: () => window.open(social.url),
-      section: "Socials",
-      icon: social.icon,
-    });
-  });
+  projects.map(project => {
+  actions.push({
+  id: project.id,
+  name: project.name,
+  perform: () => push("/projects/" + project.slug),
+  parent: "projects",
+  })
+  })
+
 
   return (
     <>

@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "making-a-blog-with-directus-mdx-and-nextjs-on-demand-isr",
+      "title": "Making a blog with Directus, MDX, and Next.js On-Demand ISR",
+      "cuid": "cl2kmc67200t1zbnvhtsb1l07",
+      "brief": "There are many Headless CMSs out there and many other tools that let us make a blog easily and quickly. Today we look at building a blog with Directus and Next.js. We will use MDX to store our blog content in Directus. We are also going to use Next.j...",
+      "coverImage": "https://cdn.hashnode.com/res/hashnode/image/upload/v1651247682343/a8z6OZ-5D.png",
+      "dateAdded": "2022-04-29T15:57:33.361Z"
+    },
+    {
       "slug": "introducing-xdox-start-challenges-log-your-progress-and-show-them-off-to-the-world",
       "title": "Introducing XdoX - Start Challenges, Log your Progress and Show them off to the World",
       "cuid": "cl1f5drhc0086zxnv25ny1v4l",
@@ -15,14 +23,6 @@
       "brief": "Browsers have become an integral part of our life and most applications are web-based now. We use web browsers for everything, from asking a question on Stackoverflow to booking a flight ticket. We often end up having a huge number of tabs open and i...",
       "coverImage": "https://cdn.hashnode.com/res/hashnode/image/upload/v1648010384861/eZTBzzKqf.png",
       "dateAdded": "2022-03-23T08:39:25.360Z"
-    },
-    {
-      "slug": "powerful-code-blocks-with-code-hike-and-mdx",
-      "title": "Powerful Code Blocks with Code Hike and MDX",
-      "cuid": "cl0f2gg9d00ok3bnv48znf58r",
-      "brief": "MDX is a format that combines markup in markdown along with JSX code to embed components into markdown documents. It is used in documentation, blog posts, and much more as one can add interactive examples with JSX. You can learn more about it here.\nT...",
-      "coverImage": "https://cdn.hashnode.com/res/hashnode/image/upload/v1646557910712/Kd9HITQXq.png",
-      "dateAdded": "2022-03-06T09:22:45.266Z"
     }
   ]
 }

@@ -5,12 +5,19 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 const Revalidate: NextPage = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [authorized, setAuthorized] = useState<boolean>(false);
 
   const { register, handleSubmit } = useForm();
 
   useEffect(() => {
     if (!localStorage) {
+      setIsLoading(false);
+      return;
+    }
+
+    if (!localStorage.getItem("password")) {
+      setIsLoading(false);
       return;
     }
 
@@ -25,6 +32,8 @@ const Revalidate: NextPage = () => {
       } else {
         setAuthorized(false);
       }
+
+      setIsLoading(false);
     };
 
     checkAuth();
@@ -48,30 +57,34 @@ const Revalidate: NextPage = () => {
   return (
     <>
       <h1>Revalidate</h1>
-      <div className="mt-8 flex flex-col">
-        {authorized ? (
-          <>
-            <button>Revalidate home</button>
-          </>
-        ) : (
-          <form
-            onSubmit={handleSubmit(onPasswordSubmit)}
-            className="flex space-x-2"
-          >
-            <input
-              className="text-accent focus:outline-none focus:ring-4 focus:ring-opacity-60 rounded-md px-4 py-2 border-secondary border-4 bg-tertiary transition duration-200 focus:border-blue-500"
-              placeholder="Admin Password"
-              {...register("password", { required: true })}
-            />
-            <button
-              type="submit"
-              className="rounded-lg bg-accent px-4 py-2 hover:opacity-60 transition duration-200 text-primary"
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="mt-8 flex flex-col">
+          {authorized ? (
+            <>
+              <button>Revalidate home</button>
+            </>
+          ) : (
+            <form
+              onSubmit={handleSubmit(onPasswordSubmit)}
+              className="flex space-x-2"
             >
-              Submit
-            </button>
-          </form>
-        )}
-      </div>
+              <input
+                className="text-accent focus:outline-none focus:ring-4 focus:ring-opacity-60 rounded-md px-4 py-2 border-secondary border-4 bg-tertiary transition duration-200 focus:border-blue-500"
+                placeholder="Admin Password"
+                {...register("password", { required: true })}
+              />
+              <button
+                type="submit"
+                className="rounded-lg bg-accent px-4 py-2 hover:opacity-60 transition duration-200 text-primary"
+              >
+                Submit
+              </button>
+            </form>
+          )}
+        </div>
+      )}
     </>
   );
 };

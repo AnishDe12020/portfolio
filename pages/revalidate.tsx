@@ -35,8 +35,9 @@ const Revalidate: NextPage = () => {
         <p>Authorized</p>
       ) : (
         <input
-          className="text-primary"
+          className="text-accent focus:outline-none focus:ring-4 focus:ring-opacity-60 rounded-md px-4 py-2 border-secondary border-4 bg-tertiary transition duration-200 focus:border-blue-500"
           value={password}
+          placeholder="Admin Password"
           onChange={e => setPassword(e.target.value)}
         />
       )}

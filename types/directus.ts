@@ -2,6 +2,7 @@ import { ID } from "@directus/sdk";
 
 type DirectusImage = {
   url: string;
+  previewURL: string;
   height: number;
   width: number;
   id: ID;

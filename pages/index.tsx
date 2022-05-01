@@ -3,6 +3,8 @@ import Hero from "@/components/Home/Hero";
 import directus from "lib/directus";
 import getAssetUrl from "@/utils/getAssetUrl";
 import { HomePageCollection } from "types/directus";
+import axios from "axios";
+import lqip from "lqip-modern";
 
 interface HomePageProps {
   content: HomePageCollection;
@@ -26,6 +28,14 @@ export const getStaticProps: GetStaticProps = async () => {
 
   data.heroImage.url = getAssetUrl(data.heroImage.id);
 
+  const { data: lqipData } = await axios.get(data.heroImage.url, {
+    responseType: "arraybuffer",
+  });
+
+  const previewImage = await lqip(lqipData);
+  data.heroImage.previewURL = previewImage.metadata.dataURIBase64;
+
+  console.log(data);
   return {
     props: { content: data },
   };

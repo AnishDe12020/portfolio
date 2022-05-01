@@ -4,7 +4,7 @@ import directus from "lib/directus";
 import { SkillsCollection } from "types/directus";
 
 interface SkillsPageProps {
-  skills: SkillsCollection;
+  skills: SkillsCollection[];
 }
 
 const SkillsPage: NextPage<SkillsPageProps> = ({ skills }) => {

@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
 import NextImage from "next/image";
-import { Image, RichText } from "types/graphcms";
+import { DirectusImage } from "types/directus";
 
 interface HeroProps {
+  heroHeading: string;
   heroText: string;
-  description: RichText;
-  image: Image;
+  image: DirectusImage;
 }
 
-const Hero = ({ heroText, description, image }: HeroProps): JSX.Element => {
+const Hero = ({ heroHeading, heroText, image }: HeroProps): JSX.Element => {
   return (
     <main className="flex flex-col space-y-8">
       <div className="w-32 h-32 relative">
@@ -20,14 +20,15 @@ const Hero = ({ heroText, description, image }: HeroProps): JSX.Element => {
           animate={{ opacity: 1 }}
           className="text-5xl font-bold"
         >
-          {heroText}
+          {heroHeading}
         </motion.h1>
-        <motion.div
+        <motion.p
           className="text-xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          dangerouslySetInnerHTML={{ __html: description.html }}
-        />
+        >
+          {heroText}
+        </motion.p>
       </div>
     </main>
   );

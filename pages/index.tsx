@@ -1,51 +1,33 @@
 import type { GetStaticProps, NextPage } from "next";
 import Hero from "@/components/Home/Hero";
-import graphcmsClient from "lib/graphcmsClient";
-import { gql } from "@apollo/client";
-import { HomeComponent } from "types/graphcms";
+import directus from "lib/directus";
+import getAssetUrl from "@/utils/getAssetUrl";
+import { HomePageCollection } from "types/directus";
 
 interface HomePageProps {
-  content: HomeComponent;
+  content: HomePageCollection;
 }
 
 const HomePage: NextPage<HomePageProps> = ({ content }) => {
-  console.log(content);
   return (
     <Hero
-      heroText={content.headingText}
-      description={content.description}
-      image={content.image}
+      heroHeading={content.heroHeading}
+      heroText={content.heroText}
+      image={content.heroImage}
     />
   );
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = await graphcmsClient.query({
-    query: gql`
-      query PageHome {
-        page(where: { slug: "/" }) {
-          content {
-            ... on Home {
-              headingText
-              description {
-                html
-              }
-              image {
-                url
-                height
-                width
-              }
-            }
-          }
-        }
-      }
-    `,
+  const data = await directus.singleton("homePage").read({
+    fields:
+      "heroHeading, heroText, heroImage.id, heroImage.height, heroImage.width",
   });
 
-  const content = data.page.content;
+  data.heroImage.url = getAssetUrl(data.heroImage.id);
 
   return {
-    props: { content },
+    props: { content: data },
   };
 };
 

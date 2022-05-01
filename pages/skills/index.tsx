@@ -29,7 +29,7 @@ const SkillsPage: NextPage<SkillsPageProps> = ({ skills }) => {
 export const getStaticProps: GetStaticProps = async () => {
   const { data } = await directus.items("skills").readByQuery({
     limit: -1,
-    fields: "name, description, iconName, slug, link",
+    fields: "id, name, description, iconName, slug, link",
   });
 
   return {

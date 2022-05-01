@@ -1,12 +1,13 @@
 import ExternalLink from "@/components/Shared/ExternalLink";
 import IconFactory from "@/components/Shared/Icons/IconFactory";
 import { gql } from "@apollo/client";
+import directus from "lib/directus";
 import graphcmsClient from "lib/graphcmsClient";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import type { SkillWithExperience } from "types/graphcms";
+import { SkillsCollection } from "types/directus";
 
 interface SkillsPageProps {
-  skill: SkillWithExperience;
+  skill: SkillsCollection;
 }
 
 const SkillPage: NextPage<SkillsPageProps> = ({ skill }) => {
@@ -25,39 +26,19 @@ const SkillPage: NextPage<SkillsPageProps> = ({ skill }) => {
       </div>
 
       <ExternalLink href={skill.link} className="mt-4 md:mt-6" />
-      <div
-        className="mt-8"
-        dangerouslySetInnerHTML={{ __html: skill.experience.html }}
-      />
+      <p className="mt-8">{skill.experience}</p>
     </>
   );
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { data } = await graphcmsClient.query({
-    query: gql`
-      query PageSkill($slug: String!) {
-        skill(where: { slug: $slug }) {
-          iconName
-          id
-          link
-          name
-          description
-          experience {
-            html
-          }
-        }
-      }
-    `,
-    variables: {
-      slug: params.slug,
-    },
+  const { data } = await directus.items("skills").readByQuery({
+    filter: { slug: params.slug as string },
+    fields: "id, name, description, iconName, slug, link, experience",
   });
 
-  const skill = data.skill;
-
   return {
-    props: { skill },
+    props: { skill: data[0] },
   };
 };
 

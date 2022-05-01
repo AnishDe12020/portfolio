@@ -1,14 +1,14 @@
-import graphcmsClient from "lib/graphcmsClient";
 import { GetStaticProps, NextPage } from "next";
-import { gql } from "@apollo/client";
-import type { Skill } from "types/graphcms";
 import SkillCard from "@/components/Skills/SkillCard";
+import directus from "lib/directus";
+import { SkillsCollection } from "types/directus";
 
 interface SkillsPageProps {
-  skills: Skill[];
+  skills: SkillsCollection;
 }
 
 const SkillsPage: NextPage<SkillsPageProps> = ({ skills }) => {
+  console.log(skills);
   return (
     <>
       <h1 className="text-2xl font-bold mb-8">Skills</h1>
@@ -27,25 +27,14 @@ const SkillsPage: NextPage<SkillsPageProps> = ({ skills }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = await graphcmsClient.query({
-    query: gql`
-      query PageSkills {
-        skills {
-          iconName
-          name
-          link
-          id
-          slug
-          description
-        }
-      }
-    `,
+  const { data } = await directus.items("skills").readByQuery({
+    limit: -1,
+    fields: "name, description, iconName, slug, link",
   });
 
-  const skills = data.skills;
   return {
     props: {
-      skills,
+      skills: data,
     },
   };
 };

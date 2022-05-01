@@ -1,15 +1,5 @@
 import { ID } from "@directus/sdk";
 
-type HomePageCollection = {
-  heroHeading: string;
-  heroText: string;
-  heroImage: DirectusImage;
-};
-
-type Collections = {
-  homePage: HomePageCollection;
-};
-
 type DirectusImage = {
   url: string;
   height: number;
@@ -17,4 +7,30 @@ type DirectusImage = {
   id: ID;
 };
 
-export type { Collections, HomePageCollection, DirectusImage };
+type HomePageCollection = {
+  heroHeading: string;
+  heroText: string;
+  heroImage: DirectusImage;
+};
+
+type SkillsCollection = {
+  id: ID;
+  name: string;
+  description: string;
+  iconName: string;
+  experience: string;
+  slug: string;
+  link: string;
+};
+
+type Collections = {
+  homePage: HomePageCollection;
+  skills: SkillsCollection;
+};
+
+export type {
+  Collections,
+  HomePageCollection,
+  DirectusImage,
+  SkillsCollection,
+};

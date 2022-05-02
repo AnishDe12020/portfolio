@@ -3,6 +3,7 @@ import { GetStaticProps, NextPage } from "next";
 import { gql } from "@apollo/client";
 import type { Project } from "types/graphcms";
 import ProjectCard from "@/components/Projects/ProjectCard";
+import directus from "lib/directus";
 
 interface ProjectPageProps {
   projects: Project[];
@@ -28,31 +29,15 @@ const SkillsPage: NextPage<ProjectPageProps> = ({ projects }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = await graphcmsClient.query({
-    query: gql`
-      query PageProjects {
-        projects {
-          name
-          link
-          id
-          githubLink
-          description
-          slug
-          image {
-            height
-            width
-            url
-          }
-        }
-      }
-    `,
+  const { data } = await directus.items("projects").readByQuery({
+    limit: -1,
+    fields:
+      "id, name, description, slug, link, githubLink, image.url, image.height, image.width",
   });
-
-  const projects = data.projects;
 
   return {
     props: {
-      projects,
+      projects: data,
     },
   };
 };

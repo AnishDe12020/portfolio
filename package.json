@@ -48,6 +48,7 @@
     "kbar": "^0.1.0-beta.34",
     "lqip-modern": "^1.2.0",
     "next": "^12.1.4",
+    "nextjs-progressbar": "^0.0.14",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-feather": "^2.0.9",

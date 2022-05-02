@@ -1,4 +1,5 @@
 import type { AppProps } from "next/app";
+import NextNProgress from "nextjs-progressbar";
 import KProvider from "@/components/Common/KProvider";
 import "../styles/globals.css";
 import Header from "@/components/Common/Header";
@@ -12,6 +13,13 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div className="relative min-h-screen overflow-hidden">
       <KProvider>
+        <NextNProgress
+          color="#A0A0A0"
+          startPosition={0.3}
+          stopDelayMs={200}
+          height={3}
+          options={{ showSpinner: false }}
+        />
         <Header />
         <main className="max-w-3xl mx-auto px-8 relative">
           <Component {...pageProps} />

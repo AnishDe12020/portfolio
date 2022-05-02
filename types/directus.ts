@@ -44,6 +44,7 @@ type ProjectsColletion = {
 type Collections = {
   homePage: HomePageCollection;
   skills: SkillsCollection;
+  projects: ProjectsColletion;
 };
 
 export type {

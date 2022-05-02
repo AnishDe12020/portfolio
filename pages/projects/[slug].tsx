@@ -4,6 +4,7 @@ import NextImage from "next/image";
 import graphcmsClient from "lib/graphcmsClient";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { Project } from "types/graphcms";
+import directus from "lib/directus";
 
 interface ProjectPageProps {
   project: Project;
@@ -30,47 +31,23 @@ const SkillPage: NextPage<ProjectPageProps> = ({ project }) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { data } = await graphcmsClient.query({
-    query: gql`
-      query PageProject($slug: String!) {
-        project(where: { slug: $slug }) {
-          id
-          link
-          githubLink
-          name
-          description
-          image {
-            url
-            width
-            height
-          }
-        }
-      }
-    `,
-    variables: {
-      slug: params.slug,
-    },
+  const { data } = await directus.items("projects").readByQuery({
+    filter: { slug: params.slug as string },
+    fields:
+      "id, name, description, slug, link, githubLink, image.url, image.height, image.width",
   });
 
-  const project = data.project;
-
   return {
-    props: { project },
+    props: { project: data[0] },
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { data } = await graphcmsClient.query({
-    query: gql`
-      query PageProjectPaths {
-        projects {
-          slug
-        }
-      }
-    `,
+  const { data } = await directus.items("projects").readByQuery({
+    fields: "slug",
   });
 
-  const paths = data.projects.map(project => {
+  const paths = data.map(project => {
     return {
       params: {
         slug: project.slug,

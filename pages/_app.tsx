@@ -4,6 +4,7 @@ import "../styles/globals.css";
 import Header from "@/components/Common/Header";
 import useCircles from "store/circles";
 import CustomToaster from "@/components/Common/CustomToaster";
+import CommandBarInvoker from "@/components/Common/CommandBarInvoker";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const { isEnabled } = useCircles();
@@ -29,6 +30,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             </div>
           )}
         </main>
+
+        <CommandBarInvoker />
       </KProvider>
     </div>
   );

@@ -1,8 +1,6 @@
 import ExternalLink from "@/components/Shared/ExternalLink";
 import IconFactory from "@/components/Shared/Icons/IconFactory";
-import { gql } from "@apollo/client";
 import directus from "lib/directus";
-import graphcmsClient from "lib/graphcmsClient";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { SkillsCollection } from "types/directus";
 

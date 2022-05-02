@@ -1,13 +1,11 @@
 import ExternalLink from "@/components/Shared/ExternalLink";
-import { gql } from "@apollo/client";
 import NextImage from "next/image";
-import graphcmsClient from "lib/graphcmsClient";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { Project } from "types/graphcms";
 import directus from "lib/directus";
+import { ProjectsColletion } from "types/directus";
 
 interface ProjectPageProps {
-  project: Project;
+  project: ProjectsColletion;
 }
 
 const SkillPage: NextPage<ProjectPageProps> = ({ project }) => {

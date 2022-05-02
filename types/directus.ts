@@ -11,8 +11,8 @@ type DirectusImage = {
 type CloudinaryImage = {
   id: ID;
   url: string;
-  height: string;
-  width: string;
+  height: number;
+  width: number;
 };
 
 type HomePageCollection = {

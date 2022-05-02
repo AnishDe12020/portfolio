@@ -1,12 +1,10 @@
-import graphcmsClient from "lib/graphcmsClient";
 import { GetStaticProps, NextPage } from "next";
-import { gql } from "@apollo/client";
-import type { Project } from "types/graphcms";
 import ProjectCard from "@/components/Projects/ProjectCard";
 import directus from "lib/directus";
+import { ProjectsColletion } from "types/directus";
 
 interface ProjectPageProps {
-  projects: Project[];
+  projects: ProjectsColletion[];
 }
 
 const SkillsPage: NextPage<ProjectPageProps> = ({ projects }) => {

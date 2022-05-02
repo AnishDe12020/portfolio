@@ -2,7 +2,7 @@ import ExternalLink from "@/components/Shared/ExternalLink";
 import { cleanLink, getGitHubOwnerAndRepoFromLink } from "@/utils/helpers";
 import NextImage from "next/image";
 import Link from "next/link";
-import type { Image } from "types/graphcms";
+import { CloudinaryImage } from "types/directus";
 
 interface ProjectProps {
   slug: string;
@@ -10,7 +10,7 @@ interface ProjectProps {
   description: string;
   link: string;
   githubLink: string;
-  image: Image;
+  image: CloudinaryImage;
 }
 
 const ProjectCard = ({

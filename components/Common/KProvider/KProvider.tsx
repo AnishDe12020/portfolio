@@ -89,7 +89,7 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
 
   skills.map(skill => {
     actions.push({
-      id: skill.id,
+      id: skill.id.toString(),
       name: skill.name,
       perform: () => push("/skills/" + skill.slug),
       icon: <IconFactory name={skill.iconName} />,
@@ -98,14 +98,13 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
   });
 
   projects.map(project => {
-  actions.push({
-  id: project.id,
-  name: project.name,
-  perform: () => push("/projects/" + project.slug),
-  parent: "projects",
-  })
-  })
-
+    actions.push({
+      id: project.id.toString(),
+      name: project.name,
+      perform: () => push("/projects/" + project.slug),
+      parent: "projects",
+    });
+  });
 
   return (
     <>

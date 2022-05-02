@@ -8,6 +8,13 @@ type DirectusImage = {
   id: ID;
 };
 
+type CloudinaryImage = {
+  id: ID;
+  url: string;
+  height: string;
+  width: string;
+};
+
 type HomePageCollection = {
   heroHeading: string;
   heroText: string;
@@ -24,6 +31,16 @@ type SkillsCollection = {
   link: string;
 };
 
+type ProjectsColletion = {
+  id: ID;
+  name: string;
+  description: string;
+  slug: string;
+  link: string;
+  githubLink: string;
+  image: CloudinaryImage;
+};
+
 type Collections = {
   homePage: HomePageCollection;
   skills: SkillsCollection;
@@ -31,7 +48,9 @@ type Collections = {
 
 export type {
   Collections,
-  HomePageCollection,
   DirectusImage,
+  CloudinaryImage,
+  HomePageCollection,
   SkillsCollection,
+  ProjectsColletion,
 };

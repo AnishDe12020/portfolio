@@ -12,16 +12,18 @@ const SkillsPage: NextPage<SkillsPageProps> = ({ skills }) => {
   return (
     <>
       <h1 className="text-2xl font-bold mb-8">Skills</h1>
-      {skills.map(skill => (
-        <SkillCard
-          key={skill.id}
-          name={skill.name}
-          description={skill.description}
-          iconName={skill.iconName}
-          link={skill.link}
-          slug={skill.slug}
-        />
-      ))}
+      <div className="flex-col space-y-8">
+        {skills.map(skill => (
+          <SkillCard
+            key={skill.id}
+            name={skill.name}
+            description={skill.description}
+            iconName={skill.iconName}
+            link={skill.link}
+            slug={skill.slug}
+          />
+        ))}
+      </div>
     </>
   );
 };

@@ -43,17 +43,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { data } = await graphcmsClient.query({
-    query: gql`
-      query PageSkillPaths {
-        skills {
-          slug
-        }
-      }
-    `,
+  const { data } = await directus.items("skills").readByQuery({
+    fields: "slug",
   });
 
-  const paths = data.skills.map(skill => {
+  const paths = data.map(skill => {
     return {
       params: {
         slug: skill.slug,

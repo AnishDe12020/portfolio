@@ -3,6 +3,7 @@ import NextImage from "next/image";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import directus from "lib/directus";
 import { ProjectsColletion } from "types/directus";
+import getPreviewImageUrl from "@/utils/getPreviewImageURL";
 
 interface ProjectPageProps {
   project: ProjectsColletion;
@@ -18,12 +19,16 @@ const SkillPage: NextPage<ProjectPageProps> = ({ project }) => {
         </div>
       </div>
       <ExternalLink href={project.link} className="mt-4 md:mt-6 mb-8" />
-      <NextImage
-        width={project.image.width}
-        height={project.image.height}
-        src={project.image.url}
-        className="rounded-xl drop-shadow-md"
-      />
+      <div className="rounded-xl">
+        <NextImage
+          width={project.image.width}
+          height={project.image.height}
+          src={project.image.url}
+          className="rounded-xl drop-shadow-md"
+          placeholder="blur"
+          blurDataURL={project.image.previewURL}
+        />
+      </div>
     </>
   );
 };
@@ -34,6 +39,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     fields:
       "id, name, description, slug, link, githubLink, image.url, image.height, image.width",
   });
+
+  data[0].image.previewURL = await getPreviewImageUrl(data[0].image.url);
 
   return {
     props: { project: data[0] },

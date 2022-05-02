@@ -11,6 +11,7 @@ type DirectusImage = {
 type CloudinaryImage = {
   id: ID;
   url: string;
+  previewURL: string;
   height: number;
   width: number;
 };

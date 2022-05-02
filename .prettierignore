@@ -6,3 +6,5 @@ static
 .github
 README.md
 .vercel
+
+data/**/*.json

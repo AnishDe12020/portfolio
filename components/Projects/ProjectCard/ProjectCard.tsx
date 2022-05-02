@@ -23,13 +23,17 @@ const ProjectCard = ({
 }: ProjectProps): JSX.Element => {
   return (
     <div className="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8 bg-secondary p-4 rounded-lg border-tertiary border-[1px] transition duration-200">
-      <NextImage
-        width={image.width / 4}
-        height={image.height / 4}
-        src={image.url}
-        alt={name}
-        className="rounded-lg"
-      />
+      <div className="rounded-lg overflow-hidden">
+        <NextImage
+          width={image.width / 4}
+          height={image.height / 4}
+          src={image.url}
+          alt={name}
+          className="rounded-lg"
+          placeholder="blur"
+          blurDataURL={image.previewURL}
+        />
+      </div>
       <div className="flex flex-col">
         <h2 className="text-xl font-bold">{name}</h2>
         <p className="text-gray-300 text-sm mt-2">{description}</p>

@@ -2,6 +2,7 @@ import { GetStaticProps, NextPage } from "next";
 import ProjectCard from "@/components/Projects/ProjectCard";
 import directus from "lib/directus";
 import { ProjectsColletion } from "types/directus";
+import getPreviewImageUrl from "@/utils/getPreviewImageURL";
 
 interface ProjectPageProps {
   projects: ProjectsColletion[];
@@ -32,6 +33,10 @@ export const getStaticProps: GetStaticProps = async () => {
     fields:
       "id, name, description, slug, link, githubLink, image.url, image.height, image.width",
   });
+
+  for (const project of data) {
+    project.image.previewURL = await getPreviewImageUrl(project.image.url);
+  }
 
   return {
     props: {

@@ -19,7 +19,7 @@ const SkillPage: NextPage<ProjectPageProps> = ({ project }) => {
         </div>
       </div>
       <ExternalLink href={project.link} className="mt-4 md:mt-6 mb-8" />
-      <div className="rounded-xl">
+      <div className="rounded-xl overflow-hidden">
         <NextImage
           width={project.image.width}
           height={project.image.height}

@@ -2,14 +2,14 @@ import ExternalLink from "@/components/Shared/ExternalLink";
 import NextImage from "next/image";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import directus from "lib/directus";
-import { ProjectsColletion, SkillsCollection } from "types/directus";
+import { ProjectForProjectPage, SkillForProjectPage } from "types/directus";
 import getPreviewImageUrl from "@/utils/getPreviewImageURL";
 import Link from "next/link";
 import IconFactory from "@/components/Shared/Icons/IconFactory";
 
 interface ProjectPageProps {
-  project: ProjectsColletion;
-  skillsUsed: SkillsCollection[];
+  project: ProjectForProjectPage;
+  skillsUsed: SkillForProjectPage[];
 }
 
 const SkillPage: NextPage<ProjectPageProps> = ({ project, skillsUsed }) => {
@@ -54,7 +54,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { data } = await directus.items("projects").readByQuery({
     filter: { slug: params.slug as string },
     fields:
-      "id, name, description, slug, link, githubLink, image.url, image.height, image.width",
+      "name, description, link, githubLink, image.url, image.height, image.width",
   });
 
   data[0].image.previewURL = await getPreviewImageUrl(data[0].image.url);

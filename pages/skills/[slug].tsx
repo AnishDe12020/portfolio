@@ -2,10 +2,10 @@ import ExternalLink from "@/components/Shared/ExternalLink";
 import IconFactory from "@/components/Shared/Icons/IconFactory";
 import directus from "lib/directus";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { SkillsCollection } from "types/directus";
+import { SkillForSkillPage } from "types/directus";
 
 interface SkillsPageProps {
-  skill: SkillsCollection;
+  skill: SkillForSkillPage;
 }
 
 const SkillPage: NextPage<SkillsPageProps> = ({ skill }) => {
@@ -32,7 +32,7 @@ const SkillPage: NextPage<SkillsPageProps> = ({ skill }) => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { data } = await directus.items("skills").readByQuery({
     filter: { slug: params.slug as string },
-    fields: "id, name, description, iconName, slug, link, experience",
+    fields: "name, description, iconName, link, experience",
   });
 
   return {

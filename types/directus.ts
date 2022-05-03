@@ -32,6 +32,13 @@ type SkillsCollection = {
   link: string;
 };
 
+type SkillWithoutExperience = Omit<SkillsCollection, "experience">;
+type SkillForSkillPage = Omit<SkillsCollection, "slug, id">;
+type SkillForProjectPage = Omit<
+  SkillsCollection,
+  "slug, id, link, description"
+>;
+
 type ProjectsColletion = {
   id: ID;
   name: string;
@@ -42,11 +49,13 @@ type ProjectsColletion = {
   image: CloudinaryImage;
 };
 
+type ProjectForProjectPage = Omit<ProjectsColletion, "slug, id">;
+
 type ProjectsSkillsRelationCollection = {
   id: ID;
   projects_id: ProjectsColletion;
   skills_id: SkillsCollection;
-}
+};
 
 type Collections = {
   homePage: HomePageCollection;
@@ -61,5 +70,9 @@ export type {
   CloudinaryImage,
   HomePageCollection,
   SkillsCollection,
+  SkillWithoutExperience,
+  SkillForSkillPage,
+  SkillForProjectPage,
   ProjectsColletion,
+  ProjectForProjectPage,
 };

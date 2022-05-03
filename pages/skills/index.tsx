@@ -1,10 +1,10 @@
 import { GetStaticProps, NextPage } from "next";
 import SkillCard from "@/components/Skills/SkillCard";
 import directus from "lib/directus";
-import { SkillsCollection } from "types/directus";
+import { SkillWithoutExperience } from "types/directus";
 
 interface SkillsPageProps {
-  skills: SkillsCollection[];
+  skills: SkillWithoutExperience[];
 }
 
 const SkillsPage: NextPage<SkillsPageProps> = ({ skills }) => {

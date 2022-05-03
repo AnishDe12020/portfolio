@@ -1,9 +1,24 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "react-feather";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import MobileNavItem from "./MobileNavItem";
 import NavItem from "./NavItem";
+
+const navItems = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Skills",
+    href: "/skills",
+  },
+  {
+    name: "Projects",
+    href: "/projects",
+  },
+];
 
 const mobileMenuVariants: Variants = {
   open: {
@@ -27,18 +42,18 @@ const Nav = (): JSX.Element => {
   const { asPath } = useRouter();
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
+  useEffect(() => {
+    setIsMobileNavOpen(false);
+  }, [asPath]);
+
   return (
     <>
-      <ul className="hiden md:flex space-x-2">
-        <NavItem href="/" asPath={asPath}>
-          Home
-        </NavItem>
-        <NavItem href="/skills" asPath={asPath}>
-          Skills
-        </NavItem>
-        <NavItem href="/projects" asPath={asPath}>
-          Projects
-        </NavItem>
+      <ul className="hiden md:flex space-x-2 w-full">
+        {navItems.map((item, index) => (
+          <NavItem href={item.href} asPath={asPath} key={index}>
+            {item.name}
+          </NavItem>
+        ))}
       </ul>
       <div>
         <button
@@ -50,21 +65,20 @@ const Nav = (): JSX.Element => {
         <AnimatePresence>
           {isMobileNavOpen && (
             <motion.ul
-              className="flex flex-col space-y-4 bg-primary w-full h-screen pt-8 pl-8 left-0 md:hidden z-50 absolute"
+              className="flex flex-col space-y-4 bg-primary w-full h-screen pt-8 px-8 left-0 md:hidden z-50 absolute"
               variants={mobileMenuVariants}
               initial="closed"
               animate="open"
               exit="closed"
             >
-              <MobileNavItem href="/" asPath={asPath}>
-                Home
-              </MobileNavItem>
-              <MobileNavItem href="/skills" asPath={asPath}>
-                Skils
-              </MobileNavItem>
-              <MobileNavItem href="/projects" asPath={asPath}>
-                Projects
-              </MobileNavItem>
+              <AnimatePresence>
+                {isMobileNavOpen &&
+                  navItems.map((item, index) => (
+                    <MobileNavItem href={item.href} asPath={asPath} key={index}>
+                      {item.name}
+                    </MobileNavItem>
+                  ))}
+              </AnimatePresence>
             </motion.ul>
           )}
         </AnimatePresence>

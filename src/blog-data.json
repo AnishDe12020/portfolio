@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "amazing-preview-images-with-nextjs-and-lqip-modern",
+      "title": "Amazing preview images with Next.js and LQIP Modern",
+      "cuid": "cl2ok3g0x00cwe0nvb0365mwk",
+      "brief": "Images take a long time to load and can have a disruptive impact on UX. Today we are going to be looking at creating preview images with a library called lqip-modern. \nWhat is LQIP?\nLQIP simply stands for Low Quality Image Placeholders. They have ext...",
+      "coverImage": "https://cdn.hashnode.com/res/hashnode/image/upload/v1651485793452/F3aixNLhI.png",
+      "dateAdded": "2022-05-02T10:05:51.829Z"
+    },
+    {
       "slug": "making-a-blog-with-directus-mdx-and-nextjs-on-demand-isr",
       "title": "Making a blog with Directus, MDX, and Next.js On-Demand ISR",
       "cuid": "cl2kmc67200t1zbnvhtsb1l07",
@@ -15,14 +23,6 @@
       "brief": "🤔 What is XdoX?\nXdoX is a web application that lets you start challenges and log your progress every day. You are also able to show your progress to the world via your unique profile page. These challenges can be anything from 100DaysOfCode to 30Day...",
       "coverImage": "https://cdn.hashnode.com/res/hashnode/image/upload/v1648739175407/TYb9x3jFw.png",
       "dateAdded": "2022-03-31T15:24:21.104Z"
-    },
-    {
-      "slug": "5-chrome-keyboard-shortcuts-to-boost-your-productivity",
-      "title": "5 Chrome Keyboard Shortcuts to boost your productivity",
-      "cuid": "cl13be7dh007zaxnvauvb29h9",
-      "brief": "Browsers have become an integral part of our life and most applications are web-based now. We use web browsers for everything, from asking a question on Stackoverflow to booking a flight ticket. We often end up having a huge number of tabs open and i...",
-      "coverImage": "https://cdn.hashnode.com/res/hashnode/image/upload/v1648010384861/eZTBzzKqf.png",
-      "dateAdded": "2022-03-23T08:39:25.360Z"
     }
   ]
 }

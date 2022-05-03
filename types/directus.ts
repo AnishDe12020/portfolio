@@ -42,10 +42,17 @@ type ProjectsColletion = {
   image: CloudinaryImage;
 };
 
+type ProjectsSkillsRelationCollection = {
+  id: ID;
+  projects_id: ProjectsColletion;
+  skills_id: SkillsCollection;
+}
+
 type Collections = {
   homePage: HomePageCollection;
   skills: SkillsCollection;
   projects: ProjectsColletion;
+  projects_skills: ProjectsSkillsRelationCollection;
 };
 
 export type {

@@ -15,8 +15,9 @@ const NavItem = ({ href, children }: NavItemProps): JSX.Element => {
     <Link href={href} passHref>
       <a
         className={cx(
-          "text-gray-400 px-3 py-1 hover:bg-gray-500 hover:bg-opacity-30 rounded-lg transition duration-200",
-          asPath === href && "font-bold !text-accent bg-gray-500 bg-opacity-50"
+          "text-gray-500 px-3 py-1 hover:bg-gray-600 hover:bg-opacity-30 rounded-lg transition duration-200 text-base",
+          asPath === href &&
+            "font-medium !text-accent bg-gray-600 bg-opacity-30 hover:bg-opacity-40"
         )}
       >
         {children}

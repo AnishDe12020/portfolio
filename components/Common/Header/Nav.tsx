@@ -48,14 +48,14 @@ const Nav = (): JSX.Element => {
 
   return (
     <>
-      <ul className="hiden md:flex space-x-2 w-full">
+      <ul className="hiden md:flex space-x-2">
         {navItems.map((item, index) => (
           <NavItem href={item.href} asPath={asPath} key={index}>
             {item.name}
           </NavItem>
         ))}
       </ul>
-      <div>
+      <div className="md:hidden">
         <button
           onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
           className="block md:hidden relative"

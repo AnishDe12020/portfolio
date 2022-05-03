@@ -12,6 +12,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
+      <Header />
       <KProvider>
         <NextNProgress
           color="#A0A0A0"
@@ -20,7 +21,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           height={3}
           options={{ showSpinner: false }}
         />
-        <Header />
         <main className="max-w-3xl mx-auto px-8 relative">
           <Component {...pageProps} />
           <CustomToaster />

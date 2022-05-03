@@ -1,27 +1,12 @@
-import { useRouter } from "next/router";
 import Breadcrumb from "./Breadcrumb";
-import NavItem from "./NavItem";
+import Nav from "./Nav";
 
 const Header = (): JSX.Element => {
-  const { asPath } = useRouter();
-
   return (
-    <div className="flex justify-between mx-8 my-4">
+    <nav className="flex justify-between px-8 my-4 relative">
       <Breadcrumb />
-      <nav>
-        <ul className="flex space-x-2">
-          <NavItem href="/" asPath={asPath}>
-            Home
-          </NavItem>
-          <NavItem href="/skills" asPath={asPath}>
-            Skills
-          </NavItem>
-          <NavItem href="/projects" asPath={asPath}>
-            Projects
-          </NavItem>
-        </ul>
-      </nav>
-    </div>
+      <Nav />
+    </nav>
   );
 };
 

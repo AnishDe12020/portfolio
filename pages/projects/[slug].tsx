@@ -24,11 +24,14 @@ const SkillPage: NextPage<ProjectPageProps> = ({ project, skillsUsed }) => {
       </div>
       <ExternalLink href={project.link} className="mt-4 md:mt-6" />
 
-      <div className="my-6 flex space-x-2">
+      <div className="my-6 flex space-x-4">
         {skillsUsed.map(skill => (
           <Link href={`skills/${skill.slug}`} key={skill.id} passHref>
             <a>
-              <IconFactory name={skill.iconName} className="h-6 w-6" />
+              <IconFactory
+                name={skill.iconName}
+                className="h-8 w-8 bg-tertiary p-1 md:h-12 md:w-12 md:p-2 rounded-lg shadow-md"
+              />
             </a>
           </Link>
         ))}

@@ -1,7 +1,6 @@
 import ExternalLink from "@/components/Shared/ExternalLink";
 import NextImage from "next/image";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import directus from "lib/directus";
 import { ProjectForProjectPage, SkillForProjectPage } from "types/directus";
 import getPreviewImageUrl from "@/utils/getPreviewImageURL";

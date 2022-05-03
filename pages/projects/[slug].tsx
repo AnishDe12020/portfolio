@@ -1,11 +1,13 @@
 import ExternalLink from "@/components/Shared/ExternalLink";
 import NextImage from "next/image";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import directus from "lib/directus";
 import { ProjectForProjectPage, SkillForProjectPage } from "types/directus";
 import getPreviewImageUrl from "@/utils/getPreviewImageURL";
 import Link from "next/link";
 import IconFactory from "@/components/Shared/Icons/IconFactory";
+import Tooltip from "@/components/Shared/Tooltip";
 
 interface ProjectPageProps {
   project: ProjectForProjectPage;
@@ -26,14 +28,17 @@ const SkillPage: NextPage<ProjectPageProps> = ({ project, skillsUsed }) => {
 
       <div className="my-6 flex space-x-4">
         {skillsUsed.map(skill => (
-          <Link href={`skills/${skill.slug}`} key={skill.id} passHref>
-            <a>
-              <IconFactory
-                name={skill.iconName}
-                className="h-8 w-8 bg-tertiary p-1 md:h-12 md:w-12 md:p-2 rounded-lg shadow-md"
-              />
-            </a>
-          </Link>
+          <Tooltip key={skill.id} content={skill.name}>
+            <Link href={`skills/${skill.slug}`} passHref>
+              <a>
+                <IconFactory
+                  name={skill.iconName}
+                  className="h-8 w-8 bg-tertiary p-1 md:h-12 md:w-12 md:p-2 rounded-lg shadow-md"
+                  aria-label={skill.name}
+                />
+              </a>
+            </Link>
+          </Tooltip>
         ))}
       </div>
       <div className="rounded-xl overflow-hidden">

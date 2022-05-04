@@ -32,7 +32,7 @@ const SkillPage: NextPage<ProjectPageProps> = ({ project, skillsUsed }) => {
       <div className="my-6 flex space-x-4">
         {skillsUsed.map(skill => (
           <Tooltip key={skill.id} content={skill.name}>
-            <Link href={`skills/${skill.slug}`} passHref>
+            <Link href={`/skills/${skill.slug}`} passHref>
               <a>
                 <IconMaker
                   svgCode={skill.iconSVG}

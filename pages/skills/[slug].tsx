@@ -8,6 +8,7 @@ import { ProjectsForSkillPage, SkillForSkillPage } from "types/directus";
 import ExternalLink from "@/components/Shared/ExternalLink";
 import IconMaker from "@/components/Shared/Icons/IconMaker";
 import Tooltip from "@/components/Shared/Tooltip";
+import MDXComponents from "@/components/Common/MDXComponents";
 
 import directus from "lib/directus";
 
@@ -60,7 +61,7 @@ const SkillPage: NextPage<SkillsPageProps> = ({
         ))}
       </div>
 
-      <ExperienceMDX />
+      <ExperienceMDX components={{...MDXComponents}} />
     </>
   );
 };

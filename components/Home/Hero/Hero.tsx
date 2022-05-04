@@ -10,7 +10,7 @@ interface HeroProps {
 
 const Hero = ({ heroHeading, heroText, image }: HeroProps): JSX.Element => {
   return (
-    <main className="flex flex-col space-y-8">
+    <div className="flex flex-col space-y-8">
       <div className="w-32 h-32 relative rounded-full overflow-hidden">
         <NextImage
           src={image.url}
@@ -35,7 +35,7 @@ const Hero = ({ heroHeading, heroText, image }: HeroProps): JSX.Element => {
           {heroText}
         </motion.p>
       </div>
-    </main>
+    </div>
   );
 };
 

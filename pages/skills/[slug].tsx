@@ -27,6 +27,8 @@ const SkillPage: NextPage<SkillsPageProps> = ({ skill, projectsMade }) => {
         </div>
       </div>
 
+      <ExternalLink href={skill.link} className="mt-4 md:mt-6" />
+
       <div className="my-6 flex space-x-4">
         {projectsMade.map(project => (
           <Tooltip key={project.id} content={project.name}>
@@ -43,7 +45,6 @@ const SkillPage: NextPage<SkillsPageProps> = ({ skill, projectsMade }) => {
         ))}
       </div>
 
-      <ExternalLink href={skill.link} className="mt-4 md:mt-6" />
       <p className="mt-8">{skill.experience}</p>
     </>
   );

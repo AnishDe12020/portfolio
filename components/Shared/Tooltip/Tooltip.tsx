@@ -18,7 +18,7 @@ const Tooltip = ({ children, content }: TooltipProps): JSX.Element => {
       onOpenChange={setIsOpen}
       delayDuration={100}
     >
-      <TooltipPrimitive.Trigger>{children}</TooltipPrimitive.Trigger>
+      <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
       <AnimatePresence>
         {isOpen && (
           <MotionContent

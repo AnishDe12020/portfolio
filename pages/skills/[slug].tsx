@@ -3,16 +3,30 @@ import IconMaker from "@/components/Shared/Icons/IconMaker";
 import directus from "lib/directus";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { ProjectsForSkillPage, SkillForSkillPage } from "types/directus";
+import { bundleMDX } from "mdx-bundler";
+import { getMDXComponent } from "mdx-bundler/client";
 import Tooltip from "@/components/Shared/Tooltip";
 import Link from "next/link";
+import { useMemo } from "react";
 
 interface SkillsPageProps {
   skill: SkillForSkillPage;
   projectsMade: ProjectsForSkillPage[];
+  experienceMDX: string;
 }
 
-const SkillPage: NextPage<SkillsPageProps> = ({ skill, projectsMade }) => {
+const SkillPage: NextPage<SkillsPageProps> = ({
+  skill,
+  projectsMade,
+  experienceMDX,
+}) => {
   console.log(skill);
+
+  const ExperienceMDX = useMemo(
+    () => getMDXComponent(experienceMDX),
+    [experienceMDX]
+  );
+
   return (
     <>
       <div className="flex space-x-8 mt-8">
@@ -44,7 +58,7 @@ const SkillPage: NextPage<SkillsPageProps> = ({ skill, projectsMade }) => {
         ))}
       </div>
 
-      <p className="mt-8">{skill.experience}</p>
+      <ExperienceMDX />
     </>
   );
 };
@@ -54,6 +68,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     filter: { slug: params.slug as string },
     fields: "name, description, iconSVG, link, experience",
   });
+
+  const { code } = await bundleMDX({ source: data[0].experience });
 
   const { data: projectsMade } = await directus
     .items("projects_skills")
@@ -69,6 +85,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       projectsMade: projectsMade.map(project => {
         return { ...project.projects_id };
       }),
+      experienceMDX: code,
     },
   };
 };

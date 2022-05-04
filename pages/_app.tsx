@@ -21,7 +21,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           height={3}
           options={{ showSpinner: false }}
         />
-        <main className="max-w-3xl mx-auto px-8 relative">
+        <main id="main" className="max-w-3xl mx-auto px-8 relative">
           <Component {...pageProps} />
           <CustomToaster />
           {isEnabled && (

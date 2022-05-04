@@ -1,5 +1,5 @@
 import ExternalLink from "@/components/Shared/ExternalLink";
-import IconFactory from "@/components/Shared/Icons/IconFactory";
+import IconMaker from "@/components/Shared/Icons/IconMaker";
 import directus from "lib/directus";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { SkillForSkillPage } from "types/directus";
@@ -13,8 +13,8 @@ const SkillPage: NextPage<SkillsPageProps> = ({ skill }) => {
   return (
     <>
       <div className="flex space-x-8 mt-8">
-        <IconFactory
-          name={skill.iconName}
+        <IconMaker
+          svgCode={skill.iconSVG}
           className="h-16 w-16 bg-tertiary p-3 rounded-lg shadow-md"
         />
         <div className="flex flex-col space-y-2">
@@ -32,7 +32,7 @@ const SkillPage: NextPage<SkillsPageProps> = ({ skill }) => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { data } = await directus.items("skills").readByQuery({
     filter: { slug: params.slug as string },
-    fields: "name, description, iconName, link, experience",
+    fields: "name, description, iconSVG, link, experience",
   });
 
   return {

@@ -17,6 +17,7 @@ import { Search } from "react-feather";
 import IconFactory from "@/components/Shared/Icons/IconFactory";
 import useCircles from "store/circles";
 import toast from "react-hot-toast";
+import IconMaker from "@/components/Shared/Icons/IconMaker";
 
 interface KProviderProps {
   children: ReactNode;
@@ -92,7 +93,7 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
       id: skill.id.toString(),
       name: skill.name,
       perform: () => push("/skills/" + skill.slug),
-      icon: <IconFactory name={skill.iconName} />,
+      icon: <IconMaker svgCode={skill.iconSVG} />,
       parent: "skills",
     });
   });

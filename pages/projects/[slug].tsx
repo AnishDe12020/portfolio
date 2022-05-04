@@ -5,8 +5,8 @@ import directus from "lib/directus";
 import { ProjectForProjectPage, SkillForProjectPage } from "types/directus";
 import getPreviewImageUrl from "@/utils/getPreviewImageURL";
 import Link from "next/link";
-import IconFactory from "@/components/Shared/Icons/IconFactory";
 import Tooltip from "@/components/Shared/Tooltip";
+import IconMaker from "@/components/Shared/Icons/IconMaker";
 
 interface ProjectPageProps {
   project: ProjectForProjectPage;
@@ -30,8 +30,8 @@ const SkillPage: NextPage<ProjectPageProps> = ({ project, skillsUsed }) => {
           <Tooltip key={skill.id} content={skill.name}>
             <Link href={`skills/${skill.slug}`} passHref>
               <a>
-                <IconFactory
-                  name={skill.iconName}
+                <IconMaker
+                  svgCode={skill.iconSVG}
                   className="h-8 w-8 bg-tertiary p-1 md:h-12 md:w-12 md:p-2 rounded-lg shadow-md"
                   aria-label={skill.name}
                 />
@@ -67,8 +67,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     .items("projects_skills")
     .readByQuery({
       filter: { projects_id: { slug: params.slug as string } },
-      fields:
-        "skills_id.name, skills_id.slug, skills_id.iconName, skills_id.id",
+      fields: "skills_id.name, skills_id.slug, skills_id.iconSVG, skills_id.id",
     });
 
   return {

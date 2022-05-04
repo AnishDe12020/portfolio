@@ -13,7 +13,7 @@ const generateKProviderData = async () => {
   try {
     const { data: skillsData } = await directus
       .items("skills")
-      .readByQuery({ limit: -1, fields: "id, name, slug, iconName" });
+      .readByQuery({ limit: -1, fields: "id, name, slug, iconSVG" });
 
     const { data: projectsData } = await directus
       .items("projects")

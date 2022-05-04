@@ -18,9 +18,9 @@ const SkillsPage: NextPage<SkillsPageProps> = ({ skills }) => {
             key={skill.id}
             name={skill.name}
             description={skill.description}
-            iconName={skill.iconName}
             link={skill.link}
             slug={skill.slug}
+            iconSVG={skill.iconSVG}
           />
         ))}
       </div>
@@ -31,7 +31,7 @@ const SkillsPage: NextPage<SkillsPageProps> = ({ skills }) => {
 export const getStaticProps: GetStaticProps = async () => {
   const { data } = await directus.items("skills").readByQuery({
     limit: -1,
-    fields: "id, name, description, iconName, slug, link",
+    fields: "id, name, description, iconSVG, slug, link",
   });
 
   return {

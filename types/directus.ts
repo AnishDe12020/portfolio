@@ -26,7 +26,7 @@ type SkillsCollection = {
   id: ID;
   name: string;
   description: string;
-  iconName: string;
+  iconSVG: string;
   experience: string;
   slug: string;
   link: string;

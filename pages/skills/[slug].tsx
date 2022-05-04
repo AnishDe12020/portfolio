@@ -1,14 +1,18 @@
+import NextImage from "next/image";
 import ExternalLink from "@/components/Shared/ExternalLink";
 import IconMaker from "@/components/Shared/Icons/IconMaker";
 import directus from "lib/directus";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { SkillForSkillPage } from "types/directus";
+import { ProjectsForSkillPage, SkillForSkillPage } from "types/directus";
+import Tooltip from "@/components/Shared/Tooltip";
+import Link from "next/link";
 
 interface SkillsPageProps {
   skill: SkillForSkillPage;
+  projectsMade: ProjectsForSkillPage[];
 }
 
-const SkillPage: NextPage<SkillsPageProps> = ({ skill }) => {
+const SkillPage: NextPage<SkillsPageProps> = ({ skill, projectsMade }) => {
   console.log(skill);
   return (
     <>
@@ -23,6 +27,22 @@ const SkillPage: NextPage<SkillsPageProps> = ({ skill }) => {
         </div>
       </div>
 
+      <div className="my-6 flex space-x-4">
+        {projectsMade.map(project => (
+          <Tooltip key={project.id} content={project.name}>
+            <Link href={`/projects/${project.slug}`} passHref>
+              <a>
+                <IconMaker
+                  svgCode={project.iconSVG}
+                  className="h-8 w-8 bg-tertiary p-1 md:h-12 md:w-12 md:p-2 rounded-lg shadow-md"
+                  aria-label={project.name}
+                />
+              </a>
+            </Link>
+          </Tooltip>
+        ))}
+      </div>
+
       <ExternalLink href={skill.link} className="mt-4 md:mt-6" />
       <p className="mt-8">{skill.experience}</p>
     </>
@@ -35,8 +55,21 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     fields: "name, description, iconSVG, link, experience",
   });
 
+  const { data: projectsMade } = await directus
+    .items("projects_skills")
+    .readByQuery({
+      filter: { skills_id: { slug: params.slug as string } },
+      fields:
+        "projects_id.name, projects_id.slug, projects_id.id, projects_id.iconSVG",
+    });
+
   return {
-    props: { skill: data[0] },
+    props: {
+      skill: data[0],
+      projectsMade: projectsMade.map(project => {
+        return { ...project.projects_id };
+      }),
+    },
   };
 };
 

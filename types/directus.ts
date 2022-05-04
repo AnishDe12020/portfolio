@@ -52,6 +52,10 @@ type ProjectsColletion = {
 
 type ProjectForProjectsPage = Omit<ProjectsColletion, "iconSVG">;
 type ProjectForProjectPage = Omit<ProjectsColletion, "slug, id">;
+type ProjectsForSkillPage = Pick<
+  ProjectsColletion,
+  "name" | "slug" | "id" | "iconSVG"
+>;
 
 type ProjectsSkillsRelationCollection = {
   id: ID;
@@ -78,4 +82,5 @@ export type {
   ProjectsColletion,
   ProjectForProjectsPage,
   ProjectForProjectPage,
+  ProjectsForSkillPage,
 };

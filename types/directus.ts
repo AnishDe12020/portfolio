@@ -47,8 +47,10 @@ type ProjectsColletion = {
   link: string;
   githubLink: string;
   image: CloudinaryImage;
+  iconSVG: string;
 };
 
+type ProjectForProjectsPage = Omit<ProjectsColletion, "iconSVG">;
 type ProjectForProjectPage = Omit<ProjectsColletion, "slug, id">;
 
 type ProjectsSkillsRelationCollection = {
@@ -74,5 +76,6 @@ export type {
   SkillForSkillPage,
   SkillForProjectPage,
   ProjectsColletion,
+  ProjectForProjectsPage,
   ProjectForProjectPage,
 };

@@ -1,11 +1,11 @@
 import { GetStaticProps, NextPage } from "next";
 import ProjectCard from "@/components/Projects/ProjectCard";
 import directus from "lib/directus";
-import { ProjectsColletion } from "types/directus";
+import { ProjectForProjectsPage } from "types/directus";
 import getPreviewImageUrl from "@/utils/getPreviewImageURL";
 
 interface ProjectPageProps {
-  projects: ProjectsColletion[];
+  projects: ProjectForProjectsPage[];
 }
 
 const SkillsPage: NextPage<ProjectPageProps> = ({ projects }) => {

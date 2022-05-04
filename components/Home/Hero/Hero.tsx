@@ -11,7 +11,7 @@ interface HeroProps {
 const Hero = ({ heroHeading, heroText, image }: HeroProps): JSX.Element => {
   return (
     <div className="flex flex-col space-y-8">
-      <div className="w-32 h-32 relative rounded-full overflow-hidden">
+      <div className="relative h-32 w-32 overflow-hidden rounded-full">
         <NextImage
           src={image.url}
           layout="fill"

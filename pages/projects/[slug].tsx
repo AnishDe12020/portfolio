@@ -17,14 +17,14 @@ const SkillPage: NextPage<ProjectPageProps> = ({ project, skillsUsed }) => {
   console.log(skillsUsed);
   return (
     <>
-      <div className="flex space-x-8 mt-8">
+      <div className="mt-8 flex space-x-8">
         <IconMaker
           svgCode={project.iconSVG}
-          className="h-16 w-16 bg-tertiary p-2 rounded-xl shadow-md"
+          className="shadow-md h-16 w-16 rounded-xl bg-tertiary p-2"
         />
         <div className="flex flex-col space-y-2">
           <h1 className="text-2xl font-bold">{project.name}</h1>
-          <p className="text-gray-300 text-sm">{project.description}</p>
+          <p className="text-sm text-gray-300">{project.description}</p>
         </div>
       </div>
       <ExternalLink href={project.link} className="mt-4 md:mt-6" />
@@ -36,7 +36,7 @@ const SkillPage: NextPage<ProjectPageProps> = ({ project, skillsUsed }) => {
               <a>
                 <IconMaker
                   svgCode={skill.iconSVG}
-                  className="h-8 w-8 bg-tertiary p-1 md:h-12 md:w-12 md:p-2 rounded-lg shadow-md"
+                  className="shadow-md h-8 w-8 rounded-lg bg-tertiary p-1 md:h-12 md:w-12 md:p-2"
                   aria-label={skill.name}
                 />
               </a>
@@ -44,7 +44,7 @@ const SkillPage: NextPage<ProjectPageProps> = ({ project, skillsUsed }) => {
           </Tooltip>
         ))}
       </div>
-      <div className="rounded-xl overflow-hidden">
+      <div className="overflow-hidden rounded-xl">
         <NextImage
           width={project.image.width}
           height={project.image.height}

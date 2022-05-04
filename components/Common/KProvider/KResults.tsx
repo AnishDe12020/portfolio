@@ -12,11 +12,11 @@ const KResults = () => {
       items={results}
       onRender={({ item, active }) =>
         typeof item === "string" ? (
-          <div className="text-sm px-3 pt-4 pb-2 text-gray-400">{item}</div>
+          <div className="px-3 pt-4 pb-2 text-sm text-gray-400">{item}</div>
         ) : (
           <div
             className={cx(
-              "px-3 py-2 transition-colors flex items-center justify-between cursor-pointer rounded-lg",
+              "flex cursor-pointer items-center justify-between rounded-lg px-3 py-2 transition-colors",
               active ? "bg-tertiary" : "bg-transparent"
             )}
           >
@@ -38,7 +38,7 @@ const KResults = () => {
                     }
                   </span>
                   <span className="opacity-60">
-                    <ArrowRight className="h-4 w-4 mx-2" />
+                    <ArrowRight className="mx-2 h-4 w-4" />
                   </span>
                 </>
               )}

@@ -24,14 +24,14 @@ const Tooltip = ({ children, content }: TooltipProps): JSX.Element => {
           <MotionContent
             side="top"
             sideOffset={4}
-            className="rounded-md px-3 py-1 text-sm bg-tertiary shadow-md"
+            className="shadow-md rounded-md bg-tertiary px-3 py-1 text-sm"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             forceMount
           >
             {content}
-            <TooltipPrimitive.Arrow className="text-tertiary fill-current" />
+            <TooltipPrimitive.Arrow className="fill-current text-tertiary" />
           </MotionContent>
         )}
       </AnimatePresence>

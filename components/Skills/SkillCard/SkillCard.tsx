@@ -18,21 +18,21 @@ const SkillCard = ({
   link,
 }: SkillProps): JSX.Element => {
   return (
-    <div className="bg-secondary p-4 rounded-lg border-tertiary border-[1px] hover:border-accent transition duration-200 group relative">
+    <div className="group relative rounded-lg border-[1px] border-tertiary bg-secondary p-4 transition duration-200 hover:border-accent">
       <Link href={`/skills/${slug}`} passHref>
-        <a className="flex space-x-4 items-center">
+        <a className="flex items-center space-x-4">
           <IconMaker
             svgCode={iconSVG}
-            className="h-14 w-14 bg-tertiary p-2 rounded-lg shadow-md"
+            className="shadow-md h-14 w-14 rounded-lg bg-tertiary p-2"
           />
           <div className="flex flex-col space-y-1">
             <h2 className="text-xl font-bold">{name}</h2>
-            <p className="text-gray-300 text-sm">{description}</p>
+            <p className="text-sm text-gray-300">{description}</p>
           </div>
         </a>
       </Link>
       <a
-        className="opacity-0 hidden group-hover:opacity-100 group-hover:block absolute -top-2 -right-2 rounded-full p-1.5 bg-accent text-tertiary border-[1px] border-accent hover:bg-secondary hover:text-accent transition"
+        className="absolute -top-2 -right-2 hidden rounded-full border-[1px] border-accent bg-accent p-1.5 text-tertiary opacity-0 transition hover:bg-secondary hover:text-accent group-hover:block group-hover:opacity-100"
         href={link}
         target="_blank"
         rel="noopener noreferrer"

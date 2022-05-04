@@ -6,7 +6,7 @@ const CommandBarInvoker = (): JSX.Element => {
 
   return (
     <button
-      className="hover:shadow-commandButton transition duration-200 rounded-md p-1 focus:outline-none focus-visible:shadow-commandButton fixed right-8 bottom-8"
+      className="fixed right-8 bottom-8 rounded-md p-1 transition duration-200 hover:shadow-commandButton focus:outline-none focus-visible:shadow-commandButton"
       onClick={() => query.toggle()}
     >
       <CommandIcon />

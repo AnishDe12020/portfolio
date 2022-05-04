@@ -3,10 +3,10 @@ import Nav from "./Nav";
 
 const Header = (): JSX.Element => {
   return (
-    <nav className="flex justify-between px-8 my-4 relative">
+    <nav className="relative my-4 flex justify-between px-8">
       <a
         href="#main"
-        className="absolute left-1/2 rounded-lg px-4 py-2 bg-secondary shadow-md border-tertiary border-[1px] focus:border-accent z-index-50 -translate-y-16 focus:block focus:translate-y-0 transition duration-200"
+        className="shadow-md z-index-50 absolute left-1/2 -translate-y-16 rounded-lg border-[1px] border-tertiary bg-secondary px-4 py-2 transition duration-200 focus:block focus:translate-y-0 focus:border-accent"
         tabIndex={100}
       >
         Skip to main content

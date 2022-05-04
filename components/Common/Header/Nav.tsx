@@ -48,7 +48,7 @@ const Nav = (): JSX.Element => {
 
   return (
     <>
-      <ul className="hiden md:flex space-x-2">
+      <ul className="hiden space-x-2 md:flex">
         {navItems.map((item, index) => (
           <NavItem href={item.href} asPath={asPath} key={index}>
             {item.name}
@@ -58,14 +58,14 @@ const Nav = (): JSX.Element => {
       <div className="md:hidden">
         <button
           onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
-          className="block md:hidden relative"
+          className="relative block md:hidden"
         >
           {isMobileNavOpen ? <X /> : <Menu />}
         </button>
         <AnimatePresence>
           {isMobileNavOpen && (
             <motion.ul
-              className="flex flex-col space-y-4 bg-primary w-full h-screen pt-8 px-8 left-0 md:hidden z-50 absolute"
+              className="absolute left-0 z-50 flex h-screen w-full flex-col space-y-4 bg-primary px-8 pt-8 md:hidden"
               variants={mobileMenuVariants}
               initial="closed"
               animate="open"

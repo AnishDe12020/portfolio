@@ -12,7 +12,7 @@ const CustomToaster = (): JSX.Element => (
         <AnimatePresence>
           {t.visible && (
             <motion.div
-              className="bg-tertiary shadow-lg rounded-lg px-6 py-4 flex"
+              className="shadow-lg flex rounded-lg bg-tertiary px-6 py-4"
               initial={{ scale: 0.6, opacity: 0, y: 50 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.6, opacity: 0, y: 20 }}
@@ -22,7 +22,7 @@ const CustomToaster = (): JSX.Element => (
                 <span className="ml-2">{t.message as ReactNode}</span>
                 {t.type !== "loading" && (
                   <button
-                    className="ml-2 hover:opacity-60 transition duration-200"
+                    className="ml-2 transition duration-200 hover:opacity-60"
                     onClick={() => toast.dismiss(t.id)}
                   >
                     <X className="h-5 w-5" />

@@ -11,7 +11,7 @@ interface ProjectPageProps {
 const SkillsPage: NextPage<ProjectPageProps> = ({ projects }) => {
   return (
     <>
-      <h1 className="text-2xl font-bold mb-8">Projects</h1>
+      <h1 className="mb-8 text-2xl font-bold">Projects</h1>
       {projects.map(project => (
         <ProjectCard
           key={project.id}

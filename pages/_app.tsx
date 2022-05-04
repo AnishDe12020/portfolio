@@ -21,19 +21,19 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           height={3}
           options={{ showSpinner: false }}
         />
-        <main id="main" className="max-w-3xl mx-auto px-8 relative">
+        <main id="main" className="relative mx-auto max-w-3xl px-8">
           <Component {...pageProps} />
           <CustomToaster />
           {isEnabled && (
             <div className="absolute top-0 left-0 right-0">
-              <div className="absolute overflow-visible opacity-20 left-8top-16 -z-10">
-                <div className="mix-blend-multiply h-[400px] w-[700px] bg-red-700 rounded-full blur-[128px] circle-1 -z-10" />
+              <div className="left-8top-16 absolute -z-10 overflow-visible opacity-20">
+                <div className="circle-1 -z-10 h-[400px] w-[700px] rounded-full bg-red-700 mix-blend-multiply blur-[128px]" />
               </div>
-              <div className="absolute overflow-visible opacity-20 left-10 top-32 -z-10">
-                <div className="mix-blend-multiply h-[400px] w-[700px] bg-green-700 rounded-full blur-[128px] circle-2 -z-10" />
+              <div className="absolute left-10 top-32 -z-10 overflow-visible opacity-20">
+                <div className="circle-2 -z-10 h-[400px] w-[700px] rounded-full bg-green-700 mix-blend-multiply blur-[128px]" />
               </div>
-              <div className="absolute overflow-visible opacity-20 left-12 top-48 -z-10">
-                <div className="mix-blend-multiply h-[600px] w-[500px] bg-blue-700 rounded-full blur-[128px] circle-3 -z-10" />
+              <div className="absolute left-12 top-48 -z-10 overflow-visible opacity-20">
+                <div className="circle-3 -z-10 h-[600px] w-[500px] rounded-full bg-blue-700 mix-blend-multiply blur-[128px]" />
               </div>
             </div>
           )}

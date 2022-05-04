@@ -14,9 +14,9 @@ const NavItem = ({ href, children, asPath }: NavItemProps): JSX.Element => {
       <Link href={href} passHref>
         <a
           className={cx(
-            "text-gray-500 px-3 py-1 hover:bg-gray-600 hover:bg-opacity-30 rounded-lg transition duration-200 text-base hidden md:inline-block",
+            "hidden rounded-lg px-3 py-1 text-base text-gray-500 transition duration-200 hover:bg-gray-600 hover:bg-opacity-30 md:inline-block",
             asPath.split("/")[1] === href.replace("/", "") &&
-              "font-medium !text-accent bg-gray-600 bg-opacity-30 hover:bg-opacity-40"
+              "bg-gray-600 bg-opacity-30 font-medium !text-accent hover:bg-opacity-40"
           )}
         >
           {children}

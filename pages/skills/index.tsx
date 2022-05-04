@@ -11,7 +11,7 @@ const SkillsPage: NextPage<SkillsPageProps> = ({ skills }) => {
   console.log(skills);
   return (
     <>
-      <h1 className="text-2xl font-bold mb-8">Skills</h1>
+      <h1 className="mb-8 text-2xl font-bold">Skills</h1>
       <div className="flex-col space-y-8">
         {skills.map(skill => (
           <SkillCard

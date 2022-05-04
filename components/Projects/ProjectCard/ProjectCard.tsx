@@ -22,8 +22,8 @@ const ProjectCard = ({
   githubLink,
 }: ProjectProps): JSX.Element => {
   return (
-    <div className="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8 bg-secondary p-4 rounded-lg border-tertiary border-[1px] transition duration-200">
-      <div className="rounded-lg overflow-hidden">
+    <div className="flex flex-col space-y-8 rounded-lg border-[1px] border-tertiary bg-secondary p-4 transition duration-200 md:flex-row md:space-y-0 md:space-x-8">
+      <div className="overflow-hidden rounded-lg">
         <NextImage
           width={image.width / 4}
           height={image.height / 4}
@@ -37,8 +37,8 @@ const ProjectCard = ({
       <div className="flex flex-col justify-between">
         <div className="flex flex-col space-y-2">
           <h2 className="text-2xl font-bold">{name}</h2>
-          <p className="text-gray-300 text-sm">{description}</p>
-          <div className="flex flex-row space-x-2 items-center">
+          <p className="text-sm text-gray-300">{description}</p>
+          <div className="flex flex-row items-center space-x-2">
             {link && <ExternalLink href={link}>{cleanLink(link)}</ExternalLink>}
             {githubLink && (
               <ExternalLink href={githubLink}>
@@ -48,7 +48,7 @@ const ProjectCard = ({
           </div>
         </div>
         <Link href={`/projects/${slug}`} passHref>
-          <a className="text-gray-300 mt-4">Learn More</a>
+          <a className="mt-4 text-gray-300">Learn More</a>
         </Link>
       </div>
     </div>

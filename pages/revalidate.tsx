@@ -71,13 +71,13 @@ const Revalidate: NextPage = () => {
               className="flex space-x-2"
             >
               <input
-                className="text-accent focus:outline-none focus:ring-4 focus:ring-opacity-60 rounded-md px-4 py-2 border-secondary border-4 bg-tertiary transition duration-200 focus:border-blue-500"
+                className="rounded-md border-4 border-secondary bg-tertiary px-4 py-2 text-accent transition duration-200 focus:border-blue-500 focus:outline-none focus:ring-4 focus:ring-opacity-60"
                 placeholder="Admin Password"
                 {...register("password", { required: true })}
               />
               <button
                 type="submit"
-                className="rounded-lg bg-accent px-4 py-2 hover:opacity-60 transition duration-200 text-primary"
+                className="rounded-lg bg-accent px-4 py-2 text-primary transition duration-200 hover:opacity-60"
               >
                 Submit
               </button>

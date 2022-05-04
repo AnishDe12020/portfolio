@@ -11,7 +11,7 @@ const Kbd = ({ children, className }: KbdProps): JSX.Element => {
     <>
       <kbd
         className={cx(
-          "border-[1px] border-b-2 border-[#4a4a4a] bg-[#333333] rounded-md px-2 py-0.5 text-sm",
+          "rounded-md border-[1px] border-b-2 border-[#4a4a4a] bg-[#333333] px-2 py-0.5 text-sm",
           className
         )}
       >

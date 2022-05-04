@@ -21,7 +21,10 @@ const SkillCard = ({
     <div className="bg-secondary p-4 rounded-lg border-tertiary border-[1px] hover:border-accent transition duration-200 group relative">
       <Link href={`/skills/${slug}`} passHref>
         <a className="flex space-x-4 items-center">
-          <IconMaker svgCode={iconSVG} className="h-12 w-12" />
+          <IconMaker
+            svgCode={iconSVG}
+            className="h-14 w-14 bg-tertiary p-2 rounded-lg shadow-md"
+          />
           <div className="flex flex-col space-y-1">
             <h2 className="text-xl font-bold">{name}</h2>
             <p className="text-gray-300 text-sm">{description}</p>

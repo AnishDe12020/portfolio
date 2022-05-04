@@ -1,6 +1,6 @@
+import cx from "classnames";
 import { AnchorHTMLAttributes, ReactNode } from "react";
 import { ArrowUpRight } from "react-feather";
-import cx from "classnames";
 
 interface ExternalLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;

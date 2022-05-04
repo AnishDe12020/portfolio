@@ -1,6 +1,7 @@
-import IconMaker from "@/components/Shared/Icons/IconMaker";
 import Link from "next/link";
 import { ExternalLink } from "react-feather";
+
+import IconMaker from "@/components/Shared/Icons/IconMaker";
 
 interface SkillProps {
   slug: string;

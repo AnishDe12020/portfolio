@@ -1,7 +1,8 @@
+import { AnimatePresence, Variants, motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "react-feather";
-import { AnimatePresence, motion, Variants } from "framer-motion";
+
 import MobileNavItem from "./MobileNavItem";
 import NavItem from "./NavItem";
 

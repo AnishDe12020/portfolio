@@ -1,4 +1,3 @@
-import socials from "@/data/socials";
 import {
   Action,
   KBarAnimator,
@@ -9,15 +8,18 @@ import {
 } from "kbar";
 import { useRouter } from "next/router";
 import { ReactNode } from "react";
-import Kbd from "@/components/Shared/Kbd";
-import KResults from "./KResults";
-
-import kproviderData from "@/data/kprovider.json";
 import { Search } from "react-feather";
-import IconFactory from "@/components/Shared/Icons/IconFactory";
-import useCircles from "store/circles";
 import toast from "react-hot-toast";
+
+import IconFactory from "@/components/Shared/Icons/IconFactory";
 import IconMaker from "@/components/Shared/Icons/IconMaker";
+import Kbd from "@/components/Shared/Kbd";
+import kproviderData from "@/data/kprovider.json";
+import socials from "@/data/socials";
+
+import useCircles from "store/circles";
+
+import KResults from "./KResults";
 
 interface KProviderProps {
   children: ReactNode;

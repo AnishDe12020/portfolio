@@ -1,7 +1,7 @@
-import { Toaster, ToastIcon, toast } from "react-hot-toast";
 import { AnimatePresence, motion } from "framer-motion";
-import { cloneElement, ReactNode } from "react";
+import { ReactNode, cloneElement } from "react";
 import { X } from "react-feather";
+import { ToastIcon, Toaster, toast } from "react-hot-toast";
 
 const CustomToaster = (): JSX.Element => (
   <Toaster position="bottom-right">

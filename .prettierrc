@@ -2,5 +2,17 @@
   "semi": true,
   "arrowParens": "avoid",
   "tabWidth": 2,
-  "singleQuote": false
+  "singleQuote": false,
+  "importOrder": [
+    "^@/",
+    "^(@/components|components)",
+    "^(@/lib|lib)",
+    "^(@/utils|utils)",
+    "^(@/data|data)",
+    "^(@/styles|styles)",
+    "store/",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }

@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+
 import { GitHubLogo, Twitterlogo } from "@/components/Shared/Icons";
 
 interface Social {

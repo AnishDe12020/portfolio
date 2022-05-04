@@ -1,6 +1,6 @@
+import cx from "classnames";
 import Link from "next/link";
 import { Fragment, ReactNode } from "react";
-import cx from "classnames";
 
 interface BreadcrumbItemProps {
   isRoot?: boolean;

@@ -1,6 +1,6 @@
+import cx from "classnames";
 import Link from "next/link";
 import { ReactNode } from "react";
-import cx from "classnames";
 
 interface MobileNavItemProps {
   href: string;

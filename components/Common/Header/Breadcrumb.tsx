@@ -1,6 +1,8 @@
-import { capitalize } from "@/utils/helpers";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+
+import { capitalize } from "@/utils/helpers";
+
 import BreadcrumbItem from "./BreadcrumbItem";
 
 interface IBreadcrumb {

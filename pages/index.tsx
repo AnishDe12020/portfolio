@@ -1,9 +1,11 @@
 import type { GetStaticProps, NextPage } from "next";
-import Hero from "@/components/Home/Hero";
-import directus from "lib/directus";
-import getAssetUrl from "@/utils/getAssetUrl";
 import { HomePageCollection } from "types/directus";
+
+import Hero from "@/components/Home/Hero";
+import getAssetUrl from "@/utils/getAssetUrl";
 import getPreviewImageUrl from "@/utils/getPreviewImageURL";
+
+import directus from "lib/directus";
 
 interface HomePageProps {
   content: HomePageCollection;

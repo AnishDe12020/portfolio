@@ -1,6 +1,6 @@
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
-import { ReactNode, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { ReactNode, useState } from "react";
 
 const MotionContent = motion(TooltipPrimitive.Content);
 

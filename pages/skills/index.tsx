@@ -1,7 +1,9 @@
 import { GetStaticProps, NextPage } from "next";
-import SkillCard from "@/components/Skills/SkillCard";
-import directus from "lib/directus";
 import { SkillWithoutExperience } from "types/directus";
+
+import SkillCard from "@/components/Skills/SkillCard";
+
+import directus from "lib/directus";
 
 interface SkillsPageProps {
   skills: SkillWithoutExperience[];

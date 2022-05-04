@@ -1,4 +1,5 @@
 import { SVGProps } from "react";
+
 import { NextJSLogo, TypescriptLogo } from ".";
 
 interface IconFactoryProps extends SVGProps<SVGSVGElement> {

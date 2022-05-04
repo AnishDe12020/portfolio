@@ -1,13 +1,15 @@
-import ExternalLink from "@/components/Shared/ExternalLink";
-import IconMaker from "@/components/Shared/Icons/IconMaker";
-import directus from "lib/directus";
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { ProjectsForSkillPage, SkillForSkillPage } from "types/directus";
 import { bundleMDX } from "mdx-bundler";
 import { getMDXComponent } from "mdx-bundler/client";
-import Tooltip from "@/components/Shared/Tooltip";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Link from "next/link";
 import { useMemo } from "react";
+import { ProjectsForSkillPage, SkillForSkillPage } from "types/directus";
+
+import ExternalLink from "@/components/Shared/ExternalLink";
+import IconMaker from "@/components/Shared/Icons/IconMaker";
+import Tooltip from "@/components/Shared/Tooltip";
+
+import directus from "lib/directus";
 
 interface SkillsPageProps {
   skill: SkillForSkillPage;

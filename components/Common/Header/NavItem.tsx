@@ -1,5 +1,5 @@
-import Link from "next/link";
 import cx from "classnames";
+import Link from "next/link";
 import { ReactNode } from "react";
 
 interface NavItemProps {

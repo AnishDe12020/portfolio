@@ -1,12 +1,14 @@
-import ExternalLink from "@/components/Shared/ExternalLink";
-import NextImage from "next/image";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import directus from "lib/directus";
-import { ProjectForProjectPage, SkillForProjectPage } from "types/directus";
-import getPreviewImageUrl from "@/utils/getPreviewImageURL";
+import NextImage from "next/image";
 import Link from "next/link";
-import Tooltip from "@/components/Shared/Tooltip";
+import { ProjectForProjectPage, SkillForProjectPage } from "types/directus";
+
+import ExternalLink from "@/components/Shared/ExternalLink";
 import IconMaker from "@/components/Shared/Icons/IconMaker";
+import Tooltip from "@/components/Shared/Tooltip";
+import getPreviewImageUrl from "@/utils/getPreviewImageURL";
+
+import directus from "lib/directus";
 
 interface ProjectPageProps {
   project: ProjectForProjectPage;

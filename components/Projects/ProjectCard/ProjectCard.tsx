@@ -1,8 +1,9 @@
-import ExternalLink from "@/components/Shared/ExternalLink";
-import { cleanLink, getGitHubOwnerAndRepoFromLink } from "@/utils/helpers";
 import NextImage from "next/image";
 import Link from "next/link";
 import { CloudinaryImage } from "types/directus";
+
+import ExternalLink from "@/components/Shared/ExternalLink";
+import { cleanLink, getGitHubOwnerAndRepoFromLink } from "@/utils/helpers";
 
 interface ProjectProps {
   slug: string;

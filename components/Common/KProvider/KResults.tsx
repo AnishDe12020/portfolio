@@ -1,8 +1,9 @@
-import { KBarResults, useMatches } from "kbar";
 import cx from "classnames";
-import Kbd from "@/components/Shared/Kbd";
-import { cloneElement, ReactElement } from "react";
+import { KBarResults, useMatches } from "kbar";
+import { ReactElement, cloneElement } from "react";
 import { ArrowRight } from "react-feather";
+
+import Kbd from "@/components/Shared/Kbd";
 
 const KResults = () => {
   const { results } = useMatches();

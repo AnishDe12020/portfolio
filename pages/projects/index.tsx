@@ -1,8 +1,10 @@
 import { GetStaticProps, NextPage } from "next";
-import ProjectCard from "@/components/Projects/ProjectCard";
-import directus from "lib/directus";
 import { ProjectForProjectsPage } from "types/directus";
+
+import ProjectCard from "@/components/Projects/ProjectCard";
 import getPreviewImageUrl from "@/utils/getPreviewImageURL";
+
+import directus from "lib/directus";
 
 interface ProjectPageProps {
   projects: ProjectForProjectsPage[];

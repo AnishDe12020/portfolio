@@ -1,11 +1,14 @@
 import type { AppProps } from "next/app";
 import NextNProgress from "nextjs-progressbar";
-import KProvider from "@/components/Common/KProvider";
-import "../styles/globals.css";
-import Header from "@/components/Common/Header";
-import useCircles from "store/circles";
-import CustomToaster from "@/components/Common/CustomToaster";
+
 import CommandBarInvoker from "@/components/Common/CommandBarInvoker";
+import CustomToaster from "@/components/Common/CustomToaster";
+import Header from "@/components/Common/Header";
+import KProvider from "@/components/Common/KProvider";
+
+import useCircles from "store/circles";
+
+import "../styles/globals.css";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const { isEnabled } = useCircles();

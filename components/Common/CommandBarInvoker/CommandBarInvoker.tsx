@@ -1,5 +1,6 @@
-import { CommandIcon } from "@/components/Shared/Icons";
 import { useKBar } from "kbar";
+
+import { CommandIcon } from "@/components/Shared/Icons";
 
 const CommandBarInvoker = (): JSX.Element => {
   const { query } = useKBar();

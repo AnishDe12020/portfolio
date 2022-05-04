@@ -1,4 +1,3 @@
-import NextImage from "next/image";
 import ExternalLink from "@/components/Shared/ExternalLink";
 import IconMaker from "@/components/Shared/Icons/IconMaker";
 import directus from "lib/directus";

@@ -11,7 +11,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   const { isEnabled } = useCircles();
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
+    <div className="relative min-h-screen overflow-x-hidden">
       <Header />
       <KProvider>
         <NextNProgress

@@ -10,10 +10,12 @@ interface IBreadcrumb {
 }
 
 const Breadcrumb = (): JSX.Element => {
-  const { asPath } = useRouter();
+  let { asPath } = useRouter();
   const [breadcrumbs, setBreadcrumbs] = useState<IBreadcrumb[]>([]);
 
   useEffect(() => {
+    asPath = asPath.replace("#main", "");
+
     const pathWithoutQuery = asPath.split("?")[0];
     let pathArray = pathWithoutQuery.split("/");
     console.log("pathArray", pathArray);

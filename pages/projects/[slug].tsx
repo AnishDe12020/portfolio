@@ -18,6 +18,10 @@ const SkillPage: NextPage<ProjectPageProps> = ({ project, skillsUsed }) => {
   return (
     <>
       <div className="flex space-x-8 mt-8">
+        <IconMaker
+          svgCode={project.iconSVG}
+          className="h-16 w-16 bg-tertiary p-2 rounded-xl shadow-md"
+        />
         <div className="flex flex-col space-y-2">
           <h1 className="text-2xl font-bold">{project.name}</h1>
           <p className="text-gray-300 text-sm">{project.description}</p>
@@ -58,7 +62,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { data } = await directus.items("projects").readByQuery({
     filter: { slug: params.slug as string },
     fields:
-      "name, description, link, githubLink, image.url, image.height, image.width",
+      "name, description, link, githubLink, iconSVG, image.url, image.height, image.width",
   });
 
   data[0].image.previewURL = await getPreviewImageUrl(data[0].image.url);

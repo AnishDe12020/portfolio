@@ -81,3 +81,22 @@ body {
     transform: translateX(250px) translateY(25px);
   }
 }
+
+.prose .anchor {
+  @apply absolute invisible no-underline -ml-4 pr-1 cursor-pointer;
+   width: 80%;
+   max-width: 700px;
+}
+
+.anchor:hover {
+  @apply visible;
+}
+
+.prose .anchor::after {
+  @apply text-gray-600;
+  content: "#"
+}
+
+.prose *:hover > .anchor {
+  @apply visible;
+}

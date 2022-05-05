@@ -63,7 +63,9 @@ const SkillPage: NextPage<SkillsPageProps> = ({
         ))}
       </div>
 
-      <ExperienceMDX components={{ ...MDXComponents }} />
+      <article className="prose">
+        <ExperienceMDX components={{ ...MDXComponents }} />
+      </article>
     </>
   );
 };
@@ -82,7 +84,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         rehypeSlug,
         [
           rehypeAutolinkHeadings,
-          { properties: { classname: "after:content-[\"#\"] after:-ml-4 after:absolute after:pr-1 cursor-pointer after:text-gray-600 hover:underline", behaviour: "wrap" } },
+          {
+            properties: {
+              classname: "anchor",
+            },
+          },
         ],
       ];
       return options;

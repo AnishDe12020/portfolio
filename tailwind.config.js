@@ -15,6 +15,17 @@ module.exports = {
     boxShadow: {
       commandButton: "0 0 0 3px hsl(0 0% 30%)",
     },
+    typography: theme => ({
+      DEFAULT: {
+        css: {
+          color: theme("colors.gray.400"),
+          "h1, h2, h3, h4, h5, h6": {
+            color: theme("colors.gray.100"),
+            strong: theme("colors.gray.100"),
+          },
+        }, 
+      },
+    }),
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };

@@ -21,7 +21,7 @@ const MobileNavItem = ({
     )}
   >
     <Link href={href} passHref>
-      <a className="w-auto">{children}</a>
+      <a className="w-auto flex">{children}</a>
     </Link>
   </li>
 );

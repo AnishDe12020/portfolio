@@ -69,7 +69,7 @@ const Nav = (): JSX.Element => {
         <AnimatePresence>
           {isMobileNavOpen && (
             <motion.ul
-              className="absolute left-0 z-50 flex h-screen w-full flex-col space-y-4 bg-primary px-8 pt-8 md:hidden"
+              className="absolute left-0 z-50 flex h-screen w-full flex-col space-y-6 bg-primary px-8 pt-8 md:hidden"
               variants={mobileMenuVariants}
               initial="closed"
               animate="open"

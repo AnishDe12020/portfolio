@@ -57,10 +57,14 @@ const Nav = (): JSX.Element => {
         ))}
       </ul>
       <div className="md:hidden">
-        <div
-          className="relative block md:hidden"
-        >
-        <Hamburger toggled={isMobileNavOpen} toggle={setIsMobileNavOpen} rounded size={24} direction="right" />
+        <div className="relative block md:hidden">
+          <Hamburger
+            toggled={isMobileNavOpen}
+            toggle={setIsMobileNavOpen}
+            rounded
+            size={24}
+            direction="right"
+          />
         </div>
         <AnimatePresence>
           {isMobileNavOpen && (
@@ -83,7 +87,6 @@ const Nav = (): JSX.Element => {
           )}
         </AnimatePresence>
       </div>
-       
     </>
   );
 };

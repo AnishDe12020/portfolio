@@ -5,10 +5,10 @@ import Link from "next/link";
 import { useMemo } from "react";
 import { ProjectsForSkillPage, SkillForSkillPage } from "types/directus";
 
+import MDXComponents from "@/components/Common/MDXComponents";
 import ExternalLink from "@/components/Shared/ExternalLink";
 import IconMaker from "@/components/Shared/Icons/IconMaker";
 import Tooltip from "@/components/Shared/Tooltip";
-import MDXComponents from "@/components/Common/MDXComponents";
 
 import directus from "lib/directus";
 
@@ -61,7 +61,7 @@ const SkillPage: NextPage<SkillsPageProps> = ({
         ))}
       </div>
 
-      <ExperienceMDX components={{...MDXComponents}} />
+      <ExperienceMDX components={{ ...MDXComponents }} />
     </>
   );
 };

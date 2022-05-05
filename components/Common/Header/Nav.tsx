@@ -1,7 +1,7 @@
 import { AnimatePresence, Variants, motion } from "framer-motion";
+import { Rotate as Hamburger } from "hamburger-react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { Menu, X } from "react-feather";
 
 import MobileNavItem from "./MobileNavItem";
 import NavItem from "./NavItem";
@@ -57,12 +57,11 @@ const Nav = (): JSX.Element => {
         ))}
       </ul>
       <div className="md:hidden">
-        <button
-          onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
+        <div
           className="relative block md:hidden"
         >
-          {isMobileNavOpen ? <X /> : <Menu />}
-        </button>
+        <Hamburger toggled={isMobileNavOpen} toggle={setIsMobileNavOpen} rounded size={24} direction="right" />
+        </div>
         <AnimatePresence>
           {isMobileNavOpen && (
             <motion.ul
@@ -84,6 +83,7 @@ const Nav = (): JSX.Element => {
           )}
         </AnimatePresence>
       </div>
+       
     </>
   );
 };

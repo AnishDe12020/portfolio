@@ -3,6 +3,8 @@ import { getMDXComponent } from "mdx-bundler/client";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Link from "next/link";
 import { useMemo } from "react";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeSlug from "rehype-slug";
 import { ProjectsForSkillPage, SkillForSkillPage } from "types/directus";
 
 import MDXComponents from "@/components/Common/MDXComponents";
@@ -72,7 +74,20 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     fields: "name, description, iconSVG, link, experience",
   });
 
-  const { code } = await bundleMDX({ source: data[0].experience });
+  const { code } = await bundleMDX({
+    source: data[0].experience,
+    mdxOptions(options) {
+      options.rehypePlugins = [
+        ...(options.rehypePlugins ?? []),
+        rehypeSlug,
+        [
+          rehypeAutolinkHeadings,
+          { properties: { classname: "after:content-[\"#\"] after:-ml-4 after:absolute after:pr-1 cursor-pointer after:text-gray-600 hover:underline", behaviour: "wrap" } },
+        ],
+      ];
+      return options;
+    },
+  });
 
   const { data: projectsMade } = await directus
     .items("projects_skills")

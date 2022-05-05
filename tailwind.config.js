@@ -18,11 +18,42 @@ module.exports = {
     typography: theme => ({
       DEFAULT: {
         css: {
-          color: theme("colors.gray.400"),
+          color: theme("colors.gray.300"),
           "h1, h2, h3, h4, h5, h6": {
             color: theme("colors.gray.100"),
             strong: theme("colors.gray.100"),
+            fontWeight: theme("fontWeight.bold"),
           },
+          h1: {
+            fontSize: theme("fontSize.5xl"),
+            marginBottom: theme("spacing.8"),
+            marginTop: theme("spacing.8"),
+          },
+          h2: {
+            fontSize: theme("fontSize.4xl"),
+            marginBottom: theme("spacing.8"),
+            marginTop: theme("spacing.8"),
+          },
+          h3: {
+            fontSize: theme("fontSize.3xl"),
+            marginBottom: theme("spacing.6"),
+            marginTop: theme("spacing.6"),
+          },
+          h4: {
+            fontSize: theme("fontSize.2xl"),
+            marginBottom: theme("spacing.6"),
+            marginTop: theme("spacing.6"),
+          },
+          h5: {
+            fontSize: theme("fontSize.xl"),
+            marginBottom: theme("spacing.4"),
+            marginTop: theme("spacing.4"),
+          },
+          h6: {
+            fontSize: theme("fontSize.lg"),
+            marginBottom: theme("spacing.4"),
+            marginTop: theme("spacing.4"),
+          }
         }, 
       },
     }),

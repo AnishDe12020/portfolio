@@ -16,12 +16,18 @@ a {
   box-sizing: border-box;
 }
 
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
   @apply bg-primary text-accent;
+}
+
+
+ul {
+  list-style: disc inside;
 }
 
 .circle-1 {

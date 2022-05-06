@@ -1,14 +1,8 @@
 import { MDXComponents } from "mdx/types";
-import { HTMLAttributes } from "react";
-
-const MDXUl = ({ children, ...props }: HTMLAttributes<HTMLUListElement>) => (
-  <ul {...props} className="list-disc">
-    {children}
-  </ul>
-);
+import Link from "@/components/Shared/Link";
 
 const CustomMDXComponents: MDXComponents = {
-  ul: MDXUl,
+a: Link,
 };
 
 export default CustomMDXComponents;

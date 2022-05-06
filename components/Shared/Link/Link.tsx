@@ -31,7 +31,7 @@ const ExternalLink = ({
     <a
       href={href}
       className={cx(
-        "flex items-end space-x-1 text-sm text-gray-300 transition duration-200 hover:text-gray-100",
+        "flex items-center space-x-1 text-gray-300 transition duration-200 hover:text-gray-100",
         className
       )}
       target="_blank"

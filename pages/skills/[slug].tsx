@@ -61,7 +61,7 @@ const SkillPage: NextPage<SkillsPageProps> = ({
       </div>
 
       <article className="prose leading-8">
-        <ExperienceMDX {...MDXComponents} />
+        <ExperienceMDX components={{ ...MDXComponents }} />
       </article>
     </>
   );

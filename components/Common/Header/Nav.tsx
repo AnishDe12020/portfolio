@@ -49,7 +49,7 @@ const Nav = (): JSX.Element => {
 
   return (
     <>
-      <ul className="hiden space-x-2 md:flex">
+      <ul className="hiden space-x-2 md:flex list-none">
         {navItems.map((item, index) => (
           <NavItem href={item.href} asPath={asPath} key={index}>
             {item.name}
@@ -69,7 +69,7 @@ const Nav = (): JSX.Element => {
         <AnimatePresence>
           {isMobileNavOpen && (
             <motion.ul
-              className="absolute left-0 z-50 flex h-screen w-full flex-col space-y-6 bg-primary px-8 pt-8 md:hidden"
+              className="absolute left-0 z-50 flex h-screen w-full flex-col space-y-6 bg-primary px-8 pt-8 md:hidden list-none"
               variants={mobileMenuVariants}
               initial="closed"
               animate="open"

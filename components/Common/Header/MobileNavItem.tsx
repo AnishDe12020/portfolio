@@ -1,5 +1,5 @@
+import Link from "@/components/Shared/Link";
 import cx from "classnames";
-import Link from "next/link";
 import { ReactNode } from "react";
 
 interface MobileNavItemProps {
@@ -20,8 +20,8 @@ const MobileNavItem = ({
         "font-medium !text-accent"
     )}
   >
-    <Link href={href} passHref>
-      <a className="w-auto flex">{children}</a>
+    <Link href={href} className="flex w-auto">
+    {children}
     </Link>
   </li>
 );

@@ -1,9 +1,8 @@
 import NextImage from "next/image";
-import Link from "next/link";
 import { CloudinaryImage } from "types/directus";
 
-import ExternalLink from "@/components/Shared/ExternalLink";
 import { cleanLink, getGitHubOwnerAndRepoFromLink } from "@/utils/helpers";
+import Link from "@/components/Shared/Link";
 
 interface ProjectProps {
   slug: string;
@@ -40,16 +39,16 @@ const ProjectCard = ({
           <h2 className="text-2xl font-bold">{name}</h2>
           <p className="text-sm text-gray-300">{description}</p>
           <div className="flex flex-row items-center space-x-2">
-            {link && <ExternalLink href={link}>{cleanLink(link)}</ExternalLink>}
+            {link && <Link href={link}>{cleanLink(link)}</Link>}
             {githubLink && (
-              <ExternalLink href={githubLink}>
+              <Link href={githubLink}>
                 {getGitHubOwnerAndRepoFromLink(githubLink)}
-              </ExternalLink>
+              </Link>
             )}
           </div>
         </div>
-        <Link href={`/projects/${slug}`} passHref>
-          <a className="mt-4 text-gray-300">Learn More</a>
+        <Link href={`/projects/${slug}`} className="mt-4 text-gray-300">
+          Learn More
         </Link>
       </div>
     </div>

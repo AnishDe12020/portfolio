@@ -1,5 +1,5 @@
+import Link from "@/components/Shared/Link";
 import cx from "classnames";
-import Link from "next/link";
 import { Fragment, ReactNode } from "react";
 
 interface BreadcrumbItemProps {
@@ -22,18 +22,14 @@ const BreadcrumbItem = ({
       </span>
     )}
     <li>
-      <Link href={href} passHref>
-        <a
-          className={cx(
+      <Link href={href} className={cx(
             isCurrent
               ? "bg-gradient-to-br from-[#9ebd13] to-[#008552] bg-clip-text font-bold text-transparent"
               : "text-gray-300",
             "transition duration-200 hover:opacity-80"
-          )}
-          aria-current={isCurrent ? "page" : "false"}
-        >
+          )}           aria-current={isCurrent ? "page" : "false"}
+>
           {children}
-        </a>
       </Link>
     </li>
   </Fragment>

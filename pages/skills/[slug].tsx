@@ -1,18 +1,17 @@
 import { bundleMDX } from "mdx-bundler";
 import { getMDXComponent } from "mdx-bundler/client";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import Link from "next/link";
 import { useMemo } from "react";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import { ProjectsForSkillPage, SkillForSkillPage } from "types/directus";
 
 import MDXComponents from "@/components/Common/MDXComponents";
-import ExternalLink from "@/components/Shared/ExternalLink";
 import IconMaker from "@/components/Shared/Icons/IconMaker";
 import Tooltip from "@/components/Shared/Tooltip";
 
 import directus from "lib/directus";
+import Link from "@/components/Shared/Link";
 
 interface SkillsPageProps {
   skill: SkillForSkillPage;
@@ -45,26 +44,24 @@ const SkillPage: NextPage<SkillsPageProps> = ({
         </div>
       </div>
 
-      <ExternalLink href={skill.link} className="mt-4 md:mt-6" />
+      <Link href={skill.link} className="mt-4 md:mt-6" />
 
       <div className="my-6 flex space-x-4">
         {projectsMade.map(project => (
           <Tooltip key={project.id} content={project.name}>
-            <Link href={`/projects/${project.slug}`} passHref>
-              <a>
+            <Link href={`/projects/${project.slug}`}>
                 <IconMaker
                   svgCode={project.iconSVG}
                   className="shadow-md h-8 w-8 rounded-lg bg-tertiary p-1 md:h-12 md:w-12 md:p-2"
                   aria-label={project.name}
                 />
-              </a>
             </Link>
           </Tooltip>
         ))}
       </div>
 
       <article className="prose leading-8">
-        <ExperienceMDX />
+        <ExperienceMDX {...MDXComponents} />
       </article>
     </>
   );

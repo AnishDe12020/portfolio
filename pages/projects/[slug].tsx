@@ -1,14 +1,13 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import NextImage from "next/image";
-import Link from "next/link";
 import { ProjectForProjectPage, SkillForProjectPage } from "types/directus";
 
-import ExternalLink from "@/components/Shared/ExternalLink";
 import IconMaker from "@/components/Shared/Icons/IconMaker";
 import Tooltip from "@/components/Shared/Tooltip";
 import getPreviewImageUrl from "@/utils/getPreviewImageURL";
 
 import directus from "lib/directus";
+import Link from "@/components/Shared/Link";
 
 interface ProjectPageProps {
   project: ProjectForProjectPage;
@@ -29,19 +28,17 @@ const SkillPage: NextPage<ProjectPageProps> = ({ project, skillsUsed }) => {
           <p className="text-sm text-gray-300">{project.description}</p>
         </div>
       </div>
-      <ExternalLink href={project.link} className="mt-4 md:mt-6" />
+      <Link href={project.link} className="mt-4 md:mt-6" />
 
       <div className="my-6 flex space-x-4">
         {skillsUsed.map(skill => (
           <Tooltip key={skill.id} content={skill.name}>
-            <Link href={`/skills/${skill.slug}`} passHref>
-              <a>
+            <Link href={`/skills/${skill.slug}`}>
                 <IconMaker
                   svgCode={skill.iconSVG}
                   className="shadow-md h-8 w-8 rounded-lg bg-tertiary p-1 md:h-12 md:w-12 md:p-2"
                   aria-label={skill.name}
                 />
-              </a>
             </Link>
           </Tooltip>
         ))}

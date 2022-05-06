@@ -16,7 +16,6 @@ a {
   box-sizing: border-box;
 }
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -24,7 +23,6 @@ a {
 body {
   @apply bg-primary text-accent;
 }
-
 
 ul {
   list-style: disc inside;
@@ -89,9 +87,9 @@ ul {
 }
 
 .prose .anchor {
-  @apply absolute invisible no-underline -ml-4 pr-1 cursor-pointer;
-   width: 80%;
-   max-width: 700px;
+  @apply invisible absolute -ml-4 cursor-pointer pr-1 no-underline;
+  width: 80%;
+  max-width: 700px;
 }
 
 .anchor:hover {
@@ -100,7 +98,7 @@ ul {
 
 .prose .anchor::after {
   @apply text-gray-600;
-  content: "#"
+  content: "#";
 }
 
 .prose *:hover > .anchor {

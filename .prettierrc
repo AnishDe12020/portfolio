@@ -2,7 +2,5 @@
   "semi": true,
   "arrowParens": "avoid",
   "tabWidth": 2,
-  "singleQuote": false,
-  "importOrderSeparation": true,
-  "importOrderSortSpecifiers": true
+  "singleQuote": false
 }

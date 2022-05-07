@@ -4,6 +4,8 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { useMemo } from "react";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
+import Giscus from "@giscus/react";
+
 import { ProjectsForSkillPage, SkillForSkillPage } from "types/directus";
 
 import MDXComponents from "@/components/Common/MDXComponents";
@@ -50,11 +52,11 @@ const SkillPage: NextPage<SkillsPageProps> = ({
         {projectsMade.map(project => (
           <Tooltip key={project.id} content={project.name}>
             <Link href={`/projects/${project.slug}`}>
-                <IconMaker
-                  svgCode={project.iconSVG}
-                  className="shadow-md h-8 w-8 rounded-lg bg-tertiary p-1 md:h-12 md:w-12 md:p-2"
-                  aria-label={project.name}
-                />
+              <IconMaker
+                svgCode={project.iconSVG}
+                className="shadow-md h-8 w-8 rounded-lg bg-tertiary p-1 md:h-12 md:w-12 md:p-2"
+                aria-label={project.name}
+              />
             </Link>
           </Tooltip>
         ))}
@@ -62,6 +64,21 @@ const SkillPage: NextPage<SkillsPageProps> = ({
 
       <article className="prose leading-8">
         <ExperienceMDX components={{ ...MDXComponents }} />
+        <Giscus
+          id="comments"
+          repo="AnishDe12020/portfolio"
+          repoId="R_kgDOGfn4eQ"
+          category="Comments"
+          categoryId="DIC_kwDOGfn4ec4CO-cF"
+          mapping="specific"
+          term={`skill: ${skill.name}`}
+          reactionsEnabled="1"
+          emitMetadata="0"
+          inputPosition="top"
+          theme="dark"
+          lang="en"
+          loading="lazy"
+        />
       </article>
     </>
   );

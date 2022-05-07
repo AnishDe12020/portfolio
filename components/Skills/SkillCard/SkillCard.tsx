@@ -1,11 +1,11 @@
 import { ExternalLink } from "react-feather";
 
-import IconMaker from "@/components/Shared/Icons/IconMaker";
 import Link from "@/components/Shared/Link";
+import IconFactory from "@/components/Shared/Icons/IconFactory";
 
 interface SkillProps {
   slug: string;
-  iconSVG: string;
+  iconName: string;
   name: string;
   description: string;
   link: string;
@@ -13,7 +13,7 @@ interface SkillProps {
 
 const SkillCard = ({
   slug,
-  iconSVG,
+  iconName,
   name,
   description,
   link,
@@ -21,8 +21,8 @@ const SkillCard = ({
   return (
     <div className="group relative rounded-lg border-[1px] border-tertiary bg-secondary p-4 transition duration-200 hover:border-accent">
       <Link href={`/skills/${slug}`} className="flex items-center space-x-4">
-          <IconMaker
-            svgCode={iconSVG}
+          <IconFactory
+          name={iconName}
             className="shadow-md h-14 w-14 rounded-lg bg-tertiary p-2"
           />
           <div className="flex flex-col space-y-1">

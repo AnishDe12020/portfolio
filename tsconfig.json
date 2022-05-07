@@ -19,7 +19,8 @@
       "@/styles/*": ["styles/*"],
       "@/data/*": ["data/*"],
       "@/components/*": ["components/*"],
-      "@/utils/*": ["utils/*"]
+      "@/utils/*": ["utils/*"],
+      "contentlayer/generated": ["./.contentlayer/generated"]
     }
   },
   "ts-node": {
@@ -27,6 +28,11 @@
       "module": "CommonJS"
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".contentlayer/generated"
+  ],
   "exclude": ["node_modules"]
 }

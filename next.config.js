@@ -1,4 +1,6 @@
-module.exports = {
+const { withContentlayer } = require("next-contentlayer");
+
+module.exports = withContentlayer({
   images: {
     domains: [
       "media.graphassets.com",
@@ -6,4 +8,4 @@ module.exports = {
       "res.cloudinary.com",
     ],
   },
-};
+});

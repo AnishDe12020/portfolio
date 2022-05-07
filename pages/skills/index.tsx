@@ -1,12 +1,11 @@
 import { GetStaticProps, NextPage } from "next";
-import { SkillWithoutExperience } from "types/directus";
 
 import SkillCard from "@/components/Skills/SkillCard";
 
-import directus from "lib/directus";
+import { allSkills, Skill } from ".contentlayer/generated";
 
 interface SkillsPageProps {
-  skills: SkillWithoutExperience[];
+  skills: Skill[];
 }
 
 const SkillsPage: NextPage<SkillsPageProps> = ({ skills }) => {
@@ -17,12 +16,12 @@ const SkillsPage: NextPage<SkillsPageProps> = ({ skills }) => {
       <div className="flex-col space-y-8">
         {skills.map(skill => (
           <SkillCard
-            key={skill.id}
+            key={skill._id}
             name={skill.name}
             description={skill.description}
             link={skill.link}
             slug={skill.slug}
-            iconSVG={skill.iconSVG}
+            iconName={skill.iconName}
           />
         ))}
       </div>
@@ -31,14 +30,11 @@ const SkillsPage: NextPage<SkillsPageProps> = ({ skills }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = await directus.items("skills").readByQuery({
-    limit: -1,
-    fields: "id, name, description, iconSVG, slug, link",
-  });
+  const skills = allSkills;
 
   return {
     props: {
-      skills: data,
+      skills,
     },
   };
 };

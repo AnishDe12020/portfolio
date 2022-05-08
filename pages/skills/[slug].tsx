@@ -1,43 +1,29 @@
-import { bundleMDX } from "mdx-bundler";
-import { getMDXComponent } from "mdx-bundler/client";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { useMemo } from "react";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeSlug from "rehype-slug";
 import Giscus from "@giscus/react";
-
-import { ProjectsForSkillPage, SkillForSkillPage } from "types/directus";
+import { useMDXComponent } from "next-contentlayer/hooks";
 
 import MDXComponents from "@/components/Common/MDXComponents";
-import IconMaker from "@/components/Shared/Icons/IconMaker";
-import Tooltip from "@/components/Shared/Tooltip";
 
-import directus from "lib/directus";
 import Link from "@/components/Shared/Link";
+import { allSkills, Skill } from "contentlayer/generated";
+import IconFactory from "@/components/Shared/Icons/IconFactory";
 
 interface SkillsPageProps {
-  skill: SkillForSkillPage;
-  projectsMade: ProjectsForSkillPage[];
-  experienceMDX: string;
+  skill: Skill;
 }
 
 const SkillPage: NextPage<SkillsPageProps> = ({
   skill,
-  projectsMade,
-  experienceMDX,
 }) => {
   console.log(skill);
 
-  const ExperienceMDX = useMemo(
-    () => getMDXComponent(experienceMDX),
-    [experienceMDX]
-  );
+  const ExperienceMDX = useMDXComponent(skill.body.code);
 
   return (
     <>
       <div className="mt-8 flex space-x-8">
-        <IconMaker
-          svgCode={skill.iconSVG}
+        <IconFactory
+        name={skill.iconName}
           className="shadow-md h-16 w-16 rounded-lg bg-tertiary p-3"
         />
         <div className="flex flex-col space-y-2">
@@ -47,7 +33,7 @@ const SkillPage: NextPage<SkillsPageProps> = ({
       </div>
 
       <Link href={skill.link} className="mt-4 md:mt-6" />
-
+      {/* }
       <div className="my-6 flex space-x-4">
         {projectsMade.map(project => (
           <Tooltip key={project.id} content={project.name}>
@@ -61,6 +47,7 @@ const SkillPage: NextPage<SkillsPageProps> = ({
           </Tooltip>
         ))}
       </div>
+        {*/}
 
       <article className="prose leading-8">
         <ExperienceMDX components={{ ...MDXComponents }} />
@@ -85,61 +72,19 @@ const SkillPage: NextPage<SkillsPageProps> = ({
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { data } = await directus.items("skills").readByQuery({
-    filter: { slug: params.slug as string },
-    fields: "name, description, iconSVG, link, experience",
-  });
+  const skill = allSkills.find(skill => skill.slug === params.slug);
 
-  const { code } = await bundleMDX({
-    source: data[0].experience,
-    mdxOptions(options) {
-      options.rehypePlugins = [
-        ...(options.rehypePlugins ?? []),
-        rehypeSlug,
-        [
-          rehypeAutolinkHeadings,
-          {
-            properties: {
-              classname: "anchor",
-            },
-          },
-        ],
-      ];
-      return options;
-    },
-  });
-
-  const { data: projectsMade } = await directus
-    .items("projects_skills")
-    .readByQuery({
-      filter: { skills_id: { slug: params.slug as string } },
-      fields:
-        "projects_id.name, projects_id.slug, projects_id.id, projects_id.iconSVG",
-    });
+  console.log(skill);
 
   return {
     props: {
-      skill: data[0],
-      projectsMade: projectsMade.map(project => {
-        return { ...project.projects_id };
-      }),
-      experienceMDX: code,
+      skill,
     },
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { data } = await directus.items("skills").readByQuery({
-    fields: "slug",
-  });
-
-  const paths = data.map(skill => {
-    return {
-      params: {
-        slug: skill.slug,
-      },
-    };
-  });
+  const paths = allSkills.map(skill => ({ params: { slug: skill.slug } }));
 
   return {
     paths,

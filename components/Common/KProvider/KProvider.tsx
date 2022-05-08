@@ -11,7 +11,6 @@ import { ReactNode } from "react";
 import { Search } from "react-feather";
 import toast from "react-hot-toast";
 
-import IconFactory from "@/components/Shared/Icons/IconFactory";
 import IconMaker from "@/components/Shared/Icons/IconMaker";
 import Kbd from "@/components/Shared/Kbd";
 import kproviderData from "@/data/kprovider.json";

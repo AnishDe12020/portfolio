@@ -1,8 +1,8 @@
 import NextImage from "next/image";
-import { CloudinaryImage } from "types/directus";
 
 import { cleanLink, getGitHubOwnerAndRepoFromLink } from "@/utils/helpers";
 import Link from "@/components/Shared/Link";
+import { CloudinaryImage } from "contentlayer/generated";
 
 interface ProjectProps {
   slug: string;
@@ -22,17 +22,16 @@ const ProjectCard = ({
   githubLink,
 }: ProjectProps): JSX.Element => {
   return (
-    <div className="flex flex-col space-y-8 rounded-lg border-[1px] border-tertiary bg-secondary p-4 transition duration-200 md:flex-row md:space-y-0 md:space-x-8">
+    <div className="flex flex-col space-y-8 rounded-lg border-[1px] border-tertiary bg-secondary p-4 transition duration-200 md:flex-row md:space-y-0 md:space-x-8 md:h-48">
       <div className="overflow-hidden rounded-lg">
-        <NextImage
-          width={image.width / 4}
-          height={image.height / 4}
-          src={image.url}
-          alt={name}
-          className="rounded-lg"
-          placeholder="blur"
-          blurDataURL={image.previewURL}
-        />
+        <div className="h-36 w-full md:h-full md:w-72 relative">
+          <NextImage
+            src={image.url}
+            alt={name}
+            className="rounded-lg"
+            layout="fill"
+          />
+        </div>
       </div>
       <div className="flex flex-col justify-between">
         <div className="flex flex-col space-y-2">

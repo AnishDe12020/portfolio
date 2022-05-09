@@ -7,14 +7,13 @@ import MDXComponents from "@/components/Common/MDXComponents";
 import Link from "@/components/Shared/Link";
 import { allSkills, Skill } from "contentlayer/generated";
 import IconFactory from "@/components/Shared/Icons/IconFactory";
+import CustomGiscus from "@/components/Shared/CustomGiscus";
 
 interface SkillsPageProps {
   skill: Skill;
 }
 
-const SkillPage: NextPage<SkillsPageProps> = ({
-  skill,
-}) => {
+const SkillPage: NextPage<SkillsPageProps> = ({ skill }) => {
   console.log(skill);
 
   const ExperienceMDX = useMDXComponent(skill.body.code);
@@ -23,7 +22,7 @@ const SkillPage: NextPage<SkillsPageProps> = ({
     <>
       <div className="mt-8 flex space-x-8">
         <IconFactory
-        name={skill.iconName}
+          name={skill.iconName}
           className="shadow-md h-16 w-16 rounded-lg bg-tertiary p-3"
         />
         <div className="flex flex-col space-y-2">
@@ -49,23 +48,14 @@ const SkillPage: NextPage<SkillsPageProps> = ({
       </div>
         {*/}
 
-      <article className="prose leading-8">
-        <ExperienceMDX components={{ ...MDXComponents }} />
-        <Giscus
-          id="comments"
-          repo="AnishDe12020/portfolio"
-          repoId="R_kgDOGfn4eQ"
-          category="Comments"
-          categoryId="DIC_kwDOGfn4ec4CO-cF"
-          mapping="specific"
-          term={`skill: ${skill.name}`}
-          reactionsEnabled="1"
-          emitMetadata="0"
-          inputPosition="top"
-          theme="dark"
-          lang="en"
-          loading="lazy"
-        />
+      <article>
+        <div className="prose leading-8">
+          <ExperienceMDX components={{ ...MDXComponents }} />
+        </div>
+        <div className="my-8 h-1 w-full rounded-full bg-secondary" />
+        <div className="rounded-xl border-[1px] border-tertiary p-8">
+          <CustomGiscus term={`skill: ${skill.name}`} />
+        </div>
       </article>
     </>
   );

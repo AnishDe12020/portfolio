@@ -4,6 +4,9 @@ import {
   makeSource,
 } from "contentlayer/source-files";
 
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+
 export const CloudinaryImage = defineNestedType(() => ({
   name: "CloudinaryImage",
   displayName: "Cloudinary Image",
@@ -107,4 +110,17 @@ export const Project = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: "data",
   documentTypes: [Skill, Project],
+  mdx: {
+    rehypePlugins: [
+      rehypeSlug,
+      [
+        rehypeAutolinkHeadings,
+        {
+          properties: {
+            className: "anchor",
+          },
+        },
+      ],
+    ],
+  },
 });

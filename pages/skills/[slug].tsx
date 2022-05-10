@@ -1,5 +1,4 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import Giscus from "@giscus/react";
 import { useMDXComponent } from "next-contentlayer/hooks";
 
 import MDXComponents from "@/components/Common/MDXComponents";

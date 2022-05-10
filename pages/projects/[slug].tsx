@@ -4,18 +4,24 @@ import NextImage from "next/image";
 import Link from "@/components/Shared/Link";
 import { allProjects, Project } from "contentlayer/generated";
 import IconFactory from "@/components/Shared/Icons/IconFactory";
+import { useMDXComponent } from "next-contentlayer/hooks";
+import MDXComponents from "@/components/Common/MDXComponents";
+import CustomGiscus from "@/components/Shared/CustomGiscus";
 
 interface ProjectPageProps {
   project: Project;
 }
 
 const SkillPage: NextPage<ProjectPageProps> = ({ project }) => {
-console.log(project);
+  console.log(project);
+
+  const ProjectMDX = useMDXComponent(project.body.code);
+
   return (
     <>
       <div className="mt-8 flex space-x-8">
         <IconFactory
-        name={project.iconName}
+          name={project.iconName}
           className="shadow-md h-16 w-16 rounded-xl bg-tertiary p-2"
         />
         <div className="flex flex-col space-y-2">
@@ -25,7 +31,7 @@ console.log(project);
       </div>
       <Link href={project.link} className="mt-4 md:mt-6" />
 
-      {/**}
+      {/* 
       <div className="my-6 flex space-x-4">
         {skillsUsed.map(skill => (
           <Tooltip key={skill.id} content={skill.name}>
@@ -39,7 +45,7 @@ console.log(project);
           </Tooltip>
         ))}
       </div>
-      {**/}
+      */}
       <div className="overflow-hidden rounded-xl">
         <NextImage
           width={project.image.width}
@@ -48,6 +54,16 @@ console.log(project);
           className="rounded-xl drop-shadow-md"
         />
       </div>
+
+      <article>
+        <div className="prose leading-8">
+          <ProjectMDX components={{ ...MDXComponents }} />
+        </div>
+        <div className="my-8 h-1 w-full rounded-full bg-secondary" />
+        <div className="rounded-xl border-[1px] border-tertiary p-8">
+          <CustomGiscus term={`project: ${project.name}`} />
+        </div>
+      </article>
     </>
   );
 };

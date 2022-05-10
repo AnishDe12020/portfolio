@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "5-amazing-react-component-libraries-to-consider-for-your-next-project",
+      "title": "5 Amazing React Component Libraries to Consider for your Next Project",
+      "cuid": "cl2yk4oif01a6jxnv679z51d0",
+      "brief": "As web developers, it is often quite hard and time-consuming to make accessible UIs. This gets even worse when we have to make special components like Modals or Popovers from scratch.\nThankfully, the React ecosystem is huge and there are many great p...",
+      "coverImage": "https://cdn.hashnode.com/res/hashnode/image/unsplash/XmZ4GDAp9G0/upload/v1652090173489/BrJWe16IU.jpeg",
+      "dateAdded": "2022-05-09T10:04:31.347Z"
+    },
+    {
       "slug": "amazing-preview-images-with-nextjs-and-lqip-modern",
       "title": "Amazing preview images with Next.js and LQIP Modern",
       "cuid": "cl2ok3g0x00cwe0nvb0365mwk",
@@ -15,14 +23,6 @@
       "brief": "There are many Headless CMSs out there and many other tools that let us make a blog easily and quickly. Today we look at building a blog with Directus and Next.js. We will use MDX to store our blog content in Directus. We are also going to use Next.j...",
       "coverImage": "https://cdn.hashnode.com/res/hashnode/image/upload/v1651247682343/a8z6OZ-5D.png",
       "dateAdded": "2022-04-29T15:57:33.361Z"
-    },
-    {
-      "slug": "introducing-xdox-start-challenges-log-your-progress-and-show-them-off-to-the-world",
-      "title": "Introducing XdoX - Start Challenges, Log your Progress and Show them off to the World",
-      "cuid": "cl1f5drhc0086zxnv25ny1v4l",
-      "brief": "🤔 What is XdoX?\nXdoX is a web application that lets you start challenges and log your progress every day. You are also able to show your progress to the world via your unique profile page. These challenges can be anything from 100DaysOfCode to 30Day...",
-      "coverImage": "https://cdn.hashnode.com/res/hashnode/image/upload/v1648739175407/TYb9x3jFw.png",
-      "dateAdded": "2022-03-31T15:24:21.104Z"
     }
   ]
 }

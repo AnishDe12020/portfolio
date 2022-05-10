@@ -19,7 +19,7 @@ const SkillCard = ({
   link,
 }: SkillProps): JSX.Element => {
   return (
-    <div className="group relative rounded-lg border-[1px] border-tertiary bg-secondary p-4 transition duration-200 hover:border-accent">
+    <div className="group relative rounded-lg border-[1px] border-tertiary bg-secondary p-4 transition duration-200 hover:border-accent md:hover:scale-105">
       <Link href={`/skills/${slug}`} className="flex items-center space-x-4">
         <IconFactory
           name={iconName}

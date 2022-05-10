@@ -12,13 +12,13 @@ interface IBreadcrumb {
 }
 
 const Breadcrumb = (): JSX.Element => {
-  let { asPath } = useRouter();
+  const { asPath } = useRouter();
   const [breadcrumbs, setBreadcrumbs] = useState<IBreadcrumb[]>([]);
 
   useEffect(() => {
-    asPath = asPath.replace("#main", "");
+    const path = asPath.replace(/#.*/, "");
 
-    const pathWithoutQuery = asPath.split("?")[0];
+    const pathWithoutQuery = path.split("?")[0];
     let pathArray = pathWithoutQuery.split("/");
     console.log("pathArray", pathArray);
     pathArray.shift();

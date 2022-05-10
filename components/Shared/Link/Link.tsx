@@ -52,7 +52,7 @@ const ExternalLink = ({
           background-repeat: no-repeat;
           background-position: bottom left;
           background-size: 0% 3px;
-          transition: background-size 500ms ease-in-out;
+          transition: background-size 150ms ease-in-out;
         }
 
         .gradient-underline:hover :not(.anchor) {

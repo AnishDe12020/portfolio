@@ -7,39 +7,60 @@ interface ExternalLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
   className?: string;
   children?: ReactNode;
+  gradientUnderline?: boolean;
 }
 
 const ExternalLink = ({
   href,
   className,
   children,
+  gradientUnderline = true,
   ...otherProps
 }: ExternalLinkProps): JSX.Element => {
   const isInternalLink = href.startsWith("/") || href.startsWith("#");
 
-  if (isInternalLink) {
-    return (
-      <NextLink href={href}>
-        <a className={className} {...otherProps}>
-          {children}
-        </a>
-      </NextLink>
-    );
-  }
-
   return (
-    <a
-      href={href}
-      className={cx(
-        "flex items-center space-x-1 text-gray-300 transition duration-200 hover:text-gray-100",
-        className
+    <>
+      {isInternalLink ? (
+        <NextLink href={href}>
+          <a
+            className={cx(gradientUnderline && "gradient-underline", className)}
+            {...otherProps}
+          >
+            {children}
+          </a>
+        </NextLink>
+      ) : (
+        <a
+          href={href}
+          className={cx(
+            "flex items-center space-x-1 text-gray-300 transition duration-200 hover:text-gray-100",
+            gradientUnderline && "gradient-underline",
+            className
+          )}
+          target="_blank"
+          rel="noopener noreferrer"
+          {...otherProps}
+        >
+          <span>{children ?? href}</span> <ArrowUpRight className="h-4 w-4" />
+        </a>
       )}
-      target="_blank"
-      rel="noopener noreferrer"
-      {...otherProps}
-    >
-      <span>{children ?? href}</span> <ArrowUpRight className="h-4 w-4" />
-    </a>
+      <style jsx>{`
+        .gradient-underline :not(.anchor) {
+          text-decoration: none;
+          background-image: linear-gradient(to right, #be185d, #1d4ed8);
+          background-repeat: no-repeat;
+          background-position: bottom left;
+          background-size: 0% 3px;
+          transition: background-size 500ms ease-in-out;
+        }
+
+        .gradient-underline:hover :not(.anchor) {
+          background-size: 100% 3px;
+          color: inherit;
+        }
+      `}</style>
+    </>
   );
 };
 

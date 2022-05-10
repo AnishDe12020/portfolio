@@ -98,6 +98,10 @@ export const Project = defineDocumentType(() => ({
       description: "Image for the project",
       of: CloudinaryImage,
     },
+    skillsUsed: {
+      type: "list",
+      of: { type: "string" },
+    },
   },
   computedFields: {
     slug: {

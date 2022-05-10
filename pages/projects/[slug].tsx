@@ -2,19 +2,19 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import NextImage from "next/image";
 
 import Link from "@/components/Shared/Link";
-import { allProjects, Project } from "contentlayer/generated";
+import { allProjects, allSkills, Project, Skill } from "contentlayer/generated";
 import IconFactory from "@/components/Shared/Icons/IconFactory";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import MDXComponents from "@/components/Common/MDXComponents";
 import CustomGiscus from "@/components/Shared/CustomGiscus";
+import Tooltip from "@/components/Shared/Tooltip";
 
 interface ProjectPageProps {
   project: Project;
+  skillsUsed: Skill[];
 }
 
-const SkillPage: NextPage<ProjectPageProps> = ({ project }) => {
-  console.log(project);
-
+const SkillPage: NextPage<ProjectPageProps> = ({ project, skillsUsed }) => {
   const ProjectMDX = useMDXComponent(project.body.code);
 
   return (
@@ -31,13 +31,12 @@ const SkillPage: NextPage<ProjectPageProps> = ({ project }) => {
       </div>
       <Link href={project.link} className="mt-4 md:mt-6" />
 
-      {/* 
       <div className="my-6 flex space-x-4">
         {skillsUsed.map(skill => (
-          <Tooltip key={skill.id} content={skill.name}>
+          <Tooltip key={skill._id} content={skill.name}>
             <Link href={`/skills/${skill.slug}`}>
-              <IconMaker
-                svgCode={skill.iconSVG}
+              <IconFactory
+                name={skill.iconName}
                 className="shadow-md h-8 w-8 rounded-lg bg-tertiary p-1 md:h-12 md:w-12 md:p-2"
                 aria-label={skill.name}
               />
@@ -45,7 +44,7 @@ const SkillPage: NextPage<ProjectPageProps> = ({ project }) => {
           </Tooltip>
         ))}
       </div>
-      */}
+
       <div className="overflow-hidden rounded-xl">
         <NextImage
           width={project.image.width}
@@ -71,9 +70,17 @@ const SkillPage: NextPage<ProjectPageProps> = ({ project }) => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const project = allProjects.find(project => project.slug === params.slug);
 
+  const skillsUsed = project.skillsUsed.map(skill => {
+    const skillData = allSkills.find(skillData => skillData.name === skill);
+    return skillData;
+  });
+
+  console.log(skillsUsed);
+
   return {
     props: {
-      project: project,
+      project,
+      skillsUsed,
     },
   };
 };

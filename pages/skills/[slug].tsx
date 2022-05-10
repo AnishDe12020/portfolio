@@ -4,17 +4,17 @@ import { useMDXComponent } from "next-contentlayer/hooks";
 import MDXComponents from "@/components/Common/MDXComponents";
 
 import Link from "@/components/Shared/Link";
-import { allSkills, Skill } from "contentlayer/generated";
+import { allSkills, allProjects, Project, Skill } from "contentlayer/generated";
 import IconFactory from "@/components/Shared/Icons/IconFactory";
 import CustomGiscus from "@/components/Shared/CustomGiscus";
+import Tooltip from "@/components/Shared/Tooltip";
 
 interface SkillsPageProps {
   skill: Skill;
+  projectsMade: Project[];
 }
 
-const SkillPage: NextPage<SkillsPageProps> = ({ skill }) => {
-  console.log(skill);
-
+const SkillPage: NextPage<SkillsPageProps> = ({ skill, projectsMade }) => {
   const ExperienceMDX = useMDXComponent(skill.body.code);
 
   return (
@@ -31,13 +31,13 @@ const SkillPage: NextPage<SkillsPageProps> = ({ skill }) => {
       </div>
 
       <Link href={skill.link} className="mt-4 md:mt-6" />
-      {/* }
+
       <div className="my-6 flex space-x-4">
         {projectsMade.map(project => (
-          <Tooltip key={project.id} content={project.name}>
+          <Tooltip key={project._id} content={project.name}>
             <Link href={`/projects/${project.slug}`}>
-              <IconMaker
-                svgCode={project.iconSVG}
+              <IconFactory
+                name={project.iconName}
                 className="shadow-md h-8 w-8 rounded-lg bg-tertiary p-1 md:h-12 md:w-12 md:p-2"
                 aria-label={project.name}
               />
@@ -45,7 +45,6 @@ const SkillPage: NextPage<SkillsPageProps> = ({ skill }) => {
           </Tooltip>
         ))}
       </div>
-        {*/}
 
       <article>
         <div className="prose leading-8">
@@ -63,11 +62,14 @@ const SkillPage: NextPage<SkillsPageProps> = ({ skill }) => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const skill = allSkills.find(skill => skill.slug === params.slug);
 
-  console.log(skill);
+  const projectsMade = allProjects.filter(project =>
+    project.skillsUsed.includes(skill.name)
+  );
 
   return {
     props: {
       skill,
+      projectsMade,
     },
   };
 };

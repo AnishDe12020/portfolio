@@ -7,14 +7,14 @@ interface ExternalLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
   className?: string;
   children?: ReactNode;
-  gradientUnderline?: boolean;
+  noGradientUnderline?: boolean;
 }
 
 const ExternalLink = ({
   href,
   className,
   children,
-  gradientUnderline = true,
+  noGradientUnderline,
   ...otherProps
 }: ExternalLinkProps): JSX.Element => {
   const isInternalLink = href.startsWith("/") || href.startsWith("#");
@@ -22,20 +22,27 @@ const ExternalLink = ({
   return (
     <>
       {isInternalLink ? (
-        <NextLink href={href}>
-          <a
-            className={cx(gradientUnderline && "gradient-underline", className)}
-            {...otherProps}
-          >
-            {children}
-          </a>
+      <NextLink href={href}>
+        <a
+          className={cx(
+            "transition duration-200",
+            !noGradientUnderline && "gradient-underline flex items-center",
+            className
+          )}
+          {...otherProps}
+        >
+        {noGradientUnderline ? children : (
+
+        <span>{children ?? href}</span>
+        )}
+        </a>
         </NextLink>
       ) : (
         <a
           href={href}
           className={cx(
             "flex items-center space-x-1 text-gray-300 transition duration-200 hover:text-gray-100",
-            gradientUnderline && "gradient-underline",
+            !noGradientUnderline && "gradient-underline",
             className
           )}
           target="_blank"

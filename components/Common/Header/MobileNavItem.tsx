@@ -20,7 +20,7 @@ const MobileNavItem = ({
         "font-medium !text-accent"
     )}
   >
-    <Link href={href} className="flex w-auto">
+    <Link href={href} className="flex w-auto" noGradientUnderline>
     {children}
     </Link>
   </li>

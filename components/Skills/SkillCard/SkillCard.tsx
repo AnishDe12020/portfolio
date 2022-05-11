@@ -20,7 +20,7 @@ const SkillCard = ({
 }: SkillProps): JSX.Element => {
   return (
     <div className="group relative rounded-lg border-[1px] border-tertiary bg-secondary p-4 transition duration-200 hover:border-accent md:hover:scale-105">
-      <Link href={`/skills/${slug}`} className="flex items-center space-x-4">
+      <Link href={`/skills/${slug}`} className="flex items-center space-x-4" noGradientUnderline>
         <IconFactory
           name={iconName}
           className="shadow-md h-14 w-14 rounded-lg bg-tertiary p-2"

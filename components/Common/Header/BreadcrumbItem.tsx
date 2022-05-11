@@ -28,6 +28,7 @@ const BreadcrumbItem = ({
               : "text-gray-300",
             "transition duration-200 hover:opacity-80"
           )}           aria-current={isCurrent ? "page" : "false"}
+          noGradientUnderline
 >
           {children}
       </Link>

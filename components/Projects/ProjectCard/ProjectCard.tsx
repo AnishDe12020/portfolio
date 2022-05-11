@@ -46,7 +46,7 @@ const ProjectCard = ({
             )}
           </div>
         </div>
-        <Link href={`/projects/${slug}`} className="mt-4 text-gray-300">
+        <Link href={`/projects/${slug}`}>
           Learn More
         </Link>
       </div>

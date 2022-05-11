@@ -35,7 +35,7 @@ const SkillPage: NextPage<SkillsPageProps> = ({ skill, projectsMade }) => {
       <div className="my-6 flex space-x-4">
         {projectsMade.map(project => (
           <Tooltip key={project._id} content={project.name}>
-            <Link href={`/projects/${project.slug}`}>
+            <Link href={`/projects/${project.slug}`} noGradientUnderline>
               <IconFactory
                 name={project.iconName}
                 className="shadow-md h-8 w-8 rounded-lg bg-tertiary p-1 md:h-12 md:w-12 md:p-2"

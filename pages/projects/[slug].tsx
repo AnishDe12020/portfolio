@@ -29,12 +29,14 @@ const SkillPage: NextPage<ProjectPageProps> = ({ project, skillsUsed }) => {
           <p className="text-sm text-gray-300">{project.description}</p>
         </div>
       </div>
-      <Link href={project.link} className="mt-4 md:mt-6" />
+      <Link href={project.link} className="mt-4 md:mt-6">
+        {project.link}
+      </Link>
 
       <div className="my-6 flex space-x-4">
         {skillsUsed.map(skill => (
           <Tooltip key={skill._id} content={skill.name}>
-            <Link href={`/skills/${skill.slug}`}>
+            <Link href={`/skills/${skill.slug}`} noGradientUnderline>
               <IconFactory
                 name={skill.iconName}
                 className="shadow-md h-8 w-8 rounded-lg bg-tertiary p-1 md:h-12 md:w-12 md:p-2"

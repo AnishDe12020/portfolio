@@ -63,6 +63,7 @@
     "react-feather": "^2.0.9",
     "react-hook-form": "^7.30.0",
     "react-hot-toast": "^2.2.0",
+    "reading-time": "^1.5.0",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-slug": "^5.0.1",
     "sharp": "^0.30.4",

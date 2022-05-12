@@ -6,6 +6,7 @@ module.exports = withContentlayer({
       "media.graphassets.com",
       "c5eq9h7e.directus.app",
       "res.cloudinary.com",
+      "cdn.hashnode.com",
     ],
   },
 });

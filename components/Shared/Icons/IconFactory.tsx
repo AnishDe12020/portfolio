@@ -1,6 +1,15 @@
 import { SVGProps } from "react";
+import { X } from "react-feather";
 
-import { NextJSLogo, TypescriptLogo, XdoXLogo } from ".";
+import {
+  NextJSLogo,
+  TypescriptLogo,
+  XdoXLogo,
+  ReactLogo,
+  FigmaLogo,
+  GoLogo,
+  TailwindCSSLogo,
+} from ".";
 
 interface IconFactoryProps extends SVGProps<SVGSVGElement> {
   name: string;
@@ -17,6 +26,16 @@ const IconFactory = ({
       return <TypescriptLogo {...otherProps} />;
     case "xdox":
       return <XdoXLogo {...otherProps} />;
+    case "figma":
+      return <FigmaLogo {...otherProps} />;
+    case "tailwindcss":
+      return <TailwindCSSLogo {...otherProps} />;
+    case "go":
+      return <GoLogo {...otherProps} />;
+    case "react":
+      return <ReactLogo {...otherProps} />;
+    default:
+      return <X />;
   }
 };
 

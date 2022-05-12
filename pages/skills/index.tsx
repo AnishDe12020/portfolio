@@ -25,6 +25,7 @@ const SkillsPage: NextPage<SkillsPageProps> = ({ skills }) => {
           />
         ))}
       </div>
+      <p className="text-xl font-semibold mt-8">And much more!</p>
     </>
   );
 };

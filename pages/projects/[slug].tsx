@@ -29,9 +29,17 @@ const SkillPage: NextPage<ProjectPageProps> = ({ project, skillsUsed }) => {
           <p className="text-sm text-gray-300">{project.description}</p>
         </div>
       </div>
-      <Link href={project.link} className="mt-4 md:mt-6">
-        {project.link}
-      </Link>
+      {project.link && (
+        <Link href={project.link} className="mt-4 md:mt-6">
+          {project.link}
+        </Link>
+      )}
+
+      {project.githubLink && (
+        <Link href={project.githubLink} className="mt-4 md:mt-6">
+          {project.githubLink}
+        </Link>
+      )}
 
       <div className="my-6 flex space-x-4">
         {skillsUsed.map(skill => (

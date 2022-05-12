@@ -6,6 +6,8 @@ import { useMDXComponent } from "next-contentlayer/hooks";
 import MDXComponents from "@/components/Common/MDXComponents";
 import CustomGiscus from "@/components/Shared/CustomGiscus";
 
+import AvatarJPG from "public/static/images/avatar.jpg";
+
 interface BlogPostPageProps {
   blogPost: BlogPost;
 }
@@ -15,11 +17,7 @@ const BlogPostPage: NextPage<BlogPostPageProps> = ({ blogPost }) => {
 
   return (
     <>
-      <div className="mt-8 flex space-x-8">
-        <div className="flex flex-col space-y-2">
-          <h1 className="text-2xl font-bold">{blogPost.title}</h1>
-        </div>
-      </div>
+      <h1 className="mb-16 mt-4 text-2xl font-bold">{blogPost.title}</h1>
 
       <div className="overflow-hidden rounded-xl">
         <NextImage
@@ -28,6 +26,26 @@ const BlogPostPage: NextPage<BlogPostPageProps> = ({ blogPost }) => {
           src={blogPost.image.url}
           className="rounded-xl drop-shadow-md"
         />
+      </div>
+
+      <div className="my-16 flex justify-between">
+        <div className="flex space-x-2">
+          <NextImage
+            src={AvatarJPG}
+            placeholder="blur"
+            height={32}
+            width={32}
+            className="rounded-full"
+          />
+          <p>Anish De</p>
+          <span aria-hidden>/</span>
+          <p>{blogPost.date}</p>
+        </div>
+        <div className="flex space-x-2">
+          <p>{blogPost.wordCount} words</p>
+          <span aria-hidden>/</span>
+          <p>{blogPost.readingTime.text}</p>
+        </div>
       </div>
 
       <article>

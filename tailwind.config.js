@@ -25,27 +25,27 @@ module.exports = {
             fontWeight: theme("fontWeight.bold"),
           },
           h1: {
-            fontSize: theme("fontSize.5xl"),
+            fontSize: theme("fontSize.3xl"),
             marginBottom: theme("spacing.8"),
             marginTop: theme("spacing.8"),
           },
           h2: {
-            fontSize: theme("fontSize.4xl"),
+            fontSize: theme("fontSize.2xl"),
             marginBottom: theme("spacing.8"),
             marginTop: theme("spacing.8"),
           },
           h3: {
-            fontSize: theme("fontSize.3xl"),
+            fontSize: theme("fontSize.xl"),
             marginBottom: theme("spacing.6"),
             marginTop: theme("spacing.6"),
           },
           h4: {
-            fontSize: theme("fontSize.2xl"),
+            fontSize: theme("fontSize.lg"),
             marginBottom: theme("spacing.6"),
             marginTop: theme("spacing.6"),
           },
           h5: {
-            fontSize: theme("fontSize.xl"),
+            fontSize: theme("fontSize.lg"),
             marginBottom: theme("spacing.4"),
             marginTop: theme("spacing.4"),
           },
@@ -53,8 +53,8 @@ module.exports = {
             fontSize: theme("fontSize.lg"),
             marginBottom: theme("spacing.4"),
             marginTop: theme("spacing.4"),
-          }
-        }, 
+          },
+        },
       },
     }),
   },

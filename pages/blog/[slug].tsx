@@ -17,7 +17,7 @@ const BlogPostPage: NextPage<BlogPostPageProps> = ({ blogPost }) => {
 
   return (
     <>
-      <h1 className="mb-16 mt-4 text-2xl font-bold">{blogPost.title}</h1>
+      <h1 className="mb-16 mt-4 text-4xl font-bold">{blogPost.title}</h1>
 
       <div className="overflow-hidden rounded-xl">
         <NextImage

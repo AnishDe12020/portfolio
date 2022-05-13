@@ -17,7 +17,7 @@ const BlogPostPage: NextPage<BlogPostPageProps> = ({ blogPost }) => {
 
   return (
     <>
-      <h1 className="mb-16 mt-4 text-4xl font-bold">{blogPost.title}</h1>
+      <h1 className="mb-16 mt-8 text-4xl font-bold">{blogPost.title}</h1>
 
       <div className="overflow-hidden rounded-xl">
         <NextImage
@@ -28,20 +28,22 @@ const BlogPostPage: NextPage<BlogPostPageProps> = ({ blogPost }) => {
         />
       </div>
 
-      <div className="my-16 flex justify-between">
-        <div className="flex space-x-2">
-          <NextImage
-            src={AvatarJPG}
-            placeholder="blur"
-            height={32}
-            width={32}
-            className="rounded-full"
-          />
+      <div className="my-16 flex justify-between rounded-lg border-[1px] border-tertiary bg-secondary px-4 py-2 text-gray-300">
+        <div className="mt-1 flex items-center space-x-2">
+          <div className="mr-1 mt-1">
+            <NextImage
+              src={AvatarJPG}
+              placeholder="blur"
+              height={32}
+              width={32}
+              className="rounded-full"
+            />
+          </div>
           <p>Anish De</p>
           <span aria-hidden>/</span>
           <p>{blogPost.date}</p>
         </div>
-        <div className="flex space-x-2">
+        <div className="flex items-center space-x-2">
           <p>{blogPost.wordCount} words</p>
           <span aria-hidden>/</span>
           <p>{blogPost.readingTime.text}</p>

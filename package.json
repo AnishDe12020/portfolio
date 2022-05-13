@@ -65,8 +65,10 @@
     "react-hot-toast": "^2.2.0",
     "reading-time": "^1.5.0",
     "rehype-autolink-headings": "^6.1.1",
+    "rehype-pretty-code": "^0.3.1",
     "rehype-slug": "^5.0.1",
     "sharp": "^0.30.4",
+    "shiki": "^0.10.1",
     "zustand": "^4.0.0-rc.0"
   }
 }

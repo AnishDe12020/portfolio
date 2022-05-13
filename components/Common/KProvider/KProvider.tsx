@@ -13,12 +13,13 @@ import toast from "react-hot-toast";
 
 import IconMaker from "@/components/Shared/Icons/IconMaker";
 import Kbd from "@/components/Shared/Kbd";
-import kproviderData from "@/data/kprovider.json";
 import socials from "@/data/socials";
+import { allSkills, allProjects } from "contentlayer/generated"
 
 import useCircles from "store/circles";
 
 import KResults from "./KResults";
+import IconFactory from "@/components/Shared/Icons/IconFactory";
 
 interface KProviderProps {
   children: ReactNode;
@@ -87,23 +88,22 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
     });
   });
 
-  const { skills, projects } = kproviderData;
-
-  skills.map(skill => {
+  allSkills.map(skill => {
     actions.push({
-      id: skill.id.toString(),
+      id: skill._id,
       name: skill.name,
       perform: () => push("/skills/" + skill.slug),
-      icon: <IconMaker svgCode={skill.iconSVG} />,
+      icon: <IconFactory name={skill.iconName} />,
       parent: "skills",
     });
   });
 
-  projects.map(project => {
+  allProjects.map(project => {
     actions.push({
-      id: project.id.toString(),
+      id: project._id,
       name: project.name,
       perform: () => push("/projects/" + project.slug),
+            icon: <IconFactory name={project.iconName} />,
       parent: "projects",
     });
   });

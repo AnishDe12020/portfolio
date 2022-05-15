@@ -16,11 +16,15 @@ const CodeBlock = props => {
 };
 
 const BlogImage = props => {
-  return <img {...props} className="my-8 rounded-xl bg-secondary p-2" />;
+  return <img {...props} className="my-8 rounded-md" />;
+};
+
+const BlogLink = props => {
+  return <Link {...props} className="text-blue-400 hover:text-blue-300" />;
 };
 
 const CustomMDXComponents: MDXComponents = {
-  a: Link,
+  a: BlogLink,
   pre: CodeBlock,
   img: BlogImage,
 };

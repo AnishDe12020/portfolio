@@ -19,7 +19,12 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   const [circlesAllowed, setCirclesAllowed] = useState<boolean>(true);
 
   useEffect(() => {
-    const pathsCirclesAllowedIn: string[] = ["/", "/skills", "/projects"];
+    const pathsCirclesAllowedIn: string[] = [
+      "/",
+      "/skills",
+      "/projects",
+      "/blog",
+    ];
     if (pathsCirclesAllowedIn.includes(asPath)) {
       setCirclesAllowed(true);
     } else {

@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "make-a-beautiful-connect-wallet-button-with-rainbowkit-and-react",
+      "title": "Make a beautiful Connect Wallet Button with RainbowKit and React",
+      "cuid": "cl35oq4d900jymqnvcwygcqt8",
+      "brief": "Authentication in Web3 is extremely easy but supporting all the wallets and making a nice UI can be painful and time-consuming. Thankfully, there are many libraries which makes this extremely easy as well. Today we are going to be looking at adding R...",
+      "coverImage": "https://cdn.hashnode.com/res/hashnode/image/upload/v1652521066137/sJ3tsAZoN.png",
+      "dateAdded": "2022-05-14T09:47:33.362Z"
+    },
+    {
       "slug": "5-amazing-react-component-libraries-to-consider-for-your-next-project",
       "title": "5 Amazing React Component Libraries to Consider for your Next Project",
       "cuid": "cl2yk4oif01a6jxnv679z51d0",
@@ -15,14 +23,6 @@
       "brief": "Images take a long time to load and can have a disruptive impact on UX. Today we are going to be looking at creating preview images with a library called lqip-modern. \nWhat is LQIP?\nLQIP simply stands for Low Quality Image Placeholders. They have ext...",
       "coverImage": "https://cdn.hashnode.com/res/hashnode/image/upload/v1651485793452/F3aixNLhI.png",
       "dateAdded": "2022-05-02T10:05:51.829Z"
-    },
-    {
-      "slug": "making-a-blog-with-directus-mdx-and-nextjs-on-demand-isr",
-      "title": "Making a blog with Directus, MDX, and Next.js On-Demand ISR",
-      "cuid": "cl2kmc67200t1zbnvhtsb1l07",
-      "brief": "There are many Headless CMSs out there and many other tools that let us make a blog easily and quickly. Today we look at building a blog with Directus and Next.js. We will use MDX to store our blog content in Directus. We are also going to use Next.j...",
-      "coverImage": "https://cdn.hashnode.com/res/hashnode/image/upload/v1651247682343/a8z6OZ-5D.png",
-      "dateAdded": "2022-04-29T15:57:33.361Z"
     }
   ]
 }

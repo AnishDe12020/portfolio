@@ -47,7 +47,7 @@ const ExternalLink = ({
         <a
           href={href}
           className={cx(
-            "flex items-center space-x-1 text-gray-300 transition duration-200 hover:text-gray-100",
+            "mr-1 inline-flex items-center space-x-1 text-gray-300 transition duration-200 hover:text-gray-100",
             isGradientUnderline && "gradient-underline",
             className
           )}

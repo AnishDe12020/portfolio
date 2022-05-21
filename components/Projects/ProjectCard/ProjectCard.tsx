@@ -3,6 +3,7 @@ import NextImage from "next/image";
 import { cleanLink, getGitHubOwnerAndRepoFromLink } from "@/utils/helpers";
 import Link from "@/components/Shared/Link";
 import { CloudinaryImage } from "contentlayer/generated";
+import { GitHubLogo } from "@/components/Shared/Icons";
 
 interface ProjectProps {
   slug: string;
@@ -40,7 +41,7 @@ const ProjectCard = ({
           <div className="flex flex-col space-y-2 md:flex-row md:space-x-2 md:space-y-0 md:items-center">
             {link && <Link href={link}>{cleanLink(link)}</Link>}
             {githubLink && (
-              <Link href={githubLink}>
+            <Link href={githubLink} icon={<GitHubLogo />}>
                 {getGitHubOwnerAndRepoFromLink(githubLink)}
               </Link>
             )}

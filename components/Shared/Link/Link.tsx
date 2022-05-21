@@ -1,5 +1,10 @@
 import cx from "classnames";
-import { AnchorHTMLAttributes, ReactNode } from "react";
+import {
+  AnchorHTMLAttributes,
+  cloneElement,
+  ReactElement,
+  ReactNode,
+} from "react";
 import { ArrowUpRight } from "react-feather";
 import NextLink from "next/link";
 
@@ -9,6 +14,7 @@ interface ExternalLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   children?: ReactNode;
   gradientUnderline?: boolean;
   noGradientUnderline?: boolean;
+  icon?: ReactNode;
 }
 
 const ExternalLink = ({
@@ -17,6 +23,7 @@ const ExternalLink = ({
   children,
   gradientUnderline,
   noGradientUnderline,
+  icon,
   ...otherProps
 }: ExternalLinkProps): JSX.Element => {
   const isInternalLink = href.startsWith("/") || href.startsWith("#");
@@ -55,6 +62,8 @@ const ExternalLink = ({
           rel="noopener noreferrer"
           {...otherProps}
         >
+          {icon &&
+            cloneElement(icon as ReactElement, { className: "h-4 w-4 mr-1" })}
           <span>{children ?? href}</span> <ArrowUpRight className="h-4 w-4" />
         </a>
       )}

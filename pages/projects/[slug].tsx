@@ -8,6 +8,8 @@ import { useMDXComponent } from "next-contentlayer/hooks";
 import MDXComponents from "@/components/Common/MDXComponents";
 import CustomGiscus from "@/components/Shared/CustomGiscus";
 import Tooltip from "@/components/Shared/Tooltip";
+import { getGitHubOwnerAndRepoFromLink } from "@/utils/helpers";
+import { GitHubLogo } from "@/components/Shared/Icons";
 
 interface ProjectPageProps {
   project: Project;
@@ -36,8 +38,12 @@ const SkillPage: NextPage<ProjectPageProps> = ({ project, skillsUsed }) => {
       )}
 
       {project.githubLink && (
-        <Link href={project.githubLink} className="mt-4 md:mt-6">
-          {project.githubLink}
+        <Link
+          href={project.githubLink}
+          className="mt-4 ml-4 md:mt-6"
+          icon={<GitHubLogo />}
+        >
+          {getGitHubOwnerAndRepoFromLink(project.githubLink)}
         </Link>
       )}
 
@@ -65,6 +71,8 @@ const SkillPage: NextPage<ProjectPageProps> = ({ project, skillsUsed }) => {
       </div>
 
       <article>
+        <div className="my-8 h-1 w-full rounded-full bg-secondary" />
+
         <div className="prose leading-8">
           <ProjectMDX components={{ ...MDXComponents }} />
         </div>

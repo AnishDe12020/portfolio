@@ -13,7 +13,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import "@fontsource/syncopate";
-import "@fontsource/sen"
+import "@fontsource/sen";
+import Footer from "@/components/Common/Footer";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const { asPath } = useRouter();
@@ -46,7 +47,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           height={3}
           options={{ showSpinner: false }}
         />
-        <main id="main" className="relative mx-auto max-w-4xl px-8">
+        <main id="main" className="relative mx-auto mb-16 max-w-4xl px-8">
           <Component {...pageProps} />
           <CustomToaster />
           {isEnabled && circlesAllowed && (
@@ -63,7 +64,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             </div>
           )}
         </main>
-
+        <Footer className="mx-auto" />
         <CommandBarInvoker />
       </KProvider>
     </div>

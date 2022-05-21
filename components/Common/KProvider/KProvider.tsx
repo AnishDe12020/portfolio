@@ -11,10 +11,9 @@ import { ReactNode } from "react";
 import { Search } from "react-feather";
 import toast from "react-hot-toast";
 
-import IconMaker from "@/components/Shared/Icons/IconMaker";
 import Kbd from "@/components/Shared/Kbd";
 import socials from "@/data/socials";
-import { allSkills, allProjects } from "contentlayer/generated"
+import { allSkills, allProjects } from "contentlayer/generated";
 
 import useCircles from "store/circles";
 
@@ -103,7 +102,7 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
       id: project._id,
       name: project.name,
       perform: () => push("/projects/" + project.slug),
-            icon: <IconFactory name={project.iconName} />,
+      icon: <IconFactory name={project.iconName} />,
       parent: "projects",
     });
   });

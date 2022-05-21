@@ -1,4 +1,4 @@
-import { AnimatePresence, Variants, motion } from "framer-motion";
+import { Variants, motion } from "framer-motion";
 import { Rotate as Hamburger } from "hamburger-react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";

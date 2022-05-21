@@ -5,8 +5,9 @@ import Hero from "@/components/Home/Hero";
 
 const HomePage: NextPage = () => {
   return (
-    <Hero
-    />
+  <>
+    <Hero />
+    </>
   );
 };
 

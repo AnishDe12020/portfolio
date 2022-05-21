@@ -386,6 +386,16 @@
   resolved "https://registry.yarnpkg.com/@fal-works/esbuild-plugin-global-externals/-/esbuild-plugin-global-externals-2.1.2.tgz#c05ed35ad82df8e6ac616c68b92c2282bd083ba4"
   integrity sha512-cEee/Z+I12mZcFJshKcCqC8tuX5hG3s+d+9nZ3LabqKF1vKdF41B92pJVCBggjAGORAeOzyyDDKrZwIkLffeOQ==
 
+"@fontsource/sen@^4.5.8":
+  version "4.5.8"
+  resolved "https://registry.yarnpkg.com/@fontsource/sen/-/sen-4.5.8.tgz#8e848be023601b206a741725c6a1bedd8f31a82f"
+  integrity sha512-MqfXD/k05Rz6cb58ZoRAmFOkpRPUyLsnOFJkjp0rwT8L2cT422FL3RuYV+tVXcEa/xomw4D1y3RJSkKYwqe1hg==
+
+"@fontsource/syncopate@^4.5.7":
+  version "4.5.7"
+  resolved "https://registry.yarnpkg.com/@fontsource/syncopate/-/syncopate-4.5.7.tgz#9d03e0c44e52647e066a0b719926da607f4e1f49"
+  integrity sha512-rXokyXrCajcX4OeCNK6qPWoQHOkCkcHTKjAMEsab8lu+jnUNCaPkt/tBH6BdUAYLeibiK9Wl3oVICviMTqVCqg==
+
 "@giscus/react@^2.0.3":
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/@giscus/react/-/react-2.0.3.tgz#d80fb9a5a0c9d5a6364ba6711277ae64d9e4cbe2"

@@ -12,6 +12,9 @@ import "../styles/globals.css";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
+import "@fontsource/syncopate";
+import "@fontsource/sen"
+
 export default function MyApp({ Component, pageProps }: AppProps) {
   const { asPath } = useRouter();
 

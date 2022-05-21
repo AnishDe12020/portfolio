@@ -28,6 +28,8 @@ const mobileMenuVariants: Variants = {
     transition: {
       type: "spring",
       duration: 0.6,
+      staggerChildren: 0.07,
+      delayChildren: 0.2,
     },
   },
   closed: {
@@ -49,7 +51,7 @@ const Nav = (): JSX.Element => {
 
   return (
     <>
-      <ul className="hiden space-x-2 md:flex list-none">
+      <ul className="hiden list-none space-x-2 md:flex">
         {navItems.map((item, index) => (
           <NavItem href={item.href} asPath={asPath} key={index}>
             {item.name}
@@ -66,26 +68,17 @@ const Nav = (): JSX.Element => {
             direction="right"
           />
         </div>
-        <AnimatePresence>
-          {isMobileNavOpen && (
-            <motion.ul
-              className="absolute left-0 z-50 flex h-screen w-full flex-col space-y-6 bg-primary px-8 pt-8 md:hidden list-none"
-              variants={mobileMenuVariants}
-              initial="closed"
-              animate="open"
-              exit="closed"
-            >
-              <AnimatePresence>
-                {isMobileNavOpen &&
-                  navItems.map((item, index) => (
-                    <MobileNavItem href={item.href} asPath={asPath} key={index}>
-                      {item.name}
-                    </MobileNavItem>
-                  ))}
-              </AnimatePresence>
-            </motion.ul>
-          )}
-        </AnimatePresence>
+        <motion.ul
+          className="absolute left-0 z-50 flex h-screen w-full list-none flex-col space-y-6 bg-primary px-8 pt-8 md:hidden"
+          variants={mobileMenuVariants}
+          animate={isMobileNavOpen ? "open" : "closed"}
+        >
+          {navItems.map((item, index) => (
+            <MobileNavItem href={item.href} asPath={asPath} key={index}>
+              {item.name}
+            </MobileNavItem>
+          ))}
+        </motion.ul>
       </div>
     </>
   );

@@ -119,3 +119,7 @@ div[data-rehype-pretty-code-fragment] pre {
   overflow-x: scroll;
   @apply bg-secondary px-5 py-3 text-sm leading-7;
 }
+
+.will-change-opacity {
+  will-change: opacity;
+}

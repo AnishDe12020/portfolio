@@ -40,7 +40,7 @@ const SkillPage: NextPage<ProjectPageProps> = ({ project, skillsUsed }) => {
       {project.githubLink && (
         <Link
           href={project.githubLink}
-          className="mt-4 ml-4 md:mt-6"
+          className="mt-4 md:ml-4 md:mt-6"
           icon={<GitHubLogo />}
         >
           {getGitHubOwnerAndRepoFromLink(project.githubLink)}
@@ -61,12 +61,14 @@ const SkillPage: NextPage<ProjectPageProps> = ({ project, skillsUsed }) => {
         ))}
       </div>
 
-      <div className="overflow-hidden rounded-xl">
+      <div className="my-8 h-1 w-full rounded-full bg-secondary" />
+
+      <div className="shadow-xl overflow-hidden rounded-xl shadow-white">
         <NextImage
           width={project.image.width}
           height={project.image.height}
           src={project.image.url}
-          className="rounded-xl drop-shadow-md"
+          className="shadow-md rounded-xl shadow-white"
         />
       </div>
 

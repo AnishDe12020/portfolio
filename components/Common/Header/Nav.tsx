@@ -71,6 +71,7 @@ const Nav = (): JSX.Element => {
         <motion.ul
           className="absolute left-0 z-50 flex h-screen w-full list-none flex-col space-y-6 bg-primary px-8 pt-8 md:hidden"
           variants={mobileMenuVariants}
+          initial="closed"
           animate={isMobileNavOpen ? "open" : "closed"}
         >
           {navItems.map((item, index) => (

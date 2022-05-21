@@ -12,6 +12,7 @@ const ProjectsPage: NextPage<ProjectPageProps> = ({ projects }) => {
   return (
     <>
       <h1 className="mb-8 text-2xl font-bold">Projects</h1>
+            <div className="flex-col space-y-8">
       {projects.map(project => (
         <ProjectCard
           key={project._id}
@@ -23,6 +24,7 @@ const ProjectsPage: NextPage<ProjectPageProps> = ({ projects }) => {
           image={project.image}
         />
       ))}
+      </div>
     </>
   );
 };

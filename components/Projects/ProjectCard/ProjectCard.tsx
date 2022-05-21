@@ -38,16 +38,16 @@ const ProjectCard = ({
         <div className="flex flex-col space-y-2">
           <h2 className="text-2xl font-bold">{name}</h2>
           <p className="text-sm text-gray-300">{description}</p>
-          <div className="flex flex-col space-y-2 md:flex-row md:space-x-2 md:space-y-0 md:items-center">
+          <div className="flex flex-col space-y-2 md:flex-row md:items-center md:space-x-2 md:space-y-0">
             {link && <Link href={link}>{cleanLink(link)}</Link>}
             {githubLink && (
-            <Link href={githubLink} icon={<GitHubLogo />}>
+              <Link href={githubLink} icon={<GitHubLogo />}>
                 {getGitHubOwnerAndRepoFromLink(githubLink)}
               </Link>
             )}
           </div>
         </div>
-        <Link href={`/projects/${slug}`}>
+        <Link href={`/projects/${slug}`} className="mt-4">
           Learn More
         </Link>
       </div>

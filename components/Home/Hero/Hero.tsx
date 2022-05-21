@@ -56,7 +56,7 @@ const Hero = (): JSX.Element => {
         animate="onscreen"
         transition={{ delay: 0.1 }}
       >
-        <NextImage src={AvatarJPG} layout="fill" placeholder="blur" />
+        <NextImage src={AvatarJPG} layout="fill" placeholder="blur" alt="Anish De" />
       </motion.div>
     </div>
   );

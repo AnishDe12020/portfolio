@@ -9,6 +9,7 @@ const CommandBarInvoker = (): JSX.Element => {
     <button
       className="fixed right-8 bottom-8 rounded-md p-1 transition duration-200 hover:shadow-commandButton focus:outline-none focus-visible:shadow-commandButton"
       onClick={() => query.toggle()}
+      aria-label="Command Bar"
     >
       <CommandIcon />
     </button>

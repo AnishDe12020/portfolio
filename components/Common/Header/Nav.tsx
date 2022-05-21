@@ -66,6 +66,7 @@ const Nav = (): JSX.Element => {
             rounded
             size={24}
             direction="right"
+            label="Navigation Menu"
           />
         </div>
         <motion.ul

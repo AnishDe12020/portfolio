@@ -64,7 +64,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             </div>
           )}
         </main>
-        <Footer className="mx-auto" />
+        <Footer />
         <CommandBarInvoker />
       </KProvider>
     </div>

@@ -1,20 +1,15 @@
-import { GetStaticProps, NextPage } from "next";
+import { NextPage } from "next";
 
 import SkillCard from "@/components/Skills/SkillCard";
 
-import { allSkills, Skill } from ".contentlayer/generated";
+import { allSkills } from ".contentlayer/generated";
 
-interface SkillsPageProps {
-  skills: Skill[];
-}
-
-const SkillsPage: NextPage<SkillsPageProps> = ({ skills }) => {
-  console.log(skills);
+const SkillsPage: NextPage = () => {
   return (
     <>
       <h1 className="mb-8 text-2xl font-bold">Skills</h1>
       <div className="flex-col space-y-8">
-        {skills.map(skill => (
+        {allSkills.map(skill => (
           <SkillCard
             key={skill._id}
             name={skill.name}
@@ -25,19 +20,9 @@ const SkillsPage: NextPage<SkillsPageProps> = ({ skills }) => {
           />
         ))}
       </div>
-      <p className="text-xl font-semibold mt-8">And much more!</p>
+      <p className="mt-8 text-xl font-semibold">And much more!</p>
     </>
   );
-};
-
-export const getStaticProps: GetStaticProps = async () => {
-  const skills = allSkills;
-
-  return {
-    props: {
-      skills,
-    },
-  };
 };
 
 export default SkillsPage;

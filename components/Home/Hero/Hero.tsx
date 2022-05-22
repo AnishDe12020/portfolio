@@ -1,19 +1,8 @@
-import { motion, Variants } from "framer-motion";
+import { motion} from "framer-motion";
 import NextImage from "next/image";
 
 import AvatarJPG from "public/static/images/avatar.jpg";
-
-const fadeInVariant: Variants = {
-  offscreen: {
-    opacity: 0.01,
-    y: -20,
-  },
-  onscreen: {
-    opacity: 1,
-    y: 0,
-  },
-};
-
+import { fadeInVariant } from "variants";
 const Hero = (): JSX.Element => {
   return (
     <div className="flex flex-col-reverse md:flex-row md:justify-between md:space-y-0">

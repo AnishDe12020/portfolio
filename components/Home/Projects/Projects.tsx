@@ -8,8 +8,15 @@ const Projects = (): JSX.Element => {
       <h2 className="mb-8 text-3xl font-bold">Projects</h2>
       <div className="flex flex-col space-y-8">
         {allProjects.slice(0, 2).map(project => (
-        <Link key={project._id} href={`/projects/${project.slug}`} className="flex flex-col space-y-2 group">
-        <h3 className="text-lg font-semibold flex flex-row space-x-2 items-center"><span>{project.name}</span> <ArrowRight className="h-4 w-4 translate-x-0 group-hover:translate-x-1 transition duration-200" /></h3>
+          <Link
+            key={project._id}
+            href={`/projects/${project.slug}`}
+            className="group flex flex-col space-y-2"
+          >
+            <h3 className="flex flex-row items-center space-x-2 text-lg font-semibold">
+              <span>{project.name}</span>{" "}
+              <ArrowRight className="h-4 w-4 translate-x-0 transition duration-200 group-hover:translate-x-1" />
+            </h3>
             <p className="text-md text-gray-300">{project.description}</p>
           </Link>
         ))}

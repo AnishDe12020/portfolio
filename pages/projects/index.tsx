@@ -81,7 +81,10 @@ export const getStaticProps: GetStaticProps = async () => {
     const {
       metadata: { dataURIBase64 },
     } = await lqip(data);
-    allProjectsWithPlaceholderImages.push({ ...project, placeholderImage: dataURIBase64 });
+    allProjectsWithPlaceholderImages.push({
+      ...project,
+      placeholderImage: dataURIBase64,
+    });
   }
 
   return {

@@ -18,7 +18,15 @@ interface ProjectProps {
 
 const ProjectCard = forwardRef<HTMLDivElement, ProjectProps>(
   (
-    { slug, name, description, image, link, githubLink, placeholderImage }: ProjectProps,
+    {
+      slug,
+      name,
+      description,
+      image,
+      link,
+      githubLink,
+      placeholderImage,
+    }: ProjectProps,
     ref
   ): JSX.Element => {
     return (
@@ -27,25 +35,26 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectProps>(
         ref={ref}
       >
         <div className="overflow-hidden rounded-lg">
-          
-          <Link href={`/projects/${slug}`} >
-          <div className="relative h-36 w-full md:h-full md:w-72 hover:opacity-60 transition duration-200">
-            <NextImage
-              src={image.url}
-              alt={name}
-              className="rounded-lg"
-              layout="fill"
-              placeholder="blur"
-              blurDataURL={placeholderImage}
-            />
-          </div>
+          <Link href={`/projects/${slug}`}>
+            <div className="relative h-36 w-full transition duration-200 hover:opacity-60 md:h-full md:w-72">
+              <NextImage
+                src={image.url}
+                alt={name}
+                className="rounded-lg"
+                layout="fill"
+                placeholder="blur"
+                blurDataURL={placeholderImage}
+              />
+            </div>
           </Link>
         </div>
         <div className="flex flex-col justify-between">
           <div className="flex flex-col space-y-2">
-                      <Link href={`/projects/${slug}`} className="hover:opacity-60 transition duration-200">
-
-            <h2 className="text-2xl font-bold">{name}</h2>
+            <Link
+              href={`/projects/${slug}`}
+              className="transition duration-200 hover:opacity-60"
+            >
+              <h2 className="text-2xl font-bold">{name}</h2>
             </Link>
             <p className="text-sm text-gray-300">{description}</p>
             <div className="flex flex-col space-y-2 md:flex-row md:items-center md:space-x-2 md:space-y-0">

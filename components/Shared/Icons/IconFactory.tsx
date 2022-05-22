@@ -10,6 +10,7 @@ import {
   GoLogo,
   TailwindCSSLogo,
 } from ".";
+import NotigerLogo from "./Notiger";
 
 interface IconFactoryProps extends SVGProps<SVGSVGElement> {
   name: string;
@@ -34,6 +35,8 @@ const IconFactory = ({
       return <GoLogo {...otherProps} />;
     case "react":
       return <ReactLogo {...otherProps} />;
+    case "notiger":
+      return <NotigerLogo {...otherProps} />;
     default:
       return <X />;
   }

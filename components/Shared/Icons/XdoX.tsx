@@ -13,7 +13,7 @@ const XdoXLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
         cy={256}
         rx={210}
         ry={230}
-        fill="url(#paint0_linear_2_2)"
+        fill="url(#paint0_linear_4_4)"
       />
     </g>
     <defs>
@@ -50,7 +50,7 @@ const XdoXLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
         />
       </filter>
       <linearGradient
-        id="paint0_linear_2_2"
+        id="paint0_linear_4_4"
         x1={256}
         y1={26}
         x2={256}

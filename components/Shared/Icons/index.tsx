@@ -8,3 +8,4 @@ export { default as ReactLogo } from "./React";
 export { default as TailwindCSSLogo } from "./TailwindCSS";
 export { default as GoLogo } from "./Go";
 export { default as FigmaLogo } from "./Figma";
+export { default as NotigerLogo } from "./Notiger";

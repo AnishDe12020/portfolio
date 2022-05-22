@@ -2,6 +2,7 @@ import cx from "classnames";
 import {
   AnchorHTMLAttributes,
   cloneElement,
+  forwardRef,
   ReactElement,
   ReactNode,
 } from "react";
@@ -14,18 +15,20 @@ interface ExternalLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   children?: ReactNode;
   gradientUnderline?: boolean;
   noGradientUnderline?: boolean;
+  noExternalLinkIcon?: boolean;
   icon?: ReactNode;
 }
 
-const ExternalLink = ({
+const ExternalLink = forwardRef<HTMLAnchorElement, ExternalLinkProps>(({
   href,
   className,
   children,
   gradientUnderline,
   noGradientUnderline,
+  noExternalLinkIcon,
   icon,
   ...otherProps
-}: ExternalLinkProps): JSX.Element => {
+}: ExternalLinkProps, ref): JSX.Element => {
   const isInternalLink = href.startsWith("/") || href.startsWith("#");
 
   const isGradientUnderline = gradientUnderline
@@ -45,6 +48,7 @@ const ExternalLink = ({
               isGradientUnderline && "gradient-underline flex items-center",
               className
             )}
+            ref={ref}
             {...otherProps}
           >
             {isGradientUnderline ? <span>{children ?? href}</span> : children}
@@ -60,11 +64,12 @@ const ExternalLink = ({
           )}
           target="_blank"
           rel="noopener noreferrer"
+          ref={ref}
           {...otherProps}
         >
           {icon &&
             cloneElement(icon as ReactElement, { className: "h-4 w-4 mr-1" })}
-          <span>{children ?? href}</span> <ArrowUpRight className="h-4 w-4" />
+            {noExternalLinkIcon ? children : (<span>{children}</span>)} {!noExternalLinkIcon &&<ArrowUpRight className="h-4 w-4" />}
         </a>
       )}
       <style jsx>{`
@@ -84,6 +89,8 @@ const ExternalLink = ({
       `}</style>
     </>
   );
-};
+});
+
+ExternalLink.displayName = "Link";
 
 export default ExternalLink;

@@ -1,17 +1,31 @@
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import { motion } from "framer-motion";
 
 import ProjectCard from "@/components/Projects/ProjectCard";
 
-import { allProjects } from "contentlayer/generated";
+import { allProjects, Project } from "contentlayer/generated";
 import { fadeInVariant } from "variants";
 import Link from "@/components/Shared/Link";
 import { ArrowRight } from "react-feather";
+import axios from "axios";
+import lqip from "lqip-modern";
 
 const MotionProjectCard = motion(ProjectCard);
 const MotionLink = motion(Link);
 
-const ProjectsPage: NextPage = () => {
+export interface ProjectWithPlaceholderImage extends Project {
+  placeholderImage: string;
+}
+
+interface ProjectsPageProps {
+  allProjectsWithPlaceholderImages: ProjectWithPlaceholderImage[];
+}
+
+const ProjectsPage: NextPage<ProjectsPageProps> = ({
+  allProjectsWithPlaceholderImages,
+}) => {
+  console.log(allProjectsWithPlaceholderImages);
+
   return (
     <>
       <motion.h1
@@ -23,7 +37,7 @@ const ProjectsPage: NextPage = () => {
         Projects
       </motion.h1>
       <div className="flex-col space-y-8">
-        {allProjects.map((project, index) => (
+        {allProjectsWithPlaceholderImages.map((project, index) => (
           <MotionProjectCard
             key={project._id}
             name={project.name}
@@ -32,6 +46,7 @@ const ProjectsPage: NextPage = () => {
             githubLink={project.githubLink}
             slug={project.slug}
             image={project.image}
+            placeholderImage={project.placeholderImage}
             variants={fadeInVariant}
             initial="offscreen"
             animate="onscreen"
@@ -53,6 +68,25 @@ const ProjectsPage: NextPage = () => {
       </MotionLink>
     </>
   );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const allProjectsWithPlaceholderImages = [];
+
+  for (const project of allProjects) {
+    console.log(project);
+    const { data } = await axios.get(project.image.url, {
+      responseType: "arraybuffer",
+    });
+    const {
+      metadata: { dataURIBase64 },
+    } = await lqip(data);
+    allProjectsWithPlaceholderImages.push({ ...project, placeholderImage: dataURIBase64 });
+  }
+
+  return {
+    props: { allProjectsWithPlaceholderImages },
+  };
 };
 
 export default ProjectsPage;

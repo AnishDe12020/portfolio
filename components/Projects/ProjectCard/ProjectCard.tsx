@@ -13,11 +13,12 @@ interface ProjectProps {
   link: string;
   githubLink: string;
   image: CloudinaryImage;
+  placeholderImage: string;
 }
 
 const ProjectCard = forwardRef<HTMLDivElement, ProjectProps>(
   (
-    { slug, name, description, image, link, githubLink }: ProjectProps,
+    { slug, name, description, image, link, githubLink, placeholderImage }: ProjectProps,
     ref
   ): JSX.Element => {
     return (
@@ -34,6 +35,8 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectProps>(
               alt={name}
               className="rounded-lg"
               layout="fill"
+              placeholder="blur"
+              blurDataURL={placeholderImage}
             />
           </div>
           </Link>

@@ -26,7 +26,9 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectProps>(
         ref={ref}
       >
         <div className="overflow-hidden rounded-lg">
-          <div className="relative h-36 w-full md:h-full md:w-72">
+          
+          <Link href={`/projects/${slug}`} >
+          <div className="relative h-36 w-full md:h-full md:w-72 hover:opacity-60 transition duration-200">
             <NextImage
               src={image.url}
               alt={name}
@@ -34,10 +36,14 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectProps>(
               layout="fill"
             />
           </div>
+          </Link>
         </div>
         <div className="flex flex-col justify-between">
           <div className="flex flex-col space-y-2">
+                      <Link href={`/projects/${slug}`} className="hover:opacity-60 transition duration-200">
+
             <h2 className="text-2xl font-bold">{name}</h2>
+            </Link>
             <p className="text-sm text-gray-300">{description}</p>
             <div className="flex flex-col space-y-2 md:flex-row md:items-center md:space-x-2 md:space-y-0">
               {link && <Link href={link}>{cleanLink(link)}</Link>}

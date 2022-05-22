@@ -10,13 +10,19 @@ import CustomGiscus from "@/components/Shared/CustomGiscus";
 import Tooltip from "@/components/Shared/Tooltip";
 import { getGitHubOwnerAndRepoFromLink } from "@/utils/helpers";
 import { GitHubLogo } from "@/components/Shared/Icons";
+import getPreviewImageUrl from "@/utils/getPreviewImageURL";
 
 interface ProjectPageProps {
   project: Project;
   skillsUsed: Skill[];
+  projectImagePreview: string;
 }
 
-const SkillPage: NextPage<ProjectPageProps> = ({ project, skillsUsed }) => {
+const SkillPage: NextPage<ProjectPageProps> = ({
+  project,
+  skillsUsed,
+  projectImagePreview,
+}) => {
   const ProjectMDX = useMDXComponent(project.body.code);
 
   return (
@@ -69,6 +75,8 @@ const SkillPage: NextPage<ProjectPageProps> = ({ project, skillsUsed }) => {
           height={project.image.height}
           src={project.image.url}
           className="shadow-md rounded-xl shadow-white"
+          placeholder="blur"
+          blurDataURL={projectImagePreview}
         />
       </div>
 
@@ -95,12 +103,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     return skillData;
   });
 
-  console.log(skillsUsed);
+  const projectImagePreview = await getPreviewImageUrl(project.image.url);
 
   return {
     props: {
       project,
       skillsUsed,
+      projectImagePreview,
     },
   };
 };

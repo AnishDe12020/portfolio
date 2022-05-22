@@ -9,6 +9,7 @@ import Link from "@/components/Shared/Link";
 import { ArrowRight } from "react-feather";
 import axios from "axios";
 import lqip from "lqip-modern";
+import getPreviewImageUrl from "@/utils/getPreviewImageURL";
 
 const MotionProjectCard = motion(ProjectCard);
 const MotionLink = motion(Link);
@@ -74,16 +75,11 @@ export const getStaticProps: GetStaticProps = async () => {
   const allProjectsWithPlaceholderImages = [];
 
   for (const project of allProjects) {
-    console.log(project);
-    const { data } = await axios.get(project.image.url, {
-      responseType: "arraybuffer",
-    });
-    const {
-      metadata: { dataURIBase64 },
-    } = await lqip(data);
+    const previewUrl = await getPreviewImageUrl(project.image.url);
+
     allProjectsWithPlaceholderImages.push({
       ...project,
-      placeholderImage: dataURIBase64,
+      placeholderImage: previewUrl,
     });
   }
 

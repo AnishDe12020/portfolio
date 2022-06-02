@@ -7,8 +7,6 @@ import { allProjects, Project } from "contentlayer/generated";
 import { fadeInVariant } from "variants";
 import Link from "@/components/Shared/Link";
 import { ArrowRight } from "react-feather";
-import axios from "axios";
-import lqip from "lqip-modern";
 import getPreviewImageUrl from "@/utils/getPreviewImageURL";
 
 const MotionProjectCard = motion(ProjectCard);

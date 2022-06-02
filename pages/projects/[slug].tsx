@@ -2,25 +2,22 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import NextImage from "next/image";
 
 import Link from "@/components/Shared/Link";
-import { allProjects, allSkills, Project, Skill } from "contentlayer/generated";
+import { allProjects, Project } from "contentlayer/generated";
 import IconFactory from "@/components/Shared/Icons/IconFactory";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import MDXComponents from "@/components/Common/MDXComponents";
 import CustomGiscus from "@/components/Shared/CustomGiscus";
-import Tooltip from "@/components/Shared/Tooltip";
 import { getGitHubOwnerAndRepoFromLink } from "@/utils/helpers";
 import { GitHubLogo } from "@/components/Shared/Icons";
 import getPreviewImageUrl from "@/utils/getPreviewImageURL";
 
 interface ProjectPageProps {
   project: Project;
-  skillsUsed: Skill[];
   projectImagePreview: string;
 }
 
 const SkillPage: NextPage<ProjectPageProps> = ({
   project,
-  skillsUsed,
   projectImagePreview,
 }) => {
   const ProjectMDX = useMDXComponent(project.body.code);
@@ -52,21 +49,6 @@ const SkillPage: NextPage<ProjectPageProps> = ({
           {getGitHubOwnerAndRepoFromLink(project.githubLink)}
         </Link>
       )}
-
-      <div className="my-6 flex space-x-4">
-        {skillsUsed.map(skill => (
-          <Tooltip key={skill._id} content={skill.name}>
-            <Link href={`/skills/${skill.slug}`} noGradientUnderline>
-              <IconFactory
-                name={skill.iconName}
-                className="shadow-md h-8 w-8 rounded-lg bg-tertiary p-1 md:h-12 md:w-12 md:p-2"
-                aria-label={skill.name}
-              />
-            </Link>
-          </Tooltip>
-        ))}
-      </div>
-
       <div className="my-8 h-1 w-full rounded-full bg-secondary" />
 
       <div className="shadow-xl overflow-hidden rounded-xl shadow-white">
@@ -98,17 +80,11 @@ const SkillPage: NextPage<ProjectPageProps> = ({
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const project = allProjects.find(project => project.slug === params.slug);
 
-  const skillsUsed = project.skillsUsed.map(skill => {
-    const skillData = allSkills.find(skillData => skillData.name === skill);
-    return skillData;
-  });
-
   const projectImagePreview = await getPreviewImageUrl(project.image.url);
 
   return {
     props: {
       project,
-      skillsUsed,
       projectImagePreview,
     },
   };

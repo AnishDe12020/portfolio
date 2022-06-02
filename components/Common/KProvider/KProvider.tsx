@@ -13,7 +13,7 @@ import toast from "react-hot-toast";
 
 import Kbd from "@/components/Shared/Kbd";
 import socials from "@/data/socials";
-import { allSkills, allProjects } from "contentlayer/generated";
+import { allProjects } from "contentlayer/generated";
 
 import useCircles from "store/circles";
 
@@ -36,20 +36,6 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
       shortcut: ["h"],
       perform: () => push("/"),
       section: "Pages",
-    },
-    {
-      id: "skills",
-      name: "Skills",
-      keywords: "skills talents skillset stack",
-      section: "Pages",
-    },
-    {
-      id: "skills-page",
-      name: "All Skills",
-      keywords: "skills talents skillset stack",
-      shortcut: ["s"],
-      parent: "skills",
-      perform: () => push("/skills"),
     },
     {
       id: "projects",
@@ -84,16 +70,6 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
       perform: () => window.open(social.url),
       section: "Socials",
       icon: social.icon,
-    });
-  });
-
-  allSkills.map(skill => {
-    actions.push({
-      id: skill._id,
-      name: skill.name,
-      perform: () => push("/skills/" + skill.slug),
-      icon: <IconFactory name={skill.iconName} />,
-      parent: "skills",
     });
   });
 

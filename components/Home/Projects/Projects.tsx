@@ -11,7 +11,7 @@ const Projects = (): JSX.Element => {
           <Link
             key={project._id}
             href={`/projects/${project.slug}`}
-            className="group flex flex-col space-y-2"
+            className="group ml-4 flex flex-col space-y-2"
           >
             <h3 className="flex flex-row items-center space-x-2 text-lg font-semibold">
               <span>{project.name}</span>{" "}

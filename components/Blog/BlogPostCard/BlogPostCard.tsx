@@ -1,6 +1,7 @@
 import NextImage from "next/image";
 
 import Link from "@/components/Shared/Link";
+import { format, parseISO } from "date-fns";
 
 interface BlogPostCardProps {
   url: string;
@@ -25,7 +26,7 @@ const ProjectCard = ({
             {title}
           </h2>
           <p className="text-gray-300 transition duration-200 hover:opacity-60">
-            {date} / {readingTime}
+            {format(parseISO(date), "PPP")} / {readingTime}
           </p>
       </div>
         </Link>

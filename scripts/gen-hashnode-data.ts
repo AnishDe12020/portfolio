@@ -4,14 +4,15 @@ import readingTime from "reading-time";
 
 const HASHNODE_DATA_FILE_PATH = "./data/hashnode.json";
 const HASHNODE_API_URL = "https://api.hashnode.com/";
+const HASHNODE_USERNAME = "AnishDe12020";
 
 const main = async () => {
   const query = `
-query {
-	user(username: "AnishDe12020") {
+query($username: String!, $page: Int!) {
+	user(username: $username) {
     publicationDomain
 		publication {
-			posts(page: 0) {
+			posts(page: $page) {
         _id
 				slug
 				title
@@ -25,31 +26,55 @@ query {
 }
 `;
 
-  const res = await axios.post(HASHNODE_API_URL, JSON.stringify({ query }), {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  const posts = [];
+  let domain: string;
+  let didNotGetData = true;
 
-  const {
-    data: { data },
-  } = res;
-  console.log(data);
-  const posts = data.user.publication.posts;
-  const domain = data.user.publicationDomain;
+  for (let page = 1; didNotGetData; page++) {
+    const res = await axios.post(
+      HASHNODE_API_URL,
+      JSON.stringify({
+        query,
+        variables: {
+          username: HASHNODE_USERNAME,
+          page,
+        },
+      }),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    const {
+      data: { data },
+    } = res;
+
+    if (data.user.publication.posts.length === 0) {
+      domain = data.user.publicationDomain;
+      didNotGetData = false;
+      break;
+    } else {
+      posts.push(...data.user.publication.posts);
+    }
+  }
 
   const parsedPosts = posts.map(post => {
     const { contentMarkdown } = post;
     const rTime = readingTime(contentMarkdown);
-    const wordCount = contentMarkdown.split(/\s+/gu).length
+    const wordCount = contentMarkdown.split(/\s+/gu).length;
     return {
       ...post,
       readingTime: rTime,
-wordCount
+      wordCount,
     };
   });
 
-  fs.writeFileSync(HASHNODE_DATA_FILE_PATH, JSON.stringify({ posts: parsedPosts, domain }));
+  fs.writeFileSync(
+    HASHNODE_DATA_FILE_PATH,
+    JSON.stringify({ posts: parsedPosts, domain })
+  );
 };
 
 main();

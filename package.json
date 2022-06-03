@@ -12,7 +12,8 @@
     "format": "prettier --check \"{components,data,pages,styles,utils,layouts}/**/*.{js,jsx,ts,tsx,css,scss,json,yaml,md}\"",
     "format:fix": "prettier --write \"{components,data,pages,styles,utils,layouts}/**/*.{js,jsx,ts,tsx,css,scss,json,yaml,md}\"",
     "types:check": "tsc --pretty --noEmit",
-    "gen:kprovider": "ts-node scripts/generate-kprovider-data.ts"
+    "gen:kprovider": "ts-node scripts/generate-kprovider-data.ts",
+    "gen:hashnode": "ts-node scripts/gen-hashnode-data.ts"
   },
   "devDependencies": {
     "@commitlint/cli": "^15.0.0",

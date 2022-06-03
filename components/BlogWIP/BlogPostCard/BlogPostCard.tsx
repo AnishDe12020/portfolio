@@ -1,17 +1,18 @@
 import NextImage from "next/image";
 
 import Link from "@/components/Shared/Link";
+import { CloudinaryImage } from "contentlayer/generated";
 
 interface BlogPostCardProps {
-  url: string;
+  slug: string;
   title: string;
-  image: string;
+  image: CloudinaryImage;
   date: string;
   readingTime: string;
 }
 
 const ProjectCard = ({
-  url,
+  slug,
   title,
   image,
   date,
@@ -20,7 +21,7 @@ const ProjectCard = ({
   return (
     <article className="flex max-w-lg flex-col-reverse rounded-xl border-[1px] border-tertiary bg-secondary py-4 px-6 transition duration-200 hover:scale-105">
       <div>
-        <Link href={url} className="flex-col space-y-4" noExternalLinkIcon noGradientUnderline>
+        <Link href={`/blog/${slug}`} className="flex-col space-y-4">
           <h2 className="text-lg font-semibold transition duration-200 hover:opacity-60">
             {title}
           </h2>
@@ -29,12 +30,12 @@ const ProjectCard = ({
           </p>
         </Link>
       </div>
-      <Link href={url} className="aspect-[16/9]" noExternalLinkIcon noGradientUnderline>
+      <Link href={`/blog/${slug}`} className="aspect-[16/9]">
         <NextImage
-          src={image}
+          src={image.url}
+          height={image.height}
+          width={image.width}
           className="rounded-lg drop-shadow-md transition duration-200 hover:opacity-60"
-          height={270}
-          width={480}
         />
       </Link>
     </article>

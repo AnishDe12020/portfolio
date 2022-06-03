@@ -17,7 +17,7 @@ const KResults = () => {
         ) : (
           <div
             className={cx(
-              "flex cursor-pointer items-center justify-between rounded-lg px-3 py-2 transition-colors",
+              "flex cursor-pointer items-center justify-between rounded-lg px-3 py-3 transition-colors",
               active ? "bg-tertiary" : "bg-transparent"
             )}
           >

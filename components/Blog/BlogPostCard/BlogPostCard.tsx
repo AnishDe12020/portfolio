@@ -20,17 +20,22 @@ const ProjectCard = ({
 }: BlogPostCardProps): JSX.Element => {
   return (
     <article className="flex max-w-lg flex-col-reverse rounded-xl border-[1px] border-tertiary bg-secondary py-4 px-6 transition duration-200 hover:scale-105">
-        <Link href={url} noExternalLinkIcon noGradientUnderline>
-      <div className="mt-8 flex-col space-y-4">
-          <h2 className="text-lg text-gray-100 font-semibold transition duration-200 hover:opacity-60">
+      <Link href={url} noExternalLinkIcon noGradientUnderline>
+        <div className="mt-8 flex-col space-y-4">
+          <h2 className="text-lg font-semibold text-gray-100 transition duration-200 hover:opacity-60">
             {title}
           </h2>
           <p className="text-gray-300 transition duration-200 hover:opacity-60">
             {format(parseISO(date), "PPP")} / {readingTime}
           </p>
-      </div>
-        </Link>
-      <Link href={url} className="aspect-[16/9]" noExternalLinkIcon noGradientUnderline>
+        </div>
+      </Link>
+      <Link
+        href={url}
+        className="aspect-[16/9]"
+        noExternalLinkIcon
+        noGradientUnderline
+      >
         <NextImage
           src={image}
           className="rounded-lg drop-shadow-md transition duration-200 hover:opacity-60"

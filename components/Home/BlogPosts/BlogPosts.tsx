@@ -6,7 +6,7 @@ const BlogPosts = (): JSX.Element => {
     <>
       <h1 className="mb-8 text-2xl font-bold">Blog Posts</h1>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        {hashnodeData.posts.slice(0,4).map(post => (
+        {hashnodeData.posts.slice(0, 4).map(post => (
           <BlogPostCard
             key={post._id}
             title={post.title}
@@ -19,6 +19,6 @@ const BlogPosts = (): JSX.Element => {
       </div>
     </>
   );
-}
+};
 
 export default BlogPosts;

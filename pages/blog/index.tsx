@@ -22,5 +22,4 @@ const BlogPostsPage: NextPage = () => {
   );
 };
 
-
 export default BlogPostsPage;

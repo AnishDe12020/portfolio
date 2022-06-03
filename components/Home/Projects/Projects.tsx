@@ -2,16 +2,21 @@ import { allProjects } from ".contentlayer/generated";
 import IconFactory from "@/components/Shared/Icons/IconFactory";
 import Link from "@/components/Shared/Link";
 import { ArrowRight, ExternalLink } from "react-feather";
+import {motion} from "framer-motion";
+import { fadeInVariant } from "variants";
+
+const MotionLink = motion(Link);
 
 const Projects = (): JSX.Element => {
   return (
     <div className="my-16 flex flex-col">
-      <h2 className="mb-8 text-3xl font-bold">Projects</h2>
+      <motion.h2 variants={fadeInVariant} initial="offscreen" animate="onscreen" transition={{delay:0.8}} className="mb-8 text-3xl font-bold will-change-transform will-change-opacity">Projects</motion.h2>
       <div className="flex flex-col space-y-8">
-        {allProjects.slice(0, 2).map(project => (
-          <div
+        {allProjects.slice(0, 2).map((project, index) => (
+          <motion.div
             key={project._id}
-            className="group relative rounded-lg border-[1px] border-tertiary bg-secondary p-4 transition duration-200 hover:border-accent md:hover:scale-105"
+            className="group relative rounded-lg border-[1px] border-tertiary bg-secondary p-4 transition duration-200 hover:border-accent md:hover:scale-105 will-change-transform will-change-opacity"
+            variants={fadeInVariant} initial="offscreen" animate="onscreen" transition={{delay:0.9 + 0.3 * index}}
           >
             <Link
               href={`/projects/${project.slug}`}
@@ -38,16 +43,21 @@ const Projects = (): JSX.Element => {
                 <ExternalLink className="h-4 w-4" />
               </a>
             )}
-          </div>
+          </motion.div>
         ))}
       </div>
-      <Link
+      <MotionLink
         href="/projects"
-        className="group mt-8 flex items-center justify-start space-x-2 text-xl font-medium"
+        className="group mt-8 flex items-center justify-start space-x-2 text-xl font-medium will-change-opacity will-change-transform"
+         variants={fadeInVariant}
+        initial="offscreen"
+        animate="onscreen"
+        transition={{ delay: 1+0.6, duration: 0.2 }}
+
       >
         <span>View All Projects</span>
         <ArrowRight className="h-4 w-4 transition duration-200 group-hover:translate-x-1" />
-      </Link>
+      </MotionLink>
     </div>
   );
 };

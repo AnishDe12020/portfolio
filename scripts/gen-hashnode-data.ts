@@ -30,7 +30,7 @@ query($username: String!, $page: Int!) {
   let domain: string;
   let didNotGetData = true;
 
-  for (let page = 1; didNotGetData; page++) {
+  for (let page = 0; didNotGetData; page++) {
     const res = await axios.post(
       HASHNODE_API_URL,
       JSON.stringify({

@@ -41,6 +41,7 @@ const ProjectCard = ({
           className="rounded-lg drop-shadow-md transition duration-200 hover:opacity-60"
           height={270}
           width={480}
+          alt={title}
         />
       </Link>
     </article>

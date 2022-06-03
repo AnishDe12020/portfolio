@@ -1,6 +1,7 @@
 import { allProjects } from ".contentlayer/generated";
+import IconFactory from "@/components/Shared/Icons/IconFactory";
 import Link from "@/components/Shared/Link";
-import { ArrowRight } from "react-feather";
+import { ArrowRight, ExternalLink } from "react-feather";
 
 const Projects = (): JSX.Element => {
   return (
@@ -8,17 +9,36 @@ const Projects = (): JSX.Element => {
       <h2 className="mb-8 text-3xl font-bold">Projects</h2>
       <div className="flex flex-col space-y-8">
         {allProjects.slice(0, 2).map(project => (
-          <Link
+          <div
             key={project._id}
-            href={`/projects/${project.slug}`}
-            className="group ml-4 flex flex-col space-y-2"
+            className="group relative rounded-lg border-[1px] border-tertiary bg-secondary p-4 transition duration-200 hover:border-accent md:hover:scale-105"
           >
-            <h3 className="flex flex-row items-center space-x-2 text-lg font-semibold">
-              <span>{project.name}</span>{" "}
-              <ArrowRight className="h-4 w-4 translate-x-0 transition duration-200 group-hover:translate-x-1" />
-            </h3>
-            <p className="text-md text-gray-300">{project.description}</p>
-          </Link>
+            <Link
+              href={`/projects/${project.slug}`}
+              className="flex items-center space-x-4"
+            >
+              <IconFactory
+                name={project.iconName}
+                className="shadow-md h-12 w-12 rounded-xl bg-tertiary p-1.5"
+              />
+              <div className="flex-col space-y-2">
+                <h3 className="flex flex-row items-center space-x-2 text-lg font-semibold">
+                  {project.name}
+                </h3>
+                <p className="text-md text-gray-300">{project.description}</p>
+              </div>
+            </Link>
+            {(project.link || project.githubLink) && (
+              <a
+                className="absolute -top-2 -right-2 hidden rounded-full border-[1px] border-accent bg-accent p-1.5 text-tertiary opacity-0 transition hover:bg-secondary hover:text-accent group-hover:block group-hover:opacity-100"
+                href={project.link || project.githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            )}
+          </div>
         ))}
       </div>
       <Link

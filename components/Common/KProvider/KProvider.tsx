@@ -14,6 +14,7 @@ import toast from "react-hot-toast";
 import Kbd from "@/components/Shared/Kbd";
 import socials from "@/data/socials";
 import { allProjects } from "contentlayer/generated";
+import hashnodeData from "@/data/hashnode.json";
 
 import useCircles from "store/circles";
 
@@ -51,6 +52,22 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
       parent: "projects",
       perform: () => push("/projects"),
     },
+{
+    id: "blog",
+    name: "Blog",
+            keywords: "blogs blog post articles tutorials",
+
+    section: "Pages",
+
+  },
+    {
+        id: "blogs-page",
+        name: "All Blog Posts",
+        keywords: "blogs blog post articles tutorials",
+        shortcut: ["b"],
+        parent: "blog",
+        perform: () => push("/blogs"),
+      },
     {
       id: "toggle-circles",
       name: "Toggle Circles",
@@ -82,6 +99,16 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
       parent: "projects",
     });
   });
+
+  hashnodeData.posts.map(post => {
+    actions.push({
+      id: post._id,
+      name: post.title,
+            perform: () => window.open(`https://${hashnodeData.domain}/${post.slug}`),
+
+            parent: "blog",
+
+    })})
 
   return (
     <>

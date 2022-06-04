@@ -24,16 +24,15 @@ const HomePage: NextPage<HomePageProps> = ({ blogPosts }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async context => {
+export const getStaticProps: GetStaticProps = async () => {
   const posts = hashnodeData.posts;
 
   const allProjectsWithPlaceholerImages = [];
 
   for (const post of posts) {
     const previewUrl = await getPreviewImageUrl(post.coverImage);
-    const { contentMarkdown, ...postWithoutContent } = post;
     allProjectsWithPlaceholerImages.push({
-      ...postWithoutContent,
+      ...post,
       placeholderImage: previewUrl,
     });
   }

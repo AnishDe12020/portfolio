@@ -61,11 +61,11 @@ query($username: String!, $page: Int!) {
   }
 
   const parsedPosts = posts.map(post => {
-    const { contentMarkdown } = post;
+    const { contentMarkdown, ...postWithoutContent } = post;
     const rTime = readingTime(contentMarkdown);
     const wordCount = contentMarkdown.split(/\s+/gu).length;
     return {
-      ...post,
+      ...postWithoutContent,
       readingTime: rTime,
       wordCount,
     };

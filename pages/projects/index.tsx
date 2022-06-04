@@ -22,6 +22,7 @@ const ProjectsPage: NextPage<ProjectsPageProps> = ({
 
   return (
     <>
+    <NextSeo nofollow={true} noindex={true} />
       <h1
     
         className="mb-8 text-2xl font-bold"

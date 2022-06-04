@@ -1,5 +1,6 @@
 import axios from "axios";
 import { NextPage } from "next";
+import { NextSeo } from "next-seo";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -56,6 +57,7 @@ const Revalidate: NextPage = () => {
 
   return (
     <>
+    <NextSeo nofollow={true} noindex={true} />
       <h1>Revalidate</h1>
       {isLoading ? (
         <p>Loading...</p>

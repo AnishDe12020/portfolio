@@ -10,6 +10,7 @@ import CustomGiscus from "@/components/Shared/CustomGiscus";
 import { getGitHubOwnerAndRepoFromLink } from "@/utils/helpers";
 import { GitHubLogo } from "@/components/Shared/Icons";
 import getPreviewImageUrl from "@/utils/getPreviewImageURL";
+import { NextSeo } from "next-seo";
 
 interface ProjectPageProps {
   project: Project;
@@ -24,6 +25,7 @@ const SkillPage: NextPage<ProjectPageProps> = ({
 
   return (
     <>
+        <NextSeo nofollow={true} noindex={true} />
       <div className="mt-8 flex space-x-8">
         <IconFactory
           name={project.iconName}

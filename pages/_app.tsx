@@ -15,6 +15,8 @@ import { useRouter } from "next/router";
 import "@fontsource/syncopate";
 import "@fontsource/sen";
 import Footer from "@/components/Common/Footer";
+import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
+import SEO from "../next-seo.config";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const { asPath } = useRouter();
@@ -47,6 +49,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           height={3}
           options={{ showSpinner: false }}
         />
+        <DefaultSeo {...SEO} />
+        <SocialProfileJsonLd type="Person" name="Anish De" url="https://anishde.dev/" sameAs={["https://twitter.com/AnishDe12020", "https://www.youtube.com/anishtechtutorials"]} />
         <main id="main" className="relative mx-auto mb-16 max-w-4xl px-8">
           <Component {...pageProps} />
           <CustomToaster />

@@ -29,11 +29,7 @@ const ProjectCard = ({
           <h2 className="text-lg font-semibold text-gray-100 transition duration-200 hover:opacity-60">
             {title}
           </h2>
-          {excerpt && (
-          <p>
-          {excerpt}
-          </p>
-          )}
+          {excerpt && <p>{excerpt}</p>}
           <p className="text-gray-300 transition duration-200 hover:opacity-60">
             {format(parseISO(date), "PPP")} / {readingTime}
           </p>

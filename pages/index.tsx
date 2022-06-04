@@ -31,8 +31,9 @@ export const getStaticProps: GetStaticProps = async context => {
 
   for (const post of posts) {
     const previewUrl = await getPreviewImageUrl(post.coverImage);
+    const { contentMarkdown, ...postWithoutContent } = post;
     allProjectsWithPlaceholerImages.push({
-      ...post,
+      ...postWithoutContent,
       placeholderImage: previewUrl,
     });
   }

@@ -13,9 +13,9 @@ const Hero = (): JSX.Element => {
         </h2>
         <p className="text-md will-change-opacity text-lg text-gray-300 will-change-transform">
           I am a fullstack web developer, currently looking into learning new
-          things (three.js, Rust, Go, Web3 and backend technologies). Whenever I
-          feel like I should share my knowledge with others, I like to do it via
-          blog posts and social media.
+          things (Rust, Go, Web3 and backend technologies). Whenever I feel like
+          I should share my knowledge with others, I like to do it via blog
+          posts and social media.
         </p>
       </div>
       <div className="will-change-opacity relative h-32 w-32 overflow-hidden rounded-full will-change-transform">

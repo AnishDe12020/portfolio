@@ -50,7 +50,7 @@ const SkillPage: NextPage<ProjectPageProps> = ({
         </Link>
       )}
 
-      <div className="overflow-hidden rounded-xl border-[1px] border-tertiary p-2 mt-16">
+      <div className="mt-16 overflow-hidden rounded-xl border-[1px] border-tertiary p-2">
         <NextImage
           width={project.image.width}
           height={project.image.height}
@@ -62,8 +62,7 @@ const SkillPage: NextPage<ProjectPageProps> = ({
       </div>
 
       <article>
-
-        <div className="prose leading-8 my-12">
+        <div className="prose my-12 leading-8">
           <ProjectMDX components={{ ...MDXComponents }} />
         </div>
         <div className="rounded-xl border-[1px] border-tertiary p-8">

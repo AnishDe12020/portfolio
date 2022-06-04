@@ -12,11 +12,15 @@ wordCount: number;
 contentMarkdown: string;
 }
 
-interface HashnodePostWithPlaceHolderImage extends HashnodePost {
+type HashnodePostWithoutContent = Omit<HashnodePost, "contentMarkdown">;
+
+
+interface HashnodePostWithPlaceHolderImage extends HashnodePostWithoutContent {
   placeholderImage: string;
 }
 
 export type {
   HashnodePost,
+  HashnodePostWithoutContent,
   HashnodePostWithPlaceHolderImage
 }

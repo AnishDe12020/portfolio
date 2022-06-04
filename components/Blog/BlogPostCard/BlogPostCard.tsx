@@ -23,7 +23,7 @@ const ProjectCard = ({
   excerpt,
 }: BlogPostCardProps): JSX.Element => {
   return (
-    <article className="flex max-w-lg flex-col-reverse rounded-xl border-[1px] border-tertiary bg-secondary py-4 px-6 transition duration-200 hover:scale-105">
+    <article className="flex max-w-lg flex-col-reverse rounded-xl border-[1px] border-tertiary bg-secondary py-4 px-6 transition duration-200 md:hover:scale-[1.02] hover:border-accent">
       <Link href={url} noExternalLinkIcon noGradientUnderline>
         <div className="mt-8 flex-col space-y-4">
           <h2 className="text-lg font-semibold text-gray-100 transition duration-200 hover:opacity-60">

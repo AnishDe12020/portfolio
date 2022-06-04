@@ -10,7 +10,7 @@ const Hero = (): JSX.Element => {
           Anish De
         </h1>
         <h2 className="will-change-opacity text-lg font-medium text-gray-400 will-change-transform">
-          10th grader • Fullstack Web Developer • Blogger • Tech Enthusiast
+          10th grader • Fullstack Web Developer • Web3 Enthusiast • Blogger • Tech Enthusiast
         </h2>
         <p className="text-md will-change-opacity text-lg text-gray-300 will-change-transform">
           I am a fullstack web developer, currently looking into learning new

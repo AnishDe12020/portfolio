@@ -34,7 +34,7 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectProps>(
         className="flex flex-col space-y-8 rounded-lg border-[1px] border-tertiary bg-secondary p-4 md:h-48 md:flex-row md:space-y-0 md:space-x-8"
         ref={ref}
       >
-        <div className="overflow-hidden rounded-lg">
+        <div className="overflow-hidden rounded-lg md:w-72">
           <Link href={`/projects/${slug}`}>
             <div className="relative h-36 w-full transition duration-200 hover:opacity-60 md:h-full md:w-72">
               <NextImage
@@ -48,7 +48,7 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectProps>(
             </div>
           </Link>
         </div>
-        <div className="flex flex-col justify-between">
+        <div className="flex flex-col justify-between flex-1">
           <div className="flex flex-col space-y-2">
             <Link
               href={`/projects/${slug}`}

@@ -10,25 +10,21 @@ const MotionLink = motion(Link);
 const Projects = (): JSX.Element => {
   return (
     <div className="my-16 flex flex-col">
-      <motion.h2
+      <h2
         variants={fadeInVariant}
         initial="offscreen"
         animate="onscreen"
         transition={{ delay: 0.8 }}
-        className="will-change-opacity mb-8 text-3xl font-bold will-change-transform"
+        className="mb-8 text-3xl font-bold"
       >
         Projects
-      </motion.h2>
+      </h2>
       <div className="flex flex-col space-y-8">
         {allProjects.slice(0, 2).map((project, index) => (
-          <motion.div
+          <div
             key={project._id}
-            className="will-change-opacity group relative rounded-lg border-[1px] border-tertiary bg-secondary p-4 transition duration-200 will-change-transform hover:border-accent"
-            variants={fadeInVariant}
-            initial="offscreen"
-            animate="onscreen"
-            transition={{ delay: 0.9 + 0.3 * index }}
-          >
+            className="group relative rounded-lg border-[1px] border-tertiary bg-secondary p-4 transition duration-200 hover:border-accent"
+                     >
             <Link
               href={`/projects/${project.slug}`}
               className="flex items-center space-x-4"
@@ -54,7 +50,7 @@ const Projects = (): JSX.Element => {
                 <ExternalLink className="h-4 w-4" />
               </a>
             )}
-          </motion.div>
+          </div>
         ))}
       </div>
       <MotionLink

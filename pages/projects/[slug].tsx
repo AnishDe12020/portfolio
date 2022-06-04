@@ -51,12 +51,12 @@ const SkillPage: NextPage<ProjectPageProps> = ({
       )}
       <div className="my-8 h-1 w-full rounded-full bg-secondary" />
 
-      <div className="shadow-xl overflow-hidden rounded-xl shadow-white">
+      <div className="overflow-hidden rounded-xl">
         <NextImage
           width={project.image.width}
           height={project.image.height}
           src={project.image.url}
-          className="shadow-md rounded-xl shadow-white"
+          className="rounded-xl"
           placeholder="blur"
           blurDataURL={projectImagePreview}
         />

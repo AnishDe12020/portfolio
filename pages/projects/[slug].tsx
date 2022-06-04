@@ -25,7 +25,12 @@ const SkillPage: NextPage<ProjectPageProps> = ({
 
   return (
     <>
-        <NextSeo nofollow={true} noindex={true} />
+    <NextSeo title={`${project.name} | Anish De`} description={project.description} openGraph={{url: `https://anishde.dev/projects/${project.slug}`, title: `${project.name} | Anish De`, description: project.description, images: [{
+        url: project.image.url,
+        width: project.image.width,
+        height: project.image.height,
+        alt: project.name
+      }] }} />
       <div className="mt-8 flex space-x-8">
         <IconFactory
           name={project.iconName}

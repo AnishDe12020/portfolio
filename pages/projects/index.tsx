@@ -6,6 +6,7 @@ import { allProjects, Project } from "contentlayer/generated";
 import Link from "@/components/Shared/Link";
 import { ArrowRight } from "react-feather";
 import getPreviewImageUrl from "@/utils/getPreviewImageURL";
+import { NextSeo } from "next-seo";
 
 export interface ProjectWithPlaceholderImage extends Project {
   placeholderImage: string;
@@ -22,7 +23,7 @@ const ProjectsPage: NextPage<ProjectsPageProps> = ({
 
   return (
     <>
-    <NextSeo nofollow={true} noindex={true} />
+    <NextSeo title="Projects | Anish De" description="Projects worked upon by Anish De" />
       <h1
     
         className="mb-8 text-2xl font-bold"

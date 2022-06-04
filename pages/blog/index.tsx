@@ -4,6 +4,7 @@ import hashnodeData from "@/data/hashnode.json";
 import BlogPostCard from "@/components/Blog/BlogPostCard";
 import getPreviewImageUrl from "@/utils/getPreviewImageURL";
 import { HashnodePostWithPlaceHolderImage } from "types/hashnode";
+import { NextSeo } from "next-seo";
 
 interface BlogPostsPageProps {
   posts: HashnodePostWithPlaceHolderImage[];
@@ -12,6 +13,7 @@ interface BlogPostsPageProps {
 const BlogPostsPage: NextPage<BlogPostsPageProps> = ({ posts }) => {
   return (
     <>
+    <NextSeo title="Blog Posts | Anish De" description="Blog written on https://blog.anishde.dev by Anish De" />
       <h1 className="mb-8 text-2xl font-bold">Blog Posts</h1>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         {posts.map(post => (

@@ -1,9 +1,11 @@
 import { NextPage } from "next";
 import Giscus from "@giscus/react";
+import { NextSeo } from "next-seo";
 
 const GuestBookPage: NextPage = () => {
   return (
     <>
+    <NextSeo title="Guestbook | Anish De" description="Leave messages on my portfolio site's guestbook :)" />
       <h1 className="text-3xl font-bold">GuestBook</h1>
       <p className="mt-4 text-gray-300">Leave a message :)</p>
 

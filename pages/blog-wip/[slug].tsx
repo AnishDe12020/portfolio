@@ -7,6 +7,7 @@ import MDXComponents from "@/components/Common/MDXComponents";
 import CustomGiscus from "@/components/Shared/CustomGiscus";
 
 import AvatarJPG from "public/static/images/avatar.jpg";
+import { NextSeo } from "next-seo";
 
 interface BlogPostPageProps {
   blogPost: BlogPost;
@@ -17,6 +18,7 @@ const BlogPostPage: NextPage<BlogPostPageProps> = ({ blogPost }) => {
 
   return (
     <>
+        <NextSeo nofollow={true} noindex={true} />
       <h1 className="mb-16 mt-8 text-4xl font-bold">{blogPost.title}</h1>
 
       <div className="overflow-hidden rounded-xl">

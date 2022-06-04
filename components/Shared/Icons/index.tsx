@@ -12,3 +12,5 @@ export { default as NotigerLogo } from "./Notiger";
 export { default as YouTubeLogo } from "./YouTube";
 export { default as HashnodeLogo } from "./Hashnode";
 export { default as DevToLogo } from "./DevTo";
+export { default as TwNFTLogo } from "./TwNFT";
+export { default as StorliLogo } from "./Storli";

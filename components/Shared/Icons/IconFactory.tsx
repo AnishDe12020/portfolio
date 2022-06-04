@@ -9,8 +9,10 @@ import {
   FigmaLogo,
   GoLogo,
   TailwindCSSLogo,
+  NotigerLogo,
+  TwNFTLogo
 } from ".";
-import NotigerLogo from "./Notiger";
+import StorliLogo from "./Storli";
 
 interface IconFactoryProps extends SVGProps<SVGSVGElement> {
   name: string;
@@ -37,6 +39,10 @@ const IconFactory = ({
       return <ReactLogo {...otherProps} />;
     case "notiger":
       return <NotigerLogo {...otherProps} />;
+      case "twnft": 
+      return <TwNFTLogo {...otherProps} />;
+      case "storli": 
+      return <StorliLogo {...otherProps} />;
     default:
       return <X />;
   }

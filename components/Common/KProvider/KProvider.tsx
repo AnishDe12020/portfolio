@@ -8,7 +8,7 @@ import {
 } from "kbar";
 import { useRouter } from "next/router";
 import { ReactNode } from "react";
-import { Search } from "react-feather";
+import { Code, Search } from "react-feather";
 import toast from "react-hot-toast";
 
 import Kbd from "@/components/Shared/Kbd";
@@ -87,6 +87,15 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
       section: "Socials",
       icon: social.icon,
     });
+  });
+
+  actions.push({
+    id: "source-code",
+    name: "Source Code",
+    keywords: "source code",
+    perform: () => window.open("https://github.com/AnishDe12020/portfolio"),
+    section: "Socials",
+    icon: <Code />
   });
 
   allProjects.map(project => {

@@ -1,0 +1,9 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+User-agent: *
+Disallow: /revalidate
+
+User-agent: *
+Disallow: /blog-wip

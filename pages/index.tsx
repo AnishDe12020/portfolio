@@ -13,7 +13,7 @@ interface HomePageProps {
   blogPosts: HashnodePostWithPlaceHolderImage[];
 }
 
-const HomePage: NextPage<HomePageProps> = ({blogPosts}) => {
+const HomePage: NextPage<HomePageProps> = ({ blogPosts }) => {
   return (
     <>
       <Hero />
@@ -24,22 +24,21 @@ const HomePage: NextPage<HomePageProps> = ({blogPosts}) => {
   );
 };
 
-
 export const getStaticProps: GetStaticProps = async context => {
-const posts = hashnodeData.posts;
+  const posts = hashnodeData.posts;
 
-const allProjectsWithPlaceholerImages = []
+  const allProjectsWithPlaceholerImages = [];
 
-for (const post of posts) {
-    const previewUrl = await getPreviewImageUrl(post.coverImage)
+  for (const post of posts) {
+    const previewUrl = await getPreviewImageUrl(post.coverImage);
     allProjectsWithPlaceholerImages.push({
-        ...post,
-        placeholderImage: previewUrl
-    })
+      ...post,
+      placeholderImage: previewUrl,
+    });
   }
 
   return {
-    props: { blogPosts: allProjectsWithPlaceholerImages},
+    props: { blogPosts: allProjectsWithPlaceholerImages },
   };
 };
 

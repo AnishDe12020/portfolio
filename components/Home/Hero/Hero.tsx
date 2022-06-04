@@ -5,28 +5,20 @@ const Hero = (): JSX.Element => {
   return (
     <div className="flex flex-col-reverse md:flex-row md:justify-between md:space-y-0">
       <div className="mt-8 flex flex-col justify-center space-y-4 md:mt-0 md:w-2/3">
-        <h1
-          className="will-change-opacity text-5xl font-bold will-change-transform"
-             >
+        <h1 className="will-change-opacity text-5xl font-bold will-change-transform">
           Anish De
         </h1>
-        <h2
-          className="will-change-opacity text-lg font-medium text-gray-400 will-change-transform"
-        >
+        <h2 className="will-change-opacity text-lg font-medium text-gray-400 will-change-transform">
           10th grader • Fullstack Web Developer • Blogger • Tech Enthusiast
         </h2>
-        <p
-          className="text-md will-change-opacity text-lg text-gray-300 will-change-transform"
-                 >
+        <p className="text-md will-change-opacity text-lg text-gray-300 will-change-transform">
           I am a fullstack web developer, currently looking into learning new
           things (three.js, Rust, Go, Web3 and backend technologies). Whenever I
           feel like I should share my knowledge with others, I like to do it via
           blog posts and social media.
         </p>
       </div>
-      <div
-        className="will-change-opacity relative h-32 w-32 overflow-hidden rounded-full will-change-transform"
-             >
+      <div className="will-change-opacity relative h-32 w-32 overflow-hidden rounded-full will-change-transform">
         <NextImage
           src={AvatarJPG}
           layout="fill"

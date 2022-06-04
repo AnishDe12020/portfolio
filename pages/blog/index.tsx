@@ -7,9 +7,9 @@ import { HashnodePostWithPlaceHolderImage } from "types/hashnode";
 
 interface BlogPostsPageProps {
   posts: HashnodePostWithPlaceHolderImage[];
-  }
+}
 
-const BlogPostsPage: NextPage<BlogPostsPageProps> = ({posts}) => {
+const BlogPostsPage: NextPage<BlogPostsPageProps> = ({ posts }) => {
   return (
     <>
       <h1 className="mb-8 text-2xl font-bold">Blog Posts</h1>
@@ -31,20 +31,20 @@ const BlogPostsPage: NextPage<BlogPostsPageProps> = ({posts}) => {
 };
 
 export const getStaticProps: GetStaticProps = async context => {
-const posts = hashnodeData.posts;
+  const posts = hashnodeData.posts;
 
-const allProjectsWithPlaceholerImages = []
+  const allProjectsWithPlaceholerImages = [];
 
-for (const post of posts) {
-    const previewUrl = await getPreviewImageUrl(post.coverImage)
+  for (const post of posts) {
+    const previewUrl = await getPreviewImageUrl(post.coverImage);
     allProjectsWithPlaceholerImages.push({
-        ...post,
-        placeholderImage: previewUrl
-    })
+      ...post,
+      placeholderImage: previewUrl,
+    });
   }
 
   return {
-    props: { posts: allProjectsWithPlaceholerImages},
+    props: { posts: allProjectsWithPlaceholerImages },
   };
 };
 

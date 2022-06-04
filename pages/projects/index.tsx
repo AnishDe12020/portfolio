@@ -55,7 +55,7 @@ const ProjectsPage: NextPage<ProjectsPageProps> = ({
       </div>
       <MotionLink
         href="https://github.com/stars/AnishDe12020/lists/projects"
-        className="group mt-8 flex flex-row items-center justify-start space-x-2 text-xl font-medium will-change-opacity will-change-transform"
+        className="will-change-opacity group mt-8 flex flex-row items-center justify-start space-x-2 text-xl font-medium will-change-transform"
         noExternalLinkIcon
         variants={fadeInVariant}
         initial="offscreen"

@@ -6,7 +6,7 @@ interface BlogPostsProps {
   domain: string;
 }
 
-const BlogPosts = ({posts, domain}: BlogPostsProps): JSX.Element => {
+const BlogPosts = ({ posts, domain }: BlogPostsProps): JSX.Element => {
   return (
     <>
       <h2 className="mb-8 text-2xl font-bold">Blog Posts</h2>

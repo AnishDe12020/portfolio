@@ -27,7 +27,7 @@ const SkillPage: NextPage<ProjectPageProps> = ({
       <div className="mt-8 flex space-x-8">
         <IconFactory
           name={project.iconName}
-          className="shadow-md h-16 w-16 rounded-xl bg-tertiary p-2"
+          className="h-16 w-16 rounded-xl bg-tertiary p-2 shadow-md"
         />
         <div className="flex flex-col space-y-2">
           <h1 className="text-2xl font-bold">{project.name}</h1>

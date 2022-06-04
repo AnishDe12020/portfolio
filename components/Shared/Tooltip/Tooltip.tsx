@@ -26,7 +26,7 @@ const Tooltip = ({ children, content }: TooltipProps): JSX.Element => {
           <MotionContent
             side="top"
             sideOffset={4}
-            className="shadow-md rounded-md bg-tertiary px-3 py-1 text-sm"
+            className="rounded-md bg-tertiary px-3 py-1 text-sm shadow-md"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}

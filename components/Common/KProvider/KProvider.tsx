@@ -52,22 +52,21 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
       parent: "projects",
       perform: () => push("/projects"),
     },
-{
-    id: "blog",
-    name: "Blog",
-            keywords: "blogs blog post articles tutorials",
-
-    section: "Pages",
-
-  },
     {
-        id: "blogs-page",
-        name: "All Blog Posts",
-        keywords: "blogs blog post articles tutorials",
-        shortcut: ["b"],
-        parent: "blog",
-        perform: () => push("/blogs"),
-      },
+      id: "blog",
+      name: "Blog",
+      keywords: "blogs blog post articles tutorials",
+
+      section: "Pages",
+    },
+    {
+      id: "blogs-page",
+      name: "All Blog Posts",
+      keywords: "blogs blog post articles tutorials",
+      shortcut: ["b"],
+      parent: "blog",
+      perform: () => push("/blogs"),
+    },
     {
       id: "toggle-circles",
       name: "Toggle Circles",
@@ -104,11 +103,11 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
     actions.push({
       id: post._id,
       name: post.title,
-            perform: () => window.open(`https://${hashnodeData.domain}/${post.slug}`),
+      perform: () => window.open(`https://${hashnodeData.domain}/${post.slug}`),
 
-            parent: "blog",
-
-    })})
+      parent: "blog",
+    });
+  });
 
   return (
     <>

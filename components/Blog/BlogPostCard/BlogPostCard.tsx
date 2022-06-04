@@ -34,7 +34,7 @@ const ProjectCard = ({
       </Link>
       <Link
         href={url}
-        className="rounded-lg drop-shadow-md aspect-[16/9] overflow-hidden"
+        className="aspect-[16/9] overflow-hidden rounded-lg drop-shadow-md"
         noExternalLinkIcon
         noGradientUnderline
       >
@@ -45,7 +45,7 @@ const ProjectCard = ({
           width={480}
           alt={title}
           placeholder="blur"
-blurDataURL={placeholderImage}
+          blurDataURL={placeholderImage}
         />
       </Link>
     </article>

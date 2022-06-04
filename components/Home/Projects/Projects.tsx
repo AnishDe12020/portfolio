@@ -6,24 +6,20 @@ import { ArrowRight, ExternalLink } from "react-feather";
 const Projects = (): JSX.Element => {
   return (
     <div className="my-16 flex flex-col">
-      <h2
-        className="mb-8 text-3xl font-bold"
-      >
-        Projects
-      </h2>
+      <h2 className="mb-8 text-3xl font-bold">Projects</h2>
       <div className="flex flex-col space-y-8">
         {allProjects.slice(0, 2).map((project, index) => (
           <div
             key={project._id}
             className="group relative rounded-lg border-[1px] border-tertiary bg-secondary p-4 transition duration-200 hover:border-accent"
-                     >
+          >
             <Link
               href={`/projects/${project.slug}`}
               className="flex items-center space-x-4"
             >
               <IconFactory
                 name={project.iconName}
-                className="shadow-md h-12 w-12 rounded-xl bg-tertiary p-1.5"
+                className="h-12 w-12 rounded-xl bg-tertiary p-1.5 shadow-md"
               />
               <div className="flex-col space-y-2">
                 <h3 className="flex flex-row items-center space-x-2 text-lg font-semibold">
@@ -48,7 +44,7 @@ const Projects = (): JSX.Element => {
       <Link
         href="/projects"
         className="group mt-8 flex items-center justify-start space-x-2 text-xl font-medium"
-              >
+      >
         <span>View All Projects</span>
         <ArrowRight className="h-4 w-4 transition duration-200 group-hover:translate-x-1" />
       </Link>

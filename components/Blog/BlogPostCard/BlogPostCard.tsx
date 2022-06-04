@@ -10,6 +10,7 @@ interface BlogPostCardProps {
   placeholderImage: string;
   date: string;
   readingTime: string;
+  excerpt?: string;
 }
 
 const ProjectCard = ({
@@ -19,6 +20,7 @@ const ProjectCard = ({
   placeholderImage,
   date,
   readingTime,
+  excerpt,
 }: BlogPostCardProps): JSX.Element => {
   return (
     <article className="flex max-w-lg flex-col-reverse rounded-xl border-[1px] border-tertiary bg-secondary py-4 px-6 transition duration-200 hover:scale-105">
@@ -27,6 +29,11 @@ const ProjectCard = ({
           <h2 className="text-lg font-semibold text-gray-100 transition duration-200 hover:opacity-60">
             {title}
           </h2>
+          {excerpt && (
+          <p>
+          {excerpt}
+          </p>
+          )}
           <p className="text-gray-300 transition duration-200 hover:opacity-60">
             {format(parseISO(date), "PPP")} / {readingTime}
           </p>

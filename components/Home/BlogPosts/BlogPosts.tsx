@@ -1,4 +1,6 @@
 import BlogPostCard from "@/components/Blog/BlogPostCard";
+import Link from "@/components/Shared/Link";
+import { ArrowRight } from "react-feather";
 import { HashnodePostWithPlaceHolderImage } from "types/hashnode";
 
 interface BlogPostsProps {
@@ -23,6 +25,13 @@ const BlogPosts = ({ posts, domain }: BlogPostsProps): JSX.Element => {
           />
         ))}
       </div>
+      <Link
+        href="/blog"
+        className="group mt-8 flex items-center justify-start space-x-2 text-xl font-medium"
+      >
+        <span>View All Blog Posts</span>
+        <ArrowRight className="h-4 w-4 transition duration-200 group-hover:translate-x-1" />
+      </Link>
     </>
   );
 };

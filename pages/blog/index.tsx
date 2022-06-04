@@ -22,6 +22,7 @@ const BlogPostsPage: NextPage<BlogPostsPageProps> = ({ posts }) => {
             placeholderImage={post.placeholderImage}
             date={post.dateAdded}
             readingTime={post.readingTime.text}
+            excerpt={post.brief}
             url={`https://${hashnodeData.domain}/${post.slug}`}
           />
         ))}

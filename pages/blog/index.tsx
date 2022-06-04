@@ -3,9 +3,10 @@ import { GetStaticProps, NextPage } from "next";
 import hashnodeData from "@/data/hashnode.json";
 import BlogPostCard from "@/components/Blog/BlogPostCard";
 import getPreviewImageUrl from "@/utils/getPreviewImageURL";
+import { HashnodePostWithPlaceHolderImage } from "types/hashnode";
 
 interface BlogPostsPageProps {
-  posts: any[];
+  posts: HashnodePostWithPlaceHolderImage[];
   }
 
 const BlogPostsPage: NextPage<BlogPostsPageProps> = ({posts}) => {

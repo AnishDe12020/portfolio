@@ -6,9 +6,10 @@ import BlogPosts from "@/components/Home/BlogPosts";
 
 import hashnodeData from "@/data/hashnode.json";
 import getPreviewImageUrl from "@/utils/getPreviewImageURL";
+import { HashnodePostWithPlaceHolderImage } from "types/hashnode";
 
 interface HomePageProps {
-  blogPosts: any[];
+  blogPosts: HashnodePostWithPlaceHolderImage[];
 }
 
 const HomePage: NextPage<HomePageProps> = ({blogPosts}) => {

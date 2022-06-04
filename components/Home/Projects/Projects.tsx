@@ -8,7 +8,7 @@ const Projects = (): JSX.Element => {
     <div className="my-16 flex flex-col">
       <h2 className="mb-8 text-3xl font-bold">Projects</h2>
       <div className="flex flex-col space-y-8">
-        {allProjects.slice(0, 2).map((project, index) => (
+        {allProjects.slice(0, 3).map((project, index) => (
           <div
             key={project._id}
             className="group relative rounded-lg border-[1px] border-tertiary bg-secondary p-4 transition duration-200 hover:border-accent md:hover:scale-[1.02]"

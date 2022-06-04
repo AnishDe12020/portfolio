@@ -2,19 +2,11 @@ import { allProjects } from ".contentlayer/generated";
 import IconFactory from "@/components/Shared/Icons/IconFactory";
 import Link from "@/components/Shared/Link";
 import { ArrowRight, ExternalLink } from "react-feather";
-import { motion } from "framer-motion";
-import { fadeInVariant } from "variants";
-
-const MotionLink = motion(Link);
 
 const Projects = (): JSX.Element => {
   return (
     <div className="my-16 flex flex-col">
       <h2
-        variants={fadeInVariant}
-        initial="offscreen"
-        animate="onscreen"
-        transition={{ delay: 0.8 }}
         className="mb-8 text-3xl font-bold"
       >
         Projects

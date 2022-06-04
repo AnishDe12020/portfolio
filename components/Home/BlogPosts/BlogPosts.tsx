@@ -9,7 +9,7 @@ interface BlogPostsProps {
 const BlogPosts = ({posts, domain}: BlogPostsProps): JSX.Element => {
   return (
     <>
-      <h1 className="mb-8 text-2xl font-bold">Blog Posts</h1>
+      <h2 className="mb-8 text-2xl font-bold">Blog Posts</h2>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         {posts.slice(0, 4).map(post => (
           <BlogPostCard

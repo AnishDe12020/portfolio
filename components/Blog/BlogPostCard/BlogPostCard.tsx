@@ -7,6 +7,7 @@ interface BlogPostCardProps {
   url: string;
   title: string;
   image: string;
+  placeholderImage: string;
   date: string;
   readingTime: string;
 }
@@ -15,6 +16,7 @@ const ProjectCard = ({
   url,
   title,
   image,
+  placeholderImage,
   date,
   readingTime,
 }: BlogPostCardProps): JSX.Element => {
@@ -32,16 +34,18 @@ const ProjectCard = ({
       </Link>
       <Link
         href={url}
-        className="aspect-[16/9]"
+        className="rounded-lg drop-shadow-md aspect-[16/9] overflow-hidden"
         noExternalLinkIcon
         noGradientUnderline
       >
         <NextImage
           src={image}
-          className="rounded-lg drop-shadow-md transition duration-200 hover:opacity-60"
+          className="rounded-lg transition duration-200 hover:opacity-60"
           height={270}
           width={480}
           alt={title}
+          placeholder="blur"
+blurDataURL={placeholderImage}
         />
       </Link>
     </article>

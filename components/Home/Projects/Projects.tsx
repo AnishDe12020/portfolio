@@ -53,17 +53,13 @@ const Projects = (): JSX.Element => {
           </div>
         ))}
       </div>
-      <MotionLink
+      <Link
         href="/projects"
-        className="will-change-opacity group mt-8 flex items-center justify-start space-x-2 text-xl font-medium will-change-transform"
-        variants={fadeInVariant}
-        initial="offscreen"
-        animate="onscreen"
-        transition={{ delay: 1 + 0.6, duration: 0.2 }}
-      >
+        className="group mt-8 flex items-center justify-start space-x-2 text-xl font-medium"
+              >
         <span>View All Projects</span>
         <ArrowRight className="h-4 w-4 transition duration-200 group-hover:translate-x-1" />
-      </MotionLink>
+      </Link>
     </div>
   );
 };

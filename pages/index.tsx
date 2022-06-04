@@ -1,17 +1,43 @@
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 
 import Hero from "@/components/Home/Hero";
 import Projects from "@/components/Home/Projects";
 import BlogPosts from "@/components/Home/BlogPosts";
 
-const HomePage: NextPage = () => {
+import hashnodeData from "@/data/hashnode.json";
+import getPreviewImageUrl from "@/utils/getPreviewImageURL";
+
+interface HomePageProps {
+  blogPosts: any[];
+}
+
+const HomePage: NextPage<HomePageProps> = ({blogPosts}) => {
   return (
     <>
       <Hero />
       <Projects />
-      <BlogPosts />
+      <BlogPosts posts={blogPosts} domain={hashnodeData.domain} />
     </>
   );
+};
+
+
+export const getStaticProps: GetStaticProps = async context => {
+const posts = hashnodeData.posts;
+
+const allProjectsWithPlaceholerImages = []
+
+for (const post of posts) {
+    const previewUrl = await getPreviewImageUrl(post.coverImage)
+    allProjectsWithPlaceholerImages.push({
+        ...post,
+        placeholderImage: previewUrl
+    })
+  }
+
+  return {
+    props: { blogPosts: allProjectsWithPlaceholerImages},
+  };
 };
 
 export default HomePage;

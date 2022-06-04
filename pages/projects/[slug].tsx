@@ -34,6 +34,9 @@ const SkillPage: NextPage<ProjectPageProps> = ({
           <p className="text-sm text-gray-300">{project.description}</p>
         </div>
       </div>
+
+                  <div className="flex space-x-2">
+
       {project.link && (
         <Link href={project.link} className="mt-4 md:mt-6" noHighlight>
           {project.link}
@@ -50,6 +53,8 @@ const SkillPage: NextPage<ProjectPageProps> = ({
           {getGitHubOwnerAndRepoFromLink(project.githubLink)}
         </Link>
       )}
+
+      </div>
 
       <div className="mt-16 overflow-hidden rounded-xl border-[1px] border-tertiary p-2">
         <NextImage

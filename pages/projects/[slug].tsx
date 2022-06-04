@@ -35,7 +35,7 @@ const SkillPage: NextPage<ProjectPageProps> = ({
         </div>
       </div>
       {project.link && (
-        <Link href={project.link} className="mt-4 md:mt-6">
+        <Link href={project.link} className="mt-4 md:mt-6" noHighlight>
           {project.link}
         </Link>
       )}
@@ -45,6 +45,7 @@ const SkillPage: NextPage<ProjectPageProps> = ({
           href={project.githubLink}
           className="mt-4 md:ml-4 md:mt-6"
           icon={<GitHubLogo />}
+          noHighlight
         >
           {getGitHubOwnerAndRepoFromLink(project.githubLink)}
         </Link>

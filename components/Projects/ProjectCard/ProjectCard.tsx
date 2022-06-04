@@ -58,9 +58,9 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectProps>(
             </Link>
             <p className="text-sm text-gray-300">{description}</p>
             <div className="flex flex-col space-y-2 md:flex-row md:items-center md:space-x-2 md:space-y-0">
-              {link && <Link href={link}>{cleanLink(link)}</Link>}
+              {link && <Link href={link} noHighlight>{cleanLink(link)}</Link>}
               {githubLink && (
-                <Link href={githubLink} icon={<GitHubLogo />}>
+                <Link href={githubLink} icon={<GitHubLogo />} noHighlight>
                   {getGitHubOwnerAndRepoFromLink(githubLink)}
                 </Link>
               )}

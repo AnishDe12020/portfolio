@@ -16,6 +16,7 @@ interface ExternalLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   gradientUnderline?: boolean;
   noGradientUnderline?: boolean;
   noExternalLinkIcon?: boolean;
+  noHighlight?: boolean;
   icon?: ReactNode;
 }
 
@@ -28,6 +29,7 @@ const ExternalLink = forwardRef<HTMLAnchorElement, ExternalLinkProps>(
       gradientUnderline,
       noGradientUnderline,
       noExternalLinkIcon,
+      noHighlight = false,
       icon,
       ...otherProps
     }: ExternalLinkProps,
@@ -62,8 +64,9 @@ const ExternalLink = forwardRef<HTMLAnchorElement, ExternalLinkProps>(
           <a
             href={href}
             className={cx(
-              "mr-1 inline-flex items-center space-x-1 text-gray-300 transition duration-200 hover:text-gray-100",
+              "mr-1 inline-flex items-center space-x-1 text-gray-300 transition duration-200",
               isGradientUnderline && "gradient-underline",
+              isGradientUnderline && !noHighlight && "text-blue-400 hover:text-blue-300",
               className
             )}
             target="_blank"

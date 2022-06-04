@@ -49,9 +49,8 @@ const SkillPage: NextPage<ProjectPageProps> = ({
           {getGitHubOwnerAndRepoFromLink(project.githubLink)}
         </Link>
       )}
-      <div className="my-8 h-1 w-full rounded-full bg-secondary" />
 
-      <div className="overflow-hidden rounded-xl">
+      <div className="overflow-hidden rounded-xl border-[1px] border-tertiary p-2 mt-16">
         <NextImage
           width={project.image.width}
           height={project.image.height}
@@ -63,12 +62,10 @@ const SkillPage: NextPage<ProjectPageProps> = ({
       </div>
 
       <article>
-        <div className="my-8 h-1 w-full rounded-full bg-secondary" />
 
-        <div className="prose leading-8">
+        <div className="prose leading-8 my-12">
           <ProjectMDX components={{ ...MDXComponents }} />
         </div>
-        <div className="my-8 h-1 w-full rounded-full bg-secondary" />
         <div className="rounded-xl border-[1px] border-tertiary p-8">
           <CustomGiscus term={`project: ${project.name}`} />
         </div>

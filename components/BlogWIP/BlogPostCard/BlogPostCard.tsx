@@ -6,7 +6,7 @@ import { CloudinaryImage } from "contentlayer/generated";
 interface BlogPostCardProps {
   slug: string;
   title: string;
-  image: CloudinaryImage;
+  image: Cloudinaryimage;
   date: string;
   readingTime: string;
 }

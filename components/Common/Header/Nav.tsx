@@ -16,6 +16,10 @@ const navItems = [
     name: "Projects",
     href: "/projects",
   },
+  {
+      name: "Guestbook",
+      href: "/guestbook"
+    }
 ];
 
 const mobileMenuVariants: Variants = {

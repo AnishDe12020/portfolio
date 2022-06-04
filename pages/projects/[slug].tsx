@@ -62,7 +62,7 @@ const SkillPage: NextPage<ProjectPageProps> = ({
       </div>
 
       <article>
-        <div className="prose my-12 leading-8">
+        <div className="prose my-12 leading-8 max-w-full">
           <ProjectMDX components={{ ...MDXComponents }} />
         </div>
         <div className="rounded-xl border-[1px] border-tertiary p-8">

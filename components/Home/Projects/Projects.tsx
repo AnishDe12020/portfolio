@@ -15,7 +15,7 @@ const Projects = (): JSX.Element => {
           >
             <Link
               href={`/projects/${project.slug}`}
-              className="flex items-center space-x-4"
+              className="flex md:items-center flex-col space-y-8 md:flex-row mf:space-y-0 md:space-x-4"
             >
               <IconFactory
                 name={project.iconName}

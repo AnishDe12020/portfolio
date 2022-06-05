@@ -1,11 +1,4 @@
-import { allProjects } from "contentlayer/generated";
-
-const SiteMap = () => {
-  // getServerSideProps will do the heavy lifting
-};
-
-export const getServerSideProps = async ({ res }) => {
-  const rss = `<rss version="2.0">
+<rss version="2.0">
     <channel>
         <title>Anish De</title>
         <link>https://anishde.dev/</link>
@@ -36,16 +29,3 @@ export const getServerSideProps = async ({ res }) => {
         <category>Web3</category>
     </channel>
 </rss>
-  `;
-
-  res.setHeader("Content-Type", "text/xml");
-
-  res.write(rss);
-  res.end();
-
-  return {
-    props: {},
-  };
-};
-
-export default SiteMap;

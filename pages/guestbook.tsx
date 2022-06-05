@@ -11,7 +11,7 @@ const GuestBookPage: NextPage = () => {
       />
       <h1 className="text-3xl font-bold">GuestBook</h1>
       <p className="mt-4 text-gray-300">Leave a message :)</p>
-
+<div className="mt-16">
       <Giscus
         id="comments"
         repo="AnishDe12020/portfolio"
@@ -27,6 +27,7 @@ const GuestBookPage: NextPage = () => {
         lang="en"
         loading="lazy"
       />
+      </div>
     </>
   );
 };

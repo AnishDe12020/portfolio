@@ -1,17 +1,43 @@
-# Portfolio Site
+# My Portfolio Site 🚀
+This is my portfolio site built with [Next.js](https://nextjs.org), [TailwindCSS](https://tailwindcss.com), [Contentlayer](https://www.contentlayer.dev/), and has been deploy on [Vercel](https://vercel.com).
 
-This is the source code for my portfolio site mainly built using [SvelteKit](https://kit.svelte.dev/) and [TailwindCSS](https://tailwindcss.com/).
+It is currently a simple portfolio site with a project showcase and a blog posts showcase. I plan on making it a complete blogfolio in the future but the blog part is WIP as of now.
 
-You can see it live at [https://anishde.dev/](https://anishde.dev/)
+## Screenshots
+**Home Page**
 
-![image](https://user-images.githubusercontent.com/63192115/148372497-7a9bde56-0db6-400b-8cad-0a991dc6619a.png)
+![image](https://user-images.githubusercontent.com/63192115/172039448-8a79e500-0819-4e99-a653-471174661606.png)
 
-# Contributing
+---
 
-Any contribution is welcome, be it a bug fix or an improvement. If you are to make a substantial improvement, please discuss it with me by [opening an issue.](https://github.com/AnishDe12020/portfolio/issues/new/choose)
+**Command Bar**
 
-# Can I use this for my portfolio?
+![image](https://user-images.githubusercontent.com/63192115/172039508-16ffbcc3-ab92-4e9c-a1e1-ea6e0cd50686.png)
 
-Yes and no. You are free to take inspiration, check out the code, and even copy down the code for something you like but please do not create a copy of the whole website.
+---
 
-You can reach out to me on [Twitter](https://twitter.com/AnishDe12020) or send me a mail on [contact@anishde.dev](mailto:contact@anishde.dev) if you have any queries.
+**All Projects**
+
+![image](https://user-images.githubusercontent.com/63192115/172039453-af995e3d-1b27-4246-b4c1-99acec3c5e7f.png)
+
+---
+
+**A single project**
+
+![image](https://user-images.githubusercontent.com/63192115/172039474-12354f77-1c82-4d72-ab03-e26e6df9d276.png)
+
+---
+
+**All blog posts**
+
+![image](https://user-images.githubusercontent.com/63192115/172039459-28acc7c3-cab4-4c31-8fc8-dc7febd6f707.png)
+
+---
+
+**Guestbook**
+
+![image](https://user-images.githubusercontent.com/63192115/172039464-c008cb2f-4f13-44cd-b06e-71eb479ea5a5.png)
+
+
+## Contributing
+Found some issue with the website? Please open a issue or a pull request!

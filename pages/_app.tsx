@@ -50,7 +50,15 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           options={{ showSpinner: false }}
         />
         <DefaultSeo {...SEO} />
-        <SocialProfileJsonLd type="Person" name="Anish De" url="https://anishde.dev/" sameAs={["https://twitter.com/AnishDe12020", "https://www.youtube.com/anishtechtutorials"]} />
+        <SocialProfileJsonLd
+          type="Person"
+          name="Anish De"
+          url="https://anishde.dev/"
+          sameAs={[
+            "https://twitter.com/AnishDe12020",
+            "https://www.youtube.com/anishtechtutorials",
+          ]}
+        />
         <main id="main" className="relative mx-auto mb-16 max-w-4xl px-8">
           <Component {...pageProps} />
           <CustomToaster />

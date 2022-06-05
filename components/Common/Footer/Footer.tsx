@@ -9,7 +9,8 @@ const Footer = (): JSX.Element => {
         Made by <Link href="https://twitter.com/AnishDe12020">Anish De</Link>
       </p>
       <p>
-        This portfolio is open source and the source code can be found <Link href="https://github.com/AnishDe12020/portfolio">on GitHub</Link>
+        This portfolio is open source and the source code can be found{" "}
+        <Link href="https://github.com/AnishDe12020/portfolio">on GitHub</Link>
       </p>
     </footer>
   );

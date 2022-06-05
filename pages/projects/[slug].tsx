@@ -25,12 +25,23 @@ const SkillPage: NextPage<ProjectPageProps> = ({
 
   return (
     <>
-    <NextSeo title={`${project.name} | Anish De`} description={project.description} openGraph={{url: `https://anishde.dev/projects/${project.slug}`, title: `${project.name} | Anish De`, description: project.description, images: [{
-        url: project.image.url,
-        width: project.image.width,
-        height: project.image.height,
-        alt: project.name
-      }] }} />
+      <NextSeo
+        title={`${project.name} | Anish De`}
+        description={project.description}
+        openGraph={{
+          url: `https://anishde.dev/projects/${project.slug}`,
+          title: `${project.name} | Anish De`,
+          description: project.description,
+          images: [
+            {
+              url: project.image.url,
+              width: project.image.width,
+              height: project.image.height,
+              alt: project.name,
+            },
+          ],
+        }}
+      />
       <div className="mt-8 flex space-x-8">
         <IconFactory
           name={project.iconName}
@@ -42,25 +53,23 @@ const SkillPage: NextPage<ProjectPageProps> = ({
         </div>
       </div>
 
-                  <div className="flex space-x-2">
+      <div className="flex space-x-2">
+        {project.link && (
+          <Link href={project.link} className="mt-4 md:mt-6" noHighlight>
+            {project.link}
+          </Link>
+        )}
 
-      {project.link && (
-        <Link href={project.link} className="mt-4 md:mt-6" noHighlight>
-          {project.link}
-        </Link>
-      )}
-
-      {project.githubLink && (
-        <Link
-          href={project.githubLink}
-          className="mt-4 md:ml-4 md:mt-6"
-          icon={<GitHubLogo />}
-          noHighlight
-        >
-          {getGitHubOwnerAndRepoFromLink(project.githubLink)}
-        </Link>
-      )}
-
+        {project.githubLink && (
+          <Link
+            href={project.githubLink}
+            className="mt-4 md:ml-4 md:mt-6"
+            icon={<GitHubLogo />}
+            noHighlight
+          >
+            {getGitHubOwnerAndRepoFromLink(project.githubLink)}
+          </Link>
+        )}
       </div>
 
       <div className="mt-16 overflow-hidden rounded-xl border-[1px] border-tertiary p-2">
@@ -75,7 +84,7 @@ const SkillPage: NextPage<ProjectPageProps> = ({
       </div>
 
       <article>
-        <div className="prose my-12 leading-8 max-w-full">
+        <div className="prose my-12 max-w-full leading-8">
           <ProjectMDX components={{ ...MDXComponents }} />
         </div>
         <div className="rounded-xl border-[1px] border-tertiary p-8">

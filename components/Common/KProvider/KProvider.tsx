@@ -95,7 +95,7 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
     keywords: "source code",
     perform: () => window.open("https://github.com/AnishDe12020/portfolio"),
     section: "Socials",
-    icon: <Code />
+    icon: <Code />,
   });
 
   allProjects.map(project => {

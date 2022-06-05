@@ -57,7 +57,7 @@ const Revalidate: NextPage = () => {
 
   return (
     <>
-    <NextSeo nofollow={true} noindex={true} />
+      <NextSeo nofollow={true} noindex={true} />
       <h1>Revalidate</h1>
       {isLoading ? (
         <p>Loading...</p>

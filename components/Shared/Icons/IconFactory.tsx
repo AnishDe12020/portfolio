@@ -10,7 +10,7 @@ import {
   GoLogo,
   TailwindCSSLogo,
   NotigerLogo,
-  TwNFTLogo
+  TwNFTLogo,
 } from ".";
 import StorliLogo from "./Storli";
 
@@ -39,9 +39,9 @@ const IconFactory = ({
       return <ReactLogo {...otherProps} />;
     case "notiger":
       return <NotigerLogo {...otherProps} />;
-      case "twnft": 
+    case "twnft":
       return <TwNFTLogo {...otherProps} />;
-      case "storli": 
+    case "storli":
       return <StorliLogo {...otherProps} />;
     default:
       return <X />;

@@ -23,13 +23,11 @@ const ProjectsPage: NextPage<ProjectsPageProps> = ({
 
   return (
     <>
-    <NextSeo title="Projects | Anish De" description="Projects worked upon by Anish De" />
-      <h1
-    
-        className="mb-8 text-2xl font-bold"
-      >
-        Projects
-      </h1>
+      <NextSeo
+        title="Projects | Anish De"
+        description="Projects worked upon by Anish De"
+      />
+      <h1 className="mb-8 text-2xl font-bold">Projects</h1>
       <div className="flex-col space-y-8">
         {allProjectsWithPlaceholderImages.map((project, index) => (
           <ProjectCard

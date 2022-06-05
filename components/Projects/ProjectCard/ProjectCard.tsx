@@ -48,7 +48,7 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectProps>(
             </div>
           </Link>
         </div>
-        <div className="flex flex-col justify-between flex-1">
+        <div className="flex flex-1 flex-col justify-between">
           <div className="flex flex-col space-y-2">
             <Link
               href={`/projects/${slug}`}
@@ -58,7 +58,11 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectProps>(
             </Link>
             <p className="text-sm text-gray-300">{description}</p>
             <div className="flex flex-col space-y-2 md:flex-row md:items-center md:space-x-2 md:space-y-0">
-              {link && <Link href={link} noHighlight>{cleanLink(link)}</Link>}
+              {link && (
+                <Link href={link} noHighlight>
+                  {cleanLink(link)}
+                </Link>
+              )}
               {githubLink && (
                 <Link href={githubLink} icon={<GitHubLogo />} noHighlight>
                   {getGitHubOwnerAndRepoFromLink(githubLink)}

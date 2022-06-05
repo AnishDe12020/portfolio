@@ -17,6 +17,7 @@ import "@fontsource/sen";
 import Footer from "@/components/Common/Footer";
 import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
 import SEO from "../next-seo.config";
+import Script from "next/script";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const { asPath } = useRouter();
@@ -59,6 +60,14 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             "https://www.youtube.com/anishtechtutorials",
           ]}
         />
+        {process.env.NEXT_PUBLIC_UMAMI_SCRIPT_URL &&
+          process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
+            <Script
+              src={process.env.NEXT_PUBLIC_UMAMI_SCRIPT_URL}
+              data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+              strategy="lazyOnload"
+            />
+          )}
         <main id="main" className="relative mx-auto mb-16 max-w-4xl px-8">
           <Component {...pageProps} />
           <CustomToaster />

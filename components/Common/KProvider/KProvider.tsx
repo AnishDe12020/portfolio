@@ -73,7 +73,7 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
       keywords: "blogs blog post articles tutorials",
       shortcut: ["b"],
       parent: "blog",
-      perform: () => push("/blogs"),
+      perform: () => push("/blog"),
     },
     {
       id: "toggle-circles",

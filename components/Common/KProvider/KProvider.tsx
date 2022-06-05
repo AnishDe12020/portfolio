@@ -39,6 +39,14 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
       section: "Pages",
     },
     {
+      id: "guestbook",
+      name: "Guestbook",
+      keywords: "guestbook comments community wall",
+      shortcut: ["g"],
+      perform: () => push("/guestbook"),
+      section: "Pages",
+    },
+    {
       id: "projects",
       name: "Projects",
       keywords: "projects creations apps repositories",

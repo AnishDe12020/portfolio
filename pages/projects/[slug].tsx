@@ -53,9 +53,9 @@ const SkillPage: NextPage<ProjectPageProps> = ({
         </div>
       </div>
 
-      <div className="flex space-x-2">
+      <div className="flex flex-col space-y-2 md:space-y-0 md:space-x-2 md:flex-row mt-6">
         {project.link && (
-          <Link href={project.link} className="mt-4 md:mt-6" noHighlight>
+          <Link href={project.link} noHighlight>
             {project.link}
           </Link>
         )}
@@ -63,7 +63,6 @@ const SkillPage: NextPage<ProjectPageProps> = ({
         {project.githubLink && (
           <Link
             href={project.githubLink}
-            className="mt-4 md:ml-4 md:mt-6"
             icon={<GitHubLogo />}
             noHighlight
           >

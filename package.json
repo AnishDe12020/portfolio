@@ -5,6 +5,7 @@
   "scripts": {
     "prepare": "husky install",
     "dev": "next dev",
+    "prebuild": "yarn gen:hashnode",
     "build": "next build",
     "start": "next start",
     "lint": "eslint '{components,pages,utils,data,layouts}/**/*.{js,jsx,ts,tsx}'",

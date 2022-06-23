@@ -14,3 +14,4 @@ export { default as HashnodeLogo } from "./Hashnode";
 export { default as DevToLogo } from "./DevTo";
 export { default as TwNFTLogo } from "./TwNFT";
 export { default as StorliLogo } from "./Storli";
+export { default as SecliLogo } from "./Secli";

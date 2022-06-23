@@ -11,6 +11,7 @@ import {
   TailwindCSSLogo,
   NotigerLogo,
   TwNFTLogo,
+  SecliLogo,
 } from ".";
 import StorliLogo from "./Storli";
 
@@ -43,6 +44,8 @@ const IconFactory = ({
       return <TwNFTLogo {...otherProps} />;
     case "storli":
       return <StorliLogo {...otherProps} />;
+    case "secli":
+      return <SecliLogo {...otherProps} />;
     default:
       return <X />;
   }

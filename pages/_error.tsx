@@ -6,7 +6,11 @@ function Error({ statusCode }) {
       {statusCode ? (
         <h1 className="text-center text-6xl font-bold">
           {statusCode}
-          {statusCode === 404 ? " Page Not Found" : statusCode === 500 ? " Server Error" : ""}
+          {statusCode === 404
+            ? " Page Not Found"
+            : statusCode === 500
+            ? " Server Error"
+            : ""}
         </h1>
       ) : (
         <h1 className="text-center text-6xl font-bold">

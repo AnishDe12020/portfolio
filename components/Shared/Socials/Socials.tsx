@@ -25,7 +25,7 @@ const Socials = ({
           >
             {cloneElement(social.icon as ReactElement, {
               className: cx(
-                "rounded-xl bg-tertiary shadow-md",
+                "rounded-xl shadow-md border-[1px] border-tertiary bg-secondary",
                 small ? "h-8 w-8 px-1.5 py-1" : "h-10 w-10 px-2 py-1.5"
               ),
               "aria-label": social.name,

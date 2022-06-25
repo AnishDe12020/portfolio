@@ -5,7 +5,6 @@ import { cloneElement, useRef } from "react";
 const CodeBlock = props => {
   const codeRef = useRef<HTMLElement>(null);
 
-  console.log(codeRef);
   return (
     <div style={{ position: "relative", overflow: "auto" }}>
       <pre {...props}>

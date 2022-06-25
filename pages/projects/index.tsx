@@ -19,7 +19,6 @@ interface ProjectsPageProps {
 const ProjectsPage: NextPage<ProjectsPageProps> = ({
   allProjectsWithPlaceholderImages,
 }) => {
-  console.log(allProjectsWithPlaceholderImages);
 
   return (
     <>

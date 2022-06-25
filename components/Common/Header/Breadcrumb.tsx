@@ -20,11 +20,8 @@ const Breadcrumb = (): JSX.Element => {
 
     const pathWithoutQuery = path.split("?")[0];
     let pathArray = pathWithoutQuery.split("/");
-    console.log("pathArray", pathArray);
     pathArray.shift();
-    console.log("pathArrayShifted", pathArray);
     pathArray = pathArray.filter(path => path !== "");
-    console.log("pathArrayFiltered", pathArray);
 
     const breadcrumbs = pathArray.map((path, index) => {
       const href = "/" + pathArray.slice(0, index + 1).join("/");

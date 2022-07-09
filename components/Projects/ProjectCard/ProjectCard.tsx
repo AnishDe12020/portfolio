@@ -43,7 +43,7 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectProps>(
                 className="rounded-lg"
                 layout="fill"
                 placeholder="blur"
-                blurDataURL={placeholderImage}
+								blurDataURL={placeholderImage}
               />
             </div>
           </Link>
@@ -70,7 +70,8 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectProps>(
               )}
             </div>
           </div>
-          <Link href={`/projects/${slug}`} className="mt-4">
+					<Link href={`/projects/${slug}`} className="mt-4" gradientUnderline>
+						<p className="sr-only">Learn more about {name}</p>
             Learn More
           </Link>
         </div>

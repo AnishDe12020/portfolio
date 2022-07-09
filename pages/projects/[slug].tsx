@@ -74,7 +74,8 @@ const SkillPage: NextPage<ProjectPageProps> = ({
           src={project.image.url}
           className="rounded-xl"
           placeholder="blur"
-          blurDataURL={projectImagePreview}
+					blurDataURL={projectImagePreview}
+					alt={project.name}
         />
       </div>
 

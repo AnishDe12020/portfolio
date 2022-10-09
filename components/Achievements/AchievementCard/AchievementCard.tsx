@@ -15,7 +15,7 @@ const AchievementCard = ({
   const AchievementMDX = useMDXComponent(content);
 
   return (
-    <div className="flex flex-col space-y-4 rounded-xl border-[1px] border-tertiary bg-secondary py-4 px-6">
+    <div className="b flex flex-col space-y-4 rounded-xl border-[1px] border-tertiary bg-secondary/50 py-4 px-6">
       <h2 className="text-lg font-semibold text-gray-100 ">{title}</h2>
       <div className="prose my-8 max-w-full leading-8">
         <AchievementMDX components={{ ...MDXComponents }} />

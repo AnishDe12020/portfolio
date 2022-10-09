@@ -67,7 +67,7 @@ const SkillPage: NextPage<ProjectPageProps> = ({
         )}
       </div>
 
-      <div className="mt-16 overflow-hidden rounded-2xl border-[1px] border-tertiary p-2">
+      <div className="mt-16 overflow-hidden rounded-2xl border-[1px] border-tertiary p-0 shadow-md">
         <NextImage
           width={project.image.width}
           height={project.image.height}

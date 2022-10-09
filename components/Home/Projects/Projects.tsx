@@ -11,7 +11,7 @@ const Projects = (): JSX.Element => {
         {allProjects.slice(0, 3).map((project, index) => (
           <div
             key={project._id}
-            className="group relative rounded-lg border-[1px] border-tertiary bg-secondary p-4 transition duration-200 hover:border-accent md:hover:scale-[1.02]"
+            className="group relative rounded-xl border-[1px] border-tertiary bg-secondary/50 p-4 transition duration-200 hover:border-accent md:hover:scale-[1.02]"
           >
             <Link
               href={`/projects/${project.slug}`}

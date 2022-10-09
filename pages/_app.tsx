@@ -9,8 +9,6 @@ import KProvider from "@/components/Common/KProvider";
 import useCircles from "store/circles";
 
 import "../styles/globals.css";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 
 import "@fontsource/syncopate";
 import "@fontsource/sen";
@@ -20,26 +18,7 @@ import SEO from "../next-seo.config";
 import Script from "next/script";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-  const { asPath } = useRouter();
-
   const { isEnabled } = useCircles();
-  const [circlesAllowed, setCirclesAllowed] = useState<boolean>(true);
-
-  useEffect(() => {
-    const pathsCirclesAllowedIn: string[] = [
-      "/",
-      "/skills",
-      "/projects",
-      "/blog",
-      "/achievements",
-      "/guestbook",
-    ];
-    if (pathsCirclesAllowedIn.includes(asPath)) {
-      setCirclesAllowed(true);
-    } else {
-      setCirclesAllowed(false);
-    }
-  }, [asPath]);
 
   return (
     <div className="relative min-h-screen overflow-x-hidden">
@@ -73,7 +52,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <main id="main" className="relative mx-auto mb-16 max-w-4xl px-8">
           <Component {...pageProps} />
           <CustomToaster />
-          {isEnabled && circlesAllowed && (
+          {isEnabled && (
             <div className="absolute top-0 left-0 right-0">
               <div className="absolute left-8 top-16 -z-10 overflow-visible opacity-20">
                 <div className="circle-1 -z-10 h-[400px] w-[700px] rounded-full bg-red-700 mix-blend-multiply blur-[128px]" />

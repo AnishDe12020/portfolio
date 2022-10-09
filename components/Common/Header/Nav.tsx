@@ -17,12 +17,12 @@ const navItems = [
     href: "/projects",
   },
   {
-    name: "Guestbook",
-    href: "/guestbook",
-  },
-  {
     name: "Achievements",
     href: "/achievements",
+  },
+  {
+    name: "Guestbook",
+    href: "/guestbook",
   },
 ];
 

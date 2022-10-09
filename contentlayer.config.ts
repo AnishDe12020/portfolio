@@ -31,6 +31,22 @@ export const CloudinaryImage = defineNestedType(() => ({
   },
 }));
 
+export const Proof = defineNestedType(() => ({
+  name: "Proof",
+  displayName: "Proof",
+  fields: {
+    title: {
+      type: "string",
+      description: "Title of the proof",
+      required: true,
+    },
+    url: {
+      type: "string",
+      description: "URL to the proof",
+      required: true,
+    },
+  },
+}));
 
 export const Project = defineDocumentType(() => ({
   name: "Project",
@@ -67,7 +83,6 @@ export const Project = defineDocumentType(() => ({
       description: "Image for the project",
       of: CloudinaryImage,
     },
-
   },
   computedFields: {
     slug: {
@@ -123,9 +138,42 @@ export const BlogPost = defineDocumentType(() => ({
   },
 }));
 
+export const Achievement = defineDocumentType(() => ({
+  name: "Achievement",
+  filePathPattern: "achievements/**/*.mdx",
+  contentType: "mdx",
+  fields: {
+    title: {
+      type: "string",
+      description: "The title of the achievement",
+      required: true,
+    },
+    date: {
+      type: "date",
+      description: "The date when the achievement was achieved",
+      required: false,
+    },
+    prizeValue: {
+      type: "string",
+      description: "The value of the prize",
+      required: false,
+    },
+    proof: {
+      type: "nested",
+      of: Proof,
+    },
+  },
+  computedFields: {
+    slug: {
+      type: "string",
+      resolve: doc => doc._raw.sourceFileName.replace(/\.mdx$/, ""),
+    },
+  },
+}));
+
 export default makeSource({
   contentDirPath: "data",
-  documentTypes: [Project, BlogPost],
+  documentTypes: [Project, BlogPost, Achievement],
   mdx: {
     rehypePlugins: [
       rehypeSlug,

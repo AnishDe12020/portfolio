@@ -8,7 +8,15 @@ import {
 } from "kbar";
 import { useRouter } from "next/router";
 import { ReactNode } from "react";
-import { Code, Search } from "react-feather";
+import {
+  Book,
+  Briefcase,
+  Code,
+  Home,
+  Layout,
+  Search,
+  ToggleLeft,
+} from "react-feather";
 import toast from "react-hot-toast";
 
 import Kbd from "@/components/Shared/Kbd";
@@ -37,6 +45,7 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
       shortcut: ["h"],
       perform: () => push("/"),
       section: "Pages",
+      icon: <Home />,
     },
     {
       id: "guestbook",
@@ -45,12 +54,14 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
       shortcut: ["g"],
       perform: () => push("/guestbook"),
       section: "Pages",
+      icon: <Book />,
     },
     {
       id: "projects",
       name: "Projects",
       keywords: "projects creations apps repositories",
       section: "Pages",
+      icon: <Briefcase />,
     },
     {
       id: "projects-page",
@@ -64,8 +75,8 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
       id: "blog",
       name: "Blog",
       keywords: "blogs blog post articles tutorials",
-
       section: "Pages",
+      icon: <Layout />,
     },
     {
       id: "blogs-page",
@@ -80,6 +91,7 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
       name: "Toggle Circles",
       keywords: "toggle circles",
       shortcut: ["t", "c"],
+      icon: <ToggleLeft />,
       perform: () => {
         toggleCircles();
         toast.success("Circles toggled");

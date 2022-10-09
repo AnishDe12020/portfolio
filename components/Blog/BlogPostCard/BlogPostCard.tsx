@@ -37,7 +37,7 @@ const ProjectCard = ({
       </Link>
       <Link
         href={url}
-        className="aspect-[16/9] overflow-hidden rounded-lg drop-shadow-md"
+        className="aspect-[16/9] overflow-hidden rounded-2xl drop-shadow-md"
         noExternalLinkIcon
         noGradientUnderline
       >

@@ -40,10 +40,10 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectProps>(
               <NextImage
                 src={image.url}
                 alt={name}
-                className="rounded-lg"
+                className="rounded-xl"
                 layout="fill"
                 placeholder="blur"
-								blurDataURL={placeholderImage}
+                blurDataURL={placeholderImage}
               />
             </div>
           </Link>
@@ -70,8 +70,8 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectProps>(
               )}
             </div>
           </div>
-					<Link href={`/projects/${slug}`} className="mt-4" gradientUnderline>
-						<p className="sr-only">Learn more about {name}</p>
+          <Link href={`/projects/${slug}`} className="mt-4" gradientUnderline>
+            <p className="sr-only">Learn more about {name}</p>
             Learn More
           </Link>
         </div>

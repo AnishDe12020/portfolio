@@ -15,6 +15,7 @@ import {
   Home,
   Layout,
   Search,
+  Target,
   ToggleLeft,
 } from "react-feather";
 import toast from "react-hot-toast";
@@ -55,6 +56,15 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
       perform: () => push("/guestbook"),
       section: "Pages",
       icon: <Book />,
+    },
+    {
+      id: "achievements-page",
+      name: "Achievements",
+      keywords: "achievements",
+      shortcut: ["a"],
+      perform: () => push("/achievements"),
+      section: "Pages",
+      icon: <Target />,
     },
     {
       id: "projects",

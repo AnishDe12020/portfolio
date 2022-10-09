@@ -31,7 +31,7 @@ const AchievementCard = ({
         )}
         {prizeValue && (
           <Tooltip content={`Prize value: ${prizeValue}`}>
-            <p className=" font-mono text-gray-400">{prizeValue}</p>
+            <p className=" font-mono text-gray-400">Won {prizeValue}</p>
           </Tooltip>
         )}
       </div>

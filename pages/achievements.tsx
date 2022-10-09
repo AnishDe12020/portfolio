@@ -17,7 +17,7 @@ const AchievementsPage: NextPage<AchievementPageProps> = ({ achievements }) => {
         description="Anish De's Achievements"
       />
       <h1 className="mb-8 text-2xl font-bold">Achievements</h1>
-      <div className="grid grid-cols-2 gap-8">
+      <div className="flex flex-col space-y-8">
         {achievements.map(({ id, title, content, date, proof, prizeValue }) => (
           <AchievementCard
             key={id}

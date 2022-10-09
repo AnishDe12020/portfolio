@@ -20,6 +20,10 @@ const navItems = [
     name: "Guestbook",
     href: "/guestbook",
   },
+  {
+    name: "Achievements",
+    href: "/achievements",
+  },
 ];
 
 const mobileMenuVariants: Variants = {

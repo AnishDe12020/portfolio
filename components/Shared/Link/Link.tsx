@@ -65,7 +65,7 @@ const ExternalLink = forwardRef<HTMLAnchorElement, ExternalLinkProps>(
             href={href}
             className={cx(
               "mr-1 inline-flex items-center space-x-1 text-gray-300 transition duration-200",
-              isGradientUnderline && "gradient-underline",
+              isGradientUnderline && "gradient-underline no-underline",
               isGradientUnderline &&
                 !noHighlight &&
                 "text-blue-400 hover:text-blue-300",
@@ -88,12 +88,12 @@ const ExternalLink = forwardRef<HTMLAnchorElement, ExternalLinkProps>(
             background-image: linear-gradient(to right, #be185d, #1d4ed8);
             background-repeat: no-repeat;
             background-position: bottom left;
-            background-size: 0% 3px;
+            background-size: 0% 2px;
             transition: background-size 150ms ease-in-out;
           }
 
           .gradient-underline:hover :not(.anchor) {
-            background-size: 100% 3px;
+            background-size: 100% 2px;
             color: inherit;
           }
         `}</style>

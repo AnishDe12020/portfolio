@@ -9,7 +9,6 @@ interface AchievementPageProps {
 }
 
 const AchievementsPage: NextPage<AchievementPageProps> = ({ achievements }) => {
-  console.log(achievements);
   return (
     <>
       <NextSeo

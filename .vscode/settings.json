@@ -1,3 +1,9 @@
 {
-  "conventionalCommits.scopes": ["kbar", "link", "achievements", "header"]
+  "conventionalCommits.scopes": [
+    "kbar",
+    "link",
+    "achievements",
+    "header",
+    "data"
+  ]
 }

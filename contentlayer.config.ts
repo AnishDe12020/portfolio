@@ -153,11 +153,6 @@ export const Achievement = defineDocumentType(() => ({
       description: "The date when the achievement was achieved",
       required: false,
     },
-    prizeValue: {
-      type: "string",
-      description: "The value of the prize",
-      required: false,
-    },
     proof: {
       type: "nested",
       of: Proof,

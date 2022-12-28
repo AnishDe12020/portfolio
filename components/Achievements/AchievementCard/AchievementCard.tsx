@@ -8,7 +8,6 @@ import { CleanedAchievement } from "types/achievements";
 const AchievementCard = ({
   title,
   date,
-  prizeValue,
   proof,
   content,
 }: Omit<CleanedAchievement, "id">): JSX.Element => {
@@ -17,7 +16,7 @@ const AchievementCard = ({
   return (
     <div className="b flex flex-col space-y-4 rounded-xl border-[1px] border-tertiary bg-secondary/50 py-4 px-6">
       <h2 className="text-lg font-semibold text-gray-100 ">{title}</h2>
-      <div className="prose my-8 max-w-full leading-8">
+      <div className="max-w-full my-8 leading-8 prose">
         <AchievementMDX components={{ ...MDXComponents }} />
       </div>
       {proof && (
@@ -27,12 +26,7 @@ const AchievementCard = ({
       )}
       <div className="flex flex-row justify-between">
         {date && (
-          <p className=" text-gray-300 ">{format(parseISO(date), "PPP")}</p>
-        )}
-        {prizeValue && (
-          <Tooltip content={`Prize value: ${prizeValue}`}>
-            <p className=" font-mono text-gray-400">Won {prizeValue}</p>
-          </Tooltip>
+          <p className="text-gray-300 ">{format(parseISO(date), "PPP")}</p>
         )}
       </div>
     </div>

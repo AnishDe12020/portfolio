@@ -17,14 +17,13 @@ const AchievementsPage: NextPage<AchievementPageProps> = ({ achievements }) => {
       />
       <h1 className="mb-8 text-2xl font-bold">Achievements</h1>
       <div className="flex flex-col space-y-8">
-        {achievements.map(({ id, title, content, date, proof, prizeValue }) => (
+        {achievements.map(({ id, title, content, date, proof }) => (
           <AchievementCard
             key={id}
             title={title}
             content={content}
             date={date}
             proof={proof}
-            prizeValue={prizeValue}
           />
         ))}
       </div>
@@ -38,7 +37,6 @@ export const getStaticProps: GetStaticProps = async () => {
     title: achievement.title,
     content: achievement.body.code,
     date: achievement.date ?? null,
-    prizeValue: achievement.prizeValue ?? null,
     proof: achievement.proof ?? null,
   }));
 

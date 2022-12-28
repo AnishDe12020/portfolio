@@ -1,6 +1,5 @@
 import MDXComponents from "@/components/Common/MDXComponents";
 import Link from "@/components/Shared/Link";
-import Tooltip from "@/components/Shared/Tooltip";
 import { format, parseISO } from "date-fns";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { CleanedAchievement } from "types/achievements";

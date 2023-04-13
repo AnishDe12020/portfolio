@@ -12,6 +12,7 @@ import {
   NotigerLogo,
   TwNFTLogo,
   SecliLogo,
+  PayPeerLogo
 } from ".";
 import StorliLogo from "./Storli";
 
@@ -46,6 +47,8 @@ const IconFactory = ({
       return <StorliLogo {...otherProps} />;
     case "secli":
       return <SecliLogo {...otherProps} />;
+    case "paypeer":
+      return <PayPeerLogo {...otherProps} />;
     default:
       return <X />;
   }

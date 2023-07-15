@@ -1,71 +1,76 @@
+const { fontFamily } = require("tailwindcss/defaultTheme")
+
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-  ],
+  darkMode: ["class"],
+  content: ["app/**/*.{ts,tsx}", "components/**/*.{ts,tsx}"],
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
       colors: {
-        primary: "#010101",
-        secondary: "#131313",
-        tertiary: "#222222",
-        accent: "#f3f3f3",
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
       },
-      boxShadow: {
-        commandButton: "0 0 0 3px hsl(0 0% 30%)",
+      borderRadius: {
+        lg: `var(--radius)`,
+        md: `calc(var(--radius) - 2px)`,
+        sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        web3: ["Syncopate", "sans-serif"],
+        sans: ["var(--font-sans)", ...fontFamily.sans],
       },
-      typography: theme => ({
-        DEFAULT: {
-          css: {
-            color: theme("colors.gray.300"),
-            "h1, h2, h3, h4, h5, h6": {
-              color: theme("colors.gray.100"),
-              strong: theme("colors.gray.100"),
-              fontWeight: theme("fontWeight.bold"),
-            },
-            h1: {
-              fontSize: theme("fontSize.3xl"),
-              marginBottom: theme("spacing.8"),
-              marginTop: theme("spacing.8"),
-            },
-            h2: {
-              fontSize: theme("fontSize.2xl"),
-              marginBottom: theme("spacing.8"),
-              marginTop: theme("spacing.8"),
-            },
-            h3: {
-              fontSize: theme("fontSize.xl"),
-              marginBottom: theme("spacing.6"),
-              marginTop: theme("spacing.6"),
-            },
-            h4: {
-              fontSize: theme("fontSize.lg"),
-              marginBottom: theme("spacing.6"),
-              marginTop: theme("spacing.6"),
-            },
-            h5: {
-              fontSize: theme("fontSize.lg"),
-              marginBottom: theme("spacing.4"),
-              marginTop: theme("spacing.4"),
-            },
-            h6: {
-              fontSize: theme("fontSize.lg"),
-              marginBottom: theme("spacing.4"),
-              marginTop: theme("spacing.4"),
-            },
-             "--tw-prose-code": theme("colors.red[300]"),
-            "--tw-prose-bold": theme("colors.accent"),
-            "--tw-prose-quotes": theme("colors.accent"),
-          },
+      keyframes: {
+        "accordion-down": {
+          from: { height: 0 },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
-      }),
-      
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: 0 },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
     },
   },
-  plugins: [
-    require("@tailwindcss/typography"),
-  ],
-};
+  plugins: [require("tailwindcss-animate")],
+}

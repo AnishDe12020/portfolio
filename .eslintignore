@@ -1,7 +1,5 @@
-.svelte-kit
+dist/*
+.cache
+public
 node_modules
-yarn.lock
-package-lock.json
-static
-.github
-.vercel
+*.esm.js

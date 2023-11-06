@@ -1,7 +1,9 @@
 const { fontFamily } = require("tailwindcss/defaultTheme")
+const preset = require("./lib/medusa-tailwind")
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  presets: [preset],
   darkMode: ["class"],
   content: ["app/**/*.{ts,tsx}", "components/**/*.{ts,tsx}"],
   theme: {

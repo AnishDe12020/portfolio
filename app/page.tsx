@@ -1,6 +1,8 @@
 "use client"
 
-import { FaGithub, FaTwitter } from "react-icons/fa6"
+import { Button, buttonVariants } from "@/components/ui/button"
+import { iconButtonVariants } from "@/components/ui/icon-button"
+import { FaEnvelope, FaGithub, FaTwitter, FaUnsplash, FaXTwitter } from "react-icons/fa6"
 
 export default function IndexPage() {
   return (
@@ -16,20 +18,39 @@ export default function IndexPage() {
             </p>
           </div>
 
+
           <div className="flex gap-4 mt-8">
             <a
               href="https://twitter.com/AnishDe12020"
               target="_blank"
               rel="noopener noreferrer"
+              className={iconButtonVariants()}
             >
-              <FaTwitter className="w-6 h-6" />
+              <FaXTwitter className="w-6 h-6" />
             </a>
             <a
               href="https://github.com/AnishDe12020"
               target="_blank"
               rel="noopener noreferrer"
+              className={iconButtonVariants()}
             >
               <FaGithub className="w-6 h-6" />
+            </a>
+            <a 
+            href="https://unsplash.com/@anishde12020"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={iconButtonVariants()}
+            >
+              <FaUnsplash className="w-6 h-6" />
+            </a>
+            <a 
+            href="mailto:contact@anishde.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={iconButtonVariants()}
+            >
+              <FaEnvelope className="w-6 h-6" />
             </a>
           </div>
         </section>

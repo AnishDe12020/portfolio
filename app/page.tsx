@@ -1,39 +1,39 @@
-import Link from "next/link"
+"use client"
 
-import { siteConfig } from "@/config/site"
-import { buttonVariants } from "@/components/ui/button"
+import { FaGithub, FaTwitter } from "react-icons/fa6"
 
 export default function IndexPage() {
   return (
-    <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-      <div className="flex max-w-[980px] flex-col items-start gap-2">
-        <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
-          Beautifully designed components <br className="hidden sm:inline" />
-          built with Radix UI and Tailwind CSS.
-        </h1>
-        <p className="max-w-[700px] text-lg text-muted-foreground">
-          Accessible and customizable components that you can copy and paste
-          into your apps. Free. Open Source. And Next.js 13 Ready.
-        </p>
+    <div className="magicpattern">
+      <div className="h-[100vh] relative py-16 px-8 md:py-24 md:px-32 lg:py-36 lg:px-56">
+        <section className="flex flex-col">
+          <div className="flex flex-col items-start gap-2 w-fit">
+            <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
+              gm, I&apos;m Anish
+            </h1>
+            <p className="max-w-[700px] text-lg text-muted-foreground text-wrap">
+              web3 developer, building tools for the future
+            </p>
+          </div>
+
+          <div className="flex gap-4 mt-8">
+            <a
+              href="https://twitter.com/AnishDe12020"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaTwitter className="w-6 h-6" />
+            </a>
+            <a
+              href="https://github.com/AnishDe12020"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaGithub className="w-6 h-6" />
+            </a>
+          </div>
+        </section>
       </div>
-      <div className="flex gap-4">
-        <Link
-          href={siteConfig.links.docs}
-          target="_blank"
-          rel="noreferrer"
-          className={buttonVariants()}
-        >
-          Documentation
-        </Link>
-        <Link
-          target="_blank"
-          rel="noreferrer"
-          href={siteConfig.links.github}
-          className={buttonVariants({ variant: "outline" })}
-        >
-          GitHub
-        </Link>
-      </div>
-    </section>
+    </div>
   )
 }

@@ -40,12 +40,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
             fontSans.variable
           )}
         >
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <div className="relative flex min-h-screen flex-col">
-              <SiteHeader />
-              <div className="flex-1">{children}</div>
+          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+            <div className="relative flex flex-col min-h-screen">
+              {children}
             </div>
-            <TailwindIndicator />
           </ThemeProvider>
         </body>
       </html>

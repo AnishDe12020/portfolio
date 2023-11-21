@@ -1,6 +1,6 @@
 "use client"
 
-import { Copy } from "@/components/copy"
+import { Copy } from "@/components/ui/copy"
 import { clx } from "@/utils/clx"
 import React from "react"
 

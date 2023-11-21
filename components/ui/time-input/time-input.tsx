@@ -13,7 +13,7 @@ import {
 } from "@react-stately/datepicker"
 import * as React from "react"
 
-import { inputBaseStyles } from "@/components/input"
+import { inputBaseStyles } from "@/components/ui/input"
 import { clx } from "@/utils/clx"
 
 type TimeSegmentProps = {

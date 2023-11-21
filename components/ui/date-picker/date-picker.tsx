@@ -7,13 +7,19 @@ import { TimeValue } from "@react-aria/datepicker"
 import { format } from "date-fns"
 import * as React from "react"
 
-import { Button } from "@/components/button"
-import { Calendar as CalendarPrimitive } from "@/components/calendar"
-import { TimeInput } from "@/components/time-input"
-import type { DateRange } from "@/types"
+import { Button } from "@/components/ui/button"
+import { Calendar as CalendarPrimitive } from "@/components/ui/calendar"
+import { TimeInput } from "@/components/ui/time-input"
 import { clx } from "@/utils/clx"
-import { isBrowserLocaleClockType24h } from "@/utils/is-browser-locale-hour-cycle-24h"
 import { cva } from "class-variance-authority"
+import { isBrowserLocaleClockType24h } from "@/utils/is-browser-locale-hour-cucle-24h"
+
+export type DateRange = {
+  from: Date | undefined
+  to?: Date | undefined
+}
+
+
 
 const displayVariants = cva(
   clx(

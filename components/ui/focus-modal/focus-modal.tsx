@@ -4,8 +4,8 @@ import { XMark } from "@medusajs/icons"
 import * as FocusModalPrimitives from "@radix-ui/react-dialog"
 import * as React from "react"
 
-import { IconButton } from "@/components/icon-button"
-import { Kbd } from "@/components/kbd"
+import { IconButton } from "@/components/ui/icon-button"
+import { Kbd } from "@/components/ui/kbd"
 import { clx } from "@/utils/clx"
 
 const FocusModalRoot = (

@@ -2,7 +2,7 @@ import { VariantProps, cva } from "class-variance-authority"
 import * as React from "react"
 
 import { ExclamationCircleSolid } from "@medusajs/icons"
-import { clx } from "../../utils/clx"
+import { clx } from "@/utils/clx"
 
 const hintVariants = cva(
   "txt-compact-xsmall inline-flex items-center gap-x-2",

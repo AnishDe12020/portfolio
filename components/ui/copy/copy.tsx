@@ -1,6 +1,6 @@
 "use client"
 
-import { Tooltip } from "@/components/tooltip"
+import { Tooltip } from "@/components/ui/tooltip"
 import { clx } from "@/utils/clx"
 import { CheckCircleSolid, SquareTwoStack } from "@medusajs/icons"
 import { Slot } from "@radix-ui/react-slot"

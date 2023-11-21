@@ -4,10 +4,10 @@ import { XMark } from "@medusajs/icons"
 import * as DrawerPrimitives from "@radix-ui/react-dialog"
 import * as React from "react"
 
-import { Heading } from "@/components/heading"
-import { IconButton } from "@/components/icon-button"
-import { Kbd } from "@/components/kbd"
-import { Text } from "@/components/text"
+import { Heading } from "@/components/ui/heading"
+import { IconButton } from "@/components/ui/icon-button"
+import { Kbd } from "@/components/ui/kbd"
+import { Text } from "@/components/ui/text"
 import { clx } from "@/utils/clx"
 
 const DrawerRoot = (

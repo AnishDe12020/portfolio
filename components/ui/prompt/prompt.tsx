@@ -3,8 +3,8 @@
 import * as Primitives from "@radix-ui/react-alert-dialog"
 import * as React from "react"
 
-import { Button } from "@/components/button"
-import { Heading } from "@/components/heading"
+import { Button } from "@/components/ui/button"
+import { Heading } from "@/components/ui/heading"
 import { clx } from "@/utils/clx"
 
 const Root = Primitives.AlertDialog

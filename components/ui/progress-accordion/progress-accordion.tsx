@@ -9,9 +9,10 @@ import {
 import * as Primitves from "@radix-ui/react-accordion"
 import * as React from "react"
 
-import { ProgressStatus } from "@/types"
 import { clx } from "@/utils/clx"
 import { IconButton } from "../icon-button"
+
+export type ProgressStatus = "not-started" | "in-progress" | "completed"
 
 const Root = (props: React.ComponentPropsWithoutRef<typeof Primitves.Root>) => {
   return <Primitves.Root {...props} />

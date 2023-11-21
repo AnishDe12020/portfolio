@@ -1,7 +1,7 @@
 import { Minus } from "@medusajs/icons"
 import * as React from "react"
 
-import { Button } from "@/components/button"
+import { Button } from "@/components/ui/button"
 import { clx } from "@/utils/clx"
 
 const Root = React.forwardRef<

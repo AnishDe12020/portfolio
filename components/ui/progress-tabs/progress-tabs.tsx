@@ -8,8 +8,8 @@ import {
 import * as ProgressTabsPrimitives from "@radix-ui/react-tabs"
 import * as React from "react"
 
-import { ProgressStatus } from "@/types"
 import { clx } from "@/utils/clx"
+import { ProgressStatus } from "../progress-accordion"
 
 const ProgressTabsRoot = (props: ProgressTabsPrimitives.TabsProps) => {
   return <ProgressTabsPrimitives.Root {...props} />

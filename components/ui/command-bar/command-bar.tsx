@@ -4,7 +4,7 @@ import * as Popover from "@radix-ui/react-popover"
 import * as Portal from "@radix-ui/react-portal"
 import * as React from "react"
 
-import { Kbd } from "@/components/kbd"
+import { Kbd } from "@/components/ui/kbd"
 import { clx } from "@/utils/clx"
 
 type CommandBarProps = React.PropsWithChildren<{

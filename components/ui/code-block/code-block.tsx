@@ -2,7 +2,7 @@
 import { Highlight, themes } from "prism-react-renderer"
 import * as React from "react"
 
-import { Copy } from "@/components/copy"
+import { Copy } from "@/components/ui/copy"
 import { clx } from "@/utils/clx"
 
 export type CodeSnippet = {

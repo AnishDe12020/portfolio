@@ -17,12 +17,13 @@ export const getPhotos = async () => {
 
   const resData = await res.json()
 
-  console.log(resData)
-
-  const photos = resData.map((photo: any) => ({
+  const photos = resData.map((photo: any, index) => ({
     ...photo,
     orientation: photo.height > photo.width ? "portrait" : "landscape",
+    index,
   }))
+
+  //   console.log(photos)
 
   const potraitPhotos = photos.filter(
     (photo: any) => photo.orientation === "portrait"

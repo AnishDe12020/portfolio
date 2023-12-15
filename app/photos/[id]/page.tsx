@@ -3,7 +3,7 @@
 import { getPhotos } from "@/lib/functions/photos"
 import PhotoPageComponent from "@/components/pages/photos/photo"
 
-const PhotoPage = async ({ params: { id } }: { params: { id: string } }) => {
+const PhotoPage = async ({ params: { id } }: { params: { id: number } }) => {
   const photosRes = await getPhotos()
 
   if (!photosRes) {
@@ -12,9 +12,10 @@ const PhotoPage = async ({ params: { id } }: { params: { id: string } }) => {
 
   const { photos } = photosRes
 
-  const photo = photos.find((photo: any) => photo.id === id)
+  const photo = photos.find((photo: any) => photo.index === Number(id))
+  console.log({ photo })
 
-  return <PhotoPageComponent photo={photo} />
+  return <PhotoPageComponent id={id} photos={photos} photo={photo} />
 }
 
 export default PhotoPage

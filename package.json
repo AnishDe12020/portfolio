@@ -39,6 +39,7 @@
     "clsx": "^2.0.0",
     "copy-to-clipboard": "^3.3.3",
     "date-fns": "^2.30.0",
+    "framer-motion": "^10.16.16",
     "lucide-react": "0.292.0",
     "next": "^14.0.1",
     "next-themes": "^0.2.1",

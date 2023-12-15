@@ -54,7 +54,7 @@ const PhotosPageComponent = ({
     <div className="magicpattern">
       <Dialog.Root open={isOpen} onOpenChange={handleOpenChange}>
         <motion.div className="h-[100vh] relative py-16 px-8 md:py-24 md:px-32 lg:py-36 lg:px-56">
-          <motion.div className="grid grid-cols-3 gap-4 mt-16">
+          <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-16">
             {children}
             {potraitPhotos &&
               potraitPhotos.map((photo: any) => {

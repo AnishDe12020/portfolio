@@ -1,0 +1,357 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Hacker from '../../components/Hacker.astro';
+import Designer from '../../components/Designer.astro';
+import Terminal from '../../components/Terminal.astro';
+import Saver from '../../components/Saver.astro';
+import { readMinutes } from '../../lib/blog';
+
+export async function getStaticPaths() {
+  const local = await getCollection('blog', ({ data }) => !data.draft);
+  return local.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const rendered = await render(entry);
+const Content = rendered.Content;
+const headings = rendered.headings.filter(
+  (heading) => heading.depth >= 2 && heading.depth <= 3 && heading.slug !== 'footnote-label'
+);
+const meta = {
+  title: entry.data.title,
+  brief: entry.data.description,
+  date: entry.data.date,
+  tags: entry.data.tags,
+  cover: entry.data.cover ?? '',
+  minutes: readMinutes(entry.body ?? ''),
+  slug: entry.id,
+};
+
+const full = meta.date
+  .toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+  .toLowerCase();
+---
+<Base
+  title={`${meta.title} — Anish De`}
+  description={meta.brief}
+  image={`/og/${meta.slug}.png`}
+  type="article"
+  published={meta.date}
+>
+  <div id="rprog" aria-hidden="true"></div>
+  <header class="bhead">
+    <a class="back" href="/blog">&larr; cd ~/writing</a>
+    <span class="bpath">{meta.slug}.md</span>
+  </header>
+
+  <article class="reveal">
+    <h1 class="atitle">{meta.title}</h1>
+    <div class="ameta">
+      <span>{full}</span>
+      <span class="sep">&middot;</span>
+      <span>{meta.minutes} min</span>
+      {meta.tags.slice(0, 4).map((t: string) => <span class="tag">{t.toLowerCase()}</span>)}
+    </div>
+    {meta.cover && <img class="cover" src={meta.cover} alt="" loading="lazy" />}
+
+    {headings.length >= 2 && (
+      <nav class="toc">
+        <span class="tlabel">contents</span>
+        {headings.map((h) => (
+          <a href={`#${h.slug}`} class={`t${h.depth}`}>{h.text}</a>
+        ))}
+      </nav>
+    )}
+
+    <div class="prose"><Content /></div>
+  </article>
+
+  <footer class="reveal">
+    <span><a href="/blog">&larr; more writing</a></span>
+    <span>published from the repo</span>
+  </footer>
+
+  <Hacker slot="fixed" />
+  <Designer slot="fixed" />
+  <Terminal slot="fixed" />
+  <Saver slot="fixed" />
+</Base>
+
+<style>
+  .bhead{
+    display:flex; justify-content:space-between; align-items:baseline; gap:16px;
+    padding-top:clamp(48px, 9vh, 90px); margin-bottom:clamp(36px, 6vh, 56px);
+    font-family:var(--mono); font-size:11px; letter-spacing:.2em; text-transform:lowercase;
+    color:var(--ink-dim);
+  }
+  .back{ color:var(--ink-dim); text-decoration:none; border-bottom:1px solid var(--ink-faint); white-space:nowrap; }
+  .back:hover{ color:var(--ink-body); }
+  .bpath{ color:var(--ink-faint); min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+
+  .atitle{
+    font-family:var(--serif); font-weight:400; font-size:clamp(1.45rem, 4.5vw, 1.9rem);
+    line-height:1.3; color:var(--ink); margin:0 0 14px;
+  }
+  .ameta{
+    display:flex; flex-wrap:wrap; align-items:baseline; gap:10px;
+    font-family:var(--mono); font-size:11px; letter-spacing:.12em; color:var(--ink-dim);
+  }
+  .ameta .sep{ color:var(--ink-faint); }
+  .ameta .tag{ color:var(--ink-faint); }
+  .ameta .tag::before{ content:'#'; }
+
+  .cover{
+    width:100%; margin:30px 0 0; border:1px solid var(--ink-faint); border-radius:4px;
+    filter:grayscale(1); opacity:.8; transition:filter .35s ease, opacity .35s ease;
+  }
+  .cover:hover{ filter:none; opacity:1; }
+
+  .toc{
+    display:flex; flex-direction:column; gap:2px;
+    margin:34px 0 0; padding:2px 0 2px 18px; border-left:1px solid var(--ink-faint);
+    font-family:var(--mono); font-size:11px; letter-spacing:.06em;
+  }
+  .tlabel{ color:var(--ink-faint); letter-spacing:.2em; margin-bottom:6px; }
+  .toc a{ color:var(--ink-dim); text-decoration:none; padding:2px 0; line-height:1.5; }
+  .toc a:hover{ color:var(--ink); }
+  .toc a.t3{ padding-left:16px; }
+
+  .prose{ margin-top:36px; font-size:1.02rem; line-height:1.75; color:var(--ink-body); }
+  .prose :global(p){ margin:0 0 1.25em; }
+  .prose :global(b), .prose :global(strong){ color:var(--ink); font-weight:600; }
+  .prose :global(a){ color:var(--ink); text-decoration:none; border-bottom:1px dashed var(--ink-dim); }
+  .prose :global(a:hover){ border-bottom-style:solid; }
+  .prose :global(h2), .prose :global(h3), .prose :global(h4){
+    font-family:var(--mono); font-weight:400; font-size:1rem; letter-spacing:.02em;
+    color:var(--ink); margin:2.1em 0 .8em; line-height:1.45; scroll-margin-top:70px;
+  }
+  .prose :global(h2)::before{ content:'## '; color:var(--live); }
+  .prose :global(h3)::before{ content:'### '; color:var(--live); }
+  .prose :global(h4)::before{ content:'#### '; color:var(--live); }
+  .prose :global(code){
+    font-family:var(--mono); font-size:.85em;
+    background:rgba(236,232,224,.06); padding:.08em .35em; border-radius:3px;
+  }
+  .prose :global(pre){
+    background:rgba(236,232,224,.035); border:1px solid var(--ink-faint); border-radius:4px;
+    padding:14px 16px; margin:0 0 1.4em; overflow-x:auto;
+  }
+  .prose :global(pre code){ background:none; padding:0; font-size:.8rem; line-height:1.65; }
+  .prose :global(img){ max-width:100%; height:auto; border:1px solid var(--ink-faint); border-radius:4px; margin:.3em 0; }
+  .prose :global(blockquote){
+    margin:0 0 1.4em; padding:2px 0 2px 18px;
+    border-left:2px solid var(--live); color:var(--ink-dim);
+  }
+  .prose :global(blockquote p:last-child){ margin-bottom:0; }
+  .prose :global(ul), .prose :global(ol){ padding-left:1.35em; margin:0 0 1.4em; }
+  .prose :global(li){ margin-bottom:.45em; }
+  .prose :global(li p){ margin-bottom:.45em; }
+  .prose :global(hr){ border:none; border-top:1px solid var(--ink-faint); margin:2.4em 0; }
+  .prose :global(iframe){ max-width:100%; border:1px solid var(--ink-faint); border-radius:4px; }
+  .prose :global(table){ border-collapse:collapse; font-size:.9rem; margin:0 0 1.4em; display:block; overflow-x:auto; }
+  .prose :global(th), .prose :global(td){ border:1px solid var(--ink-faint); padding:6px 10px; text-align:left; }
+
+  footer{ font-size:11px; margin-top:clamp(56px, 8vh, 90px); }
+  footer a{ border-bottom:none; }
+  /* reading progress — hairline in void, hud gauge takes over in hacker */
+  #rprog{
+    position:fixed; top:0; left:0; height:2px; width:0; z-index:55;
+    background:var(--live); opacity:.8; pointer-events:none;
+  }
+  :global(html[data-theme="hacker"]) #rprog{ display:none; }
+
+  /* code block chrome */
+  .prose :global(pre[data-title])::before{
+    content:attr(data-title); display:block; margin:-6px 0 10px;
+    padding-bottom:8px; border-bottom:1px solid var(--ink-faint);
+    font-family:var(--mono); font-size:10px; letter-spacing:.14em; color:var(--ink-dim);
+  }
+  .prose :global(pre){ position:relative; }
+  .prose :global(.copybtn){
+    position:absolute; top:7px; right:7px; padding:3px 8px;
+    font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:lowercase;
+    color:var(--ink-dim); background:var(--void); border:1px solid var(--ink-faint); border-radius:3px;
+    cursor:pointer; opacity:0; transition:opacity .15s ease;
+  }
+  .prose :global(pre:hover .copybtn), .prose :global(.copybtn:focus-visible){ opacity:1; }
+  .prose :global(.copybtn:hover){ color:var(--ink); }
+
+  /* heading anchors */
+  .prose :global(.hanchor){
+    margin-left:10px; color:var(--ink-faint); border-bottom:none;
+    opacity:0; transition:opacity .15s ease;
+  }
+  .prose :global(h2:hover .hanchor), .prose :global(h3:hover .hanchor),
+  .prose :global(h4:hover .hanchor), .prose :global(.hanchor:focus-visible){ opacity:1; }
+  .prose :global(.hanchor:hover){ color:var(--ink-dim); }
+
+  /* scrollspy */
+  .toc a.on{ color:var(--ink); }
+
+  /* image captions + zoom */
+  .prose :global(img){ cursor:zoom-in; }
+  .prose :global(.imgcap){
+    display:block; margin:-2px 0 1.2em;
+    font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; color:var(--ink-dim);
+  }
+  :global(.zoomer){
+    position:fixed; inset:0; z-index:70; display:grid; place-items:center;
+    background:rgba(4,4,4,.94); cursor:zoom-out;
+  }
+  :global(.zoomer img){ max-width:min(94vw, 1200px); max-height:92vh; border:1px solid var(--ink-faint); border-radius:4px; }
+  :global(.zoomclose){
+    position:fixed; top:16px; right:16px; width:40px; height:40px;
+    border:1px solid var(--ink-faint); border-radius:50%; color:var(--ink);
+    background:var(--void); font:1rem var(--mono); cursor:pointer;
+  }
+
+  /* footnotes (gfm) */
+  .prose :global(.footnotes){
+    margin-top:3em; padding-top:1.2em; border-top:1px solid var(--ink-faint);
+    font-size:.85rem; color:var(--ink-dim);
+  }
+  .prose :global(.footnotes h2)::before{ content:''; }
+  .prose :global(.footnotes h2){ font-size:11px; letter-spacing:.2em; color:var(--ink-dim); margin:0 0 .8em; }
+  .prose :global(sup a){ border-bottom:none; color:var(--live); font-family:var(--mono); font-size:.75em; }
+  .prose :global(.data-footnote-backref){ border-bottom:none; }
+</style>
+
+<script>
+  /* ---- copy buttons on code blocks ---- */
+  for (const pre of document.querySelectorAll<HTMLElement>('.prose pre')) {
+    const btn = document.createElement('button');
+    btn.className = 'copybtn';
+    btn.textContent = 'copy';
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(pre.querySelector('code')?.innerText ?? pre.innerText);
+        btn.textContent = 'copied';
+        setTimeout(() => { btn.textContent = 'copy'; }, 1400);
+      } catch { btn.textContent = 'nope'; }
+    });
+    pre.appendChild(btn);
+  }
+
+  /* ---- heading anchors: hover a heading, grab its link ---- */
+  const hs = [...document.querySelectorAll<HTMLElement>('.prose h2[id], .prose h3[id], .prose h4[id]')];
+  for (const h of hs) {
+    const a = document.createElement('a');
+    a.className = 'hanchor';
+    a.href = `#${h.id}`;
+    a.textContent = '#';
+    a.title = 'copy link';
+    a.addEventListener('click', () => {
+      try { navigator.clipboard.writeText(`${location.origin}${location.pathname}#${h.id}`); } catch {}
+    });
+    h.appendChild(a);
+  }
+
+  /* ---- scrollspy: light up the toc entry you're reading ---- */
+  const tocLinks = new Map(
+    [...document.querySelectorAll<HTMLAnchorElement>('.toc a')].map((a) => [decodeURIComponent(a.hash.slice(1)), a])
+  );
+  /* ---- reading progress: hairline (void) + hud gauge (hacker) ---- */
+  const rprog = document.getElementById('rprog');
+  const hud = document.querySelector('.hud');
+  let gauge: HTMLElement | null = null;
+  if (hud) {
+    gauge = document.createElement('span');
+    gauge.className = 'seg hread';
+    hud.insertBefore(gauge, hud.querySelector('.haccess'));
+  }
+  let tick = false;
+  function onScroll() {
+    if (tick) return;
+    tick = true;
+    requestAnimationFrame(() => {
+      tick = false;
+      const max = document.documentElement.scrollHeight - innerHeight;
+      const pct = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0;
+      if (rprog) rprog.style.width = `${pct * 100}%`;
+      if (gauge) {
+        const fill = Math.round(pct * 8);
+        gauge.textContent = `read [${'#'.repeat(fill)}${'·'.repeat(8 - fill)}] ${Math.round(pct * 100)}%`;
+      }
+      if (tocLinks.size) {
+        let cur: string | null = null;
+        for (const h of hs) if (h.getBoundingClientRect().top < 130) cur = h.id;
+        for (const [id, a] of tocLinks) a.classList.toggle('on', id === cur);
+      }
+    });
+  }
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---- image captions from alt text + click to zoom ---- */
+  for (const img of document.querySelectorAll<HTMLImageElement>('.prose img')) {
+    if (img.alt) {
+      const cap = document.createElement('span');
+      cap.className = 'imgcap';
+      cap.textContent = img.alt;
+      img.insertAdjacentElement('afterend', cap);
+    }
+    img.tabIndex = 0;
+    img.setAttribute('role', 'button');
+    img.setAttribute('aria-label', img.alt ? `Open full-size image: ${img.alt}` : 'Open full-size image');
+    const openZoom = () => {
+      const previousFocus = document.activeElement as HTMLElement | null;
+      const z = document.createElement('div');
+      z.className = 'zoomer';
+      z.setAttribute('role', 'dialog');
+      z.setAttribute('aria-modal', 'true');
+      z.setAttribute('aria-label', img.alt || 'Full-size image');
+      const big = document.createElement('img');
+      big.src = img.src;
+      big.alt = img.alt;
+      const closeButton = document.createElement('button');
+      closeButton.type = 'button';
+      closeButton.className = 'zoomclose';
+      closeButton.setAttribute('aria-label', 'Close full-size image');
+      closeButton.textContent = '×';
+      z.append(big, closeButton);
+      const close = () => {
+        z.remove();
+        removeEventListener('keydown', onKey);
+        previousFocus?.focus();
+      };
+      const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') close(); };
+      closeButton.addEventListener('click', close);
+      z.addEventListener('click', (event) => { if (event.target === z) close(); });
+      addEventListener('keydown', onKey);
+      document.body.appendChild(z);
+      closeButton.focus();
+    };
+    img.addEventListener('click', openZoom);
+    img.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openZoom();
+      }
+    });
+  }
+
+  /* ---- :cat — stream the article like terminal output ---- */
+  addEventListener('pf:cat', () => {
+    const blocks = [...document.querySelectorAll<HTMLElement>('.prose > *')];
+    if (!blocks.length) return;
+    blocks.forEach((b) => { b.style.display = 'none'; });
+    scrollTo(0, 0);
+    let i = 0;
+    const step = Math.max(50, Math.min(140, 6000 / blocks.length));
+    const timer = setInterval(() => {
+      if (i >= blocks.length) { stop(); return; }
+      blocks[i].style.display = '';
+      blocks[i].scrollIntoView({ block: 'end' });
+      i++;
+    }, step);
+    function stop() {
+      clearInterval(timer);
+      blocks.forEach((b) => { b.style.display = ''; });
+      removeEventListener('keydown', stop);
+      removeEventListener('pointerdown', stop);
+    }
+    addEventListener('keydown', stop, { once: true });
+    addEventListener('pointerdown', stop, { once: true });
+  });
+</script>

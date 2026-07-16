@@ -1,0 +1,187 @@
+---
+// vim-style command line. press ":" anywhere. it does what you'd expect,
+// and refuses what you'd expect.
+---
+<div class="term" id="term" hidden>
+  <div class="tout" id="tout" hidden></div>
+  <label class="tline">
+    <span class="tp">:</span>
+    <input id="tin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="command line" />
+  </label>
+</div>
+
+<style>
+  .term{
+    position:fixed; left:0; right:0; bottom:0; z-index:50;
+    background:rgba(6,6,6,.96); border-top:1px solid var(--ink-faint);
+    font-family:var(--mono); font-size:12px; letter-spacing:.04em;
+    backdrop-filter:blur(6px);
+  }
+  .tout{ padding:9px 16px 0; color:var(--ink-dim); line-height:1.5; }
+  .tout :global(.thit){ display:block; color:var(--ink-dim); text-decoration:none; white-space:pre; }
+  .tout :global(.thit:hover){ color:var(--ink); }
+  .tline{ display:flex; gap:2px; padding:9px 16px 11px; }
+  .tp{ color:var(--live); }
+  #tin{
+    flex:1; background:none; border:none; outline:none;
+    color:var(--ink); font:inherit; letter-spacing:inherit; caret-color:var(--live); padding:0;
+  }
+</style>
+
+<script>
+  const term = document.getElementById('term')!;
+  const tin = document.getElementById('tin') as HTMLInputElement;
+  const tout = document.getElementById('tout')!;
+
+  function open() { term.hidden = false; tout.hidden = true; tin.value = ''; tin.focus(); }
+  function close() { term.hidden = true; tin.blur(); }
+  function say(msg: string) { tout.textContent = msg; tout.hidden = false; }
+  function sayHtml(nodes: Node[]) { tout.replaceChildren(...nodes); tout.hidden = false; }
+
+  /* :grep — full-text search over every post, index fetched once */
+  let idx: { title: string; slug: string; date: string; tags: string[]; text: string }[] | null = null;
+  async function grep(q: string) {
+    if (!q) { say('usage: :grep <query>'); return; }
+    if (!idx) {
+      say('indexing…');
+      try { idx = await (await fetch('/search.json')).json(); } catch { say('index unreachable. try after a deploy.'); return; }
+    }
+    const terms = q.toLowerCase().split(/\s+/).filter(Boolean);
+    const hits = idx!
+      .map((p) => {
+        const hay = { t: p.title.toLowerCase(), g: p.tags.join(' ').toLowerCase(), x: p.text.toLowerCase() };
+        let score = 0;
+        for (const w of terms) {
+          if (hay.t.includes(w)) score += 12;
+          if (hay.g.includes(w)) score += 6;
+          score += Math.min(6, (hay.x.split(w).length - 1));
+        }
+        return { p, score };
+      })
+      .filter((h) => h.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 6);
+    if (!hits.length) { say(`grep: ${q}: no matches`); return; }
+    sayHtml(hits.map(({ p }) => {
+      const line = document.createElement('a');
+      line.className = 'thit';
+      line.href = `/blog/${p.slug}`;
+      line.textContent = `${p.date}  ${p.title}`;
+      return line;
+    }));
+  }
+
+  addEventListener('keydown', (e) => {
+    const t = e.target as HTMLElement;
+    if (e.key === ':' && term.hidden && t.tagName !== 'INPUT' && t.tagName !== 'TEXTAREA') {
+      e.preventDefault();
+      open();
+    }
+  });
+
+  tin.addEventListener('keydown', (e) => {
+    e.stopPropagation(); // typing here shouldn't trip the d / f1 / konami listeners
+    if (e.key === 'Escape') close();
+    else if (e.key === 'Enter') { const v = tin.value; tin.value = ''; run(v); }
+  });
+
+  /* scroll something into view first, act once it's actually visible */
+  function seqScroll(el: Element | null, cb: () => void) {
+    if (!el) { cb(); return; }
+    const r = el.getBoundingClientRect();
+    if (Math.abs(r.top + r.height / 2 - innerHeight / 2) < 80) { cb(); return; }
+    let done = false;
+    const finish = () => { if (done) return; done = true; cb(); };
+    addEventListener('scrollend', finish, { once: true, capture: true });
+    setTimeout(finish, 1200); // fallback for browsers without scrollend
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function run(raw: string) {
+    const [cmd = '', ...rest] = raw.trim().replace(/^:/, '').split(/\s+/);
+    const arg = rest.join(' ');
+    const D = (window as any).pfDesigner;
+    switch (cmd) {
+      case '': return;
+      case 'help':
+        say(':root · :grep <q> · :cat · :saver · :rain · :log · :crash · :hack · :email · :reroll · :whoami · :q — plus every designer key (:theme hacker, :signal green, …)');
+        break;
+      case 'rain': (window as any).pfHacker?.rain(); say('weather report.'); close(); break;
+      case 'log': (window as any).pfHacker?.log(); say('tailing /var/log/visitor.log'); close(); break;
+      case 'crash': say('oh no.'); close(); (window as any).pfHacker?.crash(); break;
+      case 'hack': close(); (window as any).pfHacker?.hack(); break;
+      case 'q': case 'q!': close(); break;
+      case 'wq': say('read-only filesystem. :q to leave.'); break;
+      case 'w': say("nothing to write. it's a website."); break;
+      case 'whoami': {
+        const H = (window as any).pfHacker;
+        say(H?.isRoot?.() ? 'root. now you can see the lab.' : "anish de. you, i'm less sure about.");
+        break;
+      }
+      case 'root': {
+        const H = (window as any).pfHacker;
+        if (!H) { say('no.'); break; }
+        const was = H.isHacker();
+        H.root();
+        say(H.isRoot() ? 'escalated. access: root.' : was ? '...' : 'booting hacker mode.');
+        close();
+        break;
+      }
+      case 'exit': case 'logout': {
+        const H = (window as any).pfHacker;
+        if (H?.isHacker()) { H.exit(); say('back to the void.'); } else say('nothing to exit.');
+        break;
+      }
+      case 'sudo': {
+        const H = (window as any).pfHacker;
+        if (H?.isHacker() && arg.startsWith('su')) { H.root(); say('escalated. access: root.'); close(); }
+        else say('no.');
+        break;
+      }
+      case 'ls': say('now  before  lab  escaped  writing  meanwhile  lens  specimen  contact'); break;
+      case 'grep': grep(arg); break;
+      case 'cat': {
+        if (document.querySelector('.prose')) {
+          close();
+          dispatchEvent(new CustomEvent('pf:cat'));
+        } else say('cat: not a post. open one from /blog first.');
+        break;
+      }
+      case 'konami': say('up up down down left right left right b a. do it properly.'); break;
+      case 'xp': case 'display': // not in :help. you found it or you didn't.
+        close();
+        dispatchEvent(new CustomEvent('pf:xp'));
+        break;
+      case 'email':
+        dispatchEvent(new CustomEvent('pf:email'));
+        say('decoding…');
+        break;
+      case 'reroll':
+        say('rolling…');
+        seqScroll(document.getElementById('sprite'), () => {
+          dispatchEvent(new CustomEvent('pf:reroll'));
+          say('rerolled.');
+        });
+        break;
+      case 'saver': {
+        const S = (window as any).pfSaver;
+        if (arg && S && !S.names.includes(arg)) {
+          say('savers: ' + S.names.join(' · '));
+          break;
+        }
+        close();
+        S?.start(arg || undefined);
+        break;
+      }
+      case 'f1':
+        dispatchEvent(new CustomEvent('pf:f1'));
+        say("it's lights out and away we go.");
+        break;
+      default:
+        if (D && D.keys().includes(cmd)) {
+          if (D.set(cmd, arg)) say(cmd + ' → ' + arg);
+          else say('usage: :' + cmd + ' ' + (D.options(cmd) || []).join('|'));
+        } else say(':' + cmd + ' is not a thing. :help');
+    }
+  }
+</script>

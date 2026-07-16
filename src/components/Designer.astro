@@ -1,0 +1,165 @@
+---
+// Bottom-right design-variant switcher. Add a row to CONTROLS in the script
+// (plus matching CSS keyed off html[data-*]) to expose a new variant.
+---
+<div class="designer" id="designer">
+  <div class="dpanel" id="dpanel" hidden>
+    <div class="dhead">
+      <span class="dtitle"><span class="ddot"></span>designer</span>
+      <button class="dreset" id="dreset" type="button" title="back to defaults">reset</button>
+    </div>
+    <div id="dcontrols"></div>
+    <div class="dfoot">press <b>d</b> to toggle</div>
+  </div>
+  <button class="dtoggle" id="dtoggle" type="button" aria-expanded="false" aria-controls="dpanel" title="designer (d)">
+    <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+      {[1, 6, 11].map((y) => [1, 6, 11].map((x) => <circle cx={x} cy={y} r="1.1" fill="currentColor" />))}
+    </svg>
+    <span class="sr">designer panel</span>
+  </button>
+</div>
+
+<style is:global>
+  .designer{ position:fixed; right:16px; bottom:16px; z-index:40; display:flex; flex-direction:column; align-items:flex-end; gap:8px;
+    font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:lowercase; }
+  .dtoggle{
+    display:grid; place-items:center; width:28px; height:28px;
+    color:var(--ink-dim); background:rgba(6,6,6,.75); border:1px solid var(--ink-faint);
+    border-radius:4px; cursor:pointer; transition:color .2s ease, border-color .2s ease;
+  }
+  .dtoggle:hover, .dtoggle[aria-expanded="true"]{ color:var(--ink); border-color:var(--ink-dim); }
+  .dpanel{
+    min-width:200px; background:rgba(6,6,6,.92); border:1px solid var(--ink-faint);
+    border-radius:5px; padding:10px 12px; backdrop-filter:blur(6px);
+    box-shadow:0 10px 30px rgba(0,0,0,.5);
+    animation:drise .18s ease;
+  }
+  @keyframes drise{ from{ opacity:0; transform:translateY(4px) } }
+  .dhead{
+    display:flex; justify-content:space-between; align-items:center;
+    padding-bottom:8px; margin-bottom:8px; border-bottom:1px solid var(--ink-faint);
+  }
+  .dtitle{ color:var(--ink-dim); letter-spacing:.24em; display:flex; align-items:center; gap:7px; }
+  .ddot{ width:5px; height:5px; border-radius:50%; background:var(--live); }
+  .dreset{
+    font:inherit; letter-spacing:inherit; text-transform:inherit;
+    color:var(--ink-faint); background:none; border:none; cursor:pointer; padding:0;
+  }
+  .dreset:hover{ color:var(--ink-dim); }
+  .drow{ display:flex; justify-content:space-between; align-items:center; gap:14px; padding:5px 0; }
+  .dkey{ color:var(--ink-dim); }
+  .dopts{ display:flex; gap:3px; flex-wrap:wrap; justify-content:flex-end; }
+  .dopt{
+    font:inherit; letter-spacing:inherit; text-transform:inherit;
+    color:var(--ink-faint); background:none; border:1px solid transparent;
+    border-radius:3px; padding:4px 6px; min-height:24px; cursor:pointer;
+  }
+  .dopt:hover{ color:var(--ink-dim); }
+  .dopt.on{ color:var(--ink); border-color:var(--ink-faint); }
+  .dfoot{ margin-top:8px; padding-top:8px; border-top:1px solid var(--ink-faint); color:var(--ink-faint); }
+  .dfoot b{ color:var(--ink-dim); font-weight:400; }
+  @media (prefers-reduced-motion:reduce){ .dpanel{ animation:none; } }
+</style>
+
+<script>
+  type Control = { key: string; label: string; options: string[]; default: string };
+  const CONTROLS: Control[] = [
+    { key: 'theme',   label: 'theme',   options: ['void', 'hacker'],                 default: 'void' },
+    { key: 'crt',     label: 'crt',     options: ['full', 'flat'],                   default: 'full' },
+    { key: 'name',    label: 'name',    options: ['pixel', 'doto', 'serif', 'mono'], default: 'pixel' },
+    { key: 'body',    label: 'body',    options: ['spectral', 'mono'],               default: 'spectral' },
+    { key: 'density', label: 'density', options: ['cozy', 'compact'],                default: 'cozy' },
+    { key: 'flow',    label: 'flow',    options: ['scroll', 'deck'],                 default: 'deck' },
+    { key: 'lab',     label: 'lab',     options: ['listed', 'redacted'],             default: 'listed' },
+    { key: 'signal',  label: 'signal',  options: ['red', 'amber', 'green'],          default: 'red' },
+    { key: 'grain',   label: 'grain',   options: ['on', 'off'],                      default: 'on' },
+    { key: 'scan',    label: 'scan',    options: ['off', 'on'],                      default: 'off' },
+  ];
+  const STORE = 'pf-designer';
+
+  const root = document.documentElement;
+  const state: Record<string, string> = (() => {
+    try { return JSON.parse(localStorage.getItem(STORE) || '{}'); } catch { return {}; }
+  })();
+  const rowEls: Record<string, HTMLElement> = {};
+
+  // ?name=serif&lab=redacted … overrides for trying/sharing a variant
+  const qp = new URLSearchParams(location.search);
+  for (const c of CONTROLS) {
+    const v = qp.get(c.key);
+    if (v && c.options.includes(v)) state[c.key] = v;
+  }
+
+  function current(c: Control) { return state[c.key] ?? c.default; }
+  function set(c: Control, val: string) {
+    state[c.key] = val;
+    root.dataset[c.key] = val;
+    localStorage.setItem(STORE, JSON.stringify(state));
+    rowEls[c.key]?.querySelectorAll('.dopt').forEach((el) => {
+      const active = el.textContent === val;
+      el.classList.toggle('on', active);
+      el.setAttribute('aria-pressed', String(active));
+    });
+    dispatchEvent(new CustomEvent('pf:designer', { detail: { key: c.key, value: val } }));
+  }
+
+  const holder = document.getElementById('dcontrols')!;
+  for (const c of CONTROLS) {
+    root.dataset[c.key] = current(c);
+
+    const row = document.createElement('div');
+    row.className = 'drow';
+    const key = document.createElement('span');
+    key.className = 'dkey';
+    key.textContent = c.label;
+    const opts = document.createElement('span');
+    opts.className = 'dopts';
+    for (const o of c.options) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'dopt' + (o === current(c) ? ' on' : '');
+      b.textContent = o;
+      b.setAttribute('aria-label', `${c.label}: ${o}`);
+      b.setAttribute('aria-pressed', String(o === current(c)));
+      b.addEventListener('click', () => set(c, o));
+      opts.appendChild(b);
+    }
+    row.append(key, opts);
+    holder.appendChild(row);
+    rowEls[c.key] = row;
+  }
+
+  document.getElementById('dreset')!.addEventListener('click', () => {
+    for (const c of CONTROLS) set(c, c.default);
+    localStorage.removeItem(STORE);
+  });
+
+  const toggle = document.getElementById('dtoggle') as HTMLButtonElement;
+  const panel = document.getElementById('dpanel') as HTMLDivElement;
+  function setOpen(open: boolean) {
+    panel.hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+  }
+  toggle.addEventListener('click', () => setOpen(panel.hasAttribute('hidden')));
+  document.addEventListener('click', (e) => {
+    if (!panel.hidden && !document.getElementById('designer')!.contains(e.target as Node)) setOpen(false);
+  });
+  addEventListener('keydown', (e) => {
+    const t = e.target as HTMLElement;
+    if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') return;
+    if (e.key === 'd' && !e.metaKey && !e.ctrlKey && !e.altKey) setOpen(panel.hasAttribute('hidden'));
+    if (e.key === 'Escape' && !panel.hidden) setOpen(false);
+  });
+
+  // bridge for the ":" terminal
+  (window as any).pfDesigner = {
+    keys: () => CONTROLS.map((c) => c.key),
+    options: (key: string) => CONTROLS.find((c) => c.key === key)?.options ?? null,
+    set: (key: string, val: string) => {
+      const c = CONTROLS.find((c) => c.key === key);
+      if (!c || !c.options.includes(val)) return false;
+      set(c, val);
+      return true;
+    },
+  };
+</script>

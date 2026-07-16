@@ -1,0 +1,278 @@
+---
+// (flow: deck) — the page as a slide deck. every direct child of main becomes
+// a viewport slide that snaps; j/k, arrows, space move between them, gg/G jump
+// to the ends. plain scrolling still works. gated entirely on html[data-flow].
+---
+<div class="deckhud">
+  <span class="dkdots" id="dkdots"></span>
+  <span class="dkpos" id="dkpos" aria-hidden="true">01</span><span aria-hidden="true">/</span><span id="dktotal" aria-hidden="true">--</span>
+  <span class="dkname" id="dkname" aria-hidden="true"></span>
+  <span class="dknote" id="dknote" aria-hidden="true"></span>
+</div>
+
+<style is:global>
+  /* only real content slides — dev mode injects <style> tags into main */
+  html[data-flow="deck"]{ scroll-snap-type:y mandatory; }
+  html[data-flow="deck"] .deckroot > .opener,
+  html[data-flow="deck"] .deckroot > section,
+  html[data-flow="deck"] .deckroot > footer{
+    box-sizing:border-box; min-height:100svh; margin-top:0; position:relative;
+    padding-top:clamp(40px,7vh,72px); padding-bottom:clamp(40px,7vh,72px);
+    scroll-snap-align:start; scroll-snap-stop:always;
+  }
+  html[data-flow="deck"] .deckroot > .opener,
+  html[data-flow="deck"] .deckroot > section{ display:flex; flex-direction:column; justify-content:center; }
+  html[data-flow="deck"] .hero{ padding-top:0; }
+  html[data-flow="deck"] .lede{ margin-top:clamp(28px,5vh,44px); }
+  html[data-flow="deck"] .label{ font-size:12px; }
+
+  /* per-slide chrome: a keyword watermark, a speaker note, viewfinder corners.
+     all injected by the script, all dormant until (flow: deck). */
+  .dkghost, .dkkick, .dkframe{ display:none; }
+
+  /* the slide's keyword, wall-sized — its mood, not its number */
+  html[data-flow="deck"] .dkghost{
+    /* the slide is width-bound by .wrap, so anchor to the viewport edge, not the column */
+    display:block; position:absolute; right:calc(50% - 50vw + 3vw); top:57%;
+    transform:translateY(-50%); z-index:-1; white-space:nowrap;
+    font-family:var(--dot); font-weight:900; font-size:min(33vh,23vw); line-height:.9;
+    letter-spacing:-.01em; color:var(--ink); opacity:.05;
+    pointer-events:none; user-select:none;
+  }
+  /* the "now" slide's word actually breathes, because it's about right now */
+  html[data-flow="deck"] .dkghost.live{ color:var(--live); opacity:.07; animation:dkbreath 4.5s ease-in-out infinite; }
+  @keyframes dkbreath{ 50%{ opacity:.028 } }
+  @media (max-width:980px){
+    html[data-flow="deck"] .dkghost{
+      right:auto; left:50%; top:50%; transform:translate(-50%,-50%);
+      font-size:34vw; opacity:.04;
+    }
+  }
+
+  /* speaker note, top-left — a dry line of terminal in the house voice */
+  html[data-flow="deck"] .dkkick{
+    display:block; position:absolute; left:0; top:clamp(30px,6vh,58px);
+    max-width:min(74vw,470px);
+    font-family:var(--mono); font-size:10px; letter-spacing:.15em; text-transform:lowercase;
+    color:var(--ink-faint); pointer-events:none; user-select:none;
+  }
+  html[data-flow="deck"] .dkkick::before{ content:'» '; color:var(--live); }
+
+  /* viewfinder corners — identical on every slide, so the whole thing reads as a deck */
+  html[data-flow="deck"] .dkframe{
+    display:block; position:absolute; z-index:-1; pointer-events:none;
+    top:clamp(16px,3.4vh,30px); bottom:clamp(16px,3.4vh,30px);
+    left:calc(50% - 50vw + clamp(16px,3vw,40px));
+    right:calc(50% - 50vw + clamp(16px,3vw,40px));
+  }
+  .dkframe i{ position:absolute; width:11px; height:11px; opacity:.55; }
+  .dkframe .tl{ top:0; left:0; border-top:1px solid var(--ink-faint); border-left:1px solid var(--ink-faint); }
+  .dkframe .tr{ top:0; right:0; border-top:1px solid var(--ink-faint); border-right:1px solid var(--ink-faint); }
+  .dkframe .bl{ bottom:0; left:0; border-bottom:1px solid var(--ink-faint); border-left:1px solid var(--ink-faint); }
+  .dkframe .br{ bottom:0; right:0; border-bottom:1px solid var(--ink-faint); border-right:1px solid var(--ink-faint); }
+  @media (prefers-reduced-motion:reduce){ html[data-flow="deck"] .dkghost.live{ animation:none; } }
+
+  /* photos get to breathe past the column */
+  html[data-flow="deck"] .shots{
+    width:min(86vw, 940px);
+    margin-inline:calc((100% - min(86vw, 940px)) / 2);
+  }
+
+  /* footer becomes the end card */
+  html[data-flow="deck"] .deckroot > footer{
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:12px; text-align:center; border-top:0;
+    padding-bottom:clamp(70px,11vh,100px);
+  }
+  html[data-flow="deck"] .deckroot > footer::before{
+    content:'fin.'; font-family:var(--dot); font-weight:900;
+    font-size:clamp(3rem,9vh,5rem); line-height:1; letter-spacing:.02em;
+    color:var(--ink); margin-bottom:clamp(16px,4vh,32px);
+  }
+  html[data-flow="deck"] .deckroot > footer::after{
+    content:'questions? the email is one slide up.';
+    color:var(--ink-faint); margin-top:clamp(14px,3vh,26px);
+  }
+
+  .deckhud{
+    position:fixed; left:50%; bottom:14px; transform:translateX(-50%); z-index:40;
+    display:flex; align-items:baseline; gap:8px; pointer-events:none; white-space:nowrap;
+    font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:lowercase;
+    color:var(--ink-faint);
+  }
+  html:not([data-flow="deck"]) .deckhud{ display:none; }
+  .dkdots{ display:flex; gap:7px; align-items:center; margin-right:6px; pointer-events:auto; }
+  .dkdot{
+    width:5px; height:5px; border-radius:50%; background:var(--ink-faint);
+    border:none; padding:0; cursor:pointer;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .dkdot:hover{ background:var(--ink-dim); transform:scale(1.5); }
+  .dkdot.on{ background:var(--live); }
+  .dkpos, .dkname{ color:var(--ink-dim); }
+  .dkname::before{ content:'— '; color:var(--ink-faint); }
+  .dkname:empty{ display:none; }
+  .dknote{ color:var(--live); opacity:0; transition:opacity .25s ease; text-transform:none; }
+  .dknote.on{ opacity:1; }
+  @media (max-width:720px){ .dkname{ display:none; } }
+</style>
+
+<script>
+  const root = document.documentElement;
+  const slides = [...document.querySelectorAll('.deckroot > .opener, .deckroot > section, .deckroot > footer')] as HTMLElement[];
+  const pos = document.getElementById('dkpos')!;
+  const nameEl = document.getElementById('dkname')!;
+  const note = document.getElementById('dknote')!;
+  const pad = (n: number) => String(n).padStart(2, '0');
+  document.getElementById('dktotal')!.textContent = pad(slides.length);
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const deckOn = () => root.dataset.flow === 'deck';
+
+  function slideName(el: HTMLElement) {
+    if (el.tagName === 'FOOTER') return 'fin';
+    if (el.classList.contains('opener')) return 'hello';
+    const label = el.querySelector('.label');
+    return label ? label.textContent!.replace(/\(\d+\)/, '').trim() : '';
+  }
+
+  // per-slide creative chrome. keyed by the section's own number (hacker mode
+  // hides .n visually but keeps its text), plus the opener and the end card.
+  // word = wall-sized keyword; note = the dry line top-left; live = it breathes.
+  type Meta = { word?: string; note?: string; live?: boolean };
+  const META: Record<string, Meta> = {
+    opener: { note: "a portfolio that thinks it's a slide deck" },
+    '01': { word: 'now',   note: 'top · 1 user · load average: unwell', live: true },
+    '02': { word: 'then',  note: 'git log --reverse --oneline' },
+    '03': { word: 'won',   note: 'du -sh ~/trophies → 5 items, 1 shipped' },
+    '04': { word: 'lab',   note: 'sudo cat ./* → permission denied' },
+    '05': { word: 'loose', note: './escaped --no-take-backs' },
+    '06': { word: 'words', note: 'tail -f ~/writing/*.md' },
+    '07': { word: 'idle',  note: 'ps aux | grep life' },
+    '08': { word: 'lens',  note: 'f/1.8 · 1/200s · outdoors, briefly' },
+    '09': {                note: 'seed 0x… · press it, roll another' },
+    '10': { word: 'here',  note: 'ping 12.97°N 77.59°E' },
+    fin:  { note: 'you scrolled to the bottom of a black website' },
+  };
+  function metaFor(el: HTMLElement): Meta {
+    if (el.tagName === 'FOOTER') return META.fin;
+    if (el.classList.contains('opener')) return META.opener;
+    const n = el.querySelector('.label .n')?.textContent?.replace(/[()]/g, '').trim();
+    return (n && META[n]) || {};
+  }
+  for (const el of slides) {
+    const m = metaFor(el);
+
+    const frame = document.createElement('div');
+    frame.className = 'dkframe';
+    frame.setAttribute('aria-hidden', 'true');
+    frame.innerHTML = '<i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>';
+    el.appendChild(frame);
+
+    if (m.word) {
+      const g = document.createElement('span');
+      g.className = 'dkghost' + (m.live ? ' live' : '');
+      g.setAttribute('aria-hidden', 'true');
+      g.textContent = m.word;
+      el.appendChild(g);
+    }
+    if (m.note) {
+      const k = document.createElement('div');
+      k.className = 'dkkick';
+      k.setAttribute('aria-hidden', 'true');
+      k.textContent = m.note;
+      el.appendChild(k);
+    }
+  }
+
+  // one dot per slide, click to travel
+  const dotHolder = document.getElementById('dkdots')!;
+  const dots = slides.map((el, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'dkdot';
+    b.setAttribute('aria-label', `slide ${i + 1}: ${slideName(el) || 'untitled'}`);
+    b.addEventListener('click', () => go(i));
+    dotHolder.appendChild(b);
+    return b;
+  });
+
+  function cur() {
+    let c = 0;
+    for (let i = 0; i < slides.length; i++) {
+      if (slides[i].getBoundingClientRect().top <= innerHeight * 0.5) c = i;
+    }
+    return c;
+  }
+
+  let noteTimer = 0;
+  function flash(msg: string, ms = 1100) {
+    note.textContent = msg;
+    note.classList.add('on');
+    clearTimeout(noteTimer);
+    noteTimer = window.setTimeout(() => note.classList.remove('on'), ms);
+  }
+
+  function sync() {
+    const i = cur();
+    pos.textContent = pad(i + 1);
+    nameEl.textContent = slideName(slides[i]);
+    dots.forEach((d, di) => d.classList.toggle('on', di === i));
+  }
+
+  function go(i: number) {
+    if (i < 0) { flash('top.'); return; }
+    if (i >= slides.length) { flash('eof.'); return; }
+    // adjacent slides glide; gg/G-style jumps land instantly, like vim.
+    // ('instant', not 'auto' — the html scroll-behavior:smooth would win otherwise)
+    const jump = Math.abs(i - cur()) > 1;
+    slides[i].scrollIntoView({ behavior: reduce || jump ? 'instant' : 'smooth' });
+  }
+
+  let raf = 0;
+  addEventListener('scroll', () => {
+    if (!deckOn() || raf) return;
+    raf = requestAnimationFrame(() => { raf = 0; sync(); });
+  }, { passive: true });
+
+  let lastG = 0;
+  addEventListener('keydown', (e) => {
+    if (!deckOn() || e.metaKey || e.ctrlKey || e.altKey) return;
+    const t = e.target as HTMLElement;
+    if (t.closest?.('input, textarea, select, button, [contenteditable]')) return;
+    const saver = document.getElementById('saver');
+    const xp = document.getElementById('xp');
+    if ((saver && !saver.hidden) || (xp && !xp.hidden)) return;
+    switch (e.key) {
+      case 'j': case 'ArrowDown': e.preventDefault(); go(cur() + 1); break;
+      case 'k': case 'ArrowUp': e.preventDefault(); go(cur() - 1); break;
+      case ' ': e.preventDefault(); go(cur() + (e.shiftKey ? -1 : 1)); break;
+      case 'PageDown': e.preventDefault(); go(cur() + 1); break;
+      case 'PageUp': e.preventDefault(); go(cur() - 1); break;
+      case 'Home': e.preventDefault(); go(0); break;
+      case 'End': e.preventDefault(); go(slides.length - 1); break;
+      case 'G': e.preventDefault(); go(slides.length - 1); break;
+      case 'g': {
+        const now = Date.now();
+        if (now - lastG < 450) { lastG = 0; go(0); }
+        else lastG = now;
+        break;
+      }
+    }
+  });
+
+  function hint() {
+    // key hints mean nothing to a thumb
+    if (!matchMedia('(any-pointer:fine)').matches) return;
+    if (sessionStorage.getItem('pf-deck-hint')) return;
+    sessionStorage.setItem('pf-deck-hint', '1');
+    flash('j/k or arrows. gg for the top, G for the end.', 4500);
+  }
+
+  addEventListener('pf:designer', ((e: CustomEvent) => {
+    if (e.detail?.key !== 'flow') return;
+    if (e.detail.value === 'deck') { sync(); hint(); }
+  }) as EventListener);
+
+  if (deckOn()) { sync(); hint(); }
+</script>

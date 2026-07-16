@@ -1,0 +1,64 @@
+---
+// Hackathon wins as pixel trophies. rank 1 renders bright, rank 2 dimmer.
+const WINS = [
+  { name: 'decharge',  meta: "renaissance · 2nd · '24",   rank: 2 },
+  { name: 'vaxchain',  meta: "hyperdrive · depin · '23",  rank: 1 },
+  { name: 'vaultacks', meta: "stackathon · 1st · '22",    rank: 1 },
+  { name: 'webhooks',  meta: "medusa · technical · '22",  rank: 1 },
+  { name: 'twnft',     meta: "thirdweb · winner · '22",   rank: 1 },
+];
+---
+<section>
+  <div class="label reveal"><span class="n">(03)</span> the shelf</div>
+  <div class="shelf reveal">
+    {WINS.map((w) => (
+      <div class="trophy" title={w.meta}>
+        <canvas width="11" height="11" data-rank={w.rank}></canvas>
+        <span class="tname">{w.name}</span>
+        <span class="tmeta">{w.meta}</span>
+      </div>
+    ))}
+  </div>
+  <p class="aside">five-ish total. one grew up into a funded company.</p>
+</section>
+
+<style>
+  .shelf{ display:grid; grid-template-columns:repeat(auto-fit, minmax(96px, 1fr)); gap:10px; }
+  .trophy{
+    display:flex; flex-direction:column; align-items:center; gap:9px;
+    padding:16px 8px 13px; border:1px solid var(--ink-faint); text-align:center;
+  }
+  .trophy canvas{ width:55px; height:55px; image-rendering:pixelated; }
+  .tname{ font-family:var(--mono); font-size:11px; letter-spacing:.1em; color:var(--ink); }
+  .tmeta{ font-family:var(--mono); font-size:9px; letter-spacing:.06em; color:var(--ink-faint); line-height:1.4; }
+</style>
+
+<script>
+  const TROPHY = [
+    '01111111110',
+    '01111111110',
+    '10111111101',
+    '10111111101',
+    '00111111100',
+    '00011111000',
+    '00001110000',
+    '00000100000',
+    '00001110000',
+    '00111111100',
+    '00111111100',
+  ];
+  const SHADES: Record<string, string[]> = {
+    '1': ['#ece8e0', '#ece8e0', '#e3dfd5', '#b8b3a8'],
+    '2': ['#b8b3a8', '#b8b3a8', '#a5a096', '#6b675e'],
+  };
+  for (const cv of document.querySelectorAll<HTMLCanvasElement>('.trophy canvas')) {
+    const ctx = cv.getContext('2d')!;
+    const shades = SHADES[cv.dataset.rank ?? '1'];
+    for (let y = 0; y < 11; y++)
+      for (let x = 0; x < 11; x++)
+        if (TROPHY[y][x] === '1') {
+          ctx.fillStyle = shades[(Math.random() * shades.length) | 0];
+          ctx.fillRect(x, y, 1, 1);
+        }
+  }
+</script>

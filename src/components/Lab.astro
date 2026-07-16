@@ -1,0 +1,54 @@
+---
+// Two renderings of the same section; the designer panel (bottom-left)
+// switches between them via html[data-lab].
+---
+<section>
+  <div class="label reveal"><span class="n">(04)</span> the lab</div>
+
+  <div class="lab lab-listed reveal">
+    <div class="rows">
+      <div class="row">
+        <span class="name">fleet</span>
+        <span class="desc">agentless dev-fleet orchestration in rust, over ssh + tailscale</span>
+        <span class="meta">[private]</span>
+      </div>
+      <div class="row">
+        <span class="name">cohear</span>
+        <span class="desc">low-latency lan audio sync, also rust because of course</span>
+        <span class="meta">[private]</span>
+      </div>
+    </div>
+    <p class="aside">+ a few more in various states of denial. they ship when they ship.</p>
+    <p class="aside root-note">// decrypted. this is where the time actually goes.</p>
+  </div>
+
+  <div class="lab lab-redacted reveal">
+    <div class="rows">
+      <div class="row">
+        <span class="name">f<span class="redact" style="--n:4"></span></span>
+        <span class="desc">it orchestrates machines. that's all you get.</span>
+        <span class="meta">[classified]</span>
+      </div>
+      <div class="row">
+        <span class="name">c<span class="redact" style="--n:5"></span>r</span>
+        <span class="desc">audio, but faster than it has any right to be.</span>
+        <span class="meta">[classified]</span>
+      </div>
+    </div>
+    <p class="aside">declassified upon shipping.</p>
+  </div>
+</section>
+
+<style>
+  .lab-redacted{ display:none; }
+  html[data-lab="redacted"] .lab-listed{ display:none; }
+  html[data-lab="redacted"] .lab-redacted{ display:block; }
+
+  .redact{
+    display:inline-block; vertical-align:baseline;
+    height:.68em; width:calc(var(--n) * .58em);
+    margin:0 .06em;
+    background-image:radial-gradient(circle, var(--ink-dim) 32%, transparent 36%);
+    background-size:.29em .29em; background-position:center;
+  }
+</style>

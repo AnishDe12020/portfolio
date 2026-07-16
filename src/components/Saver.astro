@@ -1,0 +1,621 @@
+---
+// After ~2.5 min of stillness the site rolls a screensaver, windows-xp style:
+// dvd (the specimen), mystify, pipes, starfield, matrix, marquee. It cycles
+// to the next one every 45s unless a saver has been pinned. Any input ends it.
+// Corner hits (dvd) are counted, celebrated, and rerolled.
+//
+// The secret: `:xp` in the terminal opens a Display Properties dialog — full
+// luna chrome, live preview monitor — where a default saver can be set.
+---
+<div class="saver" id="saver" hidden aria-hidden="true">
+  <canvas id="saverC"></canvas>
+  <span class="shint">any key or a nudge wakes it</span>
+  <span class="scorner" id="scorner"></span>
+</div>
+
+<div class="xp" id="xp" hidden>
+  <div class="xpwin" id="xpwin" role="dialog" aria-modal="true" aria-label="Display Properties">
+    <div class="xptitle" id="xptitle">
+      <span>Display Properties</span>
+      <button class="xpx" id="xpclose" aria-label="Close">✕</button>
+    </div>
+    <div class="xptabs">
+      <span class="xptab">Themes</span>
+      <span class="xptab">Desktop</span>
+      <span class="xptab on">Screen Saver</span>
+      <span class="xptab">Appearance</span>
+    </div>
+    <div class="xpbody">
+      <div class="xpmonwrap">
+        <div class="xpmon">
+          <div class="xpscreen"><canvas id="xpprev" width="168" height="126"></canvas></div>
+          <div class="xpled"></div>
+        </div>
+        <div class="xpstand"></div>
+        <div class="xpbase"></div>
+      </div>
+      <fieldset class="xpgroup">
+        <legend>Screen saver</legend>
+        <div class="xprow">
+          <label class="sr" for="xpsel">Screen saver</label>
+          <select id="xpsel">
+            <option value="">(surprise me)</option>
+            <option value="dvd">The Specimen</option>
+            <option value="mystify">Mystify Your Mind</option>
+            <option value="pipes">3D Pipes</option>
+            <option value="starfield">Starfield Simulation</option>
+            <option value="matrix">Digital Rain</option>
+            <option value="marquee">Marquee</option>
+          </select>
+          <button class="xpbtn" id="xpprevbtn">Preview</button>
+          <button class="xpbtn" disabled>Settings</button>
+        </div>
+        <div class="xprow xpwait">
+          <label>Wait:</label>
+          <input type="text" value="2.5" disabled size="3" /> minutes
+          <label class="xpcheck"><input type="checkbox" checked disabled /> On resume, pretend you were working</label>
+        </div>
+      </fieldset>
+      <fieldset class="xpgroup xpenergy">
+        <legend>Monitor power</legend>
+        <div class="xprow">
+          <span class="xphint">To pretend to save energy, click Power.</span>
+          <button class="xpbtn" id="xppower">Power...</button>
+        </div>
+      </fieldset>
+      <div class="xpfoot">
+        <button class="xpbtn" id="xpok">OK</button>
+        <button class="xpbtn" id="xpcancel">Cancel</button>
+        <button class="xpbtn" id="xpapply" disabled>Apply</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .saver{ position:fixed; inset:0; z-index:70; background:#000; cursor:none; }
+  #saverC{ position:absolute; inset:0; width:100%; height:100%; }
+  .scorner{
+    position:absolute; right:18px; bottom:14px;
+    font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:lowercase;
+    color:var(--ink-faint);
+  }
+  .shint{
+    position:absolute; left:18px; bottom:14px;
+    font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:lowercase;
+    color:var(--ink-faint); opacity:.7;
+  }
+
+  /* ── the secret display properties dialog. luna, at home, uninvited. ── */
+  .xp{ position:fixed; inset:0; z-index:72; pointer-events:none; }
+  .xpwin{
+    position:fixed; width:372px; pointer-events:auto;
+    background:#ece9d8; border:1px solid #0831d9; border-radius:8px 8px 3px 3px;
+    box-shadow: 2px 2px 0 rgba(8,49,217,.55), 8px 12px 28px rgba(0,0,0,.5);
+    font-family: Tahoma, 'Segoe UI', sans-serif; font-size:11px; color:#000;
+    padding:0 3px 3px; user-select:none;
+  }
+  .xptitle{
+    display:flex; align-items:center; justify-content:space-between;
+    margin:0 -3px 4px; padding:5px 5px 5px 10px; border-radius:7px 7px 0 0;
+    background:linear-gradient(180deg,#3d95ff 0%, #2a6fe8 8%, #1855c4 40%, #1550bd 88%, #1141a0 100%);
+    color:#fff; font-weight:700; font-size:12px; font-family:'Trebuchet MS', Tahoma, sans-serif;
+    text-shadow:1px 1px 1px rgba(0,0,0,.5); cursor:default; touch-action:none;
+  }
+  .xpx{
+    width:21px; height:21px; border:1px solid #fff; border-radius:3px;
+    background:linear-gradient(135deg,#f1917c 0%, #e35e42 45%, #c9401f 100%);
+    color:#fff; font-size:11px; line-height:1; cursor:pointer; padding:0;
+  }
+  .xpx:hover{ filter:brightness(1.15); }
+  .xptabs{ display:flex; gap:2px; padding:6px 6px 0; }
+  .xptab{
+    padding:4px 9px 3px; background:#f5f4ea; color:#7a776b;
+    border:1px solid #919b9c; border-bottom:none; border-radius:3px 3px 0 0;
+  }
+  .xptab.on{
+    background:#fdfdf8; color:#000; position:relative; top:1px; padding-top:5px;
+    border-top:2px solid #e5a01a;
+  }
+  .xpbody{
+    background:#fdfdf8; border:1px solid #919b9c; margin:0 6px 6px; padding:12px 12px 10px;
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+  }
+  .xpmonwrap{ display:flex; flex-direction:column; align-items:center; }
+  .xpmon{
+    position:relative; padding:11px 13px 17px;
+    background:linear-gradient(160deg,#e8e4d8 0%, #cfc9b8 60%, #a9a390 100%);
+    border:1px solid #8a8574; border-radius:9px;
+  }
+  .xpscreen{ background:#000; padding:2px; border-radius:3px; border:1px solid #5b5749; }
+  .xpscreen canvas{ display:block; width:168px; height:126px; }
+  .xpled{
+    position:absolute; right:16px; bottom:6px; width:6px; height:6px; border-radius:50%;
+    background:#4ddb4d; box-shadow:0 0 4px #4ddb4d;
+  }
+  .xpstand{ width:56px; height:12px; background:linear-gradient(180deg,#c4bead,#9a947f); border:1px solid #8a8574; border-top:none; }
+  .xpbase{ width:110px; height:8px; background:linear-gradient(180deg,#d5cfbf,#a49e8a); border:1px solid #8a8574; border-radius:2px; }
+  .xpgroup{
+    width:100%; border:1px solid #d0cdb9; border-radius:4px; padding:8px 10px 10px; margin:0;
+  }
+  .xpgroup legend{ padding:0 4px; color:#0046d5; }
+  .xprow{ display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  .xprow select{
+    flex:1; min-width:150px; font:inherit; padding:2px;
+    background:#fff; border:1px solid #7f9db9; border-radius:0;
+  }
+  .xpwait{ margin-top:8px; color:#000; }
+  .xpwait input[type="text"]{ width:30px; font:inherit; border:1px solid #7f9db9; padding:2px 4px; background:#f4f2e8; color:#aca899; }
+  .xpcheck{ display:flex; align-items:center; gap:4px; width:100%; margin-top:6px; color:#aca899; }
+  .xphint{ flex:1; color:#000; }
+  .xpbtn{
+    font:inherit; padding:3px 12px; cursor:pointer; border-radius:3px;
+    border:1px solid #003c74; color:#000;
+    background:linear-gradient(180deg,#fff 0%, #f1f0ea 86%, #d8d5c8 100%);
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.8);
+  }
+  .xpbtn:hover:not(:disabled){ border-color:#e5a01a; box-shadow:inset 0 0 0 1px #ffd76e; }
+  .xpbtn:active:not(:disabled){ background:linear-gradient(180deg,#d8d5c8,#f1f0ea); }
+  .xpbtn:disabled{ color:#aca899; border-color:#aca899; cursor:default; }
+  .xpfoot{ display:flex; justify-content:flex-end; gap:6px; width:100%; margin-top:2px; }
+  @media (max-width:420px){ .xpwin{ width:94vw; } }
+</style>
+
+<script>
+  import { rainFrame } from '../lib/rain';
+
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const saver = document.getElementById('saver')!;
+  const cv = document.getElementById('saverC') as HTMLCanvasElement;
+  const cornerEl = document.getElementById('scorner')!;
+  const IDLE_MS = 150_000;
+  const CYCLE_MS = 45_000;
+
+  // savers draw through a view so the same code renders the real screen and
+  // the little dialog monitor. V.k scales projection math; V.full gates labels.
+  type View = { g: CanvasRenderingContext2D; w: number; h: number; k: number; full: boolean };
+  const fsView: View = { g: cv.getContext('2d')!, w: 0, h: 0, k: 1, full: true };
+  let V: View = fsView;
+
+  let idleT: ReturnType<typeof setTimeout>;
+  let cycleT: ReturnType<typeof setInterval> | undefined;
+  let raf = 0, on = false, pinned = false;
+  let ink = '#ece8e0', live = '#e0442e';
+
+  function sizeUp() {
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    fsView.w = innerWidth; fsView.h = innerHeight; fsView.k = innerWidth / 1440;
+    cv.width = fsView.w * dpr; cv.height = fsView.h * dpr;
+    fsView.g.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function readInks() {
+    const cs = getComputedStyle(document.documentElement);
+    ink = cs.getPropertyValue('--ink').trim() || ink;
+    live = cs.getPropertyValue('--live').trim() || live;
+  }
+  const mono = () => getComputedStyle(document.documentElement).getPropertyValue('--mono') || 'monospace';
+
+  // ── dvd: the specimen, bouncing. corner hits reroll it. ──────────────────
+  const dvd = (() => {
+    let x = 0, y = 0, dx = 2.1, dy = 1.7, corners = 0, hue = 0;
+    const size = () => (V.full ? 88 : 33);
+    // fallback face for pages without the specimen: a random symmetric blob
+    const blob = document.createElement('canvas');
+    blob.width = blob.height = 11;
+    function rollBlob() {
+      const b = blob.getContext('2d')!;
+      b.clearRect(0, 0, 11, 11);
+      b.fillStyle = ink;
+      for (let r = 1; r < 10; r++) for (let c = 1; c <= 5; c++)
+        if (Math.random() < 0.45) { b.fillRect(c, r, 1, 1); b.fillRect(10 - c, r, 1, 1); }
+    }
+    const face = () => (document.getElementById('sprite') as HTMLCanvasElement | null) ?? blob;
+    return {
+      init() {
+        corners = 0; hue = 0;
+        rollBlob();
+        x = Math.random() * Math.max(1, V.w - size() - 20) + 10;
+        y = Math.random() * Math.max(1, V.h - size() - 20) + 10;
+        if (V.full) cornerEl.textContent = 'saver: dvd';
+      },
+      tick() {
+        const S = size();
+        x += dx * (V.full ? 1 : 0.5); y += dy * (V.full ? 1 : 0.5);
+        let hitX = false, hitY = false;
+        if (x <= 0 || x + S >= V.w) { dx = -dx; x = Math.max(0, Math.min(x, V.w - S)); hitX = true; }
+        if (y <= 0 || y + S >= V.h) { dy = -dy; y = Math.max(0, Math.min(y, V.h - S)); hitY = true; }
+        if (hitX && hitY) {
+          corners++;
+          if (V.full) {
+            cornerEl.textContent = `saver: dvd · corner hits: ${corners}`;
+            dispatchEvent(new CustomEvent('pf:reroll')); // the specimen rerolls in celebration
+          }
+          rollBlob();
+        } else if (hitX || hitY) {
+          hue = (Math.random() * 40 - 20) | 0; // every wall bounce nudges the palette
+        }
+        V.g.clearRect(0, 0, V.w, V.h);
+        V.g.imageSmoothingEnabled = false;
+        V.g.filter = `hue-rotate(${hue}deg)`;
+        V.g.drawImage(face(), x, y, S, S);
+        V.g.filter = 'none';
+      },
+    };
+  })();
+
+  // ── mystify: two polygon trails, hue-cycling. straight out of xp. ────────
+  const mystify = (() => {
+    type Pt = { x: number; y: number; dx: number; dy: number };
+    let shapes: { pts: Pt[]; trail: number[][]; hue: number }[] = [];
+    let skip = 0;
+    return {
+      init() {
+        const sp = V.full ? 1 : 0.35;
+        shapes = [0, 1].map(() => ({
+          hue: Math.random() * 360,
+          trail: [],
+          pts: Array.from({ length: 4 }, () => ({
+            x: Math.random() * V.w, y: Math.random() * V.h,
+            dx: (Math.random() * 3 + 1.5) * sp * (Math.random() < 0.5 ? -1 : 1),
+            dy: (Math.random() * 3 + 1.5) * sp * (Math.random() < 0.5 ? -1 : 1),
+          })),
+        }));
+        if (V.full) cornerEl.textContent = 'saver: mystify';
+      },
+      tick() {
+        V.g.clearRect(0, 0, V.w, V.h);
+        for (const s of shapes) {
+          for (const p of s.pts) {
+            p.x += p.dx; p.y += p.dy;
+            if (p.x <= 0 || p.x >= V.w) { p.dx = -p.dx; p.x = Math.max(0, Math.min(p.x, V.w)); }
+            if (p.y <= 0 || p.y >= V.h) { p.dy = -p.dy; p.y = Math.max(0, Math.min(p.y, V.h)); }
+          }
+          if (skip === 0) {
+            s.trail.push(s.pts.flatMap((p) => [p.x, p.y]));
+            if (s.trail.length > 18) s.trail.shift();
+          }
+          s.hue = (s.hue + 0.7) % 360;
+          s.trail.forEach((snap, i) => {
+            V.g.beginPath();
+            V.g.moveTo(snap[0], snap[1]);
+            for (let j = 2; j < 8; j += 2) V.g.lineTo(snap[j], snap[j + 1]);
+            V.g.closePath();
+            V.g.strokeStyle = `hsla(${(s.hue + i * 4) % 360}, 70%, 60%, ${0.12 + (i / s.trail.length) * 0.85})`;
+            V.g.lineWidth = 1;
+            V.g.stroke();
+          });
+        }
+        skip = (skip + 1) % 2;
+      },
+    };
+  })();
+
+  // ── pipes: the 3d ones. the screensaver that raised a generation. ────────
+  const pipes = (() => {
+    const CELL = 56, F = 430, GX = 15, GY = 11, GZ = 9;
+    const DIRS = [[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1]];
+    type Pipe = { p: number[]; d: number[]; next: number[]; t: number; hue: number; dead: boolean };
+    let taken: Set<string>, pipesArr: Pipe[], used = 0, fading = 0;
+    const key = (p: number[]) => p.join(',');
+    const proj = (p: number[]) => {
+      const z = (p[2] + 1.5) * CELL + 190;
+      return {
+        x: V.w / 2 + (p[0] - GX / 2) * CELL * (F / z) * V.k,
+        y: V.h / 2 + (p[1] - GY / 2) * CELL * (F / z) * V.k,
+        w: Math.max(1.5, Math.min(30 * V.k, (12000 / z) * V.k)),
+        l: Math.max(26, Math.min(64, 78 - p[2] * 5)),
+      };
+    };
+    function spawn(): Pipe | null {
+      for (let tries = 0; tries < 40; tries++) {
+        const p = [(Math.random() * GX) | 0, (Math.random() * GY) | 0, (Math.random() * GZ) | 0];
+        if (!taken.has(key(p))) {
+          taken.add(key(p)); used++;
+          return { p, d: DIRS[(Math.random() * 6) | 0], next: p, t: 1, hue: Math.random() * 360, dead: false };
+        }
+      }
+      return null;
+    }
+    function step(pipe: Pipe) {
+      const opts = DIRS.filter((d) => {
+        if (d[0] === -pipe.d[0] && d[1] === -pipe.d[1] && d[2] === -pipe.d[2]) return false;
+        const n = [pipe.p[0] + d[0], pipe.p[1] + d[1], pipe.p[2] + d[2]];
+        return n[0] >= 0 && n[0] < GX && n[1] >= 0 && n[1] < GY && n[2] >= 0 && n[2] < GZ && !taken.has(key(n));
+      });
+      if (!opts.length) { pipe.dead = true; return; }
+      const straight = opts.find((d) => d === pipe.d);
+      const d = straight && Math.random() < 0.55 ? straight : opts[(Math.random() * opts.length) | 0];
+      if (d !== pipe.d) { // a joint sphere marks the turn
+        const j = proj(pipe.p);
+        V.g.fillStyle = `hsl(${pipe.hue}, 55%, ${j.l + 8}%)`;
+        V.g.beginPath(); V.g.arc(j.x, j.y, j.w * 0.72, 0, 7); V.g.fill();
+      }
+      pipe.d = d;
+      pipe.next = [pipe.p[0] + d[0], pipe.p[1] + d[1], pipe.p[2] + d[2]];
+      taken.add(key(pipe.next)); used++;
+      pipe.t = 0;
+    }
+    return {
+      init() {
+        taken = new Set(); pipesArr = []; used = 0; fading = 0;
+        V.g.clearRect(0, 0, V.w, V.h);
+        for (let i = 0; i < 3; i++) { const p = spawn(); if (p) pipesArr.push(p); }
+        if (V.full) cornerEl.textContent = 'saver: pipes';
+      },
+      tick() {
+        if (fading > 0) { // screen full → fade to black and start over
+          V.g.fillStyle = 'rgba(0,0,0,.14)';
+          V.g.fillRect(0, 0, V.w, V.h);
+          if (--fading === 0) this.init();
+          return;
+        }
+        for (const pipe of pipesArr) {
+          if (pipe.dead) continue;
+          if (pipe.t >= 1) { step(pipe); if (pipe.dead) continue; }
+          const t0 = pipe.t, t1 = Math.min(1, pipe.t + 0.2);
+          const lerp = (t: number) => [
+            pipe.p[0] + (pipe.next[0] - pipe.p[0]) * t,
+            pipe.p[1] + (pipe.next[1] - pipe.p[1]) * t,
+            pipe.p[2] + (pipe.next[2] - pipe.p[2]) * t,
+          ];
+          const a = proj(lerp(t0)), b = proj(lerp(t1));
+          V.g.strokeStyle = `hsl(${pipe.hue}, 55%, ${(a.l + b.l) / 2}%)`;
+          V.g.lineWidth = (a.w + b.w) / 2;
+          V.g.lineCap = 'round';
+          V.g.beginPath(); V.g.moveTo(a.x, a.y); V.g.lineTo(b.x, b.y); V.g.stroke();
+          pipe.t = t1;
+          if (pipe.t >= 1) pipe.p = pipe.next;
+        }
+        while (pipesArr.filter((p) => !p.dead).length < 3 && used < GX * GY * GZ * 0.5) {
+          const p = spawn(); if (!p) break; pipesArr.push(p);
+        }
+        if (pipesArr.every((p) => p.dead) || used > GX * GY * GZ * 0.55) fading = 46;
+      },
+    };
+  })();
+
+  // ── starfield: flying through space at an irresponsible speed ────────────
+  const stars = (() => {
+    type Star = { x: number; y: number; z: number; pz: number };
+    let field: Star[] = [];
+    const roll = (): Star => {
+      const z = Math.random() * 900 + 100;
+      return { x: (Math.random() - 0.5) * 1600, y: (Math.random() - 0.5) * 1600, z, pz: z };
+    };
+    return {
+      init() {
+        field = Array.from({ length: V.full ? 340 : 120 }, roll);
+        if (V.full) cornerEl.textContent = 'saver: starfield';
+      },
+      tick() {
+        const SC = 460 * V.k;
+        V.g.fillStyle = 'rgba(0,0,0,.55)';
+        V.g.fillRect(0, 0, V.w, V.h);
+        V.g.strokeStyle = ink;
+        V.g.lineCap = 'round';
+        for (const s of field) {
+          s.pz = s.z; s.z -= 9;
+          if (s.z < 8) Object.assign(s, roll(), { z: 1000, pz: 1000 });
+          const sx = V.w / 2 + (s.x / s.z) * SC, sy = V.h / 2 + (s.y / s.z) * SC;
+          const px = V.w / 2 + (s.x / s.pz) * SC, py = V.h / 2 + (s.y / s.pz) * SC;
+          if (sx < 0 || sx > V.w || sy < 0 || sy > V.h) { Object.assign(s, roll(), { z: 1000, pz: 1000 }); continue; }
+          V.g.globalAlpha = Math.min(1, (1000 - s.z) / 600);
+          V.g.lineWidth = Math.max(0.5, ((1000 - s.z) / 380) * V.k);
+          V.g.beginPath(); V.g.moveTo(px, py); V.g.lineTo(sx, sy); V.g.stroke();
+        }
+        V.g.globalAlpha = 1;
+      },
+    };
+  })();
+
+  // ── matrix: not xp, but this site has a terminal. it was inevitable. ─────
+  const matrix = (() => {
+    let drops: number[] = [], acc = 0;
+    const sz = () => (V.full ? 15 : 9);
+    return {
+      init() {
+        drops = Array.from({ length: Math.ceil(V.w / sz()) }, () => -Math.random() * 40);
+        V.g.fillStyle = '#000'; V.g.fillRect(0, 0, V.w, V.h);
+        if (V.full) cornerEl.textContent = 'saver: matrix';
+      },
+      tick() {
+        if (++acc % 3) return; // ~20fps looks more terminal than 60
+        rainFrame(V.g, V.w, V.h, drops, sz(), mono(), 0.09, live, ink, 0.12);
+      },
+    };
+  })();
+
+  // ── marquee: scrolling text. the laziest screensaver ever shipped. ───────
+  const marquee = (() => {
+    const LINES = [
+      'will be right back',
+      'the site is asleep. you are watching it dream.',
+      'unattended terminal detected',
+      'this space intentionally left scrolling',
+      'buy the dip (not financial advice)',
+    ];
+    let x = 0, li = 0, tw = 0, t = 0;
+    const font = () => `700 ${Math.min(96, V.w / 10)}px ${mono()}`;
+    return {
+      init() {
+        li = (Math.random() * LINES.length) | 0;
+        V.g.font = font();
+        tw = V.g.measureText(LINES[li]).width;
+        x = V.w + 40;
+        if (V.full) cornerEl.textContent = 'saver: marquee';
+      },
+      tick() {
+        t += 0.02;
+        x -= Math.max(1, 3.2 * V.k);
+        if (x < -tw - 40) {
+          li = (li + 1) % LINES.length;
+          V.g.font = font();
+          tw = V.g.measureText(LINES[li]).width;
+          x = V.w + 40;
+        }
+        V.g.clearRect(0, 0, V.w, V.h);
+        V.g.font = font();
+        V.g.textBaseline = 'middle';
+        V.g.fillStyle = live;
+        V.g.fillText(LINES[li], x, V.h / 2 + Math.sin(t) * V.h * 0.04);
+      },
+    };
+  })();
+
+  const SAVERS = { dvd, mystify, pipes, starfield: stars, matrix, marquee } as const;
+  type Name = keyof typeof SAVERS;
+  const NAMES = Object.keys(SAVERS) as Name[];
+  let active: Name = 'dvd';
+
+  function boot(name: Name) {
+    active = name;
+    V = fsView;
+    readInks();
+    sizeUp();
+    SAVERS[active].init();
+  }
+  function frame() {
+    V = fsView;
+    SAVERS[active].tick();
+    raf = requestAnimationFrame(frame);
+  }
+
+  function start(name?: string) {
+    if (on || reduce || document.hidden || xpOpen) { arm(); return; }
+    const stored = localStorage.getItem('pf-saver') || '';
+    const pick = (name && NAMES.includes(name as Name) ? name
+      : NAMES.includes(stored as Name) ? stored : '') as Name | '';
+    on = true;
+    px = null; // fresh movement baseline for the wake threshold
+    pinned = !!pick;
+    boot(pick || NAMES[(Math.random() * NAMES.length) | 0]);
+    saver.hidden = false;
+    raf = requestAnimationFrame(frame);
+    if (!pinned) cycleT = setInterval(() => boot(NAMES[(NAMES.indexOf(active) + 1) % NAMES.length]), CYCLE_MS);
+  }
+  function stop() {
+    if (!on) return;
+    on = false;
+    cancelAnimationFrame(raf);
+    clearInterval(cycleT);
+    saver.hidden = true;
+    if (reopenAfter) { reopenAfter = false; openXP(); } // back from Preview
+  }
+  function arm() { clearTimeout(idleT); idleT = setTimeout(() => start(), IDLE_MS); }
+  addEventListener('resize', () => { if (on) boot(active); });
+
+  // dismissal: any key/click/wheel/touch instantly; pointer moves need a real
+  // nudge (>8px) so a jittery mouse doesn't kill it the moment it starts.
+  let px: number | null = null, py = 0;
+  function wake() { stop(); arm(); }
+  function nudge(e: PointerEvent) {
+    if (!on) { wake(); return; } // saver hidden → just reset the idle timer
+    if (px === null) { px = e.clientX; py = e.clientY; return; }
+    if (Math.hypot(e.clientX - px, e.clientY - py) > 8) wake();
+  }
+  // capture-phase on window so even terminal keystrokes (which stopPropagation) wake it,
+  // plus listeners straight on the overlay as belt-and-suspenders.
+  addEventListener('pointermove', nudge as any, { passive: true, capture: true });
+  for (const ev of ['pointerdown', 'keydown', 'wheel', 'touchstart']) {
+    addEventListener(ev, wake, { passive: true, capture: true });
+    saver.addEventListener(ev, wake, { passive: true });
+  }
+  saver.addEventListener('pointermove', nudge as any, { passive: true });
+  arm();
+
+  // ── display properties: the secret picker ────────────────────────────────
+  const xp = document.getElementById('xp')!;
+  const xpwin = document.getElementById('xpwin') as HTMLElement;
+  const xptitle = document.getElementById('xptitle')!;
+  const xpsel = document.getElementById('xpsel') as HTMLSelectElement;
+  const xpapply = document.getElementById('xpapply') as HTMLButtonElement;
+  const pv = (document.getElementById('xpprev') as HTMLCanvasElement);
+  const pvView: View = { g: pv.getContext('2d')!, w: 168, h: 126, k: 168 / 1440, full: false };
+  let xpOpen = false, reopenAfter = false, prf = 0;
+  let xpReturnFocus: HTMLElement | null = null;
+
+  function pvBoot(name: Name | '') {
+    cancelAnimationFrame(prf);
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    pv.width = pvView.w * dpr; pv.height = pvView.h * dpr;
+    pvView.g.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const pick = name || NAMES[(Math.random() * NAMES.length) | 0];
+    V = pvView;
+    readInks();
+    SAVERS[pick].init();
+    const loop = () => { V = pvView; SAVERS[pick].tick(); prf = requestAnimationFrame(loop); };
+    if (reduce) { for (let i = 0; i < 30; i++) SAVERS[pick].tick(); } // a still frame, politely
+    else prf = requestAnimationFrame(loop);
+  }
+  function openXP() {
+    xpReturnFocus = document.activeElement as HTMLElement | null;
+    xpOpen = true;
+    clearTimeout(idleT); // no idle saver while the dialog is up
+    xpsel.value = localStorage.getItem('pf-saver') || '';
+    xpapply.disabled = true;
+    xp.hidden = false;
+    xpwin.style.left = `${Math.max(6, (innerWidth - xpwin.offsetWidth) / 2)}px`;
+    xpwin.style.top = `${Math.max(6, innerHeight * 0.16)}px`;
+    pvBoot(xpsel.value as Name | '');
+    xpsel.focus();
+  }
+  function closeXP() {
+    xpOpen = false;
+    cancelAnimationFrame(prf);
+    xp.hidden = true;
+    xpReturnFocus?.focus();
+    xpReturnFocus = null;
+    arm();
+  }
+  const saveXP = () => { localStorage.setItem('pf-saver', xpsel.value); xpapply.disabled = true; };
+
+  addEventListener('pf:xp', () => (xpOpen ? closeXP() : openXP()));
+  document.getElementById('xpclose')!.addEventListener('click', closeXP);
+  document.getElementById('xpcancel')!.addEventListener('click', closeXP);
+  document.getElementById('xpok')!.addEventListener('click', () => { saveXP(); closeXP(); });
+  xpapply.addEventListener('click', saveXP);
+  xpsel.addEventListener('change', () => { xpapply.disabled = false; pvBoot(xpsel.value as Name | ''); });
+  document.getElementById('xpprevbtn')!.addEventListener('click', () => {
+    reopenAfter = true;
+    xpOpen = false;
+    cancelAnimationFrame(prf);
+    xp.hidden = true;
+    // the pointerup from this click must not instantly wake the preview
+    setTimeout(() => start(xpsel.value || undefined), 80);
+  });
+  document.getElementById('xppower')!.addEventListener('click', () => {
+    closeXP();
+    (window as any).pfHacker?.crash(); // "monitor power" was never going to end well
+  });
+  addEventListener('keydown', (e) => {
+    if (!xpOpen) return;
+    if (e.key === 'Escape') closeXP();
+    if (e.key === 'Tab') {
+      const focusable = [...xpwin.querySelectorAll<HTMLElement>('button:not([disabled]), select:not([disabled]), input:not([disabled])')];
+      const first = focusable[0], last = focusable.at(-1);
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last?.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first?.focus(); }
+    }
+  });
+
+  // the title bar drags, because of course it does
+  let drag: [number, number] | null = null;
+  xptitle.addEventListener('pointerdown', (e) => {
+    if ((e.target as HTMLElement).id === 'xpclose') return;
+    drag = [e.clientX - xpwin.offsetLeft, e.clientY - xpwin.offsetTop];
+    xptitle.setPointerCapture(e.pointerId);
+  });
+  xptitle.addEventListener('pointermove', (e) => {
+    if (!drag) return;
+    xpwin.style.left = `${e.clientX - drag[0]}px`;
+    xpwin.style.top = `${Math.max(0, e.clientY - drag[1])}px`;
+  });
+  xptitle.addEventListener('pointerup', () => (drag = null));
+
+  ;(window as any).pfSaver = { start, names: NAMES };
+  // test hooks: ?saver=now (random) or ?saver=pipes (specific); ?xp=1 opens the picker
+  const q = new URLSearchParams(location.search);
+  const qs = q.get('saver');
+  if (qs) requestAnimationFrame(() => start(qs === 'now' ? undefined : qs));
+  if (q.get('xp')) requestAnimationFrame(() => openXP());
+</script>

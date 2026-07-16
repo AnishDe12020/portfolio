@@ -1,0 +1,58 @@
+---
+title: testing the pipes
+description: a post that exists so the blog machinery has something to chew on. real writing follows.
+date: 2026-07-13
+tags: [meta]
+draft: true
+---
+
+import Callout from '../../components/mdx/Callout.astro';
+
+This post is markdown in a git repo. It ships when I push. No CMS, no dashboard, no API that goes pro-plan-only overnight — the blog is a folder now[^1].
+
+[^1]: technically a folder of `.md` and `.mdx` files in `src/content/blog/`, but "the blog is a folder" is a better sentence.
+
+## why bother
+
+The interesting stuff — crypto rails, agents, the weird intersection of both — never got written because publishing had friction. Friction is now `git push`.
+
+<Callout type="note">
+  Posts get a table of contents, read time, share cards, and a copy button on
+  every code block for free. This callout is also a component — mdx works.
+</Callout>
+
+## how it works
+
+Every post is a file with a few lines of frontmatter:
+
+```yaml title="src/content/blog/testing-the-pipes.mdx"
+---
+title: testing the pipes
+date: 2026-07-13
+tags: [meta]
+---
+```
+
+Astro picks it up at build time, the site restyles it to match whatever theme you're in (yes, including the terminal one — press `d`), and the table of contents you used to get here assembles itself from the headings.
+
+### what gets written
+
+Crypto, web3, ai. Occasionally all three in the same sentence, unfortunately.
+
+<Callout type="warn" title="disclaimer">
+  Nothing here is financial advice. Some of it is barely technical advice.
+</Callout>
+
+## the obligatory code block
+
+Proof that syntax highlighting follows the house colors instead of shipping someone else's editor theme:
+
+```ts title="pipeline.ts"
+// the entire publishing pipeline
+async function publish(post: string) {
+  await exec(`git add ${post} && git commit -m "post" && git push`);
+  return 'that is it. that is the pipeline.';
+}
+```
+
+This post self-destructs once something real replaces it.

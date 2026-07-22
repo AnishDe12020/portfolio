@@ -12,7 +12,7 @@ import Saver from '../components/Saver.astro';
 import Deck from '../components/Deck.astro';
 ---
 <Base deck>
-  <div class="opener">
+  <div class="opener slide-intro" id="hello">
     <Hero />
 
     <p class="lede reveal">
@@ -21,31 +21,52 @@ import Deck from '../components/Deck.astro';
       stocks, gold, and treasuries onchain gets as easy as ordering food — for the people fintech
       quietly skips. Done from Bangalore, on questionable amounts of sleep.
     </p>
+    <div class="intro-coordinates reveal" aria-hidden="true">
+      <span>12.9716° N</span>
+      <span>77.5946° E</span>
+      <span class="intro-rule"></span>
+      <span>scroll to traverse</span>
+    </div>
   </div>
 
-  <section>
+  <section class="slide-now" id="now">
     <div class="label reveal"><span class="n">(01)</span> right now</div>
-    <p class="body reveal">
-      I run product, frontend, and growth at <b>Beanstalk</b>. Somehow also
-      still finishing an engineering degree at PES University.
-    </p>
+    <div class="now-layout reveal">
+      <div class="now-primary">
+        <span class="micro">active system / 2026</span>
+        <strong>BEAN<br/>STALK</strong>
+        <p class="body">
+          I run product, frontend, and growth at <b>Beanstalk</b>. Somehow also
+          still finishing an engineering degree at PES University.
+        </p>
+      </div>
+      <div class="now-console" aria-label="Current roles">
+        <div><span>01</span><b>product</b><small>make the hard thing obvious</small></div>
+        <div><span>02</span><b>frontend</b><small>make the obvious thing feel good</small></div>
+        <div><span>03</span><b>growth</b><small>make sure somebody sees it</small></div>
+        <div class="now-degree"><span>04</span><b>degree</b><small>still compiling</small></div>
+      </div>
+    </div>
   </section>
 
-  <section>
+  <section class="slide-before" id="before">
     <div class="label reveal"><span class="n">(02)</span> before this</div>
-    <p class="body reveal">
-      Protocol engineer at <b>Spicenet</b>, mostly living inside the cross-chain relayer. Before
-      that, a long run of Solana hackathons — the shelf below has the receipts. Started all of
-      this in high school; nobody checked my age.
-    </p>
+    <div class="history reveal">
+      <div class="history-line" aria-hidden="true"></div>
+      <div class="history-node current"><time>now</time><b>Beanstalk</b><span>co-founder · product / frontend / growth</span></div>
+      <div class="history-node"><time>then</time><b>Spicenet</b><span>protocol engineer · cross-chain relayer</span></div>
+      <div class="history-node"><time>before</time><b>Solana hackathons</b><span>kept building · kept accidentally winning</span></div>
+      <div class="history-node origin"><time>origin</time><b>high school</b><span>nobody checked my age</span></div>
+    </div>
   </section>
 
   <Shelf />
 
   <Lab />
 
-  <section>
+  <section class="slide-escaped" id="escaped">
     <div class="label reveal"><span class="n">(05)</span> things that escaped</div>
+    <p class="escaped-title reveal">Side quests that<br/>refused to stay small.</p>
     <div class="rows reveal">
       <a class="row" href="https://github.com/AnishDe12020/unsus" target="_blank" rel="noopener">
         <span class="name">unsus</span>
@@ -75,20 +96,28 @@ import Deck from '../components/Deck.astro';
     </div>
   </section>
 
-  <section>
+  <section class="slide-writing" id="writing">
     <div class="label reveal"><span class="n">(06)</span> i write sometimes</div>
-    <p class="body reveal">
-      Crypto, web3, ai — new posts land at <a href="/blog">/blog</a>, written in
-      markdown and published straight from the repo.
-    </p>
+    <div class="writing-layout reveal">
+      <p class="writing-word">WORDS<br/><i>over</i><br/>NOISE</p>
+      <div class="writing-copy">
+        <span class="micro">an independent field journal</span>
+        <p class="body">Crypto, web3, ai — new posts land at <a href="/blog">/blog</a>, written in markdown and published straight from the repo.</p>
+        <a class="writing-link" href="/blog"><span>open the notebook</span><b>↗</b></a>
+        <div class="writing-file" aria-hidden="true"><span>src/content/blog/</span><em>+</em><span>new-entry.md</span><small>status: waiting for something worth saying</small></div>
+      </div>
+    </div>
   </section>
 
-  <section>
+  <section class="slide-meanwhile" id="meanwhile">
     <div class="label reveal"><span class="n">(07)</span> meanwhile</div>
-    <div class="meanwhile reveal">
-      <div class="mrow"><span class="mkey">watching</span><span class="mval">the f1 season, rooting for chaos</span></div>
-      <div class="mrow"><span class="mkey">lifting</span><span class="mval">progressive overload</span></div>
-      <div class="mrow"><span class="mkey">rabbit hole</span><span class="mval">agents that babysit other agents</span></div>
+    <div class="radar reveal">
+      <div class="radar-scope" aria-hidden="true"><i></i><i></i><i></i><span></span><b>idle processes<br/>are still processes</b></div>
+      <div class="meanwhile">
+        <div class="mrow"><span class="mkey">watching</span><span class="mval">the f1 season, rooting for chaos</span></div>
+        <div class="mrow"><span class="mkey">lifting</span><span class="mval">progressive overload</span></div>
+        <div class="mrow"><span class="mkey">rabbit hole</span><span class="mval">agents that babysit other agents</span></div>
+      </div>
     </div>
   </section>
 
@@ -96,8 +125,9 @@ import Deck from '../components/Deck.astro';
 
   <Specimen />
 
-  <section>
+  <section class="slide-contact" id="contact">
     <div class="label reveal"><span class="n">(10)</span> find me</div>
+    <p class="contact-title reveal">Open a<br/>channel.</p>
     <div class="rows reveal">
       <a class="row" href="https://twitter.com/AnishDe12020" target="_blank" rel="noopener">
         <span class="name">x / twitter</span><span class="desc">where i mostly live</span>
@@ -115,7 +145,7 @@ import Deck from '../components/Deck.astro';
     <p class="aside reveal">got a weird idea that needs a co-conspirator? <a href="#" id="amalink">pitch it</a> — subject line's already filled in.</p>
   </section>
 
-  <footer class="reveal">
+  <footer class="reveal" id="fin">
     <span id="voidline">you found the void. it found you back.</span>
     <span>bengaluru, india</span>
     <span>&copy; 2026 / <button id="ver" title="click">v3.0.0</button> / <a href="https://github.com/AnishDe12020" target="_blank" rel="noopener">source</a> / analytics offline</span>

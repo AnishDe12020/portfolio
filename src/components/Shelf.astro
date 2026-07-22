@@ -8,8 +8,9 @@ const WINS = [
   { name: 'twnft',     meta: "thirdweb · winner · '22",   rank: 1 },
 ];
 ---
-<section>
+<section class="slide-shelf" id="shelf">
   <div class="label reveal"><span class="n">(03)</span> the shelf</div>
+  <div class="shelf-head reveal" aria-hidden="true"><strong>05</strong><span>proof of work<br/>proof of sleep deprivation</span></div>
   <div class="shelf reveal">
     {WINS.map((w) => (
       <div class="trophy" title={w.meta}>

@@ -20,13 +20,13 @@ export const hero = {
 export const lede =
   'I\'m a co-founder at ' +
   '<a href="https://beanstalk.fi" target="_blank" rel="noopener">Beanstalk</a>. We\'re making it ' +
-  'possible to own stocks, gold, and treasuries onchain, as simply as ordering food, for the people ' +
-  'most fintech skips over. I build on <b>Solana</b>, mostly in Rust, from Bangalore.';
+  'possible to own stocks, gold, and treasuries onchain, as simply as ordering food. I build on ' +
+  '<b>Solana</b>, mostly in Rust, from Bangalore.';
 
 /** (01) right now. */
 export const now =
-  'Mostly Rust and infrastructure — the plumbing under the product — plus whatever else a small ' +
-  'team needs that week. CS at PES University in the background.';
+  'Mostly Rust and infrastructure for real-world assets onchain. CS at PES University in the ' +
+  'background.';
 
 /** (02) before this. */
 export const before =
@@ -87,7 +87,7 @@ export const meanwhile = [
 
 /** (10) find me — the email row is handled separately (anti-scraper decode). */
 export const contact = [
-  { name: 'x / twitter', url: 'https://twitter.com/AnishDe12020', desc: 'where i mostly live', meta: '@AnishDe12020' },
+  { name: 'x / twitter', url: 'https://twitter.com/AnishDe12020', desc: 'where i actually post', meta: '@AnishDe12020' },
   { name: 'github', url: 'https://github.com/AnishDe12020', desc: 'code, mostly rust lately', meta: '@AnishDe12020' },
 ];
 

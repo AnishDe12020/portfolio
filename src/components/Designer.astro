@@ -58,18 +58,36 @@
   .dopt.on{ color:var(--ink); border-color:var(--ink-faint); }
   .dfoot{ margin-top:8px; padding-top:8px; border-top:1px solid var(--ink-faint); color:var(--ink-faint); }
   .dfoot b{ color:var(--ink-dim); font-weight:400; }
+
+  /* section checkboxes — toggle whole sections on/off to preview the page */
+  .dsecs{ margin-top:8px; padding-top:8px; border-top:1px solid var(--ink-faint); }
+  .dsechead{ display:flex; justify-content:space-between; align-items:center; color:var(--ink-dim); letter-spacing:.24em; margin-bottom:4px; }
+  .dsecall{ font:inherit; letter-spacing:inherit; text-transform:inherit; color:var(--ink-faint); background:none; border:none; cursor:pointer; padding:0; }
+  .dsecall:hover{ color:var(--ink-dim); }
+  .dcheck{
+    display:flex; align-items:center; gap:9px; width:100%;
+    font:inherit; letter-spacing:inherit; text-transform:inherit; text-align:left;
+    color:var(--ink-faint); background:none; border:none; cursor:pointer;
+    padding:4px 0; min-height:24px;
+  }
+  .dcheck:hover{ color:var(--ink-dim); }
+  .dcheck.on{ color:var(--ink-dim); }
+  .dbox{ width:11px; height:11px; flex:none; border:1px solid var(--ink-faint); border-radius:2px; display:grid; place-items:center; }
+  .dcheck.on .dbox{ background:var(--live); border-color:var(--live); }
+  .dbox::after{ content:''; width:4px; height:7px; margin-top:-1px; border:solid var(--void); border-width:0 1.5px 1.5px 0; transform:rotate(45deg) scale(0); transition:transform .12s ease; }
+  .dcheck.on .dbox::after{ transform:rotate(45deg) scale(1); }
+  @media (prefers-reduced-motion:reduce){ .dbox::after{ transition:none; } }
   @media (prefers-reduced-motion:reduce){ .dpanel{ animation:none; } }
 </style>
 
 <script>
   type Control = { key: string; label: string; options: string[]; default: string };
   const CONTROLS: Control[] = [
-    { key: 'theme',   label: 'theme',   options: ['void', 'hacker'],                 default: 'void' },
+    { key: 'theme',   label: 'theme',   options: ['void', 'ledger', 'hacker'],       default: 'void' },
     { key: 'crt',     label: 'crt',     options: ['full', 'flat'],                   default: 'full' },
-    { key: 'name',    label: 'name',    options: ['pixel', 'doto', 'serif', 'mono'], default: 'pixel' },
+    { key: 'name',    label: 'name',    options: ['pixel', 'doto', 'serif', 'mono'], default: 'mono' },
     { key: 'body',    label: 'body',    options: ['spectral', 'mono'],               default: 'spectral' },
     { key: 'density', label: 'density', options: ['cozy', 'compact'],                default: 'cozy' },
-    { key: 'flow',    label: 'flow',    options: ['scroll', 'deck'],                 default: 'deck' },
     { key: 'lab',     label: 'lab',     options: ['listed', 'redacted'],             default: 'listed' },
     { key: 'signal',  label: 'signal',  options: ['red', 'amber', 'green'],          default: 'red' },
     { key: 'grain',   label: 'grain',   options: ['on', 'off'],                      default: 'on' },
@@ -129,9 +147,91 @@
     rowEls[c.key] = row;
   }
 
+  // ── section checkboxes: toggle whole sections on/off to preview the page ──
+  const SEC_STORE = 'pf-sections';
+  // every top-level block of the page with an id — intro, the numbered
+  // sections, and the footer. Friendly names for the ones without a .label.
+  const SEC_NAMES: Record<string, string> = { intro: 'intro', fin: 'the end' };
+  const sections = [...document.querySelectorAll<HTMLElement>('main > [id]')];
+  const secLabel = (el: HTMLElement) => {
+    const l = el.querySelector('.label');
+    return l ? l.textContent!.replace(/\s+/g, ' ').trim() : SEC_NAMES[el.id] || el.id;
+  };
+  const off = new Set<string>((() => {
+    try { return JSON.parse(localStorage.getItem(SEC_STORE) || '[]'); } catch { return []; }
+  })());
+  const checks: Record<string, HTMLButtonElement> = {};
+  let offStyle = document.getElementById('pf-off-style') as HTMLStyleElement | null;
+
+  function applyOff() {
+    if (!offStyle) {
+      offStyle = document.createElement('style');
+      offStyle.id = 'pf-off-style';
+      document.head.appendChild(offStyle);
+    }
+    const ids = [...off].filter((id) => document.getElementById(id));
+    offStyle.textContent = ids.length ? ids.map((i) => '#' + i).join(',') + '{display:none!important}' : '';
+    localStorage.setItem(SEC_STORE, JSON.stringify([...off]));
+  }
+  function paintCheck(id: string) {
+    const el = checks[id];
+    if (!el) return;
+    const on = !off.has(id);
+    el.classList.toggle('on', on);
+    el.setAttribute('aria-pressed', String(on));
+  }
+
+  if (sections.length) {
+    const wrap = document.createElement('div');
+    wrap.className = 'dsecs';
+
+    const head = document.createElement('div');
+    head.className = 'dsechead';
+    const title = document.createElement('span');
+    title.textContent = 'sections';
+    const all = document.createElement('button');
+    all.type = 'button';
+    all.className = 'dsecall';
+    all.textContent = 'show all';
+    all.addEventListener('click', () => {
+      off.clear(); applyOff();
+      for (const id of Object.keys(checks)) paintCheck(id);
+    });
+    head.append(title, all);
+    wrap.appendChild(head);
+
+    for (const sec of sections) {
+      const id = sec.id;
+      const label = secLabel(sec);
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'dcheck';
+      b.setAttribute('aria-label', `toggle section: ${label}`);
+      const box = document.createElement('span');
+      box.className = 'dbox';
+      const txt = document.createElement('span');
+      txt.textContent = label;
+      b.append(box, txt);
+      b.addEventListener('click', () => {
+        if (off.has(id)) off.delete(id); else off.add(id);
+        applyOff();
+        paintCheck(id);
+      });
+      wrap.appendChild(b);
+      checks[id] = b;
+      paintCheck(id);
+    }
+
+    holder.appendChild(wrap);
+    applyOff(); // sync the style tag with the restored state
+  }
+
   document.getElementById('dreset')!.addEventListener('click', () => {
     for (const c of CONTROLS) set(c, c.default);
     localStorage.removeItem(STORE);
+    off.clear();
+    applyOff();
+    for (const id of Object.keys(checks)) paintCheck(id);
   });
 
   const toggle = document.getElementById('dtoggle') as HTMLButtonElement;

@@ -7,7 +7,9 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://anishde.dev',
   devToolbar: { enabled: false },
-  integrations: [mdx(), sitemap()],
+  // /blog is parked until there's a real post in it — the page still builds and
+  // is reachable by URL, it's just not linked from the site or listed for crawlers.
+  integrations: [mdx(), sitemap({ filter: (page) => !page.includes('/blog') })],
   markdown: {
     // css-variables theme → code colors come from our tokens (see global.css),
     // so highlighting follows the active theme instead of shipping its own

@@ -1,10 +1,8 @@
-<section class="specimen slide-specimen reveal" id="specimen">
-  <div class="label" style="justify-content:center"><span class="n">(09)</span> specimen</div>
-  <div class="specimen-readout specimen-readout-a" aria-hidden="true"><span>GEN / 009</span><b>bilateral<br/>void fauna</b></div>
+<section class="specimen reveal" id="specimen">
+  <div class="label" style="justify-content:center">specimen</div>
   <button class="frame" id="spriteButton" type="button" aria-label="Generate a new pixel specimen">
     <canvas id="sprite" width="11" height="11" aria-hidden="true"></canvas>
   </button>
-  <div class="specimen-readout specimen-readout-b" aria-hidden="true"><span>STATUS</span><b>alive-ish</b><small>click organism<br/>to mutate</small></div>
   <div class="cap" aria-live="polite">seed <b id="seed">0x0000</b> &nbsp;/&nbsp; activate to re-roll</div>
 </section>
 
@@ -28,8 +26,14 @@
   const button = document.getElementById('spriteButton') as HTMLButtonElement;
   const sx = cv.getContext('2d')!;
   const seedEl = document.getElementById('seed')!;
-  const shades = ['#ece8e0', '#b8b3a8', '#6b675e'];
+  function pal() {
+    return document.documentElement.dataset.theme === 'ledger'
+      ? { body: ['#1c1811', '#4a4235', '#6b6355'], eye: '#1c1811' }
+      : { body: ['#ece8e0', '#b8b3a8', '#6b675e'], eye: '#ece8e0' };
+  }
   let eyes: number[][] = [];
+  let eyeColor = pal().eye;
+  let lastSeed = 0;
 
   function mb32(a: number) {
     return function () {
@@ -40,18 +44,20 @@
     };
   }
   function drawSprite(seed: number) {
+    lastSeed = seed;
+    const P = pal(); eyeColor = P.eye;
     const r = mb32(seed), N = 11, mid = 5;
     sx.clearRect(0, 0, N, N);
     for (let y = 1; y < N; y++)
       for (let x = 1; x <= mid; x++) {
         if (r() < 0.52) {
-          sx.fillStyle = shades[(r() * 3) | 0];
+          sx.fillStyle = P.body[(r() * 3) | 0];
           sx.fillRect(x, y, 1, 1); sx.fillRect(N - 1 - x, y, 1, 1);
         }
       }
     const ey = 3 + ((r() * 3) | 0), ex = 2 + ((r() * 2) | 0);
     eyes = [[ex, ey], [N - 1 - ex, ey]];
-    sx.fillStyle = '#ece8e0';
+    sx.fillStyle = eyeColor;
     eyes.forEach(([x, y]) => sx.fillRect(x, y, 1, 1));
     seedEl.textContent = '0x' + (seed >>> 0).toString(16).padStart(4, '0').slice(0, 6);
   }
@@ -66,7 +72,7 @@
     sx.clearRect(eyes[0][0], eyes[0][1], 1, 1);
     sx.clearRect(eyes[1][0], eyes[1][1], 1, 1);
     setTimeout(() => {
-      sx.fillStyle = '#ece8e0';
+      sx.fillStyle = eyeColor;
       eyes.forEach(([x, y]) => sx.fillRect(x, y, 1, 1));
     }, 130);
   }, 3800);
@@ -81,4 +87,5 @@
   button.addEventListener('click', reroll);
   addEventListener('pf:konami', reroll);
   addEventListener('pf:reroll', reroll);
+  addEventListener('pf:designer', (e) => { if ((e as CustomEvent).detail?.key === 'theme') drawSprite(lastSeed); });
 </script>

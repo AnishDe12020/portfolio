@@ -1,13 +1,13 @@
 ---
 import '../styles/global.css';
 import '../styles/hacker.css';
+import '../styles/ledger.css';
 const {
   title = 'Anish De',
   description = 'Co-founder at Beanstalk — making onchain investing as easy as ordering food. Solana, Rust, Bangalore.',
   image = '/og.png',
   type = 'website',
   published = null,
-  deck = false, // page opts into (flow: deck) slide mode — see Deck.astro
 } = Astro.props;
 const site = Astro.site ?? new URL('https://anishde.dev');
 const canonical = new URL(Astro.url.pathname, site);
@@ -52,12 +52,21 @@ const umamiHost = (import.meta.env.PUBLIC_UMAMI_HOST || 'https://umami.anishde.d
       var s = JSON.parse(localStorage.getItem('pf-designer') || '{}');
       var qp = new URLSearchParams(location.search);
       var d = document.documentElement.dataset;
-      for (var k of ['name', 'body', 'density', 'flow', 'lab', 'signal', 'grain', 'scan', 'theme', 'crt']) {
+      for (var k of ['name', 'body', 'density', 'lab', 'signal', 'grain', 'scan', 'theme', 'crt']) {
         var v = qp.get(k) || s[k];
         if (v) d[k] = v;
       }
-      if (!d.flow) d.flow = 'deck'; // new visitors land in the deck; the toggle still wins
       if (s.access) d.access = s.access;
+    } catch (e) {}
+    // hidden sections (designer checkboxes) — hide before paint, no flash
+    try {
+      var off = JSON.parse(localStorage.getItem('pf-sections') || '[]');
+      if (Array.isArray(off) && off.length) {
+        var st = document.createElement('style');
+        st.id = 'pf-off-style';
+        st.textContent = off.map(function (i) { return '#' + i; }).join(',') + '{display:none!important}';
+        document.head.appendChild(st);
+      }
     } catch (e) {}
     // sync the browser chrome with the active theme's void —
     // before paint, then on every theme/signal flip
@@ -67,6 +76,7 @@ const umamiHost = (import.meta.env.PUBLIC_UMAMI_HOST || 'https://umami.anishde.d
         var d = document.documentElement.dataset;
         var c = '#060606';
         if (d.theme === 'hacker') c = d.signal === 'green' ? '#010401' : d.signal === 'amber' ? '#070500' : '#080302';
+        else if (d.theme === 'ledger') c = '#f4efe4';
         meta.setAttribute('content', c);
       }
       sync();
@@ -82,7 +92,7 @@ const umamiHost = (import.meta.env.PUBLIC_UMAMI_HOST || 'https://umami.anishde.d
   <div class="scan"></div>
   <div class="vignette"></div>
   <div class="wrap">
-    <main class={deck ? 'deckroot' : undefined}>
+    <main>
       <slot />
     </main>
   </div>

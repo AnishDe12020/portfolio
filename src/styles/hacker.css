@@ -41,7 +41,6 @@ html[data-theme="hacker"] .label::before{
   content:var(--prompt) ' cat'; width:auto; height:auto; background:none;
   color:var(--ink-body); margin-right:2px;
 }
-html[data-theme="hacker"] .label .n{ display:none; }
 
 /* copy + type */
 html[data-theme="hacker"] .lede{ font-size:clamp(.98rem,3.2vw,1.1rem); line-height:1.75; }

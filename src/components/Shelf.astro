@@ -1,18 +1,12 @@
 ---
 // Hackathon wins as pixel trophies. rank 1 renders bright, rank 2 dimmer.
-const WINS = [
-  { name: 'decharge',  meta: "renaissance · 2nd · '24",   rank: 2 },
-  { name: 'vaxchain',  meta: "hyperdrive · depin · '23",  rank: 1 },
-  { name: 'vaultacks', meta: "stackathon · 1st · '22",    rank: 1 },
-  { name: 'webhooks',  meta: "medusa · technical · '22",  rank: 1 },
-  { name: 'twnft',     meta: "thirdweb · winner · '22",   rank: 1 },
-];
+// Edit the list in src/data/content.ts.
+import { trophies, shelfAside } from '../data/content';
 ---
-<section class="slide-shelf" id="shelf">
-  <div class="label reveal"><span class="n">(03)</span> the shelf</div>
-  <div class="shelf-head reveal" aria-hidden="true"><strong>05</strong><span>proof of work<br/>proof of sleep deprivation</span></div>
+<section id="shelf">
+  <div class="label reveal">the shelf</div>
   <div class="shelf reveal">
-    {WINS.map((w) => (
+    {trophies.map((w) => (
       <div class="trophy" title={w.meta}>
         <canvas width="11" height="11" data-rank={w.rank}></canvas>
         <span class="tname">{w.name}</span>
@@ -20,7 +14,7 @@ const WINS = [
       </div>
     ))}
   </div>
-  <p class="aside">five-ish total. one grew up into a funded company.</p>
+  <p class="aside">{shelfAside}</p>
 </section>
 
 <style>
@@ -48,18 +42,24 @@ const WINS = [
     '00111111100',
     '00111111100',
   ];
-  const SHADES: Record<string, string[]> = {
-    '1': ['#ece8e0', '#ece8e0', '#e3dfd5', '#b8b3a8'],
-    '2': ['#b8b3a8', '#b8b3a8', '#a5a096', '#6b675e'],
+  const PALETTES: Record<string, Record<string, string[]>> = {
+    void:   { '1': ['#ece8e0', '#ece8e0', '#e3dfd5', '#b8b3a8'], '2': ['#b8b3a8', '#b8b3a8', '#a5a096', '#6b675e'] },
+    ledger: { '1': ['#1c1811', '#1c1811', '#2c261d', '#4a4235'], '2': ['#5a5244', '#5a5244', '#6b6355', '#8a8073'] },
   };
-  for (const cv of document.querySelectorAll<HTMLCanvasElement>('.trophy canvas')) {
-    const ctx = cv.getContext('2d')!;
-    const shades = SHADES[cv.dataset.rank ?? '1'];
-    for (let y = 0; y < 11; y++)
-      for (let x = 0; x < 11; x++)
-        if (TROPHY[y][x] === '1') {
-          ctx.fillStyle = shades[(Math.random() * shades.length) | 0];
-          ctx.fillRect(x, y, 1, 1);
-        }
+  function paint() {
+    const pal = PALETTES[document.documentElement.dataset.theme === 'ledger' ? 'ledger' : 'void'];
+    for (const cv of document.querySelectorAll<HTMLCanvasElement>('.trophy canvas')) {
+      const ctx = cv.getContext('2d')!;
+      const shades = pal[cv.dataset.rank ?? '1'];
+      ctx.clearRect(0, 0, 11, 11);
+      for (let y = 0; y < 11; y++)
+        for (let x = 0; x < 11; x++)
+          if (TROPHY[y][x] === '1') {
+            ctx.fillStyle = shades[(Math.random() * shades.length) | 0];
+            ctx.fillRect(x, y, 1, 1);
+          }
+    }
   }
+  paint();
+  addEventListener('pf:designer', (e) => { if ((e as CustomEvent).detail?.key === 'theme') paint(); });
 </script>

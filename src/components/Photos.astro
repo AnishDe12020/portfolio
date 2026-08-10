@@ -26,8 +26,8 @@ const PHOTOS: { src: string; alt: string; href?: string }[] = [
 ];
 const SLOTS = 4;
 ---
-<section class="slide-photos" id="photos">
-  <div class="label reveal"><span class="n">(08)</span> through a lens</div>
+<section id="photos">
+  <div class="label reveal">through a lens</div>
   <div class="shots reveal">
     {Array.from({ length: SLOTS }).map((_, i) =>
       PHOTOS[i] ? (

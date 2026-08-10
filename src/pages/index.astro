@@ -9,115 +9,38 @@ import Designer from '../components/Designer.astro';
 import Terminal from '../components/Terminal.astro';
 import Hacker from '../components/Hacker.astro';
 import Saver from '../components/Saver.astro';
-import Deck from '../components/Deck.astro';
+import { lede, now, before, sideQuests, contact, footer } from '../data/content';
 ---
-<Base deck>
-  <div class="opener slide-intro" id="hello">
+<Base>
+  <div id="intro">
     <Hero />
-
-    <p class="lede reveal">
-      I build financial plumbing on <b>Solana</b>. Co-founder
-      at <a href="https://beanstalk.fi" target="_blank" rel="noopener">Beanstalk</a>, where owning
-      stocks, gold, and treasuries onchain gets as easy as ordering food — for the people fintech
-      quietly skips. Done from Bangalore, on questionable amounts of sleep.
-    </p>
-    <div class="intro-coordinates reveal" aria-hidden="true">
-      <span>12.9716° N</span>
-      <span>77.5946° E</span>
-      <span class="intro-rule"></span>
-      <span>scroll to traverse</span>
-    </div>
+    <p class="lede reveal" set:html={lede}></p>
   </div>
 
-  <section class="slide-now" id="now">
-    <div class="label reveal"><span class="n">(01)</span> right now</div>
-    <div class="now-layout reveal">
-      <div class="now-primary">
-        <span class="micro">active system / 2026</span>
-        <strong>BEAN<br/>STALK</strong>
-        <p class="body">
-          I run product, frontend, and growth at <b>Beanstalk</b>. Somehow also
-          still finishing an engineering degree at PES University.
-        </p>
-      </div>
-      <div class="now-console" aria-label="Current roles">
-        <div><span>01</span><b>product</b><small>make the hard thing obvious</small></div>
-        <div><span>02</span><b>frontend</b><small>make the obvious thing feel good</small></div>
-        <div><span>03</span><b>growth</b><small>make sure somebody sees it</small></div>
-        <div class="now-degree"><span>04</span><b>degree</b><small>still compiling</small></div>
-      </div>
-    </div>
+  <section id="now">
+    <div class="label reveal">right now</div>
+    <p class="body reveal" set:html={now}></p>
   </section>
 
-  <section class="slide-before" id="before">
-    <div class="label reveal"><span class="n">(02)</span> before this</div>
-    <div class="history reveal">
-      <div class="history-line" aria-hidden="true"></div>
-      <div class="history-node current"><time>now</time><b>Beanstalk</b><span>co-founder · product / frontend / growth</span></div>
-      <div class="history-node"><time>then</time><b>Spicenet</b><span>protocol engineer · cross-chain relayer</span></div>
-      <div class="history-node"><time>before</time><b>Solana hackathons</b><span>kept building · kept accidentally winning</span></div>
-      <div class="history-node origin"><time>origin</time><b>high school</b><span>nobody checked my age</span></div>
-    </div>
+  <section id="before">
+    <div class="label reveal">before this</div>
+    <p class="body reveal" set:html={before}></p>
   </section>
 
   <Shelf />
 
   <Lab />
 
-  <section class="slide-escaped" id="escaped">
-    <div class="label reveal"><span class="n">(05)</span> things that escaped</div>
-    <p class="escaped-title reveal">Side quests that<br/>refused to stay small.</p>
+  <section id="escaped">
+    <div class="label reveal">things that escaped</div>
     <div class="rows reveal">
-      <a class="row" href="https://github.com/AnishDe12020/unsus" target="_blank" rel="noopener">
-        <span class="name">unsus</span>
-        <span class="desc">npm firewall — installs dependencies like they're guilty until proven boring</span>
-        <span class="meta">ts <span class="a">&#8599;</span></span>
-      </a>
-      <a class="row" href="https://github.com/AnishDe12020/solsignal" target="_blank" rel="noopener">
-        <span class="name">solsignal</span>
-        <span class="desc">verifiable trading-signal protocol on solana, entered a hackathon as "batman"</span>
-        <span class="meta">rust <span class="a">&#8599;</span></span>
-      </a>
-      <a class="row" href="https://github.com/AnishDe12020/murmur" target="_blank" rel="noopener">
-        <span class="name">murmur</span>
-        <span class="desc">local-first cli that psychoanalyzes x profiles so you don't have to</span>
-        <span class="meta">ts <span class="a">&#8599;</span></span>
-      </a>
-      <a class="row" href="https://github.com/AnishDe12020/thermac" target="_blank" rel="noopener">
-        <span class="name">thermac</span>
-        <span class="desc">all 168 temperature sensors in your mac, from the terminal</span>
-        <span class="meta">sh <span class="a">&#8599;</span></span>
-      </a>
-      <a class="row" href="https://github.com/AnishDe12020?tab=repositories" target="_blank" rel="noopener">
-        <span class="name">the graveyard</span>
-        <span class="desc">rayauth, sendo, secli — repos at rest</span>
-        <span class="meta">more <span class="a">&#8599;</span></span>
-      </a>
-    </div>
-  </section>
-
-  <section class="slide-writing" id="writing">
-    <div class="label reveal"><span class="n">(06)</span> i write sometimes</div>
-    <div class="writing-layout reveal">
-      <p class="writing-word">WORDS<br/><i>over</i><br/>NOISE</p>
-      <div class="writing-copy">
-        <span class="micro">an independent field journal</span>
-        <p class="body">Crypto, web3, ai — new posts land at <a href="/blog">/blog</a>, written in markdown and published straight from the repo.</p>
-        <a class="writing-link" href="/blog"><span>open the notebook</span><b>↗</b></a>
-        <div class="writing-file" aria-hidden="true"><span>src/content/blog/</span><em>+</em><span>new-entry.md</span><small>status: waiting for something worth saying</small></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="slide-meanwhile" id="meanwhile">
-    <div class="label reveal"><span class="n">(07)</span> meanwhile</div>
-    <div class="radar reveal">
-      <div class="radar-scope" aria-hidden="true"><i></i><i></i><i></i><span></span><b>idle processes<br/>are still processes</b></div>
-      <div class="meanwhile">
-        <div class="mrow"><span class="mkey">watching</span><span class="mval">the f1 season, rooting for chaos</span></div>
-        <div class="mrow"><span class="mkey">lifting</span><span class="mval">progressive overload</span></div>
-        <div class="mrow"><span class="mkey">rabbit hole</span><span class="mval">agents that babysit other agents</span></div>
-      </div>
+      {sideQuests.map((s) => (
+        <a class="row" href={s.url} target="_blank" rel="noopener">
+          <span class="name">{s.name}</span>
+          <span class="desc">{s.desc}</span>
+          <span class="meta">{s.meta} <span class="a">&#8599;</span></span>
+        </a>
+      ))}
     </div>
   </section>
 
@@ -125,18 +48,15 @@ import Deck from '../components/Deck.astro';
 
   <Specimen />
 
-  <section class="slide-contact" id="contact">
-    <div class="label reveal"><span class="n">(10)</span> find me</div>
-    <p class="contact-title reveal">Open a<br/>channel.</p>
+  <section id="contact">
+    <div class="label reveal">find me</div>
     <div class="rows reveal">
-      <a class="row" href="https://twitter.com/AnishDe12020" target="_blank" rel="noopener">
-        <span class="name">x / twitter</span><span class="desc">where i mostly live</span>
-        <span class="meta">@AnishDe12020 <span class="a">&#8599;</span></span>
-      </a>
-      <a class="row" href="https://github.com/AnishDe12020" target="_blank" rel="noopener">
-        <span class="name">github</span><span class="desc">code, mostly rust lately</span>
-        <span class="meta">@AnishDe12020 <span class="a">&#8599;</span></span>
-      </a>
+      {contact.map((c) => (
+        <a class="row" href={c.url} target="_blank" rel="noopener">
+          <span class="name">{c.name}</span><span class="desc">{c.desc}</span>
+          <span class="meta">{c.meta} <span class="a">&#8599;</span></span>
+        </a>
+      ))}
       <a class="row" href="#" id="emailrow">
         <span class="name">email</span><span class="desc">for anything longer</span>
         <span class="meta"><span id="emailtext">contact[at]anishde[dot]dev</span> <span class="a" id="emailhint">·&nbsp;decode</span></span>
@@ -146,13 +66,12 @@ import Deck from '../components/Deck.astro';
   </section>
 
   <footer class="reveal" id="fin">
-    <span id="voidline">you found the void. it found you back.</span>
-    <span>bengaluru, india</span>
-    <span>&copy; 2026 / <button id="ver" title="click">v3.0.0</button> / <a href="https://github.com/AnishDe12020" target="_blank" rel="noopener">source</a> / analytics offline</span>
+    <span id="voidline">{footer.void}</span>
+    <span>{footer.place}</span>
+    <span>&copy; 2026 / <button id="ver" title="click">{footer.version}</button> / <a href="https://github.com/AnishDe12020" target="_blank" rel="noopener">source</a> / analytics offline</span>
   </footer>
 
   <Hacker slot="fixed" />
-  <Deck slot="fixed" />
   <Designer slot="fixed" />
   <Terminal slot="fixed" />
   <Saver slot="fixed" />
@@ -209,7 +128,7 @@ import Deck from '../components/Deck.astro';
 
   /* footer version — click for the site's past lives */
   const ver = document.getElementById('ver')!;
-  const vers = ["v1 — a high schooler's html", 'v2 — next.js, 137 stars', "v3 — you're looking at it", 'v3.0.0'];
+  const vers = ["v1 — a high schooler's html", 'v2 — next.js, 137 stars', "v4 — you're looking at it", 'v4.0.0'];
   let vi = -1;
   ver.addEventListener('click', () => { vi = (vi + 1) % vers.length; ver.textContent = vers[vi]; });
 </script>

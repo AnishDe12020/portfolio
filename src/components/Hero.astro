@@ -1,12 +1,13 @@
 ---
+import { hero } from '../data/content';
 const name = 'ANISH DE';
 const letters = [...name];
 ---
 <header class="hero">
   <div class="topline">
-    <button class="status" id="status" title="click for another one">
-      <span class="dot"></span><span id="statusText">building beanstalk</span>
-    </button>
+    <span class="status">
+      <span class="dot"></span><span id="statusText">{hero.status}</span>
+    </span>
     <span class="place"><span class="loc">bengaluru · </span><span id="clock">--:--</span> ist<span id="wx"></span></span>
   </div>
 
@@ -20,7 +21,7 @@ const letters = [...name];
     <div class="m m-mono">anish de<span class="cursor"></span></div>
   </div>
 
-  <div class="byline">co-founder, <b>beanstalk</b> · previously spicenet</div>
+  <div class="byline" set:html={hero.byline}></div>
 </header>
 
 <style>
@@ -32,11 +33,7 @@ const letters = [...name];
     font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:lowercase;
     color:var(--ink-dim); margin-bottom:clamp(34px, 6vh, 56px);
   }
-  .status{
-    display:flex; align-items:center; gap:8px;
-    font:inherit; letter-spacing:inherit; text-transform:inherit; color:inherit;
-    background:none; border:none; cursor:pointer; padding:0;
-  }
+  .status{ display:flex; align-items:center; gap:8px; }
   .dot{
     width:6px; height:6px; border-radius:50%; background:var(--live); flex:none;
     animation:pulse 2.6s ease-out infinite;
@@ -53,10 +50,10 @@ const letters = [...name];
   /* ---- the name: one of four treatments, picked in the designer ---- */
   .m{ display:none; }
 
-  html:not([data-name]) .m-pixel, html[data-name="pixel"] .m-pixel{ display:block; }
+  html[data-name="pixel"] .m-pixel{ display:block; }
   html[data-name="doto"] .m-doto{ display:block; }
   html[data-name="serif"] .m-serif{ display:block; }
-  html[data-name="mono"] .m-mono{ display:block; }
+  html:not([data-name]) .m-mono, html[data-name="mono"] .m-mono{ display:block; }
 
   .m-pixel{ height:49px; cursor:default; }
 
@@ -100,6 +97,7 @@ const letters = [...name];
 
 <script>
   import { GLYPHS, pixelCols } from '../lib/pixel';
+  import { hero } from '../data/content';
 
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const hover = matchMedia('(hover: hover)').matches;
@@ -131,26 +129,19 @@ const letters = [...name];
   weather();
   setInterval(weather, 30 * 60 * 1000);
 
-  /* status — click the dot for the next one. it doesn't rotate on its own;
-     nothing on this page should move unless asked. */
+  /* status — a static "currently doing" line. the hidden f1 egg briefly
+     flashes over it, then it settles back. nothing here moves on its own. */
   const st = document.getElementById('statusText')!;
-  const states = [
-    'building beanstalk',
-    'at the gym, allegedly',
-    'negotiating with rustc',
-  ];
-  let si = 0;
-  const hour = new Date().getHours();
-  if (hour >= 0 && hour < 5) st.textContent = 'why are we both awake';
+  let revert: ReturnType<typeof setTimeout>;
   function flash(msg: string) {
+    clearTimeout(revert);
     st.style.opacity = '0';
     setTimeout(() => { st.textContent = msg; st.style.opacity = '1'; }, 300);
+    revert = setTimeout(() => {
+      st.style.opacity = '0';
+      setTimeout(() => { st.textContent = hero.status; st.style.opacity = '1'; }, 300);
+    }, 3200);
   }
-  function next() {
-    si = (si + 1) % states.length;
-    flash(states[si]);
-  }
-  document.getElementById('status')!.addEventListener('click', next);
 
   /* egg: type "f1" anywhere (also :f1 in the terminal) */
   let lastKey = '', lastAt = 0;
@@ -168,13 +159,20 @@ const letters = [...name];
   const TEXT = 'ANISH DE';
   const pixel = document.getElementById('mpixel') as HTMLCanvasElement;
   const px = pixel.getContext('2d')!;
-  const shades = ['#ece8e0', '#ece8e0', '#ece8e0', '#ece8e0', '#b8b3a8', '#b8b3a8', '#6b675e'];
+  function pixelShades() {
+    return document.documentElement.dataset.theme === 'ledger'
+      ? ['#1c1811', '#1c1811', '#1c1811', '#2c261d', '#4a4235', '#4a4235', '#7c746a']
+      : ['#ece8e0', '#ece8e0', '#ece8e0', '#ece8e0', '#b8b3a8', '#b8b3a8', '#6b675e'];
+  }
+  let shades = pixelShades();
+  const hiColor = () => (document.documentElement.dataset.theme === 'ledger' ? '#0d0b07' : '#fcfbf5');
   const dpr = Math.min(devicePixelRatio || 1, 2);
   let cells: { x: number; y: number; c: string }[] = [];
   let CELL = 7, cols = 0;
   let pmx = -9999, pmy = -9999;
 
   function buildPixel() {
+    shades = pixelShades();
     cols = pixelCols(TEXT);
     const maxW = pixel.parentElement!.clientWidth;
     CELL = Math.min(7, Math.floor(maxW / cols));
@@ -204,7 +202,7 @@ const letters = [...name];
       const X = cell.x * CELL, Y = cell.y * CELL;
       if (hover && !reduce) {
         const d = Math.hypot(X + CELL / 2 - pmx, Y + CELL / 2 - pmy);
-        px.fillStyle = d < 60 ? '#fcfbf5' : cell.c;
+        px.fillStyle = d < 60 ? hiColor() : cell.c;
       } else px.fillStyle = cell.c;
       px.fillRect(X, Y, dotSize, dotSize);
     }
@@ -212,6 +210,7 @@ const letters = [...name];
   buildPixel();
   let prt: ReturnType<typeof setTimeout>;
   addEventListener('resize', () => { clearTimeout(prt); prt = setTimeout(buildPixel, 150); });
+  addEventListener('pf:designer', (e) => { if ((e as CustomEvent).detail?.key === 'theme') buildPixel(); });
   if (hover && !reduce) {
     pixel.addEventListener('mousemove', (e) => {
       const b = pixel.getBoundingClientRect();

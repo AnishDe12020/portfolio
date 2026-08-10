@@ -1,42 +1,36 @@
 ---
 // Two renderings of the same section; the designer panel (bottom-left)
-// switches between them via html[data-lab].
+// switches between them via html[data-lab]. Content lives in src/data/content.ts.
+import { lab } from '../data/content';
 ---
-<section class="slide-lab" id="lab">
-  <div class="label reveal"><span class="n">(04)</span> the lab</div>
-  <div class="lab-stamp reveal" aria-hidden="true"><span>RESTRICTED</span><small>experiments in progress</small></div>
+<section id="lab">
+  <div class="label reveal">the lab</div>
 
   <div class="lab lab-listed reveal">
     <div class="rows">
-      <div class="row">
-        <span class="name">fleet</span>
-        <span class="desc">agentless dev-fleet orchestration in rust, over ssh + tailscale</span>
-        <span class="meta">[private]</span>
-      </div>
-      <div class="row">
-        <span class="name">cohear</span>
-        <span class="desc">low-latency lan audio sync, also rust because of course</span>
-        <span class="meta">[private]</span>
-      </div>
+      {lab.listed.map((p) => (
+        <div class="row">
+          <span class="name">{p.name}</span>
+          <span class="desc">{p.desc}</span>
+          <span class="meta">{p.meta}</span>
+        </div>
+      ))}
     </div>
-    <p class="aside">+ a few more in various states of denial. they ship when they ship.</p>
-    <p class="aside root-note">// decrypted. this is where the time actually goes.</p>
+    <p class="aside">{lab.aside}</p>
+    <p class="aside root-note">{lab.rootNote}</p>
   </div>
 
   <div class="lab lab-redacted reveal">
     <div class="rows">
-      <div class="row">
-        <span class="name">f<span class="redact" style="--n:4"></span></span>
-        <span class="desc">it orchestrates machines. that's all you get.</span>
-        <span class="meta">[classified]</span>
-      </div>
-      <div class="row">
-        <span class="name">c<span class="redact" style="--n:5"></span>r</span>
-        <span class="desc">audio, but faster than it has any right to be.</span>
-        <span class="meta">[classified]</span>
-      </div>
+      {lab.redacted.map((p) => (
+        <div class="row">
+          <span class="name">{p.head}<span class="redact" style={`--n:${p.redact}`}></span>{p.tail}</span>
+          <span class="desc">{p.desc}</span>
+          <span class="meta">{p.meta}</span>
+        </div>
+      ))}
     </div>
-    <p class="aside">declassified upon shipping.</p>
+    <p class="aside">{lab.redactedAside}</p>
   </div>
 </section>
 

@@ -1,21 +1,23 @@
-<section class="specimen reveal" id="specimen">
-  <div class="label" style="justify-content:center">specimen</div>
+{/* the site's pet: a tiny generative resident above the footer. it blinks,
+    it rerolls when poked, and the dvd screensaver borrows its face. */}
+<div class="specimen reveal" id="specimen">
   <button class="frame" id="spriteButton" type="button" aria-label="Generate a new pixel specimen">
     <canvas id="sprite" width="11" height="11" aria-hidden="true"></canvas>
   </button>
-  <div class="cap" aria-live="polite">seed <b id="seed">0x0000</b> &nbsp;/&nbsp; activate to re-roll</div>
-</section>
+  <div class="cap" aria-live="polite"><b id="seed">0x0000</b> · poke it</div>
+</div>
 
 <style>
-  .specimen{ margin-top:clamp(90px,15vh,150px); text-align:center; }
+  .specimen{ margin-top:clamp(72px,10vh,104px); text-align:center; }
   .frame{
-    display:inline-block; padding:18px; border:1px solid var(--ink-faint);
-    color:inherit; background:none; cursor:pointer;
+    display:inline-block; padding:10px; border:1px solid var(--ink-faint);
+    color:inherit; background:none; cursor:pointer; transition:border-color .2s ease;
   }
-  #sprite{ display:block; image-rendering:pixelated; width:176px; height:176px; }
+  .frame:hover{ border-color:var(--ink-dim); }
+  #sprite{ display:block; image-rendering:pixelated; width:66px; height:66px; }
   .cap{
     font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:lowercase;
-    color:var(--ink-faint); margin-top:16px;
+    color:var(--ink-faint); margin-top:10px;
   }
   .cap b{ color:var(--ink-dim); font-weight:400; }
 </style>

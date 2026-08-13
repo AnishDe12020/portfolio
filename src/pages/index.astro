@@ -46,8 +46,6 @@ import { lede, now, before, sideQuests, contact, footer } from '../data/content'
 
   <Photos />
 
-  <Specimen />
-
   <section id="contact">
     <div class="label reveal">find me</div>
     <div class="rows reveal">
@@ -62,8 +60,9 @@ import { lede, now, before, sideQuests, contact, footer } from '../data/content'
         <span class="meta"><span id="emailtext">contact[at]anishde[dot]dev</span> <span class="a" id="emailhint">·&nbsp;decode</span></span>
       </a>
     </div>
-    <p class="aside reveal">got a weird idea? <a href="#" id="amalink">pitch it</a> — the subject line's already filled in.</p>
   </section>
+
+  <Specimen />
 
   <footer class="reveal" id="fin">
     <span id="voidline">{footer.void}</span>
@@ -118,12 +117,6 @@ import { lede, now, before, sideQuests, contact, footer } from '../data/content'
     addEventListener('scrollend', finish, { once: true, capture: true });
     setTimeout(finish, 1200);
     row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  });
-
-  /* ama — mailto assembled on click, same no-scrapers rule as the email row */
-  document.getElementById('amalink')!.addEventListener('click', (e) => {
-    e.preventDefault();
-    location.href = 'mailto:' + addr + '?subject=' + encodeURIComponent('i have a weird idea');
   });
 
   /* footer version — click for the site's past lives */

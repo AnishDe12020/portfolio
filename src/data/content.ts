@@ -18,10 +18,9 @@ export const hero = {
 
 /** The opening paragraph. */
 export const lede =
-  'I\'m a co-founder at ' +
-  '<a href="https://beanstalk.fi" target="_blank" rel="noopener">Beanstalk</a>. We\'re making it ' +
-  'possible to own stocks, gold, and treasuries onchain, as simply as ordering food. I build on ' +
-  '<b>Solana</b>, mostly in Rust, from Bangalore.';
+  'I build <a href="https://beanstalk.fi" target="_blank" rel="noopener">Beanstalk</a>: stocks, ' +
+  'gold, and treasuries onchain, as easy to own as dinner is to order. Rust on <b>Solana</b>, ' +
+  'from Bangalore.';
 
 /** (01) right now. */
 export const now =

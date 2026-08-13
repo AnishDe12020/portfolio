@@ -43,7 +43,12 @@ const SLOTS = 4;
 </section>
 
 <style>
-  .shots{ display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; }
+  /* the photos breach the text column — the one section that gets to be wide */
+  .shots{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:10px;
+    width:min(848px, calc(100vw - 40px));
+    margin-inline:calc((100% - min(848px, calc(100vw - 40px))) / 2);
+  }
   @media (max-width:520px){ .shots{ grid-template-columns:repeat(2, 1fr); } }
   .shot{ aspect-ratio:1; display:block; border:1px solid var(--ink-faint); overflow:hidden; }
   .shot img{

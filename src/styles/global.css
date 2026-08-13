@@ -73,12 +73,12 @@ main{ padding:0 0 8vh; }
 @keyframes reveal-fallback{ to{ opacity:1; transform:none; } }
 
 /* shared text pieces */
-.lede{ font-size:clamp(1.18rem,4.2vw,1.38rem); line-height:1.55; color:var(--ink-body); margin-top:clamp(44px,7vh,68px); }
+.lede{ font-size:clamp(1.18rem,4.2vw,1.38rem); line-height:1.55; color:var(--ink-body); margin-top:clamp(36px,5vh,52px); }
 .lede b{ font-weight:400; color:var(--ink); }
 .lede a, p.body a{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--ink-faint); transition:border-color .2s ease; }
 .lede a:hover, p.body a:hover{ border-color:var(--ink-dim); }
 
-section{ margin-top:clamp(80px,12vh,120px); }
+section{ margin-top:clamp(56px,8vh,84px); }
 .label{
   font-family:var(--mono); font-size:11px; letter-spacing:.26em; text-transform:lowercase;
   color:var(--ink-dim); margin-bottom:26px; display:flex; align-items:center; gap:12px;
@@ -92,7 +92,7 @@ p.body b{ font-weight:400; color:var(--ink); }
 .rows{ border-top:1px solid var(--ink-faint); }
 .row{
   /* fixed name column so every desc starts on the same edge, list after list */
-  display:grid; grid-template-columns:138px 1fr auto; align-items:baseline; gap:18px;
+  display:grid; grid-template-columns:128px 1fr auto; align-items:baseline; gap:18px;
   padding:17px 4px;
   border-bottom:1px solid var(--ink-faint); color:inherit; text-decoration:none;
 }
@@ -127,7 +127,7 @@ html[data-body="mono"] .row .desc{ font-size:.84rem; }
 html[data-body="mono"] .mval{ font-size:.92rem; }
 
 /* designer: density */
-html[data-density="compact"] section{ margin-top:clamp(48px,7vh,72px); }
+html[data-density="compact"] section{ margin-top:clamp(40px,5vh,56px); }
 html[data-density="compact"] .lede{ margin-top:30px; }
 html[data-density="compact"] .label{ margin-bottom:16px; }
 html[data-density="compact"] .row{ padding:11px 4px; }
@@ -136,7 +136,7 @@ html[data-density="compact"] .specimen{ margin-top:clamp(60px,9vh,90px); }
 html[data-density="compact"] footer{ margin-top:clamp(56px,8vh,80px); padding-bottom:64px; }
 
 footer{
-  margin-top:clamp(90px,14vh,140px); padding:28px 0 clamp(36px,5vh,52px); border-top:1px solid var(--ink-faint);
+  margin-top:clamp(36px,5vh,52px); padding:28px 0 clamp(36px,5vh,52px); border-top:1px solid var(--ink-faint);
   font-family:var(--mono); font-size:11px; letter-spacing:.1em; color:var(--ink-faint);
   display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
 }

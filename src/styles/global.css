@@ -91,20 +91,23 @@ p.body b{ font-weight:400; color:var(--ink); }
 
 .rows{ border-top:1px solid var(--ink-faint); }
 .row{
-  display:flex; align-items:baseline; gap:18px; padding:17px 4px;
+  /* fixed name column so every desc starts on the same edge, list after list */
+  display:grid; grid-template-columns:138px 1fr auto; align-items:baseline; gap:18px;
+  padding:17px 4px;
   border-bottom:1px solid var(--ink-faint); color:inherit; text-decoration:none;
 }
 a.row{ transition:background .2s ease; }
 a.row:hover{ background:rgba(236,232,224,.025); }
 .row .name{ font-size:1.14rem; color:var(--ink); white-space:nowrap; }
-.row .desc{ font-size:.95rem; color:var(--ink-dim); flex:1; line-height:1.35; }
+.row .desc{ font-size:.95rem; color:var(--ink-dim); line-height:1.35; }
 .row .meta{ font-family:var(--mono); font-size:11px; letter-spacing:.12em; color:var(--ink-faint); white-space:nowrap; }
 .row .meta .a{ opacity:.6; transition:color .2s ease, opacity .2s ease; }
 a.row:hover .meta .a{ color:var(--live); opacity:1; }
 @media (max-width:520px){
-  .row{ flex-wrap:wrap; gap:4px 14px; }
-  .row .desc{ flex-basis:100%; order:3; }
-  .row .meta{ margin-left:auto; }
+  .row{ grid-template-columns:1fr auto; gap:4px 14px; }
+  .row .name{ grid-row:1; }
+  .row .meta{ grid-row:1; grid-column:2; justify-self:end; }
+  .row .desc{ grid-row:2; grid-column:1 / -1; }
 }
 .aside{ font-family:var(--mono); font-size:11px; letter-spacing:.08em; color:var(--ink-faint); margin-top:14px; }
 .aside a{ color:var(--ink-dim); text-decoration:none; border-bottom:1px solid var(--ink-faint); }
@@ -133,7 +136,7 @@ html[data-density="compact"] .specimen{ margin-top:clamp(60px,9vh,90px); }
 html[data-density="compact"] footer{ margin-top:clamp(56px,8vh,80px); padding-bottom:64px; }
 
 footer{
-  margin-top:clamp(90px,14vh,140px); padding:28px 0 clamp(70px,12vh,110px); border-top:1px solid var(--ink-faint);
+  margin-top:clamp(90px,14vh,140px); padding:28px 0 clamp(36px,5vh,52px); border-top:1px solid var(--ink-faint);
   font-family:var(--mono); font-size:11px; letter-spacing:.1em; color:var(--ink-faint);
   display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
 }

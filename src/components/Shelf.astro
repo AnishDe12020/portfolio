@@ -10,7 +10,7 @@ import { trophies, shelfAside } from '../data/content';
       <div class="trophy" title={w.meta}>
         <canvas width="11" height="11" data-rank={w.rank}></canvas>
         <span class="tname">{w.name}</span>
-        <span class="tmeta">{w.meta}</span>
+        <span class="tmeta">{w.meta.split(' \u00b7 ').join('\u00a0\u00b7 ')}</span>
       </div>
     ))}
   </div>
@@ -25,7 +25,7 @@ import { trophies, shelfAside } from '../data/content';
   }
   .trophy canvas{ width:55px; height:55px; image-rendering:pixelated; }
   .tname{ font-family:var(--mono); font-size:11px; letter-spacing:.1em; color:var(--ink); }
-  .tmeta{ font-family:var(--mono); font-size:9px; letter-spacing:.06em; color:var(--ink-faint); line-height:1.4; }
+  .tmeta{ font-family:var(--mono); font-size:9px; letter-spacing:.02em; color:var(--ink-faint); line-height:1.4; text-wrap:balance; }
 </style>
 
 <script>

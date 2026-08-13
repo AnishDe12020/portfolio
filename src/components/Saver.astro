@@ -1,8 +1,9 @@
 ---
-// After ~2.5 min of stillness the site rolls a screensaver, windows-xp style:
+// In hacker mode, ~2.5 min of stillness rolls a screensaver, windows-xp style:
 // dvd (the specimen), mystify, pipes, starfield, matrix, marquee. It cycles
 // to the next one every 45s unless a saver has been pinned. Any input ends it.
-// Corner hits (dvd) are counted, celebrated, and rerolled.
+// Corner hits (dvd) are counted, celebrated, and rerolled. Outside hacker mode
+// it never fires on its own — only via `:xp` preview, ?saver=, or pfSaver.start.
 //
 // The secret: `:xp` in the terminal opens a Display Properties dialog — full
 // luna chrome, live preview monitor — where a default saver can be set.
@@ -501,7 +502,21 @@
     saver.hidden = true;
     if (reopenAfter) { reopenAfter = false; openXP(); } // back from Preview
   }
-  function arm() { clearTimeout(idleT); idleT = setTimeout(() => start(), IDLE_MS); }
+  // the idle saver only runs in hacker mode — a visitor who never opted into
+  // anything shouldn't have the page take itself over. every explicit path
+  // (`:xp` preview, ?saver=, pfSaver.start) still works in any theme.
+  const idleOK = () => document.documentElement.dataset.theme === 'hacker';
+  function arm() {
+    clearTimeout(idleT);
+    if (!idleOK()) return;
+    idleT = setTimeout(() => start(), IDLE_MS);
+  }
+  function rearm() { if (idleOK()) arm(); else { clearTimeout(idleT); stop(); } }
+  // hacker mode arrives two ways: the designer control, or typing "root"
+  addEventListener('pf:theme', rearm);
+  addEventListener('pf:designer', (e) => {
+    if ((e as CustomEvent).detail?.key === 'theme') rearm();
+  });
   addEventListener('resize', () => { if (on) boot(active); });
 
   // dismissal: any key/click/wheel/touch instantly; pointer moves need a real

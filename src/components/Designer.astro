@@ -22,7 +22,10 @@
 <style is:global>
   .designer{ position:fixed; right:16px; bottom:16px; z-index:40; display:flex; flex-direction:column; align-items:flex-end; gap:8px;
     font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:lowercase; }
-  .dtoggle{
+  /* the ⋮⋮⋮ button is hidden — the panel is a build tool, not a feature to
+     offer a visitor. press `d` (or `:` → designer) to open it. */
+  .dtoggle{ display:none; }
+  html[data-dev="on"] .dtoggle{
     display:grid; place-items:center; width:28px; height:28px;
     color:var(--ink-dim); background:rgba(6,6,6,.75); border:1px solid var(--ink-faint);
     border-radius:4px; cursor:pointer; transition:color .2s ease, border-color .2s ease;
@@ -103,6 +106,8 @@
 
   // ?name=serif&lab=redacted … overrides for trying/sharing a variant
   const qp = new URLSearchParams(location.search);
+  // ?dev=1 brings the ⋮⋮⋮ button back for a session of poking at variants
+  if (qp.get('dev')) root.dataset.dev = 'on';
   for (const c of CONTROLS) {
     const v = qp.get(c.key);
     if (v && c.options.includes(v)) state[c.key] = v;

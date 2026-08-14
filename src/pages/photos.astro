@@ -11,17 +11,15 @@ import { photos, photoHref, unsplashSrc } from '../data/photos';
 
     <div class="masonry">
       {photos.map((p) => (
-        <figure class="card">
-          <a class="shot" href={photoHref(p.slug)} target="_blank" rel="noopener">
-            <img
-              src={unsplashSrc(p.id, 800)}
-              alt={p.desc}
-              loading="lazy"
-              style={`aspect-ratio:${p.w}/${p.h}`}
-            />
-          </a>
-          <figcaption class="cap">{p.desc}</figcaption>
-        </figure>
+        <a class="card shot" href={photoHref(p.slug)} target="_blank" rel="noopener">
+          <img
+            src={unsplashSrc(p.id, 800)}
+            alt={p.desc}
+            loading="lazy"
+            style={`aspect-ratio:${p.w}/${p.h}`}
+          />
+          {p.exif && <span class="exif">{p.exif}</span>}
+        </a>
       ))}
     </div>
 
@@ -42,19 +40,22 @@ import { photos, photoHref, unsplashSrc } from '../data/photos';
     margin-inline:calc((100% - min(848px, calc(100vw - 40px))) / 2);
   }
   @media (max-width:520px){ .masonry{ columns:1; } }
-  .card{ break-inside:avoid; margin:0 0 22px; }
-  .shot{ display:block; border:1px solid var(--ink-faint); overflow:hidden; }
+  .card{ break-inside:avoid; margin:0 0 14px; }
+  .shot{ display:block; border:1px solid var(--ink-faint); overflow:hidden; position:relative; }
   .shot img{
     width:100%; display:block;
     filter:grayscale(1) contrast(1.05); opacity:.85;
     transition:filter .3s ease, opacity .3s ease;
   }
-  .card:hover .shot img{ filter:none; opacity:1; }
-  .cap{
-    font-family:var(--mono); font-size:10px; letter-spacing:.08em; text-transform:lowercase;
-    color:var(--ink-faint); line-height:1.5; margin-top:8px; padding:0 2px;
+  .shot:hover img{ filter:none; opacity:1; }
+  /* camera line: tiny, bottom-left, only when you look closely */
+  .exif{
+    position:absolute; left:0; right:0; bottom:0; padding:16px 10px 7px;
+    font-family:var(--mono); font-size:9px; letter-spacing:.1em; text-transform:lowercase;
+    color:#cfc9bd; background:linear-gradient(transparent, rgba(6,6,6,.75));
+    opacity:0; transition:opacity .3s ease;
   }
-  .card:hover .cap{ color:var(--ink-dim); }
+  .shot:hover .exif{ opacity:1; }
   .ph .aside{ margin-top:clamp(36px,5vh,52px); padding-bottom:8vh; }
   .ph .aside a{ color:var(--ink-dim); }
 </style>

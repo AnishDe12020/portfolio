@@ -1,15 +1,14 @@
 ---
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
-import Lab from '../components/Lab.astro';
-import Shelf from '../components/Shelf.astro';
+import Experiments from '../components/Experiments.astro';
 import Photos from '../components/Photos.astro';
 import Specimen from '../components/Specimen.astro';
 import Designer from '../components/Designer.astro';
 import Terminal from '../components/Terminal.astro';
 import Hacker from '../components/Hacker.astro';
 import Saver from '../components/Saver.astro';
-import { lede, now, before, sideQuests, contact, footer } from '../data/content';
+import { lede, now, before, contact, footer } from '../data/content';
 ---
 <Base>
   <div id="intro">
@@ -27,22 +26,7 @@ import { lede, now, before, sideQuests, contact, footer } from '../data/content'
     <p class="body reveal" set:html={before}></p>
   </section>
 
-  <Shelf />
-
-  <Lab />
-
-  <section id="escaped">
-    <div class="label reveal">things that escaped</div>
-    <div class="rows reveal">
-      {sideQuests.map((s) => (
-        <a class="row" href={s.url} target="_blank" rel="noopener">
-          <span class="name">{s.name}</span>
-          <span class="desc">{s.desc}</span>
-          <span class="meta">{s.meta} <span class="a">&#8599;</span></span>
-        </a>
-      ))}
-    </div>
-  </section>
+  <Experiments />
 
   <Photos />
 

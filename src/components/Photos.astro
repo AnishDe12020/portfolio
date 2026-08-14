@@ -1,45 +1,19 @@
 ---
-// Pulled from unsplash.com/@anishde — swap entries freely; any slot left
-// beyond PHOTOS.length renders as a reserved dither tile.
-const u = (id: string) => `https://images.unsplash.com/photo-${id}?w=600&q=75&fm=jpg&fit=crop`;
-const PHOTOS: { src: string; alt: string; href?: string }[] = [
-  {
-    src: u('1769337950338-e9e7756f8e6e'),
-    alt: 'aerial view of a city at night, streets glowing orange',
-    href: 'https://unsplash.com/photos/aerial-view-of-a-city-at-night-with-glowing-lights-UU5Fz6iFYWg',
-  },
-  {
-    src: u('1769339750380-10d847c26194'),
-    alt: 'night skyline with a highway of light trails',
-    href: 'https://unsplash.com/photos/0j7Dkm0giWs',
-  },
-  {
-    src: u('1769339781920-f508ac260e64'),
-    alt: 'top-down view of night roads winding under light ribbons',
-    href: 'https://unsplash.com/photos/CNMZ5u0Oz-s',
-  },
-  {
-    src: u('1769339279852-ef7ded088573'),
-    alt: 'columns of glowing jellyfish tanks in a dark room',
-    href: 'https://unsplash.com/photos/dMJGYVvmhrg',
-  },
-];
-const SLOTS = 4;
+// Homepage strip: first four shots, breaking out of the text column.
+// The full set lives at /photos; the list itself is in src/data/content.ts.
+import { photos, unsplashSrc } from '../data/content';
+const strip = photos.slice(0, 4);
 ---
 <section id="photos">
   <div class="label reveal">through a lens</div>
   <div class="shots reveal">
-    {Array.from({ length: SLOTS }).map((_, i) =>
-      PHOTOS[i] ? (
-        <a class="shot" href={PHOTOS[i].href ?? PHOTOS[i].src} target="_blank" rel="noopener">
-          <img src={PHOTOS[i].src} alt={PHOTOS[i].alt} loading="lazy" />
-        </a>
-      ) : (
-        <div class="shot empty" title="film pending"></div>
-      )
-    )}
+    {strip.map((p) => (
+      <a class="shot" href="/photos">
+        <img src={unsplashSrc(p.id)} alt={p.alt} loading="lazy" />
+      </a>
+    ))}
   </div>
-  <p class="aside">night cities, mostly. more on <a href="https://unsplash.com/@anishde" target="_blank" rel="noopener">unsplash</a>.</p>
+  <p class="aside">night cities, mostly. more in <a href="/photos">/photos</a>.</p>
 </section>
 
 <style>
@@ -57,9 +31,4 @@ const SLOTS = 4;
     transition:filter .3s ease, opacity .3s ease;
   }
   .shot:hover img{ filter:none; opacity:1; }
-  .shot.empty{
-    background-image:radial-gradient(circle, var(--ink-faint) 26%, transparent 30%);
-    background-size:8px 8px; background-position:center;
-    opacity:.55;
-  }
 </style>

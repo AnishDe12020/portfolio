@@ -1,0 +1,95 @@
+---
+// One ledger for everything tried: public repos and private carcasses alike.
+// Each row gets a tiny generative specimen seeded by its name — same species
+// as the footer pet. Rows with a `redacted` twin swap to the blacked-out
+// version under html[data-lab="redacted"]. Content: src/data/content.ts.
+import { experiments, experimentsAside } from '../data/content';
+---
+<section id="experiments">
+  <div class="label reveal">experiments</div>
+  <div class="rows reveal">
+    {experiments.map((p) =>
+      p.url ? (
+        <a class="row xrow" href={p.url} target="_blank" rel="noopener">
+          <span class="name"><canvas class="xspec" width="9" height="9" data-seed={p.name} aria-hidden="true"></canvas>{p.name}</span>
+          <span class="desc">{p.desc}</span>
+          <span class="meta">{p.meta} <span class="a">&#8599;</span></span>
+        </a>
+      ) : (
+        <div class="row xrow" data-redactable={p.redacted ? '' : undefined}>
+          <span class="name">
+            <canvas class="xspec" width="9" height="9" data-seed={p.name} aria-hidden="true"></canvas>
+            <span class="v-listed">{p.name}</span>
+            {p.redacted && (
+              <span class="v-redacted">{p.redacted.head}<span class="redact" style={`--n:${p.redacted.redact}`}></span>{p.redacted.tail}</span>
+            )}
+          </span>
+          <span class="desc">
+            <span class="v-listed">{p.desc}</span>
+            {p.redacted && <span class="v-redacted">{p.redacted.desc}</span>}
+          </span>
+          <span class="meta">
+            <span class="v-listed">{p.meta}</span>
+            {p.redacted && <span class="v-redacted">{p.redacted.meta}</span>}
+          </span>
+        </div>
+      )
+    )}
+  </div>
+  <p class="aside reveal">{experimentsAside}</p>
+</section>
+
+<style>
+  /* room for the sprite: slightly wider name column than the base ledger */
+  #experiments :global(.row){ grid-template-columns:152px 1fr auto; }
+  @media (max-width:520px){ #experiments :global(.row){ grid-template-columns:1fr auto; } }
+  .xrow .name{ display:inline-flex; align-items:center; gap:11px; }
+  .xspec{ width:18px; height:18px; flex:none; image-rendering:pixelated; opacity:.75; }
+
+  /* redacted mirror: swap listed/blacked-out variants per cell */
+  .v-redacted{ display:none; }
+  :global(html[data-lab="redacted"]) [data-redactable] .v-listed{ display:none; }
+  :global(html[data-lab="redacted"]) [data-redactable] .v-redacted{ display:inline; }
+  .redact{
+    display:inline-block; vertical-align:baseline;
+    height:.68em; width:calc(var(--n) * .58em);
+    margin:0 .06em;
+    background-image:radial-gradient(circle, var(--ink-dim) 32%, transparent 36%);
+    background-size:.29em .29em; background-position:center;
+  }
+</style>
+
+<script>
+  // deterministic mini-specimen per experiment: hash the name, mirror the left
+  // half, stamp two quiet shades. same construction as the big one, 9px tall.
+  function mb32(a: number) {
+    return function () {
+      a |= 0; a = (a + 0x6d2b79f5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function shades() {
+    return document.documentElement.dataset.theme === 'ledger'
+      ? ['#4a4235', '#6b6355']
+      : ['#8f8a80', '#6b675e'];
+  }
+  function paint() {
+    const [s0, s1] = shades();
+    for (const cv of document.querySelectorAll<HTMLCanvasElement>('.xspec')) {
+      let seed = 0;
+      for (const c of cv.dataset.seed ?? '') seed = (Math.imul(seed, 131) + c.charCodeAt(0)) >>> 0;
+      const r = mb32(seed), g = cv.getContext('2d')!, N = 9, mid = 4;
+      g.clearRect(0, 0, N, N);
+      for (let y = 1; y < N; y++)
+        for (let x = 1; x <= mid; x++)
+          if (r() < 0.5) {
+            g.fillStyle = r() < 0.8 ? s0 : s1;
+            g.fillRect(x, y, 1, 1); g.fillRect(N - 1 - x, y, 1, 1);
+          }
+    }
+  }
+  paint();
+  addEventListener('pf:designer', (e) => { if ((e as CustomEvent).detail?.key === 'theme') paint(); });
+</script>

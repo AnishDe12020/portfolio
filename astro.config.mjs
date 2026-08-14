@@ -10,6 +10,8 @@ export default defineConfig({
   // /blog is parked until there's a real post in it — the page still builds and
   // is reachable by URL, it's just not linked from the site or listed for crawlers.
   integrations: [mdx(), sitemap({ filter: (page) => !page.includes('/blog') })],
+  // /uses is what people type; /setup is what it's called here
+  redirects: { '/uses': '/setup' },
   markdown: {
     // css-variables theme → code colors come from our tokens (see global.css),
     // so highlighting follows the active theme instead of shipping its own

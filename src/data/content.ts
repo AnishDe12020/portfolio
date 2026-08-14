@@ -52,31 +52,8 @@ export const experiments = [
 ];
 export const experimentsAside = 'experiments are supposed to end. most of these did.';
 
-/** (04) through a lens — the homepage strip and /photos both read this list. */
-export const unsplashSrc = (id: string, w = 600) =>
-  `https://images.unsplash.com/photo-${id}?w=${w}&q=75&fm=jpg&fit=crop`;
-export const photos: { id: string; alt: string; href: string }[] = [
-  {
-    id: '1769337950338-e9e7756f8e6e',
-    alt: 'aerial view of a city at night, streets glowing orange',
-    href: 'https://unsplash.com/photos/aerial-view-of-a-city-at-night-with-glowing-lights-UU5Fz6iFYWg',
-  },
-  {
-    id: '1769339750380-10d847c26194',
-    alt: 'night skyline with a highway of light trails',
-    href: 'https://unsplash.com/photos/0j7Dkm0giWs',
-  },
-  {
-    id: '1769339781920-f508ac260e64',
-    alt: 'top-down view of night roads winding under light ribbons',
-    href: 'https://unsplash.com/photos/CNMZ5u0Oz-s',
-  },
-  {
-    id: '1769339279852-ef7ded088573',
-    alt: 'columns of glowing jellyfish tanks in a dark room',
-    href: 'https://unsplash.com/photos/dMJGYVvmhrg',
-  },
-];
+/** (04) through a lens — photo data lives in src/data/photos.ts (a build-time
+ *  cache of the Unsplash API; see the header there before refreshing it). */
 
 /** /setup — the gear, as pixel devices on hairline shelves.
  *  `sprite` picks the drawing: mbp | mba | iphone | keyboard | headphones | terminal.

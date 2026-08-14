@@ -1,19 +1,19 @@
 ---
-// Homepage strip: first four shots, breaking out of the text column.
-// The full set lives at /photos; the list itself is in src/data/content.ts.
-import { photos, unsplashSrc } from '../data/content';
-const strip = photos.slice(0, 4);
+// Homepage strip: four curated night-city squares, breaking out of the text
+// column. The full 40-photo set is at /photos; data in src/data/photos.ts.
+import { photos, stripIds, unsplashSrc } from '../data/photos';
+const strip = stripIds.map((id) => photos.find((p) => p.id === id)!).filter(Boolean);
 ---
 <section id="photos">
   <div class="label reveal">through a lens</div>
   <div class="shots reveal">
     {strip.map((p) => (
       <a class="shot" href="/photos">
-        <img src={unsplashSrc(p.id)} alt={p.alt} loading="lazy" />
+        <img src={unsplashSrc(p.id)} alt={p.desc} loading="lazy" />
       </a>
     ))}
   </div>
-  <p class="aside">night cities, mostly. more in <a href="/photos">/photos</a>.</p>
+  <p class="aside">night cities, mostly. all 40 in <a href="/photos">/photos</a>.</p>
 </section>
 
 <style>

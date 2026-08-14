@@ -2,23 +2,30 @@
 import Base from '../layouts/Base.astro';
 import Hacker from '../components/Hacker.astro';
 import Terminal from '../components/Terminal.astro';
-import { photos, unsplashSrc } from '../data/content';
+import { photos, photoHref, unsplashSrc } from '../data/photos';
 ---
-<Base title="photos — Anish De" description="Night cities, mostly. Photos by Anish De.">
+<Base title="photos — Anish De" description="Night cities, monuments, and whatever else held still. Photos by Anish De.">
   <div class="ph">
     <div class="label">through a lens</div>
-    <p class="lede">Night cities, mostly. Shot on whatever was in my pocket.</p>
+    <p class="lede">Night cities, monuments, and whatever else held still long enough.</p>
 
-    <div class="grid">
+    <div class="masonry">
       {photos.map((p) => (
-        <a class="shot" href={p.href} target="_blank" rel="noopener">
-          <img src={unsplashSrc(p.id, 1080)} alt={p.alt} loading="lazy" />
-          <span class="cap">{p.alt}</span>
-        </a>
+        <figure class="card">
+          <a class="shot" href={photoHref(p.slug)} target="_blank" rel="noopener">
+            <img
+              src={unsplashSrc(p.id, 800)}
+              alt={p.desc}
+              loading="lazy"
+              style={`aspect-ratio:${p.w}/${p.h}`}
+            />
+          </a>
+          <figcaption class="cap">{p.desc}</figcaption>
+        </figure>
       ))}
     </div>
 
-    <p class="aside"><a href="/">home</a> · the full set lives on <a href="https://unsplash.com/@anishde" target="_blank" rel="noopener">unsplash</a>.</p>
+    <p class="aside"><a href="/">home</a> · everything above lives on <a href="https://unsplash.com/@anishde" target="_blank" rel="noopener">unsplash</a>, free to take.</p>
   </div>
   <Hacker slot="fixed" />
   <Terminal slot="fixed" />
@@ -27,26 +34,27 @@ import { photos, unsplashSrc } from '../data/content';
 <style>
   .ph{ padding-top:clamp(56px,10vh,96px); }
   .ph .lede{ margin-top:18px; }
-  .grid{
-    display:grid; grid-template-columns:repeat(2, 1fr); gap:14px;
+  /* masonry: natural aspect ratios, no crops. wider than the text column. */
+  .masonry{
+    columns:2; column-gap:14px;
     margin-top:clamp(36px,5vh,52px);
     width:min(848px, calc(100vw - 40px));
     margin-inline:calc((100% - min(848px, calc(100vw - 40px))) / 2);
   }
-  @media (max-width:520px){ .grid{ grid-template-columns:1fr; } }
-  .shot{ display:block; border:1px solid var(--ink-faint); overflow:hidden; position:relative; }
+  @media (max-width:520px){ .masonry{ columns:1; } }
+  .card{ break-inside:avoid; margin:0 0 22px; }
+  .shot{ display:block; border:1px solid var(--ink-faint); overflow:hidden; }
   .shot img{
-    width:100%; aspect-ratio:4/3; object-fit:cover; display:block;
+    width:100%; display:block;
     filter:grayscale(1) contrast(1.05); opacity:.85;
     transition:filter .3s ease, opacity .3s ease;
   }
-  .shot:hover img{ filter:none; opacity:1; }
+  .card:hover .shot img{ filter:none; opacity:1; }
   .cap{
-    position:absolute; left:0; right:0; bottom:0; padding:10px 12px 8px;
-    font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:lowercase;
-    color:var(--ink-dim); background:linear-gradient(transparent, rgba(6,6,6,.82));
-    opacity:0; transition:opacity .3s ease;
+    font-family:var(--mono); font-size:10px; letter-spacing:.08em; text-transform:lowercase;
+    color:var(--ink-faint); line-height:1.5; margin-top:8px; padding:0 2px;
   }
-  .shot:hover .cap{ opacity:1; }
+  .card:hover .cap{ color:var(--ink-dim); }
   .ph .aside{ margin-top:clamp(36px,5vh,52px); padding-bottom:8vh; }
+  .ph .aside a{ color:var(--ink-dim); }
 </style>

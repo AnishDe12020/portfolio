@@ -24,6 +24,8 @@ const letters = [...name];
   <div class="byline" set:html={hero.byline}></div>
   <nav class="pages" aria-label="pages">
     <a href="/photos">/photos</a>
+    <a href="https://x.com/AnishDe12020" target="_blank" rel="noopener">x <span class="ext">&#8599;</span></a>
+    <a href="https://github.com/AnishDe12020" target="_blank" rel="noopener">github <span class="ext">&#8599;</span></a>
   </nav>
 </header>
 
@@ -101,6 +103,7 @@ const letters = [...name];
   }
   .pages a{ color:var(--ink-faint); text-decoration:none; transition:color .2s ease; }
   .pages a:hover{ color:var(--live); }
+  .pages .ext{ opacity:.55; }
 
   @media (prefers-reduced-motion:reduce){ .dot,.cursor{ animation:none; } }
 </style>

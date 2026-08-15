@@ -17,7 +17,7 @@ const letters = [...name];
     <div class="m m-doto" id="mdoto">
       {letters.map((ch) => (ch === ' ' ? <span class="sp"> </span> : <span class="ch">{ch}</span>))}
     </div>
-    <div class="m m-serif">Anish De</div>
+    <div class="m m-serif">anish de</div>
     <div class="m m-mono">anish de<span class="cursor"></span></div>
   </div>
 
@@ -58,7 +58,7 @@ const letters = [...name];
   html[data-name="pixel"] .m-pixel{ display:block; }
   html[data-name="doto"] .m-doto{ display:block; }
   html[data-name="serif"] .m-serif{ display:block; }
-  html:not([data-name]) .m-pixel, html[data-name="mono"] .m-mono{ display:block; }
+  html:not([data-name]) .m-serif, html[data-name="mono"] .m-mono{ display:block; }
 
   .m-pixel{ height:49px; cursor:default; }
 

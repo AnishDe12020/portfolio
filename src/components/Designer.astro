@@ -130,6 +130,9 @@
   for (const c of CONTROLS) {
     // saved values from retired options (e.g. theme:hacker) fall back to default
     if (state[c.key] && !c.options.includes(state[c.key])) delete state[c.key];
+    // migration: 'mono' name was the old default, so a saved 'mono' is almost
+    // certainly stale, not chosen. picking it again in the panel re-saves it.
+    if (c.key === 'name' && state.name === 'mono') delete state.name;
     root.dataset[c.key] = current(c);
 
     const row = document.createElement('div');

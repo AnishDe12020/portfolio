@@ -23,19 +23,21 @@ export const lede =
 
 /** (01) right now — one <p> per entry. */
 export const now = [
-  'My part is the <b>Solana</b> programs and the infrastructure around them — the onchain half ' +
-  'of the product.',
+  'Beanstalk started in 2026, and I\'ve run the onchain side from the start: the <b>Solana</b> ' +
+  'programs and the infrastructure around them.',
   'In the background, a CS degree at PES University. Class of \'29.',
 ];
 
 /** (02) before this — one <p> per entry. */
 export const before = [
-  'I co-founded <b>SpedX</b>, a perps protocol on Solana, and ran engineering. This was in high ' +
-  'school; nobody thought to check my age.',
-  'SpedX merged into PepperDEX and became <b>Spicenet</b>, which raised $3.4M. I stayed on to ' +
-  'build the cross-chain relayer — the piece that moves assets between chains.',
-  'Earlier, hackathons — five wins, one became a funded company. And an arXiv paper on reading ' +
-  'doctors\' handwriting.',
+  'I co-founded <b>SpedX</b> in 2023, a perps protocol on Solana built on Hxro\'s Dexterity, and ' +
+  'ran engineering. This was in high school; nobody thought to check my age.',
+  'SpedX merged into PepperDEX and became <b>Spicenet</b>, which raised $3.4M from Hack VC. I ' +
+  'stayed almost three years — most of it on the cross-chain relayer, the piece that moves ' +
+  'assets between chains, and the SDK other teams built on.',
+  'Earlier, hackathons: five wins in three years — an EV-charging network that became a funded ' +
+  'company, a vaccine cold-chain tracker, a webhooks engine. And an arXiv paper, a multimodal ' +
+  'model trained on 743,000 handwritten Indian prescriptions.',
 ];
 
 /** (03) experiments — public and private, one ledger, none of it precious.

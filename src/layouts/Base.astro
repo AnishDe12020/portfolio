@@ -49,6 +49,7 @@ const umamiHost = (import.meta.env.PUBLIC_UMAMI_HOST || 'https://umami.anishde.d
     // apply saved designer state before first paint
     try {
       var s = JSON.parse(localStorage.getItem('pf-designer') || '{}');
+      if (s.name === 'mono') delete s.name; // stale old default; Designer migrates the store
       var qp = new URLSearchParams(location.search);
       var d = document.documentElement.dataset;
       for (var k of ['name', 'body', 'case', 'density', 'lab', 'signal', 'grain', 'scan', 'theme']) {

@@ -63,19 +63,6 @@ export const experimentsAside = 'experiments are supposed to end. most of these 
 /** (04) through a lens — photo data lives in src/data/photos.ts (a build-time
  *  cache of the Unsplash API; see the header there before refreshing it). */
 
-/** /setup — the gear, as pixel devices on hairline shelves.
- *  `sprite` picks the drawing: mbp | mba | iphone | keyboard | headphones | terminal.
- *  EDIT ME: descs/metas are placeholders until the real details land. */
-export const setup = [
-  { sprite: 'mbp', name: 'macbook pro', desc: 'where the rust compiles. rarely leaves the desk', meta: 'daily' },
-  { sprite: 'mba', name: 'macbook air', desc: 'the couch and airport computer', meta: 'travel' },
-  { sprite: 'iphone', name: 'iphone', desc: 'camera roll full of night cities', meta: 'pocket' },
-  { sprite: 'keyboard', name: 'keyboard', desc: 'mechanical. the neighbours know', meta: 'desk' },
-  { sprite: 'headphones', name: 'headphones', desc: 'mostly for the silence', meta: 'ears' },
-  { sprite: 'terminal', name: 'the software', desc: 'terminal-first everything. the rest is a browser', meta: 'soft' },
-];
-export const setupAside = 'all 168 temperature sensors accounted for.';
-
 /** PARKED — not rendered. Hackathon wins as pixel trophies on a hairline
  *  shelf (see git history for Shelf.astro). Cut in favor of prose in
  *  `before`; the wins aged out of headline billing. */

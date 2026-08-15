@@ -19,14 +19,12 @@ export const hero = {
 /** The opening paragraph. */
 export const lede =
   'I build <a href="https://beanstalk.fi" target="_blank" rel="noopener">Beanstalk</a>: stocks, ' +
-  'gold, and treasuries onchain, as easy to own as dinner is to order. Rust on <b>Solana</b>, ' +
-  'from Bangalore.';
+  'gold, and treasuries you can hold onchain. Rust on <b>Solana</b>, from Bangalore.';
 
 /** (01) right now — one <p> per entry. */
 export const now = [
-  'Days, and most nights, go to Beanstalk. I build the part nobody screenshots: the <b>Solana</b> ' +
-  'programs and infrastructure that make a share of Apple or a gram of gold something you can ' +
-  'actually hold onchain.',
+  'My part is the <b>Solana</b> programs and the infrastructure around them — the onchain half ' +
+  'of the product.',
   'In the background, a CS degree at PES University. Class of \'29.',
 ];
 
@@ -34,11 +32,10 @@ export const now = [
 export const before = [
   'I co-founded <b>SpedX</b>, a perps protocol on Solana, and ran engineering. This was in high ' +
   'school; nobody thought to check my age.',
-  'SpedX merged into PepperDEX and became <b>Spicenet</b>, which raised $3.4M. I stayed on and ' +
-  'spent most of it building the cross-chain relayer — the piece that moves value between chains ' +
-  'without anyone having to trust a middleman.',
-  'Earlier, hackathons — five wins, one of which grew into a funded company. And an arXiv paper ' +
-  'on reading doctors\' handwriting.',
+  'SpedX merged into PepperDEX and became <b>Spicenet</b>, which raised $3.4M. I stayed on to ' +
+  'build the cross-chain relayer — the piece that moves assets between chains.',
+  'Earlier, hackathons — five wins, one became a funded company. And an arXiv paper on reading ' +
+  'doctors\' handwriting.',
 ];
 
 /** (03) experiments — public and private, one ledger, none of it precious.
@@ -58,7 +55,7 @@ export const experiments = [
   { name: 'mirage', url: 'https://arxiv.org/abs/2410.09729', desc: 'multimodal model that reads handwritten indian prescriptions. 743k images, 82% accuracy', meta: 'arxiv' },
   { name: 'the graveyard', url: 'https://github.com/AnishDe12020?tab=repositories', desc: "rayauth, sendo, secli, and other projects i've let rest", meta: 'more' },
 ];
-export const experimentsAside = 'experiments are supposed to end. most of these did.';
+export const experimentsAside = 'most of these are done for good.';
 
 /** (04) through a lens — photo data lives in src/data/photos.ts (a build-time
  *  cache of the Unsplash API; see the header there before refreshing it). */

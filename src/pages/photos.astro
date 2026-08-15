@@ -1,7 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-import Hacker from '../components/Hacker.astro';
-import Terminal from '../components/Terminal.astro';
 import { photos, photoHref, unsplashSrc } from '../data/photos';
 ---
 <Base title="photos — Anish De" description="Night cities, monuments, and whatever else held still. Photos by Anish De.">
@@ -25,8 +23,6 @@ import { photos, photoHref, unsplashSrc } from '../data/photos';
 
     <p class="aside"><a href="/">home</a> · everything above lives on <a href="https://unsplash.com/@anishde" target="_blank" rel="noopener">unsplash</a>, free to take.</p>
   </div>
-  <Hacker slot="fixed" />
-  <Terminal slot="fixed" />
 </Base>
 
 <style>

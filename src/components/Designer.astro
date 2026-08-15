@@ -86,8 +86,7 @@
 <script>
   type Control = { key: string; label: string; options: string[]; default: string };
   const CONTROLS: Control[] = [
-    { key: 'theme',   label: 'theme',   options: ['void', 'ledger', 'hacker'],       default: 'void' },
-    { key: 'crt',     label: 'crt',     options: ['full', 'flat'],                   default: 'full' },
+    { key: 'theme',   label: 'theme',   options: ['void', 'ledger'],                 default: 'void' },
     { key: 'name',    label: 'name',    options: ['pixel', 'doto', 'serif', 'mono'], default: 'mono' },
     { key: 'body',    label: 'body',    options: ['spectral', 'mono'],               default: 'spectral' },
     { key: 'case',    label: 'case',    options: ['lower', 'sentence'],              default: 'lower' },
@@ -129,6 +128,8 @@
 
   const holder = document.getElementById('dcontrols')!;
   for (const c of CONTROLS) {
+    // saved values from retired options (e.g. theme:hacker) fall back to default
+    if (state[c.key] && !c.options.includes(state[c.key])) delete state[c.key];
     root.dataset[c.key] = current(c);
 
     const row = document.createElement('div');

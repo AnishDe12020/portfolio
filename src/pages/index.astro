@@ -5,9 +5,6 @@ import Experiments from '../components/Experiments.astro';
 import Photos from '../components/Photos.astro';
 import Specimen from '../components/Specimen.astro';
 import Designer from '../components/Designer.astro';
-import Terminal from '../components/Terminal.astro';
-import Hacker from '../components/Hacker.astro';
-import Saver from '../components/Saver.astro';
 import { lede, now, before, contact, footer } from '../data/content';
 ---
 <Base>
@@ -54,10 +51,7 @@ import { lede, now, before, contact, footer } from '../data/content';
     <span>&copy; 2026 / <button id="ver" title="click">{footer.version}</button> / <a href="https://github.com/AnishDe12020" target="_blank" rel="noopener">source</a> / analytics offline</span>
   </footer>
 
-  <Hacker slot="fixed" />
   <Designer slot="fixed" />
-  <Terminal slot="fixed" />
-  <Saver slot="fixed" />
 </Base>
 
 <script>

@@ -1,10 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import Hacker from '../../components/Hacker.astro';
 import Designer from '../../components/Designer.astro';
-import Terminal from '../../components/Terminal.astro';
-import Saver from '../../components/Saver.astro';
 import { readMinutes } from '../../lib/blog';
 
 export async function getStaticPaths() {
@@ -71,11 +68,7 @@ const full = meta.date
     <span><a href="/blog">&larr; more writing</a></span>
     <span>published from the repo</span>
   </footer>
-
-  <Hacker slot="fixed" />
   <Designer slot="fixed" />
-  <Terminal slot="fixed" />
-  <Saver slot="fixed" />
 </Base>
 
 <style>
@@ -154,12 +147,11 @@ const full = meta.date
 
   footer{ font-size:11px; margin-top:clamp(56px, 8vh, 90px); }
   footer a{ border-bottom:none; }
-  /* reading progress — hairline in void, hud gauge takes over in hacker */
+  /* reading progress — a hairline that fills as you read */
   #rprog{
     position:fixed; top:0; left:0; height:2px; width:0; z-index:55;
     background:var(--live); opacity:.8; pointer-events:none;
   }
-  :global(html[data-theme="hacker"]) #rprog{ display:none; }
 
   /* code block chrome */
   .prose :global(pre[data-title])::before{
@@ -251,7 +243,7 @@ const full = meta.date
   const tocLinks = new Map(
     [...document.querySelectorAll<HTMLAnchorElement>('.toc a')].map((a) => [decodeURIComponent(a.hash.slice(1)), a])
   );
-  /* ---- reading progress: hairline (void) + hud gauge (hacker) ---- */
+  /* ---- reading progress ---- */
   const rprog = document.getElementById('rprog');
   const hud = document.querySelector('.hud');
   let gauge: HTMLElement | null = null;

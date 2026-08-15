@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css';
-import '../styles/hacker.css';
 import '../styles/ledger.css';
 const {
   title = 'Anish De',
@@ -52,7 +51,7 @@ const umamiHost = (import.meta.env.PUBLIC_UMAMI_HOST || 'https://umami.anishde.d
       var s = JSON.parse(localStorage.getItem('pf-designer') || '{}');
       var qp = new URLSearchParams(location.search);
       var d = document.documentElement.dataset;
-      for (var k of ['name', 'body', 'case', 'density', 'lab', 'signal', 'grain', 'scan', 'theme', 'crt']) {
+      for (var k of ['name', 'body', 'case', 'density', 'lab', 'signal', 'grain', 'scan', 'theme']) {
         var v = qp.get(k) || s[k];
         if (v) d[k] = v;
       }
@@ -74,15 +73,11 @@ const umamiHost = (import.meta.env.PUBLIC_UMAMI_HOST || 'https://umami.anishde.d
       var meta = document.querySelector('meta[name="theme-color"]');
       function sync() {
         var d = document.documentElement.dataset;
-        var c = '#0b0a09';
-        if (d.theme === 'hacker') c = d.signal === 'green' ? '#010401' : d.signal === 'amber' ? '#070500' : '#080302';
-        else if (d.theme === 'ledger') c = '#f4efe4';
-        meta.setAttribute('content', c);
+        meta.setAttribute('content', d.theme === 'ledger' ? '#f4efe4' : '#0b0a09');
       }
       sync();
-      addEventListener('pf:theme', sync);
       addEventListener('pf:designer', function (e) {
-        if (['theme', 'signal'].includes(e.detail && e.detail.key)) sync();
+        if (e.detail && e.detail.key === 'theme') sync();
       });
     })();
   </script>

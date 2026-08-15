@@ -88,6 +88,5 @@
   }
   button.addEventListener('click', reroll);
   addEventListener('pf:konami', reroll);
-  addEventListener('pf:reroll', reroll);
   addEventListener('pf:designer', (e) => { if ((e as CustomEvent).detail?.key === 'theme') drawSprite(lastSeed); });
 </script>

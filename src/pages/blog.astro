@@ -1,9 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import Hacker from '../components/Hacker.astro';
 import Designer from '../components/Designer.astro';
-import Terminal from '../components/Terminal.astro';
-import Saver from '../components/Saver.astro';
 
 import { getCollection } from 'astro:content';
 import { fmtDate as fmt, readMinutes } from '../lib/blog';
@@ -50,11 +47,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     <span><a href="/">back to the void</a></span>
     <span>written from the repo</span>
   </footer>
-
-  <Hacker slot="fixed" />
   <Designer slot="fixed" />
-  <Terminal slot="fixed" />
-  <Saver slot="fixed" />
 </Base>
 
 <style>

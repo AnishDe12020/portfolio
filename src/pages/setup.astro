@@ -129,10 +129,10 @@ import { setup, setupAside } from '../data/content';
   const SCALE = 5;
   function palette() {
     const ledger = document.documentElement.dataset.theme === 'ledger';
-    const live = getComputedStyle(document.documentElement).getPropertyValue('--live').trim() || '#e0442e';
+    const live = getComputedStyle(document.documentElement).getPropertyValue('--live').trim() || '#cd5f4a';
     return ledger
       ? { body: ['#1c1811', '#2c261d'], rec: '#8a8073', live }
-      : { body: ['#ece8e0', '#ded9cf'], rec: '#55514a', live };
+      : { body: ['#e4ded2', '#d6d0c4'], rec: '#55514a', live };
   }
   function paint() {
     const P = palette();

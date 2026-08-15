@@ -1,17 +1,19 @@
 :root{
-  --void:#060606;
-  --ink:#ece8e0;
+  /* softened 2026-08: warm espresso instead of pure black, bone one notch
+     down from glare, vermilion pulled toward terracotta ember */
+  --void:#141210;
+  --ink:#e4ded2;
   --ink-body:#c7c1b5;
   --ink-dim:#9c968b;
   --ink-faint:#847e74;
-  --live:#e0442e;
+  --live:#cd5f4a;
   --mono:'Space Mono', ui-monospace, Menlo, monospace;
   --serif:'Spectral', Georgia, 'Times New Roman', serif;
   --dot:'Doto', var(--mono);
 }
 
-html[data-signal="amber"]{ --live:#dfa63a; }
-html[data-signal="green"]{ --live:#46b96e; }
+html[data-signal="amber"]{ --live:#cfa356; }
+html[data-signal="green"]{ --live:#5fa87c; }
 
 /* shiki (theme: 'css-variables') — code blocks take the house colors,
    so highlighting follows whatever theme/signal is active */

@@ -23,7 +23,7 @@ const umamiHost = (import.meta.env.PUBLIC_UMAMI_HOST || 'https://umami.anishde.d
   <script is:inline>document.documentElement.classList.add('js');</script>
   <title>{title}</title>
   <meta name="description" content={description} />
-  <meta name="theme-color" content="#060606" />
+  <meta name="theme-color" content="#141210" />
   <link rel="canonical" href={canonical} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
@@ -74,7 +74,7 @@ const umamiHost = (import.meta.env.PUBLIC_UMAMI_HOST || 'https://umami.anishde.d
       var meta = document.querySelector('meta[name="theme-color"]');
       function sync() {
         var d = document.documentElement.dataset;
-        var c = '#060606';
+        var c = '#141210';
         if (d.theme === 'hacker') c = d.signal === 'green' ? '#010401' : d.signal === 'amber' ? '#070500' : '#080302';
         else if (d.theme === 'ledger') c = '#f4efe4';
         meta.setAttribute('content', c);
@@ -141,7 +141,7 @@ const umamiHost = (import.meta.env.PUBLIC_UMAMI_HOST || 'https://umami.anishde.d
     /* egg: a note for the people who open the console */
     console.log(
       '%canish de %c• %cview-source friendly. konami works. the sprite rerolls. press d. type : if you vim.\n%chiring or building something weird? contact[at]anishde[dot]dev',
-      'color:#ece8e0;font-weight:bold', 'color:#e0442e', 'color:#6b675e', 'color:#6b675e'
+      'color:#e4ded2;font-weight:bold', 'color:#cd5f4a', 'color:#6b675e', 'color:#6b675e'
     );
   </script>
 </body>

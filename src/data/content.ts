@@ -18,26 +18,29 @@ export const hero = {
 
 /** The opening paragraph. */
 export const lede =
-  'I build <a href="https://beanstalk.fi" target="_blank" rel="noopener">Beanstalk</a>: stocks, ' +
-  'gold, and treasuries you can hold onchain. Rust on <b>Solana</b>, from Bangalore.';
+  'I\'m a co-founder at <a href="https://beanstalk.fi" target="_blank" rel="noopener">Beanstalk</a>, ' +
+  'where we\'re building a way to hold stocks, gold, and treasuries onchain. Most of my day is ' +
+  'Rust on <b>Solana</b>, written from Bangalore.';
 
 /** (01) right now — one <p> per entry. */
 export const now = [
-  'Beanstalk started in 2026, and I\'ve run the onchain side from the start: the <b>Solana</b> ' +
-  'programs and the infrastructure around them.',
-  'In the background, a CS degree at PES University. Class of \'29.',
+  'I run the onchain side — the <b>Solana</b> programs and the infrastructure around them. We ' +
+  'started in 2026, so most of what I work on is being built for the first time.',
+  'Outside of work, I\'m doing a CS degree at PES University (class of \'29) and taking photos ' +
+  'of cities at night.',
 ];
 
 /** (02) before this — one <p> per entry. */
 export const before = [
-  'I co-founded <b>SpedX</b> in 2023, a perps protocol on Solana built on Hxro\'s Dexterity, and ' +
-  'ran engineering. This was in high school; nobody thought to check my age.',
-  'SpedX merged into PepperDEX and became <b>Spicenet</b>, which raised $3.4M from Hack VC. I ' +
-  'stayed almost three years — most of it on the cross-chain relayer, the piece that moves ' +
-  'assets between chains, and the SDK other teams built on.',
-  'Earlier, hackathons: five wins in three years — an EV-charging network that became a funded ' +
-  'company, a vaccine cold-chain tracker, a webhooks engine. And an arXiv paper, a multimodal ' +
-  'model trained on 743,000 handwritten Indian prescriptions.',
+  'Before Beanstalk, I was at <b>Spicenet</b> for almost three years. It began as <b>SpedX</b>, ' +
+  'a perps protocol on Solana built on Hxro\'s Dexterity, which I co-founded in 2023 while ' +
+  'still in high school — nobody thought to check my age.',
+  'SpedX merged into PepperDEX and became Spicenet, which went on to raise $3.4M from Hack VC. ' +
+  'I built the cross-chain relayer that moves assets between chains, and later the SDK that ' +
+  'other teams integrated against.',
+  'I got into all of this through hackathons — five wins across three years, including an ' +
+  'EV-charging network that\'s a funded company now. Along the way I also co-authored an arXiv ' +
+  'paper: a multimodal model trained on 743,000 handwritten Indian prescriptions.',
 ];
 
 /** (03) experiments — public and private, one ledger, none of it precious.

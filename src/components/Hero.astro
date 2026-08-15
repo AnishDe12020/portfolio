@@ -22,6 +22,10 @@ const letters = [...name];
   </div>
 
   <div class="byline" set:html={hero.byline}></div>
+  <nav class="pages" aria-label="pages">
+    <a href="/photos">/photos</a>
+    <a href="/setup">/setup</a>
+  </nav>
 </header>
 
 <style>
@@ -91,6 +95,13 @@ const letters = [...name];
     color:var(--ink-dim); margin-top:22px;
   }
   .byline b{ color:var(--ink-body); font-weight:400; }
+
+  .pages{
+    display:flex; gap:18px; margin-top:14px;
+    font-family:var(--mono); font-size:11px; letter-spacing:.2em; text-transform:lowercase;
+  }
+  .pages a{ color:var(--ink-faint); text-decoration:none; transition:color .2s ease; }
+  .pages a:hover{ color:var(--live); }
 
   @media (prefers-reduced-motion:reduce){ .dot,.cursor{ animation:none; } }
 </style>

@@ -37,9 +37,8 @@ export const before = [
   'SpedX merged into PepperDEX and became <b>Spicenet</b>, which raised $3.4M. I stayed on and ' +
   'spent most of it building the cross-chain relayer — the piece that moves value between chains ' +
   'without anyone having to trust a middleman.',
-  'Before all of that: hackathons. Five wins between \'22 and \'24 — one of them, DeCharge, is a ' +
-  'funded company now. Somewhere in there I also co-authored a paper that taught a model to read ' +
-  'Indian doctors\' handwriting.',
+  'Earlier, hackathons — five wins, one of which grew into a funded company. And an arXiv paper ' +
+  'on reading doctors\' handwriting.',
 ];
 
 /** (03) experiments — public and private, one ledger, none of it precious.

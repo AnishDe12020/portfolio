@@ -120,6 +120,10 @@ a.row:hover .meta .a{ color:var(--live); opacity:1; }
 .mkey{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:lowercase; color:var(--ink-dim); width:110px; flex:none; }
 .mval{ font-size:1.02rem; color:var(--ink-body); }
 
+/* designer: body case — try the site in his actual typing voice */
+html[data-case="lower"] .lede,
+html[data-case="lower"] p.body{ text-transform:lowercase; }
+
 /* designer: body typeface */
 html[data-body="mono"] body{ font-family:var(--mono); font-weight:400; }
 html[data-body="mono"] .lede{ font-size:clamp(1rem,3.4vw,1.12rem); line-height:1.7; }

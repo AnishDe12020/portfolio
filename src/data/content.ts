@@ -60,7 +60,7 @@ export const experiments = [
   { name: 'mirage', url: 'https://arxiv.org/abs/2410.09729', desc: 'multimodal model that reads handwritten indian prescriptions. 743k images, 82% accuracy', meta: 'arxiv' },
   { name: 'the graveyard', url: 'https://github.com/AnishDe12020?tab=repositories', desc: "rayauth, sendo, secli, and other projects i've let rest", meta: 'more' },
 ];
-export const experimentsAside = 'most of these are done for good.';
+export const experimentsAside = 'most of these are done for good. one might prove me wrong.';
 
 /** (04) through a lens — photo data lives in src/data/photos.ts (a build-time
  *  cache of the Unsplash API; see the header there before refreshing it). */

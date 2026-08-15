@@ -19,20 +19,20 @@ export const hero = {
 /** The opening paragraph. */
 export const lede =
   'I\'m a co-founder at <a href="https://beanstalk.fi" target="_blank" rel="noopener">Beanstalk</a>, ' +
-  'where we\'re building a way to hold stocks, gold, and treasuries onchain. Most of my day is ' +
-  'Rust on <b>Solana</b>, written from Bangalore.';
+  'where we\'re building a way to hold stocks, gold, and treasuries onchain. I write Rust on ' +
+  '<b>Solana</b> and live in Bangalore.';
 
 /** (01) right now — one <p> per entry. */
 export const now = [
   'I run the onchain side — the <b>Solana</b> programs and the infrastructure around them. We ' +
-  'started in 2026, so most of what I work on is being built for the first time.',
+  'started in 2026, so most of what I work on doesn\'t exist yet.',
   'Outside of work, I\'m doing a CS degree at PES University (class of \'29) and taking photos ' +
   'of cities at night.',
 ];
 
 /** (02) before this — one <p> per entry. */
 export const before = [
-  'Before Beanstalk, I was at <b>Spicenet</b> for almost three years. It began as <b>SpedX</b>, ' +
+  'Before Beanstalk, I was at <b>Spicenet</b> for almost three years. It started out as <b>SpedX</b>, ' +
   'a perps protocol on Solana built on Hxro\'s Dexterity, which I co-founded in 2023 while ' +
   'still in high school — nobody thought to check my age.',
   'SpedX merged into PepperDEX and became Spicenet, which went on to raise $3.4M from Hack VC. ' +

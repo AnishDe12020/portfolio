@@ -1,7 +1,8 @@
 :root{
-  /* softened 2026-08: warm espresso instead of pure black, bone one notch
-     down from glare, vermilion pulled toward terracotta ember */
-  --void:#141210;
+  /* softened 2026-08: near-black with a trace of warmth (the full-espresso
+     #141210 read brown — reverted), bone one notch down from glare,
+     vermilion pulled toward terracotta ember */
+  --void:#0b0a09;
   --ink:#e4ded2;
   --ink-body:#c7c1b5;
   --ink-dim:#9c968b;

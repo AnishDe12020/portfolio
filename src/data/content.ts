@@ -22,16 +22,25 @@ export const lede =
   'gold, and treasuries onchain, as easy to own as dinner is to order. Rust on <b>Solana</b>, ' +
   'from Bangalore.';
 
-/** (01) right now. */
-export const now =
-  'Mostly Rust and infrastructure for real-world assets onchain. CS at PES University in the ' +
-  'background.';
+/** (01) right now — one <p> per entry. */
+export const now = [
+  'Days, and most nights, go to Beanstalk. I build the part nobody screenshots: the <b>Solana</b> ' +
+  'programs and infrastructure that make a share of Apple or a gram of gold something you can ' +
+  'actually hold onchain.',
+  'In the background, a CS degree at PES University. Class of \'29.',
+];
 
-/** (02) before this. */
-export const before =
-  'I co-founded <b>SpedX</b>, a perps protocol on Solana, and ran engineering. It merged into ' +
-  'PepperDEX, became <b>Spicenet</b>, raised $3.4M, and I stayed on to build the cross-chain ' +
-  'relayer. All of it started in high school, before anyone thought to check my age.';
+/** (02) before this — one <p> per entry. */
+export const before = [
+  'I co-founded <b>SpedX</b>, a perps protocol on Solana, and ran engineering. This was in high ' +
+  'school; nobody thought to check my age.',
+  'SpedX merged into PepperDEX and became <b>Spicenet</b>, which raised $3.4M. I stayed on and ' +
+  'spent most of it building the cross-chain relayer — the piece that moves value between chains ' +
+  'without anyone having to trust a middleman.',
+  'Before all of that: hackathons. Five wins between \'22 and \'24 — one of them, DeCharge, is a ' +
+  'funded company now. Somewhere in there I also co-authored a paper that taught a model to read ' +
+  'Indian doctors\' handwriting.',
+];
 
 /** (03) experiments — public and private, one ledger, none of it precious.
  *  Rows without `url` render unlinked. A row with a `redacted` twin swaps to

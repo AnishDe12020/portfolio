@@ -18,12 +18,12 @@ import { lede, now, before, contact, footer } from '../data/content';
 
   <section id="now">
     <div class="label reveal">right now</div>
-    <p class="body reveal" set:html={now}></p>
+    {now.map((p) => <p class="body reveal" set:html={p}></p>)}
   </section>
 
   <section id="before">
     <div class="label reveal">before this</div>
-    <p class="body reveal" set:html={before}></p>
+    {before.map((p) => <p class="body reveal" set:html={p}></p>)}
   </section>
 
   <Experiments />

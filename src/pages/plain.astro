@@ -1,0 +1,89 @@
+---
+// The full-send simple version. No design system: no canvas, no grain, no
+// reveals, no panel — one font stack, the words, the links. If this wins,
+// it becomes index and the rest of the machinery retires.
+import { hero, lede, now, before, experiments, experimentsAside, contact, footer } from '../data/content';
+import { photos, stripIds, unsplashSrc } from '../data/photos';
+const strip = stripIds.map((id) => photos.find((p) => p.id === id)!).filter(Boolean);
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>anish de</title>
+  <meta name="description" content="co-founder at beanstalk. rust on solana, from bangalore." />
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#0b0a09" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <main>
+    <h1>anish de</h1>
+    <p class="dim" set:html={hero.byline}></p>
+    <nav><a href="/photos">/photos</a> <a href="https://x.com/AnishDe12020">x</a> <a href="https://github.com/AnishDe12020">github</a></nav>
+
+    <p set:html={lede}></p>
+
+    <h2>right now</h2>
+    {now.map((p) => <p set:html={p}></p>)}
+
+    <h2>before this</h2>
+    {before.map((p) => <p set:html={p}></p>)}
+
+    <h2>experiments</h2>
+    <ul>
+      {experiments.map((p) => (
+        <li>
+          {p.url ? <a href={p.url}>{p.name}</a> : <span class="name">{p.name}</span>}
+          <span class="dim"> — {p.desc}</span>
+        </li>
+      ))}
+    </ul>
+    <p class="dim small">{experimentsAside}</p>
+
+    <h2>photos</h2>
+    <div class="strip">
+      {strip.map((p) => (
+        <a href="/photos"><img src={unsplashSrc(p.id, 400)} alt={p.desc} loading="lazy" /></a>
+      ))}
+    </div>
+
+    <h2>find me</h2>
+    <ul>
+      {contact.map((c) => (
+        <li><a href={c.url}>{c.name}</a><span class="dim"> — {c.desc}</span></li>
+      ))}
+      <li><span class="name">email</span><span class="dim"> — contact [at] anishde [dot] dev</span></li>
+    </ul>
+
+    <p class="dim small">{footer.place} · <a href="https://github.com/AnishDe12020">source</a></p>
+  </main>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; }
+    body {
+      background: #0b0a09; color: #c7c1b5;
+      font: 16px/1.65 system-ui, -apple-system, sans-serif;
+      text-transform: lowercase;
+    }
+    main { max-width: 600px; margin: 0 auto; padding: 72px 24px 96px; }
+    h1 { color: #e4ded2; font-size: 1.6rem; font-weight: 650; }
+    h2 { color: #e4ded2; font-size: 1rem; font-weight: 600; margin: 2.2em 0 .6em; }
+    p { margin: .8em 0; }
+    nav { margin: .5em 0 1.8em; }
+    nav a { margin-right: 14px; }
+    a { color: #e4ded2; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #55514a; }
+    a:hover { text-decoration-color: #cd5f4a; }
+    ul { list-style: none; padding: 0; }
+    li { margin: .45em 0; }
+    .name { color: #e4ded2; }
+    .dim { color: #9c968b; }
+    .small { font-size: .85rem; margin-top: 1.4em; }
+    b { font-weight: 500; color: #e4ded2; }
+    .strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .strip img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
+    @media (max-width: 480px) { .strip { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</body>
+</html>

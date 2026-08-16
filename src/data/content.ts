@@ -18,29 +18,28 @@ export const hero = {
 
 /** The opening paragraph. */
 export const lede =
-  'I\'m a co-founder at <a href="https://beanstalk.fi" target="_blank" rel="noopener">Beanstalk</a>, ' +
-  'where we\'re building a way to hold stocks, gold, and treasuries onchain. I write Rust on ' +
-  '<b>Solana</b> and live in Bangalore.';
+  'I\'m building <a href="https://beanstalk.fi" target="_blank" rel="noopener">Beanstalk</a> so ' +
+  'that owning stocks, gold, or treasuries onchain feels like a consumer product instead of a ' +
+  'DeFi puzzle. Rust on <b>Solana</b>, from Bangalore.';
 
 /** (01) right now — one <p> per entry. */
 export const now = [
   'I run the onchain side — the <b>Solana</b> programs and the infrastructure around them. We ' +
-  'started in 2026, so most of what I work on doesn\'t exist yet.',
+  'started in 2026, so most of what I\'m building doesn\'t exist yet. I like it that way.',
   'Outside of work, I\'m doing a CS degree at PES University (class of \'29) and taking photos ' +
   'of cities at night.',
 ];
 
 /** (02) before this — one <p> per entry. */
 export const before = [
-  'Before Beanstalk, I was at <b>Spicenet</b> for almost three years. It started out as <b>SpedX</b>, ' +
-  'a perps protocol on Solana built on Hxro\'s Dexterity, which I co-founded in 2023 while ' +
-  'still in high school — nobody thought to check my age.',
-  'SpedX merged into PepperDEX and became Spicenet, which went on to raise $3.4M from Hack VC. ' +
-  'I built the cross-chain relayer that moves assets between chains, and later the SDK that ' +
-  'other teams integrated against.',
-  'I got into all of this through hackathons — five wins across three years, including an ' +
-  'EV-charging network that\'s a funded company now. Along the way I also co-authored an arXiv ' +
-  'paper: a multimodal model trained on 743,000 handwritten Indian prescriptions.',
+  'Before Beanstalk I was at <b>Spicenet</b> for almost three years. It started out as ' +
+  '<b>SpedX</b>, a perps protocol on Solana I co-founded in 2023, in high school — nobody ' +
+  'thought to check my age.',
+  'SpedX merged into PepperDEX and became Spicenet, which raised $3.4M from Hack VC. I spent ' +
+  'most of my time on the cross-chain relayer — bridges are the part of crypto that keeps ' +
+  'breaking, which is exactly what made them worth working on.',
+  'I got here through hackathons — five wins in three years, one became a funded company — and ' +
+  'one arXiv paper: a model trained on 743,000 handwritten Indian prescriptions.',
 ];
 
 /** (03) experiments — public and private, one ledger, none of it precious.
@@ -49,7 +48,7 @@ export const before = [
  *  first char + `redact` dots + optional trailing char. */
 export const experiments = [
   { name: 'windtunnel', url: 'https://github.com/AnishDe12020/windtunnel', desc: 'you write a system design with no ai, adversarial agents attack it, you defend. still deciding what it wants to be', meta: 'go · wip' },
-  { name: 'nook', desc: 'local-first memory for coding agents. rust and sqlite, with encrypted evidence behind every recall', meta: '[private]',
+  { name: 'nook', desc: 'coding agents forget everything between sessions. nook was my fix — rust and sqlite, with receipts for every memory', meta: '[private]',
     redacted: { head: 'n', redact: 3, tail: '', desc: "it remembers things. that's all you get.", meta: '[classified]' } },
   { name: 'crucible', desc: 'programming tutor that builds the interface as it explains, instead of talking at you', meta: '[private]',
     redacted: { head: 'c', redact: 6, tail: 'e', desc: 'it teaches. badly, sometimes.', meta: '[classified]' } },

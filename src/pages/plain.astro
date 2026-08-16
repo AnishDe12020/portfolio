@@ -21,7 +21,6 @@ const strip = stripIds.map((id) => photos.find((p) => p.id === id)!).filter(Bool
 </head>
 <body>
   <main>
-    <p class="status"><span class="dot"></span>{hero.status}</p>
     <h1>anish de</h1>
     <p class="dim byline" set:html={hero.byline}></p>
     <nav><a href="/photos">/photos</a> <a href="https://x.com/AnishDe12020">x</a> <a href="https://github.com/AnishDe12020">github</a></nav>
@@ -79,13 +78,6 @@ const strip = stripIds.map((id) => photos.find((p) => p.id === id)!).filter(Bool
     }
     main { max-width: 600px; margin: 0 auto; padding: 64px 24px 80px; }
     h1 { color: #e4ded2; font-size: 1.6rem; font-weight: 650; }
-    .status {
-      display: flex; align-items: center; gap: 8px; margin-bottom: 26px;
-      font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: .18em; color: #9c968b;
-    }
-    .dot { width: 6px; height: 6px; border-radius: 50%; background: #cd5f4a; animation: pulse 2.6s ease-out infinite; }
-    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(205,95,74,.5); } 70% { box-shadow: 0 0 0 7px transparent; } }
-    @media (prefers-reduced-motion: reduce) { .dot { animation: none; } }
     .byline { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .14em; }
     h2 {
       display: flex; align-items: center; gap: 10px;

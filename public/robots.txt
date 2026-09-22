@@ -1,4 +1,2 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://anishde.dev/sitemap-index.xml

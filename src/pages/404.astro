@@ -1,37 +1,26 @@
 ---
-import Base from '../layouts/Base.astro';
 ---
-<Base title="404 — Anish De" description="not a thing.">
-  <div class="nf">
-    <h1 class="sr">404</h1>
-    <canvas id="nfc" width="17" height="7" aria-hidden="true"></canvas>
-    <p class="nfline">this page is not a thing.</p>
-    <p class="aside"><a href="/">home</a> is that way.</p>
-  </div>
-</Base>
-
-<style>
-  .nf{ min-height:70vh; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px; text-align:center; }
-  #nfc{ image-rendering:pixelated; width:238px; max-width:80%; }
-  .nfline{ font-size:1.1rem; color:var(--ink-body); }
-  .nf .aside{ margin-top:0; }
-</style>
-
-<script>
-  import { GLYPHS } from '../lib/pixel';
-
-  const cv = document.getElementById('nfc') as HTMLCanvasElement;
-  const ctx = cv.getContext('2d')!;
-  const shades = ['#e4ded2', '#e4ded2', '#b8b3a8', '#6b675e'];
-  let cx = 0;
-  for (const ch of '404') {
-    const glyph = GLYPHS[ch];
-    for (let y = 0; y < 7; y++)
-      for (let x = 0; x < 5; x++)
-        if (glyph[y][x] === '1') {
-          ctx.fillStyle = shades[(Math.random() * shades.length) | 0];
-          ctx.fillRect(cx + x, y, 1, 1);
-        }
-    cx += 6;
-  }
-</script>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>404 — anish de</title>
+  <meta name="theme-color" content="#0b0a09" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <main>
+    <h1>404</h1>
+    <p>page not found. <a href="/">home</a></p>
+  </main>
+  <style is:global>
+    * { box-sizing: border-box; margin: 0; }
+    body { background: #0b0a09; color: #c7c1b5; font: 16px/1.65 system-ui, -apple-system, sans-serif; }
+    main { max-width: 600px; margin: 0 auto; padding: 64px 24px; }
+    h1 { color: #e4ded2; font-size: 1.6rem; font-weight: 700; margin-bottom: .5em; }
+    a { color: #e4ded2; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #55514a; }
+    a:hover { color: #cd5f4a; text-decoration-color: #cd5f4a; }
+  </style>
+</body>
+</html>

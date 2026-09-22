@@ -1,105 +1,96 @@
 ---
-import Base from '../layouts/Base.astro';
-import Hero from '../components/Hero.astro';
-import Experiments from '../components/Experiments.astro';
-import Photos from '../components/Photos.astro';
-import Specimen from '../components/Specimen.astro';
-import Designer from '../components/Designer.astro';
-import { lede, now, before, contact, footer } from '../data/content';
+import { byline, lede, work, projects, research, contact, footer } from '../data/content';
+const description = 'trading infrastructure on solana. rust, typescript, some go. bengaluru.';
 ---
-<Base>
-  <div id="intro">
-    <Hero />
-    <p class="lede reveal" set:html={lede}></p>
-  </div>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>anish de</title>
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#0b0a09" />
+  <link rel="canonical" href="https://anishde.dev/" />
+  <meta property="og:title" content="anish de" />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content="https://anishde.dev/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:creator" content="@AnishDe12020" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <main>
+    <h1>anish de</h1>
+    <p class="dim" set:html={byline}></p>
 
-  <section id="now">
-    <div class="label reveal">right now</div>
-    {now.map((p) => <p class="body reveal" set:html={p}></p>)}
-  </section>
+    <p set:html={lede}></p>
 
-  <section id="before">
-    <div class="label reveal">before this</div>
-    {before.map((p) => <p class="body reveal" set:html={p}></p>)}
-  </section>
-
-  <Experiments />
-
-  <Photos />
-
-  <section id="contact">
-    <div class="label reveal">find me</div>
-    <div class="rows reveal">
-      {contact.map((c) => (
-        <a class="row" href={c.url} target="_blank" rel="noopener">
-          <span class="name">{c.name}</span><span class="desc">{c.desc}</span>
-          <span class="meta">{c.meta} <span class="a">&#8599;</span></span>
-        </a>
+    <h2>work</h2>
+    <ul>
+      {work.map((w) => (
+        <li>
+          {w.url ? <a href={w.url}>{w.name}</a> : <b>{w.name}</b>}
+          <span class="dim"> — {w.desc} · {w.meta}</span>
+          <p class="body">{w.body}</p>
+        </li>
       ))}
-      <a class="row" href="#" id="emailrow">
-        <span class="name">email</span><span class="desc">the long form</span>
-        <span class="meta"><span id="emailtext">contact[at]anishde[dot]dev</span> <span class="a" id="emailhint">·&nbsp;decode</span></span>
-      </a>
-    </div>
-  </section>
+    </ul>
 
-  <Specimen />
+    <h2>projects</h2>
+    <ul>
+      {projects.map((p) => (
+        <li>
+          {p.url ? <a href={p.url}>{p.name}</a> : <b>{p.name}</b>}
+          <span class="dim"> — {p.desc}{p.meta && ` · ${p.meta}`}</span>
+        </li>
+      ))}
+    </ul>
 
-  <footer class="reveal" id="fin">
-    <span id="voidline">{footer.void}</span>
-    <span>{footer.place}</span>
-    <span>&copy; 2026 / <button id="ver" title="click">{footer.version}</button> / <a href="https://github.com/AnishDe12020" target="_blank" rel="noopener">source</a> / analytics offline</span>
-  </footer>
+    <h2>research</h2>
+    <ul>
+      {research.map((r) => (
+        <li>
+          {r.url ? <a href={r.url}>{r.name}</a> : <b>{r.name}</b>}
+          <span class="dim"> — {r.desc} · {r.meta}</span>
+        </li>
+      ))}
+    </ul>
 
-  <Designer slot="fixed" />
-</Base>
+    <h2>contact</h2>
+    <ul>
+      {contact.map((c) => (
+        <li>
+          {c.url ? <a href={c.url}>{c.name}</a> : <b>{c.name}</b>}
+          {c.desc && <span class="dim"> — {c.desc}</span>}
+        </li>
+      ))}
+    </ul>
 
-<script>
-  /* email: never in the DOM until you ask for it */
-  const row = document.getElementById('emailrow') as HTMLAnchorElement;
-  const txt = document.getElementById('emailtext')!;
-  const hint = document.getElementById('emailhint')!;
-  const addr = ['contact', 'anishde', 'dev'].join(' ').replace(' ', '@').replace(' ', '.');
-  let decoded = false;
+    <p class="dim foot">{footer.place} · <a href="https://github.com/AnishDe12020">source</a></p>
+  </main>
 
-  function decode() {
-    if (decoded) return;
-    decoded = true;
-    const glyphs = '·:•◦abcdefghijklmnopqrstuvwxyz@.';
-    let step = 0;
-    const iv = setInterval(() => {
-      step++;
-      const done = Math.floor((step / 14) * addr.length);
-      txt.textContent =
-        addr.slice(0, done) +
-        [...addr.slice(done)].map(() => glyphs[(Math.random() * glyphs.length) | 0]).join('');
-      if (done >= addr.length) {
-        clearInterval(iv);
-        txt.textContent = addr;
-        row.href = 'mailto:' + addr;
-        hint.innerHTML = '&#8599;';
-      }
-    }, 40);
-  }
-  row.addEventListener('click', (e) => {
-    if (decoded) return; // second click follows the mailto
-    e.preventDefault();
-    decode();
-  });
-  addEventListener('pf:email', () => {
-    // travel first, decode once the row is actually on screen
-    const r = row.getBoundingClientRect();
-    if (Math.abs(r.top + r.height / 2 - innerHeight / 2) < 80) { decode(); return; }
-    let done = false;
-    const finish = () => { if (done) return; done = true; decode(); };
-    addEventListener('scrollend', finish, { once: true, capture: true });
-    setTimeout(finish, 1200);
-    row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  });
-
-  /* footer version — click for the site's past lives */
-  const ver = document.getElementById('ver')!;
-  const vers = ["v1 — a high schooler's html", 'v2 — next.js, 137 stars', "v4 — you're looking at it", 'v4.0.0'];
-  let vi = -1;
-  ver.addEventListener('click', () => { vi = (vi + 1) % vers.length; ver.textContent = vers[vi]; });
-</script>
+  <style is:global>
+    * { box-sizing: border-box; margin: 0; }
+    body {
+      background: #0b0a09;
+      color: #c7c1b5;
+      font: 16px/1.65 system-ui, -apple-system, sans-serif;
+      text-transform: lowercase;
+      -webkit-font-smoothing: antialiased;
+    }
+    main { max-width: 600px; margin: 0 auto; padding: 64px 24px 80px; }
+    h1 { color: #e4ded2; font-size: 1.6rem; font-weight: 700; }
+    h2 { color: #e4ded2; font-size: 1rem; font-weight: 700; margin: 2.4em 0 .6em; }
+    p { margin: .8em 0; }
+    ul { list-style: none; padding: 0; }
+    li { margin: .5em 0; }
+    li .body { margin: .2em 0 1em; }
+    b { font-weight: 600; color: #e4ded2; }
+    a { color: #e4ded2; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #55514a; }
+    a:hover { color: #cd5f4a; text-decoration-color: #cd5f4a; }
+    .dim { color: #9c968b; }
+    .foot { margin-top: 3em; font-size: .85rem; }
+    ::selection { background: #cd5f4a; color: #0b0a09; }
+  </style>
+</body>
+</html>

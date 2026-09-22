@@ -10,17 +10,10 @@
     "build": "astro build",
     "check": "astro check",
     "preview": "astro preview",
-    "astro": "astro",
-    "blog:new": "node scripts/blog.mjs new",
-    "blog:list": "node scripts/blog.mjs list",
-    "blog:publish": "node scripts/blog.mjs publish",
-    "blog:unpublish": "node scripts/blog.mjs unpublish"
+    "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^7.0.2",
-    "@astrojs/sitemap": "^3.7.3",
-    "astro": "^7.0.6",
-    "astro-og-canvas": "^0.13.0"
+    "astro": "^7.0.6"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",

@@ -29,7 +29,7 @@ const description = 'trading infrastructure on solana. rust, typescript, some go
     <ul>
       {work.map((w) => (
         <li>
-          {w.url ? <a href={w.url}>{w.name}</a> : <b>{w.name}</b>}
+          {w.url ? <a href={w.url} target="_blank" rel="noopener">{w.name}</a> : <b>{w.name}</b>}
           <span class="dim"> — {w.desc} · {w.meta}</span>
           <p class="body">{w.body}</p>
         </li>
@@ -40,8 +40,8 @@ const description = 'trading infrastructure on solana. rust, typescript, some go
     <ul>
       {projects.map((p) => (
         <li>
-          {p.url ? <a href={p.url}>{p.name}</a> : <b>{p.name}</b>}
-          <span class="dim"> — {p.desc}{p.meta && ` · ${p.meta}`}</span>
+          {p.url ? <a href={p.url} target="_blank" rel="noopener">{p.name}</a> : <b>{p.name}</b>}
+          {p.desc && <span class="dim"> — {p.desc}{p.meta && ` · ${p.meta}`}</span>}
         </li>
       ))}
     </ul>
@@ -50,7 +50,7 @@ const description = 'trading infrastructure on solana. rust, typescript, some go
     <ul>
       {research.map((r) => (
         <li>
-          {r.url ? <a href={r.url}>{r.name}</a> : <b>{r.name}</b>}
+          {r.url ? <a href={r.url} target="_blank" rel="noopener">{r.name}</a> : <b>{r.name}</b>}
           <span class="dim"> — {r.desc} · {r.meta}</span>
         </li>
       ))}
@@ -60,13 +60,13 @@ const description = 'trading infrastructure on solana. rust, typescript, some go
     <ul>
       {contact.map((c) => (
         <li>
-          {c.url ? <a href={c.url}>{c.name}</a> : <b>{c.name}</b>}
+          {c.url ? <a href={c.url} target="_blank" rel="noopener">{c.name}</a> : <b>{c.name}</b>}
           {c.desc && <span class="dim"> — {c.desc}</span>}
         </li>
       ))}
     </ul>
 
-    <p class="dim foot">{footer.place} · <a href="https://github.com/AnishDe12020">source</a></p>
+    <p class="dim foot">{footer.place} · <a href="https://github.com/AnishDe12020/portfolio" target="_blank" rel="noopener">source</a></p>
   </main>
 
   <style is:global>

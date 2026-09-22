@@ -2,7 +2,7 @@
 // where a field says so. Lists render in the order written.
 
 /** Under the name. */
-export const byline = 'systems &amp; trading infra · <b>cs @ pes</b> · bengaluru';
+export const byline = 'systems &amp; trading infra · cs @ pes · bengaluru';
 
 /** The opening paragraph. */
 export const lede =
@@ -11,16 +11,16 @@ export const lede =
 
 /** work: rows without `url` render unlinked. `body` renders under the row. */
 export const work = [
+{
+    name: 'beanstalk', url: 'https://beanstalk.fi', desc: 'co-founder', meta: "'26",
+    body: 'cross-chain order router for tokenized stocks and gold.',
+  },
   {
     name: 'spicenet', url: 'https://spicenet.io', desc: 'protocol engineer', meta: "'23–'26",
     body:
       'co-founded it in high school as spedx, a perps dex on solana. it became pepperdex, ' +
       'then spicenet, and raised $3.4m from hack vc. i built the trading app, indexers, a tx ' +
       'blaster for the 2024 congestion, and a smart wallet.',
-  },
-  {
-    name: 'beanstalk', url: 'https://beanstalk.fi', desc: 'co-founder', meta: "'26",
-    body: 'cross-chain order router for tokenized stocks and gold.',
   },
 ];
 
@@ -31,8 +31,7 @@ export const projects = [
   { name: 'unsus', url: 'https://github.com/AnishDe12020/unsus', desc: 'sandboxes npm installs', meta: 'ts' },
   { name: 'decharge', url: 'https://www.decharge.network/', desc: 'ev charging on solana. 2nd in depin, solana renaissance; funded', meta: 'rust' },
   { name: 'nonci', url: 'https://nonci.xyz', desc: 'durable-nonce tx queue for solana. superteam earn bounty', meta: 'ts' },
-  { name: 'solsignal', url: 'https://github.com/AnishDe12020/solsignal', desc: 'verifiable trading signals on solana', meta: 'rust' },
-  { name: 'archived', url: 'https://github.com/AnishDe12020?tab=repositories', desc: 'murmur, thermac, crucible, rayauth, sendo, secli, more' },
+  { name: 'check out more on github', url: 'https://github.com/AnishDe12020?tab=repositories' },
 ];
 
 /** research: rows without `url` render unlinked. */

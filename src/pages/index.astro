@@ -1,6 +1,16 @@
 ---
 import { byline, lede, work, projects, research, contact, footer } from '../data/content';
 const description = 'trading infrastructure on solana. rust, typescript, some go. bengaluru.';
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Anish De',
+  url: 'https://anishde.dev',
+  jobTitle: 'protocol engineer',
+  description,
+  address: { '@type': 'PostalAddress', addressLocality: 'Bengaluru', addressCountry: 'IN' },
+  sameAs: contact.filter((c) => c.url).map((c) => c.url),
+};
 ---
 <!doctype html>
 <html lang="en">
@@ -11,11 +21,21 @@ const description = 'trading infrastructure on solana. rust, typescript, some go
   <meta name="description" content={description} />
   <meta name="theme-color" content="#0b0a09" />
   <link rel="canonical" href="https://anishde.dev/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="anish de" />
+  <meta property="og:url" content="https://anishde.dev/" />
   <meta property="og:title" content="anish de" />
   <meta property="og:description" content={description} />
   <meta property="og:image" content="https://anishde.dev/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="anish de — systems & trading infra · cs @ pes · bengaluru" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:creator" content="@AnishDe12020" />
+  <meta name="twitter:title" content="anish de" />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content="https://anishde.dev/og.png" />
+  <script type="application/ld+json" set:html={JSON.stringify(person)}></script>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 </head>
 <body>

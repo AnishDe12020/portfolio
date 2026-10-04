@@ -11,16 +11,16 @@ export const lede =
 
 /** work: rows without `url` render unlinked. `body` renders under the row. */
 export const work = [
-{
-    name: 'beanstalk', url: 'https://beanstalk.fi', desc: 'co-founder', meta: "'26",
-    body: 'cross-chain order router for tokenized stocks and gold.',
-  },
   {
     name: 'spicenet', url: 'https://spicenet.io', desc: 'protocol engineer', meta: "'23–'26",
     body:
-      'co-founded it in high school as spedx, a perps dex on solana. it became pepperdex, ' +
-      'then spicenet, and raised $3.4m from hack vc. i built the trading app, indexers, a tx ' +
-      'blaster for the 2024 congestion, and a smart wallet.',
+      'co-founded spedx in high school, a perps dex on solana. it became pepperdex, then ' +
+      'spicenet (raised $3.4m from hack vc), where i was a protocol engineer. i built the ' +
+      'trading app, indexers, a tx blaster for the 2024 congestion, a smart wallet, and much more.',
+  },
+  {
+    name: 'beanstalk', url: 'https://beanstalk.fi', desc: 'co-founder', meta: "'26",
+    body: 'built an app for buying tokenized stocks, etfs and metals, with cross-chain order routing to cut fees and slippage. superteam india grant.',
   },
 ];
 
@@ -28,8 +28,11 @@ export const work = [
 export const projects = [
   { name: 'nook', desc: 'local memory for coding agents. rust, sqlite', meta: 'private' },
   { name: 'windtunnel', url: 'https://github.com/AnishDe12020/windtunnel', desc: 'adversarial review of system designs by ai agents', meta: 'go · wip' },
-  { name: 'unsus', url: 'https://github.com/AnishDe12020/unsus', desc: 'sandboxes npm installs', meta: 'ts' },
-  { name: 'decharge', url: 'https://www.decharge.network/', desc: 'ev charging on solana. 2nd in depin, solana renaissance; funded', meta: 'rust' },
+  { name: 'unsus', url: 'https://github.com/AnishDe12020/unsus', desc: 'pre-checks npm packages before they install', meta: 'ts' },
+  { name: 'paddock', url: 'https://github.com/AnishDe12020/paddock', desc: 'persistent linux box for agents over mcp', meta: 'python' },
+  { name: 'hangar', url: 'https://github.com/AnishDe12020/hangar', desc: 'aerospace-aware alt-tab switcher and window organizer for macos', meta: 'swift' },
+  { name: 'decharge', desc: 'ev charging on solana. 2nd in depin, solana renaissance; funded', meta: 'rust' },
+  { name: 'vaxchain', url: 'https://vaxchain.xyz', desc: 'vaccine cold-chain tracking on solana, iot temp logs with stake slashing. 4th in depin, solana hyperdrive', meta: 'rust' },
   { name: 'nonci', url: 'https://nonci.xyz', desc: 'durable-nonce tx queue for solana. superteam earn bounty', meta: 'ts' },
   { name: 'check out more on github', url: 'https://github.com/AnishDe12020?tab=repositories' },
 ];
@@ -41,7 +44,7 @@ export const research = [
 
 /** open source: NOT rendered. lives in the resume, kept here for reference. */
 export const openSource = [
-  { name: 'sovereign sdk', url: 'https://github.com/Sovereign-Labs/sovereign-sdk/commit/42bbdba89fcceb45ca9e6367e7c65e9bfeead262', desc: 'StateVec::remove in the rollup framework\'s core modules', meta: 'rust' },
+  { name: 'sovereign sdk', url: 'https://github.com/Sovereign-Labs/sovereign-sdk/commit/db1a5d6ed', desc: 'StateVec::remove in the rollup framework\'s core modules', meta: 'rust' },
   { name: 'raycast', url: 'https://github.com/raycast/extensions', desc: 'wrote the bonk price extension, overhauled solana explorer', meta: 'ts' },
   { name: 'kbar', url: 'https://github.com/timc1/kbar', desc: 'react 18 support', meta: 'ts' },
   { name: 'exercism', url: 'https://github.com/exercism/javascript', desc: 'exercise prerequisites for the javascript track', meta: 'js' },

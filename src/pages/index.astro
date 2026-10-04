@@ -1,4 +1,5 @@
 ---
+import Base from '../layouts/Base.astro';
 import { byline, lede, work, projects, research, contact, footer } from '../data/content';
 const description = 'trading infrastructure on solana. rust, typescript, some go. bengaluru.';
 const person = {
@@ -9,39 +10,17 @@ const person = {
   jobTitle: 'protocol engineer',
   description,
   address: { '@type': 'PostalAddress', addressLocality: 'Bengaluru', addressCountry: 'IN' },
-  sameAs: contact.filter((c) => c.url).map((c) => c.url),
+  sameAs: contact.filter((c) => c.url?.startsWith('http')).map((c) => c.url),
 };
 ---
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>anish de</title>
-  <meta name="description" content={description} />
-  <meta name="theme-color" content="#0b0a09" />
-  <link rel="canonical" href="https://anishde.dev/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="anish de" />
-  <meta property="og:url" content="https://anishde.dev/" />
-  <meta property="og:title" content="anish de" />
-  <meta property="og:description" content={description} />
-  <meta property="og:image" content="https://anishde.dev/og.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="anish de — systems & trading infra · cs @ pes · bengaluru" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:creator" content="@AnishDe12020" />
-  <meta name="twitter:title" content="anish de" />
-  <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content="https://anishde.dev/og.png" />
-  <script type="application/ld+json" set:html={JSON.stringify(person)}></script>
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-</head>
-<body>
+<Base description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(person)}></script>
+  </Fragment>
   <main>
     <h1>anish de</h1>
     <p class="dim" set:html={byline}></p>
+    <p class="dim"><a href="/photos">photos</a></p>
 
     <p set:html={lede}></p>
 
@@ -80,7 +59,7 @@ const person = {
     <ul>
       {contact.map((c) => (
         <li>
-          {c.url ? <a href={c.url} target="_blank" rel="noopener">{c.name}</a> : <b>{c.name}</b>}
+          {c.url ? <a href={c.url} target={c.url.startsWith('/') ? undefined : '_blank'} rel={c.url.startsWith('/') ? undefined : 'noopener'}>{c.name}</a> : <b>{c.name}</b>}
           {c.desc && <span class="dim"> — {c.desc}</span>}
         </li>
       ))}
@@ -88,29 +67,4 @@ const person = {
 
     <p class="dim foot">{footer.place} · <a href="https://github.com/AnishDe12020/portfolio" target="_blank" rel="noopener">source</a></p>
   </main>
-
-  <style is:global>
-    * { box-sizing: border-box; margin: 0; }
-    body {
-      background: #0b0a09;
-      color: #c7c1b5;
-      font: 16px/1.65 system-ui, -apple-system, sans-serif;
-      text-transform: lowercase;
-      -webkit-font-smoothing: antialiased;
-    }
-    main { max-width: 600px; margin: 0 auto; padding: 64px 24px 80px; }
-    h1 { color: #e4ded2; font-size: 1.6rem; font-weight: 700; }
-    h2 { color: #e4ded2; font-size: 1rem; font-weight: 700; margin: 2.4em 0 .6em; }
-    p { margin: .8em 0; }
-    ul { list-style: none; padding: 0; }
-    li { margin: .5em 0; }
-    li .body { margin: .2em 0 1em; }
-    b { font-weight: 600; color: #e4ded2; }
-    a { color: #e4ded2; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #55514a; }
-    a:hover { color: #cd5f4a; text-decoration-color: #cd5f4a; }
-    .dim { color: #9c968b; }
-    .foot { margin-top: 3em; font-size: .85rem; }
-    ::selection { background: #cd5f4a; color: #0b0a09; }
-  </style>
-</body>
-</html>
+</Base>

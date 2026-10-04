@@ -1,0 +1,90 @@
+---
+import Base from '../layouts/Base.astro';
+import { categories, cdn, page } from '../data/photos';
+
+// grid: 24px side padding, 12px gap, 2 columns up to 960px, 1 column below 640px
+const sizes = '(max-width: 640px) calc(100vw - 48px), (max-width: 960px) calc(50vw - 30px), 450px';
+const widths = [480, 800, 1200];
+// first row (2 photos on desktop) loads eagerly; the rest wait for scroll
+const eager = 2;
+let n = 0;
+---
+<Base title="photos · anish de" description="photos by anish de. cities, mostly at night." path="/photos">
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.unsplash.com" />
+  </Fragment>
+
+  <main>
+    <h1>photos</h1>
+    <p class="dim"><a href="/">anish de</a></p>
+  </main>
+
+  {categories.map((cat) => (
+    <section class="cat">
+      <h2>{cat.title}</h2>
+      <div class="grid">
+        {cat.photos.map((p) => {
+          const i = n++;
+          return (
+            <figure>
+              <a href={page(p.unsplash)} target="_blank" rel="noopener">
+                <img
+                  src={cdn(p.image, 800)}
+                  srcset={widths.map((w) => `${cdn(p.image, w)} ${w}w`).join(', ')}
+                  sizes={sizes}
+                  width={p.w}
+                  height={p.h}
+                  alt={p.alt}
+                  loading={i < eager ? 'eager' : 'lazy'}
+                  fetchpriority={i === 0 ? 'high' : undefined}
+                  decoding="async"
+                />
+                {(p.caption || p.meta) && (
+                  <figcaption>
+                    {p.caption && <span>{p.caption}</span>}
+                    {p.meta && <span class="meta">{p.meta}</span>}
+                  </figcaption>
+                )}
+              </a>
+            </figure>
+          );
+        })}
+      </div>
+    </section>
+  ))}
+
+  <main class="tail">
+    <p class="dim foot">more on <a href="https://unsplash.com/@anishde?utm_source=anishde.dev&utm_medium=referral" target="_blank" rel="noopener">unsplash</a></p>
+  </main>
+</Base>
+
+<style>
+  main { padding-bottom: 0; }
+  .tail { padding-top: 0; }
+  .tail .foot { margin-top: 2em; }
+  .cat { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  .cat h2 { margin: 2.4em 0 .8em; }
+  .grid { columns: 2; column-gap: 12px; }
+  @media (max-width: 640px) { .grid { columns: 1; } }
+  figure { break-inside: avoid; margin: 0 0 12px; }
+  figure a { position: relative; display: block; text-decoration: none; color: inherit; }
+  img { display: block; width: 100%; height: auto; background: #151311; }
+
+  /* caption + camera line fade in over the photo on hover / focus */
+  figcaption {
+    position: absolute; inset: auto 0 0 0;
+    display: flex; flex-direction: column; gap: 2px;
+    padding: 28px 12px 10px;
+    font-size: .85rem; color: #e4ded2;
+    background: linear-gradient(to top, rgba(11, 10, 9, .85), rgba(11, 10, 9, 0));
+    opacity: 0; transition: opacity .15s ease;
+    pointer-events: none;
+  }
+  figcaption .meta { color: #9c968b; font-size: .75rem; }
+  figure a:hover figcaption, figure a:focus-visible figcaption { opacity: 1; }
+  /* no hover on touch: show the caption under the photo instead */
+  @media (hover: none) {
+    figcaption { position: static; opacity: 1; padding: .3em 0 0; background: none; color: #9c968b; }
+  }
+  @media (prefers-reduced-motion: reduce) { figcaption { transition: none; } }
+</style>

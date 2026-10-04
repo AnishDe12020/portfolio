@@ -1,0 +1,65 @@
+---
+// Shared head and global styles. Pages pass a title, description, and the
+// canonical path; anything page-specific goes in the `head` slot.
+interface Props { title?: string; description?: string; path?: string }
+const {
+  title = 'anish de',
+  description = 'trading infrastructure on solana. rust, typescript, some go. bengaluru.',
+  path = '/',
+} = Astro.props;
+const canonical = `https://anishde.dev${path}`;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#0b0a09" />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="anish de" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content="https://anishde.dev/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="anish de — systems & trading infra · cs @ pes · bengaluru" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:creator" content="@AnishDe12020" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content="https://anishde.dev/og.png" />
+  <slot name="head" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <slot />
+
+  <style is:global>
+    * { box-sizing: border-box; margin: 0; }
+    body {
+      background: #0b0a09;
+      color: #c7c1b5;
+      font: 16px/1.65 system-ui, -apple-system, sans-serif;
+      text-transform: lowercase;
+      -webkit-font-smoothing: antialiased;
+    }
+    main { max-width: 600px; margin: 0 auto; padding: 64px 24px 80px; }
+    h1 { color: #e4ded2; font-size: 1.6rem; font-weight: 700; }
+    h2 { color: #e4ded2; font-size: 1rem; font-weight: 700; margin: 2.4em 0 .6em; }
+    p { margin: .8em 0; }
+    ul { list-style: none; padding: 0; }
+    li { margin: .5em 0; }
+    li .body { margin: .2em 0 1em; }
+    b { font-weight: 600; color: #e4ded2; }
+    a { color: #e4ded2; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #55514a; }
+    a:hover { color: #cd5f4a; text-decoration-color: #cd5f4a; }
+    .dim { color: #9c968b; }
+    .foot { margin-top: 3em; font-size: .85rem; }
+    ::selection { background: #cd5f4a; color: #0b0a09; }
+  </style>
+</body>
+</html>
